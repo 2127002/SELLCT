@@ -6,19 +6,33 @@ public class HandController : MonoBehaviour
 {
     [SerializeField, Min(0)] int _handCapacity;
 
-    readonly List<IElements> _hands = new();
+    readonly List<ICard> _cards = new();
 
-    public void Add(IElements card)
+    public void Add(ICard card)
     {
+        if(_cards.Count >= _handCapacity)throw new HandCapacityExceededException();
 
-        _hands.Add(card);
+        _cards.Add(card);
     }
 
-    public IElements PopBack()
+    public void Remove(ICard card)
     {
-        IElements element = _hands[0];
-        _hands.Remove(element);
+        if (!_cards.Contains(card))
+        {
+            Debug.LogError("手札に存在しないカードが選択されました。仕様を確認してください。\n" + card);
+            return;
+        }
 
-        return element;
+        //ここでこの処理をするのは良くない？
+        card.Sell();
+        _cards.Remove(card);
+    }
+}
+
+public class HandCapacityExceededException : System.Exception
+{
+    public HandCapacityExceededException()
+    {
+        Debug.LogError("手札のキャパシティを超えて追加しようとしました。追加はキャンセルされました。");
     }
 }
