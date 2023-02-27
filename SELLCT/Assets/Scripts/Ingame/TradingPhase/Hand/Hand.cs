@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class HandController : MonoBehaviour
+public class Hand : MonoBehaviour
 {
     [SerializeField, Min(0)] int _handCapacity;
 
@@ -23,8 +23,6 @@ public class HandController : MonoBehaviour
             return;
         }
 
-        //‚±‚±‚Å‚±‚Ìˆ—‚ğ‚·‚é‚Ì‚Í—Ç‚­‚È‚¢H
-        card.Sell();
         _cards.Remove(card);
     }
 }

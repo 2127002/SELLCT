@@ -4,27 +4,18 @@ using UnityEngine;
 
 public class TradingPhaseController : MonoBehaviour
 {
-    [SerializeField] TimeLimit _timeLimit;
+    [SerializeField] TimeLimitController _timeLimitController;
 
     ITradingPhaseViewReceiver _view;
 
     private void Awake()
     {
         _view = GetComponent<ITradingPhaseViewReceiver>();
+        _timeLimitController.AddAction(OnTimeLimit);
     }
 
-    private void Update()
+    private void OnTimeLimit()
     {
-        _timeLimit.DecreaseTimeDeltaTime();
-
-        if (_timeLimit.IsTimeLimitReached())
-        {
-            Debug.Log("制限時間です");
-
-            _view.OnTimeLimitReached();
-
-            //TODO：手札がリセット
-            //TODO：テキストボックスの更新
-        }
+        _view.OnTimeLimitReached();
     }
 }

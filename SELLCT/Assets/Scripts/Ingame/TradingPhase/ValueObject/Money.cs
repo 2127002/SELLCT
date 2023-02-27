@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-class Money
+public class Money
 {
     readonly int _amount;
 
@@ -37,6 +37,11 @@ class Money
 
         return new(_amount - value._amount);
     }
+
+    public int CurrentAmount()
+    {
+        return _amount;
+    }
 }
 
 /// <summary>
@@ -47,6 +52,5 @@ public class NegativeMoneyException : Exception
     //コンストラクタ以外、内部に処理は書かないでください。
     public NegativeMoneyException()
     {
-        Debug.LogError("try-catch節を用いて適切に処理してください");
     }
 }

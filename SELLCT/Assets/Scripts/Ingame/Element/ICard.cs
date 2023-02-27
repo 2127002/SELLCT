@@ -6,4 +6,5 @@ public interface ICard
 {
     void Buy();
     void Sell();
+    void Passive();
 }
