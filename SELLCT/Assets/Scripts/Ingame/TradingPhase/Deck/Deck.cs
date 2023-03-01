@@ -10,25 +10,18 @@ public class Deck
         _cards = new List<ICard>();
     }
 
-    private Deck(List<ICard> cards)
+    public void Add(ICard card)
     {
-        _cards = cards;
+        _cards.Add(card);
     }
 
-    public Deck Add(ICard card)
-    {
-        var cards = new List<ICard>(_cards);
-        cards.Add(card);
-        return new Deck(cards);
-    }
-
+    /// <exception cref="InvalidOperationException"></exception>
     public ICard TakeTopCard()
     {
         if (IsEmpty()) throw new InvalidOperationException("The deck is empty.");
 
         var card = _cards[0];
-        var cards = new List<ICard>(_cards);
-        cards.RemoveAt(0);
+        _cards.RemoveAt(0);
         return card;
     }
 

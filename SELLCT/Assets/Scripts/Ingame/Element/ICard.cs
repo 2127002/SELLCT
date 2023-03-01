@@ -4,6 +4,7 @@ using UnityEngine;
 
 public interface ICard
 {
+    void AddCardToDeck();
     void Buy();
     void Sell();
     void Passive();

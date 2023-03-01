@@ -25,6 +25,11 @@ public class Hand : MonoBehaviour
 
         _cards.Remove(card);
     }
+
+    public int CalcDrawableCount()
+    {
+        return _handCapacity - _cards.Count;
+    }
 }
 
 public class HandCapacityExceededException : System.Exception

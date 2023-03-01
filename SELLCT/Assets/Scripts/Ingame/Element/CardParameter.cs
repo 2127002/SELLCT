@@ -29,4 +29,9 @@ public class CardParameter
     {
         return _text;
     }
+
+    public int GetInitialCardCount()
+    {
+        return _initialCardCount;
+    }
 }

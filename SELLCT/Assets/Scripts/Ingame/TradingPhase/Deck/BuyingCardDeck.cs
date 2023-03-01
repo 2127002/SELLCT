@@ -5,6 +5,7 @@ using UnityEngine;
 public class BuyingCardDeck : MonoBehaviour
 {
     [SerializeField] TimeLimitController _timeLimitController;
+    [SerializeField] NormalDeck _normalDeck;
 
     //現在ターンで購入したカードが封入される
     readonly Deck _buyingDeck = new();
@@ -23,7 +24,7 @@ public class BuyingCardDeck : MonoBehaviour
     {
         while (!_buyingDeck.IsEmpty())
         {
-            _buyingDeck.TakeTopCard();
+            _normalDeck.AddCard(_buyingDeck.TakeTopCard());
         }
     }
 }
