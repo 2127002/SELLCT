@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class BuyingCardDeck : MonoBehaviour
 {
-    [SerializeField] TimeLimitController _timeLimitController;
+    [SerializeField] TradingPhaseCompletionHandler _completionHandler;
     [SerializeField] NormalDeck _normalDeck;
 
     //現在ターンで購入したカードが封入される
@@ -12,7 +12,12 @@ public class BuyingCardDeck : MonoBehaviour
 
     private void Awake()
     {
-        _timeLimitController.AddAction(OnTimeLimit);
+        _completionHandler.AddListener(OnComplete);
+    }
+
+    private void OnDestroy()
+    {
+        _completionHandler.RemoveListener(OnComplete);
     }
 
     public void AddBuyingCard(ICard card)
@@ -20,7 +25,7 @@ public class BuyingCardDeck : MonoBehaviour
         _buyingDeck.Add(card);
     }
 
-    private void OnTimeLimit()
+    private void OnComplete()
     {
         while (!_buyingDeck.IsEmpty())
         {

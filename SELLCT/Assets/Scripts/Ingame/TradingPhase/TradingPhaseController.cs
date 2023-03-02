@@ -9,17 +9,18 @@ using UnityEngine.InputSystem;
 /// </summary>
 public class TradingPhaseController : MonoBehaviour
 {
-    [SerializeField] TimeLimitController _timeLimitController;
+    [SerializeField] TradingPhaseView _view;
+    [SerializeField] TradingPhaseCompletionHandler _completionHandler;
     [SerializeField] HandMediator _handMediator;
+    [SerializeField] TextBoxView _textBoxView;
+    [SerializeField] TraderController _traderController;
 
-    ITradingPhaseViewReceiver _view;
     EventSystem _eventSystem;
     GameObject _lastSelectedObject;
 
     private void Awake()
     {
-        _view = GetComponent<ITradingPhaseViewReceiver>();
-        _timeLimitController.AddAction(OnTimeLimit);
+        _completionHandler.AddListener(OnComplete);
 
         _eventSystem = EventSystem.current;
 
@@ -44,9 +45,16 @@ public class TradingPhaseController : MonoBehaviour
         InputSystemDetector.Instance.RemoveNavigate(OnNavigate);
     }
 
-    private void OnTimeLimit()
+    private async void OnComplete()
     {
-        _view.OnTimeLimitReached();
+        //テキストの表示
+        _textBoxView.UpdeteText(_traderController.CurrentTrader.EndMessage());
+        await _textBoxView.DisplayTextOneByOne();
+
+        //フェードアウト
+        await _view.StartFadeout();
+
+        //TODO：BGM1のフェードアウト
     }
 
     private void OnNavigate(InputAction.CallbackContext context)

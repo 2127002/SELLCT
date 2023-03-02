@@ -2,6 +2,7 @@ using Cysharp.Threading.Tasks;
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -25,25 +26,28 @@ class FadeOutView : MonoBehaviour
         var cancellationToken = this.GetCancellationTokenOnDestroy();
 
         await UniTask.Delay((int)(_fadeTime.WaitTime * 1000f), false, PlayerLoopTiming.FixedUpdate, cancellationToken);
-        
         Init();
 
-        while (true)
+        float progress = -1;
+
+        while (progress != MAX_ALPHA)
         {
-            await UniTask.Yield(cancellationToken);
+            try
+            {
+                await UniTask.Yield(cancellationToken);
+            }
+            catch (OperationCanceledException)
+            {
+                return;
+            }
 
             _fadeTime.AdvanceProgress();
 
-            float progress = MAX_ALPHA - _fadeTime.Progress();
+            progress = _fadeTime.Progress();
 
             foreach (var image in _images)
             {
-                SetAlpha(image, progress);
-            }
-
-            if (progress == MAX_ALPHA)
-            {
-                enabled = false;
+                SetAlpha(image, MAX_ALPHA - progress);
             }
         }
     }
