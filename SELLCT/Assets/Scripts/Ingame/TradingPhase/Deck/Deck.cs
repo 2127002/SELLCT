@@ -3,20 +3,20 @@ using System;
 
 public class Deck
 {
-    readonly List<ICard> _cards;
+    readonly List<Card> _cards;
 
     public Deck()
     {
-        _cards = new List<ICard>();
+        _cards = new List<Card>();
     }
 
-    public void Add(ICard card)
+    public void Add(Card card)
     {
         _cards.Add(card);
     }
 
     /// <exception cref="InvalidOperationException"></exception>
-    public ICard TakeTopCard()
+    public Card TakeTopCard()
     {
         if (IsEmpty()) throw new InvalidOperationException("The deck is empty.");
 

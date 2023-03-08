@@ -11,6 +11,8 @@ public class CardParameter
     [SerializeField] string _text;
     [SerializeField, Min(0)] int _initialCardCount;
 
+    [SerializeField, Min(0)] int _reality;
+
     Money _money;
 
     public Money GetMoney()

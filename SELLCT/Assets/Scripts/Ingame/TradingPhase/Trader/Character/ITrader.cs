@@ -6,7 +6,7 @@ public interface ITrader
 {
     string StartMessage();
     string EndMessage();
-    string CardMessage(ICard card);
-    string BuyMessage(ICard card);
-    string SellMessage(ICard card);
+    string CardMessage(Card card);
+    string BuyMessage(Card card);
+    string SellMessage(Card card);
 }

@@ -25,7 +25,7 @@ public class TradingPhaseController : MonoBehaviour
         _eventSystem = EventSystem.current;
 
         //プレイヤー手札の配布
-        _handMediator.TakeCard();
+        _handMediator.InitTakeCard();
     }
 
     private void Start()

@@ -9,14 +9,14 @@ public class NormalDeck : MonoBehaviour
 
     [SerializeField] EEX_null exNull;
 
-    public void AddCard(ICard card)
+    public void AddCard(Card card)
     {
         _deck.Add(card);
     }
 
-    public ICard TakeTopCard()
+    public Card TakeTopCard()
     {
-        ICard card;
+        Card card;
 
         try
         {

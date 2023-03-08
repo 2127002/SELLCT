@@ -20,7 +20,7 @@ public class BuyingCardDeck : MonoBehaviour
         _completionHandler.RemoveListener(OnComplete);
     }
 
-    public void AddBuyingCard(ICard card)
+    public void AddBuyingCard(Card card)
     {
         _buyingDeck.Add(card);
     }

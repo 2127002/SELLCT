@@ -820,6 +820,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _hand: {fileID: 379178480}
   _deck: {fileID: 693886048}
+  eX_Null: {fileID: 854960963}
   _clickHandlers:
   - {fileID: 1451028735}
   - {fileID: 1365934642}
@@ -1158,6 +1159,7 @@ MonoBehaviour:
   _exitDetector: {fileID: 412978146}
   _submitDetector: {fileID: 412978149}
   _selectDetector: {fileID: 412978151}
+  _handMediator: {fileID: 1979056035}
   _selectable: {fileID: 412978148}
   _entityType: 1
   _isFirstSelectable: 1
@@ -1362,6 +1364,7 @@ MonoBehaviour:
   _exitDetector: {fileID: 465574999}
   _submitDetector: {fileID: 465575002}
   _selectDetector: {fileID: 465575004}
+  _handMediator: {fileID: 1979056035}
   _selectable: {fileID: 465575001}
   _entityType: 1
   _isFirstSelectable: 0
@@ -1852,7 +1855,57 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a00b46089b3353144849ee6d564c8529, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  exNull: {fileID: 1246967506}
+  exNull: {fileID: 854960963}
+--- !u!1 &854960961
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 854960962}
+  - component: {fileID: 854960963}
+  m_Layer: 0
+  m_Name: EEX_null
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &854960962
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 854960961}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1246967504}
+  m_RootOrder: -1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &854960963
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 854960961}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 282a60e7d3fe0b24dba9257cba5eb025, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _cardParameter:
+    _price: 0
+    _name: 
+    _text: 
+    _initialCardCount: 0
+    _reality: 0
 --- !u!1 &978314704
 GameObject:
   m_ObjectHideFlags: 0
@@ -2083,6 +2136,7 @@ MonoBehaviour:
   _exitDetector: {fileID: 1014988827}
   _submitDetector: {fileID: 1014988831}
   _selectDetector: {fileID: 1014988833}
+  _handMediator: {fileID: 379178481}
   _selectable: {fileID: 1014988829}
   _entityType: 0
   _isFirstSelectable: 0
@@ -2345,7 +2399,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1129981056}
-  - component: {fileID: 1129981057}
   m_Layer: 0
   m_Name: U7NextButton
   m_TagString: Untagged
@@ -2374,18 +2427,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1129981057
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1129981055}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7185394832620e34cb2945bda45a1126, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1138849343
 GameObject:
   m_ObjectHideFlags: 0
@@ -2486,6 +2527,7 @@ MonoBehaviour:
   _exitDetector: {fileID: 1138849350}
   _submitDetector: {fileID: 1138849353}
   _selectDetector: {fileID: 1138849355}
+  _handMediator: {fileID: 1979056035}
   _selectable: {fileID: 1138849352}
   _entityType: 1
   _isFirstSelectable: 0
@@ -2590,6 +2632,58 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 48a04cbd9df80554c87c1902dbf2fc8f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &1159339317
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1159339319}
+  - component: {fileID: 1159339318}
+  m_Layer: 0
+  m_Name: E0_Life
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1159339318
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1159339317}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4aaa154d7dd59be49beb9873107e1de1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _parameter:
+    _price: 10
+    _name: "\u547D"
+    _text: "\u3044\u306E\u3061\u3060\u3044\u3058\u306B"
+    _initialCardCount: 6
+    _reality: 0
+  _controller: {fileID: 96249318}
+  _normalDeck: {fileID: 693886048}
+--- !u!4 &1159339319
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1159339317}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1246967504}
+  m_RootOrder: -1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1174224856
 GameObject:
   m_ObjectHideFlags: 0
@@ -2675,7 +2769,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a00b46089b3353144849ee6d564c8529, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  exNull: {fileID: 1246967506}
+  exNull: {fileID: 854960963}
 --- !u!114 &1174224861
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2865,7 +2959,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1246967504}
   - component: {fileID: 1246967505}
-  - component: {fileID: 1246967506}
   m_Layer: 0
   m_Name: Cards
   m_TagString: Untagged
@@ -2884,7 +2977,9 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 854960962}
+  - {fileID: 1159339319}
   m_Father: {fileID: 1255751109}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -2897,33 +2992,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 1246967503}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4aaa154d7dd59be49beb9873107e1de1, type: 3}
+  m_Script: {fileID: 11500000, guid: 6f4a0892835b7644ca7382bb1a859f7f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _parameter:
-    _price: 10
-    _name: "\u547D"
-    _text: "\u3044\u306E\u3061\u3060\u3044\u3058\u306B"
-    _initialCardCount: 6
-  _controller: {fileID: 96249318}
-  _normalDeck: {fileID: 693886048}
---- !u!114 &1246967506
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1246967503}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 282a60e7d3fe0b24dba9257cba5eb025, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  cardParameter:
-    _price: 0
-    _name: 
-    _text: 
-    _initialCardCount: 0
+  _cardCapacity:
+  - card: {fileID: 1159339318}
+    initcount: 1
 --- !u!1 &1255751108
 GameObject:
   m_ObjectHideFlags: 0
@@ -3243,6 +3317,7 @@ MonoBehaviour:
   _exitDetector: {fileID: 1365934645}
   _submitDetector: {fileID: 1365934649}
   _selectDetector: {fileID: 1365934651}
+  _handMediator: {fileID: 379178481}
   _selectable: {fileID: 1365934647}
   _entityType: 0
   _isFirstSelectable: 0
@@ -3370,6 +3445,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1449596401}
   - component: {fileID: 1449596400}
+  - component: {fileID: 1449596402}
   m_Layer: 0
   m_Name: Traders
   m_TagString: Untagged
@@ -3404,6 +3480,22 @@ Transform:
   m_Father: {fileID: 1255751109}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1449596402
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1449596399}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1b4f02bb66b13df47bee7b6a0b4a23f7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _traderParameter:
+    favoriteCards: []
+    priorityCards: []
+    initialDisplayItemCount: 0
 --- !u!1 &1451028730
 GameObject:
   m_ObjectHideFlags: 0
@@ -3505,6 +3597,7 @@ MonoBehaviour:
   _exitDetector: {fileID: 1451028737}
   _submitDetector: {fileID: 1451028741}
   _selectDetector: {fileID: 1451028743}
+  _handMediator: {fileID: 379178481}
   _selectable: {fileID: 1451028739}
   _entityType: 0
   _isFirstSelectable: 0
@@ -3798,6 +3891,7 @@ MonoBehaviour:
   _exitDetector: {fileID: 1553350095}
   _submitDetector: {fileID: 1553350098}
   _selectDetector: {fileID: 1553350100}
+  _handMediator: {fileID: 1979056035}
   _selectable: {fileID: 1553350097}
   _entityType: 1
   _isFirstSelectable: 0
@@ -4197,6 +4291,7 @@ MonoBehaviour:
   _exitDetector: {fileID: 1952927792}
   _submitDetector: {fileID: 1952927796}
   _selectDetector: {fileID: 1952927798}
+  _handMediator: {fileID: 379178481}
   _selectable: {fileID: 1952927794}
   _entityType: 0
   _isFirstSelectable: 0
@@ -4384,6 +4479,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _hand: {fileID: 1979056034}
   _deck: {fileID: 1174224860}
+  eX_Null: {fileID: 854960963}
   _clickHandlers:
   - {fileID: 412978143}
   - {fileID: 465574996}

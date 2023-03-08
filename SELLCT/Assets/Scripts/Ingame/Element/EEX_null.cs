@@ -2,23 +2,23 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EEX_null : MonoBehaviour, ICard
+public class EEX_null : Card
 {
-    [SerializeField] CardParameter cardParameter;
+    [SerializeField] CardParameter _cardParameter;
 
-    public void AddCardToDeck()
+    public override void AddCardToDeck()
     {
         throw new System.NotImplementedException();
     }
-    public void Buy()
+    public override void Buy()
     {
         throw new System.NotImplementedException();
     }
-    public void Passive()
+    public override void Passive()
     {
         throw new System.NotImplementedException();
     }
-    public void Sell()
+    public override void Sell()
     {
         throw new System.NotImplementedException();
     }

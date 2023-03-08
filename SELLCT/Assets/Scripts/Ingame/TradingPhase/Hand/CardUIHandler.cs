@@ -21,13 +21,15 @@ public class CardUIHandler : MonoBehaviour
     [SerializeField] PointerExitDetector _exitDetector;
     [SerializeField] SubmitDetector _submitDetector;
     [SerializeField] SelectDetector _selectDetector;
-    
+
+    [SerializeField] HandMediator _handMediator;
+
     [SerializeField] Selectable _selectable;
 
     [SerializeField] EntityType _entityType;
     [SerializeField] bool _isFirstSelectable;
 
-    ICard _card;
+    Card _card;
     EventSystem _eventSystem;
 
     private void Awake()
@@ -69,7 +71,7 @@ public class CardUIHandler : MonoBehaviour
             Debug.LogWarning("すでに別のオブジェクトが選択されています。" + gameObject + "の登録は棄却されました。正しい仕様を確認してください。" + _eventSystem.currentSelectedGameObject);
             return;
         }
-        
+
         _eventSystem.SetSelectedGameObject(_selectable.gameObject);
     }
 
@@ -95,6 +97,10 @@ public class CardUIHandler : MonoBehaviour
         {
             throw new System.NotImplementedException();
         }
+
+        //手札から削除し、新たにカードを引く
+        _handMediator.RemoveHandCard(_card);
+        InsertCard(_handMediator.TakeDeckTopCard());
     }
 
     //カーソルをかざした際の処理
@@ -128,7 +134,7 @@ public class CardUIHandler : MonoBehaviour
     /// カードを挿入する
     /// </summary>
     /// <param name="card">挿入するカード</param>
-    public void InsertCard(ICard card)
+    public void InsertCard(Card card)
     {
         _card = card;
 

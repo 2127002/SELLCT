@@ -2,8 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TempChara : MonoBehaviour,ITrader
+public class NormalTrader : MonoBehaviour, ITrader
 {
+    [SerializeField] TraderParameter _traderParameter;
+
     public string BuyMessage(Card card)
     {
         throw new System.NotImplementedException();
@@ -16,7 +18,7 @@ public class TempChara : MonoBehaviour,ITrader
 
     public string EndMessage()
     {
-        return "Seriously, they should have just prepared a Japanese font. But I get it, it can be a hassle.";
+        throw new System.NotImplementedException();
     }
 
     public string SellMessage(Card card)
@@ -26,6 +28,18 @@ public class TempChara : MonoBehaviour,ITrader
 
     public string StartMessage()
     {
-        return "Hi! Wondering why this message is in English? Well, it's because the font doesn't support Japanese characters!";
+        throw new System.NotImplementedException();
+    }
+
+    // Start is called before the first frame update
+    void Start()
+    {
+
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+
     }
 }
