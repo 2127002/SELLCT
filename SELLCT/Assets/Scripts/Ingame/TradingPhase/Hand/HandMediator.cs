@@ -11,8 +11,10 @@ public class HandMediator : MonoBehaviour
 
     public void InitTakeCard()
     {
+        //èD§ŒÀ
         int drawableCount = _hand.CalcDrawableCount();
 
+        //èD•â[
         for (int i = 0; i < drawableCount; i++)
         {
             Card top = _deck.TakeTopCard();
@@ -22,6 +24,23 @@ public class HandMediator : MonoBehaviour
 
             //UI—v‘f‚É’Ç‰Á
             _clickHandlers[i].InsertCard(top);
+        }
+    }
+
+    public void RearrangeCardSlots()
+    {
+        int handCapacity = _hand.HandCapacity();
+
+        //‡”Ô“ü‚ê‘Ö‚¦
+        for (int i = 0; i < handCapacity - 1; i++)
+        {
+            if (true == _clickHandlers[i].NullCheck())
+            {
+                //ƒJ[ƒh–¼æ“¾
+                var cardName = _clickHandlers[i + 1].GetCardName();
+                _clickHandlers[i + 1].InsertCard(eX_Null);
+                _clickHandlers[i].InsertCard(cardName);
+            }
         }
     }
 

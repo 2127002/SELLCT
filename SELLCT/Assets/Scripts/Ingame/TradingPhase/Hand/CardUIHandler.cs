@@ -101,6 +101,9 @@ public class CardUIHandler : MonoBehaviour
         //手札から削除し、新たにカードを引く
         _handMediator.RemoveHandCard(_card);
         InsertCard(_handMediator.TakeDeckTopCard());
+
+        //手札整理
+        _handMediator.RearrangeCardSlots();
     }
 
     //カーソルをかざした際の処理
@@ -140,7 +143,18 @@ public class CardUIHandler : MonoBehaviour
 
         bool isNormalCard = _card is not EEX_null;
 
+        //表示 非表示
         _selectable.image.enabled = isNormalCard;
+
+        //クリックされた場合非表示
         _selectable.interactable = isNormalCard;
+    }
+    public Card GetCardName()
+    {
+        return _card;
+    }
+    public bool NullCheck()
+    {
+        return _card is EEX_null;
     }
 }
