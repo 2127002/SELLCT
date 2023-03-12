@@ -3,6 +3,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// 売買フェーズの終了したことを知らせるクラス
+/// </summary>
 public class TradingPhaseCompletionHandler : MonoBehaviour
 {
     Action _onComplete;

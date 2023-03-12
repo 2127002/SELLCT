@@ -11,7 +11,6 @@ public class TradingPhaseController : MonoBehaviour
 {
     [SerializeField] TradingPhaseView _view;
     [SerializeField] TradingPhaseCompletionHandler _completionHandler;
-    [SerializeField] HandMediator _handMediator;
     [SerializeField] TextBoxView _textBoxView;
     [SerializeField] TraderController _traderController;
 
@@ -23,9 +22,6 @@ public class TradingPhaseController : MonoBehaviour
         _completionHandler.AddListener(OnComplete);
 
         _eventSystem = EventSystem.current;
-
-        //プレイヤー手札の配布
-        _handMediator.InitTakeCard();
     }
 
     private void Start()

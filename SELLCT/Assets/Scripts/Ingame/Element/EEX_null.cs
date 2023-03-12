@@ -6,10 +6,26 @@ public class EEX_null : Card
 {
     [SerializeField] CardParameter _cardParameter;
 
-    public override void AddCardToDeck()
+    private static EEX_null instance;
+
+    public static EEX_null Instance
     {
-        throw new System.NotImplementedException();
+        get
+        {
+            //インスタンス生成前に取得しようとしたら、強制的に発見させる。
+            instance ??= FindObjectOfType<EEX_null>();
+
+            return instance;
+        }
     }
+
+    private void Awake()
+    {
+        instance ??= this;
+    }
+
+    public override int Rarity => throw new System.NotImplementedException();
+
     public override void Buy()
     {
         throw new System.NotImplementedException();

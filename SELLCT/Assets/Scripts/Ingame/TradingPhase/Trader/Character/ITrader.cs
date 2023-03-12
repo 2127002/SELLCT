@@ -2,11 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public interface ITrader
+public abstract class Trader : MonoBehaviour
 {
-    string StartMessage();
-    string EndMessage();
-    string CardMessage(Card card);
-    string BuyMessage(Card card);
-    string SellMessage(Card card);
+    public abstract TraderDeck TraderDeck { get; }
+    public abstract void CreateDeck(CardPool pool);
+
+    public abstract string StartMessage();
+    public abstract string EndMessage();
+    public abstract string CardMessage(Card card);
+    public abstract string BuyMessage(Card card);
+    public abstract string SellMessage(Card card);
 }

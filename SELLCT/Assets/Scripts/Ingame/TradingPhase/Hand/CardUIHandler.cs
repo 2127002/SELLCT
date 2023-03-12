@@ -22,7 +22,7 @@ public class CardUIHandler : MonoBehaviour
     [SerializeField] SubmitDetector _submitDetector;
     [SerializeField] SelectDetector _selectDetector;
 
-    [SerializeField] HandMediator _handMediator;
+    [SerializeField] DeckMediator _deckMediator;
 
     [SerializeField] Selectable _selectable;
 
@@ -99,8 +99,8 @@ public class CardUIHandler : MonoBehaviour
         }
 
         //手札から削除し、新たにカードを引く
-        _handMediator.RemoveHandCard(_card);
-        InsertCard(_handMediator.TakeDeckTopCard());
+        _deckMediator.RemoveHandCard(_card);
+        InsertCard(_deckMediator.TakeDeckCard());
     }
 
     //カーソルをかざした際の処理
