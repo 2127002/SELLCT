@@ -22,4 +22,8 @@ public class BuyingCardDeck : IDeck
 
         return card;
     }
+    public bool ContainsCard(Card card)
+    {
+        return _cards.Contains(card);
+    }
 }

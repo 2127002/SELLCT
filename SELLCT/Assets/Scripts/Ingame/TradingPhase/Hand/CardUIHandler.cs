@@ -177,11 +177,10 @@ public class CardUIHandler : MonoBehaviour
 
         bool isNormalCard = _card is not EEX_null;
 
-        //表示 非表示
         _selectable.image.enabled = isNormalCard;
-
-        //クリックされた場合非表示
         _selectable.interactable = isNormalCard;
+
+        if (isNormalCard) _selectable.image.sprite = card.CardSprite;
     }
 
     public Card GetCardName()

@@ -25,4 +25,8 @@ public class PlayerDeck : IDeck
 
         return card;
     }
+    public bool ContainsCard(Card card)
+    {
+        return _deck.Contains(card);
+    }
 }

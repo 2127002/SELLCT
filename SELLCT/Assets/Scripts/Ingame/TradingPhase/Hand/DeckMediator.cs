@@ -9,4 +9,5 @@ public abstract class DeckMediator : MonoBehaviour
     public abstract void AddDeck(Card card);
     public abstract void RearrangeCardSlots();
     public abstract void AddBuyingDeck(Card card);
+    public abstract bool ContainsCard(Card card);
 }

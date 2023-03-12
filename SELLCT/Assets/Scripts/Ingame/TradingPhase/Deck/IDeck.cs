@@ -6,4 +6,5 @@ public interface IDeck
 {
     void Add(Card card);
     Card Draw();
+    public bool ContainsCard(Card card);
 }

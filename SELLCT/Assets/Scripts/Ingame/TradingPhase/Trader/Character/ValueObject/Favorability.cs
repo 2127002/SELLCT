@@ -4,6 +4,20 @@ using UnityEngine;
 
 public class Favorability
 {
+    public enum Classification
+    {
+        Class1,
+        Class2,
+        Class3,
+        Class4,
+        Class5,
+        Class6,
+
+        Invalid
+    }
+
+    FavourableView _favourableView;
+
     const float MAX_AMOUNT = 100;
     const float MIN_AMOUNT = 0;
 
@@ -11,12 +25,17 @@ public class Favorability
 
     bool _isLocked = false;
 
-    public Favorability(float amount)
+    public Favorability(float amount, FavourableView favourableView)
     {
         if (amount < MIN_AMOUNT) throw new System.ArgumentOutOfRangeException();
-        if (amount > MIN_AMOUNT) throw new System.ArgumentOutOfRangeException();
+        if (amount > MAX_AMOUNT) throw new System.ArgumentOutOfRangeException();
+        if (favourableView == null) throw new System.ArgumentNullException();
 
         _amount = amount;
+        _favourableView = favourableView;
+        
+        //好感度変動時に好感度表示を調整
+        _favourableView.Set(FavorabilityClassification(_amount));
     }
 
     /// <summary>
@@ -32,7 +51,7 @@ public class Favorability
 
         if (newAmount > MAX_AMOUNT) newAmount = MAX_AMOUNT;
 
-        return new(newAmount);
+        return new(newAmount, _favourableView);
     }
 
     /// <summary>
@@ -48,7 +67,7 @@ public class Favorability
 
         if (newAmount < MIN_AMOUNT) newAmount = MIN_AMOUNT;
 
-        return new(newAmount);
+        return new(newAmount, _favourableView);
     }
 
     /// <summary>
@@ -64,5 +83,17 @@ public class Favorability
         _isLocked = true;
 
         return value;
+    }
+
+    private Classification FavorabilityClassification(float amount)
+    {
+        if (amount == 0) return Classification.Class1;
+        if (amount <= 24f) return Classification.Class2;
+        if (amount <= 49f) return Classification.Class3;
+        if (amount <= 74f) return Classification.Class4;
+        if (amount <= 99f) return Classification.Class5;
+        if (amount == 100f) return Classification.Class6;
+
+        return Classification.Invalid;
     }
 }

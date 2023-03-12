@@ -75,5 +75,4 @@ public class TR1_NormalTrader : Trader
 
         _favorability = _favorability.Add(totalAddValue);
     }
-
 }
