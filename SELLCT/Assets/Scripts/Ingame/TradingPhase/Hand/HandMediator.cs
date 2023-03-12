@@ -8,13 +8,13 @@ public class HandMediator : DeckMediator
     [SerializeField] List<CardUIHandler> _clickHandlers = new();
     [SerializeField] TradingPhaseCompletionHandler _completionHandler;
 
-    //ƒvƒŒƒCƒ„[‚ÌƒfƒbƒL
+    //ãƒ—ãƒ¬ã‚¤ãƒ¤ãƒ¼ã®ãƒ‡ãƒƒã‚­
     PlayerDeck _playerDeck = new();
 
-    //w“ü‚µ‚½ƒJ[ƒh‚ªˆê“I‚É“ü‚éƒfƒbƒL
+    //è³¼å…¥ã—ãŸã‚«ãƒ¼ãƒ‰ãŒä¸€æ™‚çš„ã«å…¥ã‚‹ãƒ‡ãƒƒã‚­
     BuyingCardDeck _buyingCardDeck = new();
 
-    //Edit > Project Settings > Script Execution Order‚ÅÀs‡‚ğ’²®‚µ‚Ä‚¢‚Ü‚·B
+    //Edit > Project Settings > Script Execution Orderã§å®Ÿè¡Œé †ã‚’èª¿æ•´ã—ã¦ã„ã¾ã™ã€‚
     private void Awake()
     {
         _completionHandler.AddListener(OnComplete);
@@ -22,7 +22,7 @@ public class HandMediator : DeckMediator
 
     private void Start()
     {
-        //èD”z•z
+        //æ‰‹æœ­é…å¸ƒ
         InitTakeCard();
     }
 
@@ -31,7 +31,7 @@ public class HandMediator : DeckMediator
         _completionHandler.RemoveListener(OnComplete);
     }
 
-    //”„”ƒƒtƒF[ƒYI—¹‚És‚¤ˆ—B
+    //å£²è²·ãƒ•ã‚§ãƒ¼ã‚ºçµ‚äº†æ™‚ã«è¡Œã†å‡¦ç†ã€‚
     private void OnComplete()
     {
         while (true)
@@ -46,17 +46,36 @@ public class HandMediator : DeckMediator
     
     private void InitTakeCard()
     {
+        //æ‰‹æœ­åˆ¶é™
         int drawableCount = _hand.CalcDrawableCount();
 
+        //æ‰‹æœ­è£œå……
         for (int i = 0; i < drawableCount; i++)
         {
             Card top = _playerDeck.Draw();
 
-            //èD‚É’Ç‰Á
+            //æ‰‹æœ­ã«è¿½åŠ 
             _hand.Add(top);
 
-            //UI—v‘f‚É’Ç‰Á
+            //UIè¦ç´ ã«è¿½åŠ 
             _clickHandlers[i].InsertCard(top);
+        }
+    }
+
+    public void RearrangeCardSlots()
+    {
+        int handCapacity = _hand.HandCapacity();
+
+        //é †ç•ªå…¥ã‚Œæ›¿ãˆ
+        for (int i = 0; i < handCapacity - 1; i++)
+        {
+            if (true == _clickHandlers[i].NullCheck())
+            {
+                //ã‚«ãƒ¼ãƒ‰åå–å¾—
+                var cardName = _clickHandlers[i + 1].GetCardName();
+                _clickHandlers[i + 1].InsertCard(eX_Null);
+                _clickHandlers[i].InsertCard(cardName);
+            }
         }
     }
 
@@ -66,7 +85,7 @@ public class HandMediator : DeckMediator
 
         Card top = _playerDeck.Draw();
 
-        //èD‚É’Ç‰Á
+        //æ‰‹æœ­ã«è¿½åŠ 
         _hand.Add(top);
 
         return top;

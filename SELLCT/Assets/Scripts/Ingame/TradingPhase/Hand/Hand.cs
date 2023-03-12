@@ -30,6 +30,10 @@ public class Hand : MonoBehaviour
     {
         return _handCapacity - _cards.Count;
     }
+    public int HandCapacity()
+    {
+        return _handCapacity;
+    }
 }
 
 public class HandCapacityExceededException : System.Exception
