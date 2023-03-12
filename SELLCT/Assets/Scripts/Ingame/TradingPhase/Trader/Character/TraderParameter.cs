@@ -13,6 +13,7 @@ public struct TraderParameter
     [SerializeField, Min(-1)] int _initialDeckCount;
     [SerializeField] int _addFavorabilityValue;
     [SerializeField] int _favoriteCardAddValue;
+    [SerializeField] FavourableView _favourableView;
 
     Favorability initialFavorability;
     Favorability addFavorabilityValue;
@@ -35,7 +36,7 @@ public struct TraderParameter
 
     public Favorability InitialFavorability()
     {
-        initialFavorability ??= new(_initialFavorability);
+        initialFavorability ??= new(_initialFavorability,_favourableView);
         return initialFavorability;
     }
 
@@ -46,13 +47,13 @@ public struct TraderParameter
 
     public Favorability AddFavorabilityValue()
     {
-        addFavorabilityValue ??= new(_addFavorabilityValue);
+        addFavorabilityValue ??= new(_addFavorabilityValue, _favourableView);
         return addFavorabilityValue;
     }
 
     public Favorability FavoriteCardAddValue()
     {
-        favoriteCardAddValue ??= new(_favoriteCardAddValue);
+        favoriteCardAddValue ??= new(_favoriteCardAddValue, _favourableView);
         return favoriteCardAddValue;
     }
 }

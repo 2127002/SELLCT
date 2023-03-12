@@ -42,7 +42,7 @@ public class HandMediator : DeckMediator
             _playerDeck.Add(card);
         }
     }
-    
+
     private void InitTakeCard()
     {
         //手札制限
@@ -103,5 +103,10 @@ public class HandMediator : DeckMediator
     public override void AddBuyingDeck(Card card)
     {
         _buyingCardDeck.Add(card);
+    }
+
+    public override bool ContainsCard(Card card)
+    {
+        return _playerDeck.ContainsCard(card);
     }
 }

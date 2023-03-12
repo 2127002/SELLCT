@@ -39,4 +39,9 @@ public class TraderDeck : IDeck
 
         return EEX_null.Instance;
     }
+
+    public bool ContainsCard(Card card)
+    {
+        return _cards.Contains(card);
+    }
 }
