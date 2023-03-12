@@ -11,6 +11,12 @@ public struct TraderParameter
     [SerializeField, Min(0)] int _initialDisplayItemCount;
     [SerializeField, Range(0, 100)] int _initialFavorability;
     [SerializeField, Min(-1)] int _initialDeckCount;
+    [SerializeField] int _addFavorabilityValue;
+    [SerializeField] int _favoriteCardAddValue;
+
+    Favorability initialFavorability;
+    Favorability addFavorabilityValue;
+    Favorability favoriteCardAddValue;
 
     public IReadOnlyList<Card> FavoriteCards()
     {
@@ -29,11 +35,24 @@ public struct TraderParameter
 
     public Favorability InitialFavorability()
     {
-        return new(_initialFavorability);
+        initialFavorability ??= new(_initialFavorability);
+        return initialFavorability;
     }
 
     public int InitalDeckCount()
     {
         return _initialDeckCount;
+    }
+
+    public Favorability AddFavorabilityValue()
+    {
+        addFavorabilityValue ??= new(_addFavorabilityValue);
+        return addFavorabilityValue;
+    }
+
+    public Favorability FavoriteCardAddValue()
+    {
+        favoriteCardAddValue ??= new(_favoriteCardAddValue);
+        return favoriteCardAddValue;
     }
 }

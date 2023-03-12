@@ -26,6 +26,8 @@ public class EEX_null : Card
 
     public override int Rarity => throw new System.NotImplementedException();
 
+    public override bool IsDisposedOfAfterSell => throw new System.NotImplementedException();
+
     public override void Buy()
     {
         throw new System.NotImplementedException();
