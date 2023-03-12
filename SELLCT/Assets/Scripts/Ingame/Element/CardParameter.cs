@@ -11,6 +11,8 @@ public class CardParameter
     [SerializeField] string _text;
     [SerializeField, Min(0)] int _initialCardCount;
 
+    [SerializeField, Min(1)] int _rarity;
+
     Money _money;
 
     public Money GetMoney()
@@ -28,5 +30,15 @@ public class CardParameter
     public string GetText()
     {
         return _text;
+    }
+
+    public int GetInitialCardCount()
+    {
+        return _initialCardCount;
+    }
+
+    public int Rarity()
+    {
+        return _rarity;
     }
 }

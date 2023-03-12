@@ -3,13 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-[RequireComponent(typeof(EventTrigger))]
-public class E0_Life : MonoBehaviour, ICard
+public class E0_Life : Card
 {
-    [SerializeField] CardParameter _parameter;
-    [SerializeField] MoneyPossessedController _controller;
+    [SerializeField] CardParameter _parameter = default!;
+    [SerializeField] MoneyPossessedController _controller = default!;
 
-    public void Buy()
+    public override int Rarity => _parameter.Rarity();
+
+    public override void Buy()
     {
         //TODO:SE301の再生
         //TODO:画面全体を脈動させるアニメーション
@@ -17,12 +18,12 @@ public class E0_Life : MonoBehaviour, ICard
         _controller.DecreaseMoney(_parameter.GetMoney());
     }
 
-    public void Passive()
+    public override void Passive()
     {
         // DoNothing
     }
 
-    public void Sell()
+    public override void Sell()
     {
         _controller.IncreaseMoney(_parameter.GetMoney());
     }

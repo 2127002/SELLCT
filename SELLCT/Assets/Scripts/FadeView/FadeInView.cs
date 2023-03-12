@@ -2,21 +2,23 @@ using Cysharp.Threading.Tasks;
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.UI;
 
-class FadeOutView : MonoBehaviour
+class FadeInView : MonoBehaviour
 {
     [SerializeField] FadeTime _fadeTime;
     [SerializeField] List<Image> _images;
 
     const float MAX_ALPHA = 1f;
+    const float MIN_ALPHA = 0;
 
     private void Init()
     {
         foreach (var image in _images)
         {
-            SetAlpha(image, MAX_ALPHA);
+            SetAlpha(image, MIN_ALPHA);
         }
     }
 
@@ -24,26 +26,20 @@ class FadeOutView : MonoBehaviour
     {
         var cancellationToken = this.GetCancellationTokenOnDestroy();
 
-        await UniTask.Delay((int)(_fadeTime.WaitTime * 1000f), false, PlayerLoopTiming.FixedUpdate, cancellationToken);
-        
+        await UniTask.Delay((int)(_fadeTime.WaitTime * 1000f), false, PlayerLoopTiming.Update, cancellationToken);
         Init();
-
-        while (true)
+        float progress = -1;
+        while (progress != MAX_ALPHA)
         {
             await UniTask.Yield(cancellationToken);
 
             _fadeTime.AdvanceProgress();
 
-            float progress = MAX_ALPHA - _fadeTime.Progress();
+            progress = _fadeTime.Progress();
 
             foreach (var image in _images)
             {
                 SetAlpha(image, progress);
-            }
-
-            if (progress == MAX_ALPHA)
-            {
-                enabled = false;
             }
         }
     }

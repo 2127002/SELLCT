@@ -2,9 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public interface ICard
+public interface IDeck
 {
-    void Buy();
-    void Sell();
-    void Passive();
+    void Add(Card card);
+    Card Draw();
 }

@@ -6,16 +6,16 @@ public class Hand : MonoBehaviour
 {
     [SerializeField, Min(0)] int _handCapacity;
 
-    readonly List<ICard> _cards = new();
+    readonly List<Card> _cards = new();
 
-    public void Add(ICard card)
+    public void Add(Card card)
     {
         if(_cards.Count >= _handCapacity)throw new HandCapacityExceededException();
 
         _cards.Add(card);
     }
 
-    public void Remove(ICard card)
+    public void Remove(Card card)
     {
         if (!_cards.Contains(card))
         {
@@ -24,6 +24,15 @@ public class Hand : MonoBehaviour
         }
 
         _cards.Remove(card);
+    }
+
+    public int CalcDrawableCount()
+    {
+        return _handCapacity - _cards.Count;
+    }
+    public int HandCapacity()
+    {
+        return _handCapacity;
     }
 }
 

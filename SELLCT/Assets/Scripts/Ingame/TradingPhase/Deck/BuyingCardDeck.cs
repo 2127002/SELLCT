@@ -2,28 +2,24 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BuyingCardDeck : MonoBehaviour
+public class BuyingCardDeck : IDeck
 {
-    [SerializeField] TimeLimitController _timeLimitController;
-
     //現在ターンで購入したカードが封入される
-    readonly Deck _buyingDeck = new();
+    readonly List<Card> _cards = new();
 
-    private void Awake()
+    public void Add(Card card)
     {
-        _timeLimitController.AddAction(OnTimeLimit);
+        _cards.Add(card);
     }
 
-    public void AddBuyingCard(ICard card)
+    public Card Draw()
     {
-        _buyingDeck.Add(card);
-    }
+        if (_cards.Count == 0) return EEX_null.Instance;
 
-    private void OnTimeLimit()
-    {
-        while (!_buyingDeck.IsEmpty())
-        {
-            _buyingDeck.TakeTopCard();
-        }
+        //トップから1枚引く
+        Card card = _cards[0];
+        _cards.RemoveAt(0);
+
+        return card;
     }
 }
