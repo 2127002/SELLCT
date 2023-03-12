@@ -8,12 +8,14 @@ public class E0_Life : Card
     [SerializeField] CardParameter _parameter = default!;
     [SerializeField] MoneyPossessedController _controller = default!;
 
+    public override bool IsDisposedOfAfterSell => _parameter.IsDisposedOfAfterSell();
     public override int Rarity => _parameter.Rarity();
 
     public override void Buy()
     {
         //TODO:SE301の再生
         //TODO:画面全体を脈動させるアニメーション
+        //TODO:テキストボックスを更新する
 
         _controller.DecreaseMoney(_parameter.GetMoney());
     }

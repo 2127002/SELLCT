@@ -1191,6 +1191,7 @@ MonoBehaviour:
   _selectDetector: {fileID: 412978151}
   _deckMediator: {fileID: 1979056035}
   _selectable: {fileID: 412978148}
+  _traderController: {fileID: 1174224862}
   _entityType: 1
   _isFirstSelectable: 1
 --- !u!114 &412978146
@@ -1396,6 +1397,7 @@ MonoBehaviour:
   _selectDetector: {fileID: 465575004}
   _deckMediator: {fileID: 1979056035}
   _selectable: {fileID: 465575001}
+  _traderController: {fileID: 1174224862}
   _entityType: 1
   _isFirstSelectable: 0
 --- !u!114 &465574999
@@ -1886,6 +1888,8 @@ MonoBehaviour:
     _initialDisplayItemCount: 4
     _initialFavorability: 0
     _initialDeckCount: 4
+    _addFavorabilityValue: 0
+    _favoriteCardAddValue: 0
 --- !u!4 &678181052
 Transform:
   m_ObjectHideFlags: 0
@@ -2008,6 +2012,7 @@ MonoBehaviour:
     _text: 
     _initialCardCount: 0
     _rarity: 0
+    _isDisposedOfAfterSell: 0
 --- !u!1 &978314704
 GameObject:
   m_ObjectHideFlags: 0
@@ -2239,6 +2244,7 @@ MonoBehaviour:
   _selectDetector: {fileID: 1014988833}
   _deckMediator: {fileID: 379178481}
   _selectable: {fileID: 1014988829}
+  _traderController: {fileID: 1174224862}
   _entityType: 0
   _isFirstSelectable: 0
 --- !u!114 &1014988827
@@ -2528,6 +2534,8 @@ MonoBehaviour:
     _initialDisplayItemCount: 4
     _initialFavorability: 0
     _initialDeckCount: -1
+    _addFavorabilityValue: 0
+    _favoriteCardAddValue: 0
 --- !u!1 &1129981055
 GameObject:
   m_ObjectHideFlags: 0
@@ -2667,6 +2675,7 @@ MonoBehaviour:
   _selectDetector: {fileID: 1138849355}
   _deckMediator: {fileID: 1979056035}
   _selectable: {fileID: 1138849352}
+  _traderController: {fileID: 1174224862}
   _entityType: 1
   _isFirstSelectable: 0
 --- !u!114 &1138849350
@@ -2805,6 +2814,7 @@ MonoBehaviour:
     _text: "\u3044\u306E\u3061\u3060\u3044\u3058\u306B"
     _initialCardCount: 6
     _rarity: 0
+    _isDisposedOfAfterSell: 0
   _controller: {fileID: 96249318}
 --- !u!4 &1159339319
 Transform:
@@ -3486,6 +3496,7 @@ MonoBehaviour:
   _selectDetector: {fileID: 1365934651}
   _deckMediator: {fileID: 379178481}
   _selectable: {fileID: 1365934647}
+  _traderController: {fileID: 1174224862}
   _entityType: 0
   _isFirstSelectable: 0
 --- !u!114 &1365934645
@@ -3745,6 +3756,7 @@ MonoBehaviour:
   _selectDetector: {fileID: 1451028743}
   _deckMediator: {fileID: 379178481}
   _selectable: {fileID: 1451028739}
+  _traderController: {fileID: 1174224862}
   _entityType: 0
   _isFirstSelectable: 0
 --- !u!114 &1451028737
@@ -4026,6 +4038,7 @@ MonoBehaviour:
   _selectDetector: {fileID: 1553350100}
   _deckMediator: {fileID: 1979056035}
   _selectable: {fileID: 1553350097}
+  _traderController: {fileID: 1174224862}
   _entityType: 1
   _isFirstSelectable: 0
 --- !u!114 &1553350095
@@ -4487,6 +4500,7 @@ MonoBehaviour:
   _selectDetector: {fileID: 1952927798}
   _deckMediator: {fileID: 379178481}
   _selectable: {fileID: 1952927794}
+  _traderController: {fileID: 1174224862}
   _entityType: 0
   _isFirstSelectable: 0
 --- !u!114 &1952927792

@@ -14,7 +14,6 @@ public class HandMediator : DeckMediator
     //購入したカードが一時的に入るデッキ
     BuyingCardDeck _buyingCardDeck = new();
 
-    //Edit > Project Settings > Script Execution Orderで実行順を調整しています。
     private void Awake()
     {
         _completionHandler.AddListener(OnComplete);
@@ -99,5 +98,10 @@ public class HandMediator : DeckMediator
     public override void AddDeck(Card card)
     {
         _playerDeck.Add(card);
+    }
+
+    public override void AddBuyingDeck(Card card)
+    {
+        _buyingCardDeck.Add(card);
     }
 }

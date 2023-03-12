@@ -12,7 +12,6 @@ public class GoodsMediator : DeckMediator
     //プレイヤーが売却したカードが一時的に入るデッキ
     BuyingCardDeck _buyingCardDeck = new();
 
-    //Edit > Project Settings > Script Execution Orderで実行順を調整しています。
     private void Awake()
     {
         _completionHandler.AddListener(OnComplete);
@@ -95,5 +94,10 @@ public class GoodsMediator : DeckMediator
                 _clickHandlers[i].InsertCard(cardName);
             }
         }
+    }
+
+    public override void AddBuyingDeck(Card card)
+    {
+        _buyingCardDeck.Add(card);
     }
 }

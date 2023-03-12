@@ -26,6 +26,8 @@ public class CardUIHandler : MonoBehaviour
 
     [SerializeField] Selectable _selectable;
 
+    [SerializeField] TraderController _traderController;
+
     [SerializeField] EntityType _entityType;
     [SerializeField] bool _isFirstSelectable;
 
@@ -78,31 +80,64 @@ public class CardUIHandler : MonoBehaviour
     //左クリック時処理
     private void HandleClick()
     {
-        //Imageを無効化する
-        _selectable.image.enabled = false;
-
-        //クリック時無効にする
-        _selectable.interactable = false;
-
         //EntityTypeに適した処理を呼ぶ。
         if (_entityType == EntityType.Player)
         {
             _card.Sell();
+
+            //売る処理のみ下記処理を行う。
+            OnSell();
         }
         else if (_entityType == EntityType.Trader)
         {
             _card.Buy();
+
+            //買う処理のみ下記処理を行う。
+            OnBuy();
         }
-        else
+        else throw new System.NotImplementedException();
+
+        //手札整理
+        _deckMediator.RearrangeCardSlots();
+    }
+
+    private void OnBuy()
+    {
+        //商人の手札購入処理
+        _traderController.CurrentTrader.OnPlayerSell(_card);
+
+        SetNextSelectable();
+
+        //手札補充は行わない
+        InsertCard(EEX_null.Instance);
+    }
+
+    private void OnSell()
+    {
+        //商人の手札売却処理
+        _traderController.CurrentTrader.OnPlayerSell(_card);
+        
+        //商人山札に追加する
+        if (!_card.IsDisposedOfAfterSell)
         {
-            throw new System.NotImplementedException();
+            _deckMediator.AddBuyingDeck(_card);
         }
 
         //手札から削除し、新たにカードを引く
         _deckMediator.RemoveHandCard(_card);
         InsertCard(_deckMediator.TakeDeckCard());
-        //手札整理
-        _deckMediator.RearrangeCardSlots();
+    }
+
+    private void SetNextSelectable()
+    {
+        Selectable next = _selectable.FindSelectableOnLeft();
+
+        //nullだった場合こちらに遷移する
+        next ??= _selectable.FindSelectableOnRight();
+        next ??= _selectable.FindSelectableOnUp();
+        next ??= _selectable.FindSelectableOnDown();
+
+        if (next != null) _eventSystem.SetSelectedGameObject(next.gameObject);
     }
 
     //カーソルをかざした際の処理
@@ -148,6 +183,7 @@ public class CardUIHandler : MonoBehaviour
         //クリックされた場合非表示
         _selectable.interactable = isNormalCard;
     }
+
     public Card GetCardName()
     {
         return _card;

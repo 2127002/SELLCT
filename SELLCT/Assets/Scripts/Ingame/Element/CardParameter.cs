@@ -12,6 +12,7 @@ public class CardParameter
     [SerializeField, Min(0)] int _initialCardCount;
 
     [SerializeField, Min(1)] int _rarity;
+    [SerializeField] bool _isDisposedOfAfterSell;
 
     Money _money;
 
@@ -40,5 +41,10 @@ public class CardParameter
     public int Rarity()
     {
         return _rarity;
+    }
+
+    public bool IsDisposedOfAfterSell()
+    {
+        return _isDisposedOfAfterSell;
     }
 }

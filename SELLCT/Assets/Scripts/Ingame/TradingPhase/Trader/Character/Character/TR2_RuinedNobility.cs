@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class TR2_RuinedNobility : Trader
@@ -59,5 +60,30 @@ public class TR2_RuinedNobility : Trader
     public override string StartMessage()
     {
         throw new System.NotImplementedException();
+    }
+
+    public override void OnPlayerSell(Card selledCard)
+    {
+        //TODO：もし与えられたカードが仲間カードなら好感度減少処理を行う。
+
+        AddFavorability(selledCard);
+    }
+
+    public override void OnPlayerBuy()
+    {
+        //買い処理はお気に入りエレメントは関係ない
+        _favorability = _favorability.Add(_traderParameter.AddFavorabilityValue());
+    }
+
+    private void AddFavorability(Card card)
+    {
+        Favorability totalAddValue = _traderParameter.AddFavorabilityValue();
+
+        if (_traderParameter.FavoriteCards().Contains(card))
+        {
+            totalAddValue.Add(_traderParameter.FavoriteCardAddValue());
+        }
+
+        _favorability = _favorability.Add(totalAddValue);
     }
 }

@@ -6,6 +6,8 @@ public abstract class Trader : MonoBehaviour
 {
     public abstract TraderDeck TraderDeck { get; }
     public abstract void CreateDeck(CardPool pool);
+    public abstract void OnPlayerSell(Card card);
+    public abstract void OnPlayerBuy();
 
     public abstract string StartMessage();
     public abstract string EndMessage();

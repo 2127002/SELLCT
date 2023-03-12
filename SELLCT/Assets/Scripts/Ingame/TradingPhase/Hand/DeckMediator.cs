@@ -8,4 +8,5 @@ public abstract class DeckMediator : MonoBehaviour
     public abstract void RemoveHandCard(Card card);
     public abstract void AddDeck(Card card);
     public abstract void RearrangeCardSlots();
+    public abstract void AddBuyingDeck(Card card);
 }
