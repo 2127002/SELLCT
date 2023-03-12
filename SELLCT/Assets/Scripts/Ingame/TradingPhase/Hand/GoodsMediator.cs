@@ -2,16 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class HandMediator : DeckMediator
+public class GoodsMediator : DeckMediator
 {
     [SerializeField] Hand _hand = default!;
     [SerializeField] List<CardUIHandler> _clickHandlers = new();
-    [SerializeField] TradingPhaseCompletionHandler _completionHandler;
+    [SerializeField] TradingPhaseCompletionHandler _completionHandler = default!;
+    [SerializeField] TraderController _traderController = default!;
 
-    //プレイヤーのデッキ
-    PlayerDeck _playerDeck = new();
-
-    //購入したカードが一時的に入るデッキ
+    //プレイヤーが売却したカードが一時的に入るデッキ
     BuyingCardDeck _buyingCardDeck = new();
 
     //Edit > Project Settings > Script Execution Orderで実行順を調整しています。
@@ -40,17 +38,17 @@ public class HandMediator : DeckMediator
 
             if (card is EEX_null) break;
 
-            _playerDeck.Add(card);
+            _traderController.CurrentTrader.TraderDeck.Add(card);
         }
     }
-    
+
     private void InitTakeCard()
     {
         int drawableCount = _hand.CalcDrawableCount();
 
         for (int i = 0; i < drawableCount; i++)
         {
-            Card top = _playerDeck.Draw();
+            Card top = _traderController.CurrentTrader.TraderDeck.Draw();
 
             //手札に追加
             _hand.Add(top);
@@ -64,7 +62,7 @@ public class HandMediator : DeckMediator
     {
         if (_hand.CalcDrawableCount() == 0) return EEX_null.Instance;
 
-        Card top = _playerDeck.Draw();
+        Card top = _traderController.CurrentTrader.TraderDeck.Draw();
 
         //手札に追加
         _hand.Add(top);
@@ -79,6 +77,6 @@ public class HandMediator : DeckMediator
 
     public override void AddDeck(Card card)
     {
-        _playerDeck.Add(card);
+        _traderController.CurrentTrader.TraderDeck.Add(card);
     }
 }

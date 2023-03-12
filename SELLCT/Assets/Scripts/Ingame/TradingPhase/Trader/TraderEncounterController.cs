@@ -4,11 +4,11 @@ using UnityEngine;
 
 public class TraderEncounterController : MonoBehaviour
 {
-    [SerializeField] TraderController _traderController;
-    [SerializeField] TempChara _tempChara;
+    [SerializeField] TraderController _traderController = default!;
+    [SerializeField] TradersInstance _tradersInstance = default!;
 
     private void Awake()
     {
-        _traderController.SetTrader(_tempChara);
+        _traderController.SetTrader(_tradersInstance.Traders[0]);
     }
 }

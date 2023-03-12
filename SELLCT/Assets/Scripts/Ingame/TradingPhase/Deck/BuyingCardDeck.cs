@@ -2,34 +2,24 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BuyingCardDeck : MonoBehaviour
+public class BuyingCardDeck : IDeck
 {
-    [SerializeField] TradingPhaseCompletionHandler _completionHandler;
-    [SerializeField] NormalDeck _normalDeck;
-
     //現在ターンで購入したカードが封入される
-    readonly Deck _buyingDeck = new();
+    readonly List<Card> _cards = new();
 
-    private void Awake()
+    public void Add(Card card)
     {
-        _completionHandler.AddListener(OnComplete);
+        _cards.Add(card);
     }
 
-    private void OnDestroy()
+    public Card Draw()
     {
-        _completionHandler.RemoveListener(OnComplete);
-    }
+        if (_cards.Count == 0) return EEX_null.Instance;
 
-    public void AddBuyingCard(Card card)
-    {
-        _buyingDeck.Add(card);
-    }
+        //トップから1枚引く
+        Card card = _cards[0];
+        _cards.RemoveAt(0);
 
-    private void OnComplete()
-    {
-        while (!_buyingDeck.IsEmpty())
-        {
-            _normalDeck.AddCard(_buyingDeck.TakeTopCard());
-        }
+        return card;
     }
 }

@@ -5,22 +5,10 @@ using UnityEngine.EventSystems;
 
 public class E0_Life : Card
 {
-    [SerializeField] CardParameter _parameter;
-    [SerializeField] MoneyPossessedController _controller;
-    [SerializeField] NormalDeck _normalDeck;
+    [SerializeField] CardParameter _parameter = default!;
+    [SerializeField] MoneyPossessedController _controller = default!;
 
-    private void Awake()
-    {
-        AddCardToDeck();
-    }
-
-    public override void AddCardToDeck()
-    {
-        for (int i = 0; i < _parameter.GetInitialCardCount(); i++)
-        {
-            _normalDeck.AddCard(this);
-        }
-    }
+    public override int Rarity => _parameter.Rarity();
 
     public override void Buy()
     {
