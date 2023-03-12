@@ -2821,7 +2821,7 @@ MonoBehaviour:
     _rarity: 1
     _isDisposedOfAfterSell: 0
   _controller: {fileID: 96249318}
-  _cardSprite: {fileID: 21300000, guid: 9da0e91fdb9791b4ca8babf7847b95ec, type: 3}
+  _cardSprite: {fileID: 0}
 --- !u!4 &1159339319
 Transform:
   m_ObjectHideFlags: 0
