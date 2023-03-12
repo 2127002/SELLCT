@@ -62,7 +62,7 @@ public class HandMediator : DeckMediator
         }
     }
 
-    public void RearrangeCardSlots()
+    public override void RearrangeCardSlots()
     {
         int handCapacity = _hand.HandCapacity();
 
@@ -73,7 +73,7 @@ public class HandMediator : DeckMediator
             {
                 //カード名取得
                 var cardName = _clickHandlers[i + 1].GetCardName();
-                _clickHandlers[i + 1].InsertCard(eX_Null);
+                _clickHandlers[i + 1].InsertCard(EEX_null.Instance);
                 _clickHandlers[i].InsertCard(cardName);
             }
         }

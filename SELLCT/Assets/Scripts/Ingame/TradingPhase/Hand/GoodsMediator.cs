@@ -79,4 +79,21 @@ public class GoodsMediator : DeckMediator
     {
         _traderController.CurrentTrader.TraderDeck.Add(card);
     }
+
+    public override void RearrangeCardSlots()
+    {
+        int handCapacity = _hand.HandCapacity();
+
+        //‡”Ô“ü‚ê‘Ö‚¦
+        for (int i = 0; i < handCapacity - 1; i++)
+        {
+            if (true == _clickHandlers[i].NullCheck())
+            {
+                //ƒJ[ƒh–¼æ“¾
+                var cardName = _clickHandlers[i + 1].GetCardName();
+                _clickHandlers[i + 1].InsertCard(EEX_null.Instance);
+                _clickHandlers[i].InsertCard(cardName);
+            }
+        }
+    }
 }
