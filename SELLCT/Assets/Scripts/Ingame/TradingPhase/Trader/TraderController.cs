@@ -7,9 +7,9 @@ public class TraderController : MonoBehaviour
 {
     [SerializeField] TextBoxView _textBox;
 
-    ITrader _currentTrader;
+    Trader _currentTrader;
 
-    public void SetTrader(ITrader trader)
+    public void SetTrader(Trader trader)
     {
         _currentTrader = trader;
 
@@ -17,5 +17,5 @@ public class TraderController : MonoBehaviour
         _textBox.DisplayTextOneByOne().Forget();
     }
 
-    public ITrader CurrentTrader => _currentTrader;
+    public Trader CurrentTrader => _currentTrader;
 }

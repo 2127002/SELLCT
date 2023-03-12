@@ -14,15 +14,15 @@ public class CardUIHandler : MonoBehaviour
         Invalid,
     }
 
-    //‚±‚Ì‚æ‚¤‚ÉDetector‚É‚í‚´‚í‚´•ª‚¯‚Ä‚¢‚é‚Ì‚ÍAinterface‚Ìƒƒ\ƒbƒh‚ªpublic‚É‚È‚é‚©‚ç‚Å‚·B
-    //ŠO•”‚©‚çˆÓ}‚µ‚È‚¢ƒ^ƒCƒ~ƒ“ƒO‚ÅŒÄ‚Î‚ê‚é‚±‚Æ‚ğ”ğ‚¯‚é‚½‚ß‰ñ‚è‚­‚Ç‚¢è‚ğg‚Á‚Ä‚¢‚Ü‚·B
+    //ã“ã®ã‚ˆã†ã«Detectorã«ã‚ã–ã‚ã–åˆ†ã‘ã¦ã„ã‚‹ã®ã¯ã€interfaceã®ãƒ¡ã‚½ãƒƒãƒ‰ãŒpublicã«ãªã‚‹ã‹ã‚‰ã§ã™ã€‚
+    //å¤–éƒ¨ã‹ã‚‰æ„å›³ã—ãªã„ã‚¿ã‚¤ãƒŸãƒ³ã‚°ã§å‘¼ã°ã‚Œã‚‹ã“ã¨ã‚’é¿ã‘ã‚‹ãŸã‚å›ã‚Šãã©ã„æ‰‹ã‚’ä½¿ã£ã¦ã„ã¾ã™ã€‚
     [SerializeField] LeftClickDetector _clickDetector;
     [SerializeField] PointerEnterDetector _enterDetector;
     [SerializeField] PointerExitDetector _exitDetector;
     [SerializeField] SubmitDetector _submitDetector;
     [SerializeField] SelectDetector _selectDetector;
 
-    [SerializeField] HandMediator _handMediator;
+    [SerializeField] DeckMediator _deckMediator;
 
     [SerializeField] Selectable _selectable;
 
@@ -36,7 +36,7 @@ public class CardUIHandler : MonoBehaviour
     {
         _eventSystem = EventSystem.current;
 
-        //w“Ç
+        //è³¼èª­
         _clickDetector.AddListener(HandleClick);
         _enterDetector.AddListener(HandleEnter);
         _exitDetector.AddListener(HandleExit);
@@ -45,7 +45,7 @@ public class CardUIHandler : MonoBehaviour
 
         SetFirstSelectable();
 
-        //‚í‚©‚è‚â‚·‚­‚·‚é‚½‚ß‰¼‚É‘I‘ğ‚ÌF‚ğÔ‚É•ÏXB¡Œã‚Ì•ÏX„§
+        //ã‚ã‹ã‚Šã‚„ã™ãã™ã‚‹ãŸã‚ä»®ã«é¸æŠæ™‚ã®è‰²ã‚’èµ¤ã«å¤‰æ›´ã€‚ä»Šå¾Œã®å¤‰æ›´æ¨å¥¨
         var b = _selectable.colors;
         b.selectedColor = Color.red;
         _selectable.colors = b;
@@ -53,7 +53,7 @@ public class CardUIHandler : MonoBehaviour
 
     private void OnDestroy()
     {
-        //w“Ç‰ğœ
+        //è³¼èª­è§£é™¤
         _clickDetector.RemoveListener(HandleClick);
         _enterDetector.RemoveListener(HandleEnter);
         _exitDetector.RemoveListener(HandleExit);
@@ -63,28 +63,28 @@ public class CardUIHandler : MonoBehaviour
 
     private void SetFirstSelectable()
     {
-        //‰Šú‘I‘ğ‚Ìƒ`ƒFƒbƒNƒ{ƒbƒNƒX‚ªtrue‚¾‚Á‚½‚ç“o˜^
+        //åˆæœŸé¸æŠã®ãƒã‚§ãƒƒã‚¯ãƒœãƒƒã‚¯ã‚¹ãŒtrueã ã£ãŸã‚‰ç™»éŒ²
         if (!_isFirstSelectable) return;
 
         if (_eventSystem.currentSelectedGameObject != null)
         {
-            Debug.LogWarning("‚·‚Å‚É•Ê‚ÌƒIƒuƒWƒFƒNƒg‚ª‘I‘ğ‚³‚ê‚Ä‚¢‚Ü‚·B" + gameObject + "‚Ì“o˜^‚ÍŠü‹p‚³‚ê‚Ü‚µ‚½B³‚µ‚¢d—l‚ğŠm”F‚µ‚Ä‚­‚¾‚³‚¢B" + _eventSystem.currentSelectedGameObject);
+            Debug.LogWarning("ã™ã§ã«åˆ¥ã®ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆãŒé¸æŠã•ã‚Œã¦ã„ã¾ã™ã€‚" + gameObject + "ã®ç™»éŒ²ã¯æ£„å´ã•ã‚Œã¾ã—ãŸã€‚æ­£ã—ã„ä»•æ§˜ã‚’ç¢ºèªã—ã¦ãã ã•ã„ã€‚" + _eventSystem.currentSelectedGameObject);
             return;
         }
 
         _eventSystem.SetSelectedGameObject(_selectable.gameObject);
     }
 
-    //¶ƒNƒŠƒbƒNˆ—
+    //å·¦ã‚¯ãƒªãƒƒã‚¯æ™‚å‡¦ç†
     private void HandleClick()
     {
-        //Image‚ğ–³Œø‰»‚·‚é
+        //Imageã‚’ç„¡åŠ¹åŒ–ã™ã‚‹
         _selectable.image.enabled = false;
 
-        //ƒNƒŠƒbƒN–³Œø‚É‚·‚é
+        //ã‚¯ãƒªãƒƒã‚¯æ™‚ç„¡åŠ¹ã«ã™ã‚‹
         _selectable.interactable = false;
 
-        //EntityType‚É“K‚µ‚½ˆ—‚ğŒÄ‚ÔB
+        //EntityTypeã«é©ã—ãŸå‡¦ç†ã‚’å‘¼ã¶ã€‚
         if (_entityType == EntityType.Player)
         {
             _card.Sell();
@@ -98,55 +98,54 @@ public class CardUIHandler : MonoBehaviour
             throw new System.NotImplementedException();
         }
 
-        //èD‚©‚çíœ‚µAV‚½‚ÉƒJ[ƒh‚ğˆø‚­
-        _handMediator.RemoveHandCard(_card);
-        InsertCard(_handMediator.TakeDeckTopCard());
-
-        //èD®—
-        _handMediator.RearrangeCardSlots();
+        //æ‰‹æœ­ã‹ã‚‰å‰Šé™¤ã—ã€æ–°ãŸã«ã‚«ãƒ¼ãƒ‰ã‚’å¼•ã
+        _deckMediator.RemoveHandCard(_card);
+        InsertCard(_deckMediator.TakeDeckCard());
+        //æ‰‹æœ­æ•´ç†
+        _deckMediator.RearrangeCardSlots();
     }
 
-    //ƒJ[ƒ\ƒ‹‚ğ‚©‚´‚µ‚½Û‚Ìˆ—
+    //ã‚«ãƒ¼ã‚½ãƒ«ã‚’ã‹ã–ã—ãŸéš›ã®å‡¦ç†
     private void HandleEnter()
     {
-        //TODOF¡Œã‚±‚±‚É‹ï‘Ì“I‚ÈƒJ[ƒ\ƒ‹‚ğ‚©‚´‚µ‚½Û‚Ìˆ—‚ğ’Ç‰Á‚·‚é
+        //TODOï¼šä»Šå¾Œã“ã“ã«å…·ä½“çš„ãªã‚«ãƒ¼ã‚½ãƒ«ã‚’ã‹ã–ã—ãŸéš›ã®å‡¦ç†ã‚’è¿½åŠ ã™ã‚‹
         _selectable.Select();
     }
 
-    //ƒJ[ƒ\ƒ‹‚ğŠO‚µ‚½Û‚Ìˆ—
+    //ã‚«ãƒ¼ã‚½ãƒ«ã‚’å¤–ã—ãŸéš›ã®å‡¦ç†
     private void HandleExit()
     {
-        //TODOF¡Œã‚±‚±‚É‹ï‘Ì“I‚ÈƒJ[ƒ\ƒ‹‚ğŠO‚µ‚½Û‚Ìˆ—‚ğ’Ç‰Á‚·‚é
+        //TODOï¼šä»Šå¾Œã“ã“ã«å…·ä½“çš„ãªã‚«ãƒ¼ã‚½ãƒ«ã‚’å¤–ã—ãŸéš›ã®å‡¦ç†ã‚’è¿½åŠ ã™ã‚‹
         EventSystem.current.SetSelectedGameObject(null);
     }
 
-    //Œˆ’è‚Ìˆ—
+    //æ±ºå®šæ™‚ã®å‡¦ç†
     private void HandleSubmit()
     {
-        //“¯ˆêˆ—‚Ì‚½‚ßˆÈ‰º‚Ìˆ—‚ğŒÄ‚Ô‚¾‚¯‚É‚µ‚Ü‚·BƒNƒŠƒbƒN‚Ìd—l‚Æ·ˆÙ‚ª”­¶‚µ‚½‚çC³‚µ‚Ä‚­‚¾‚³‚¢B
+        //åŒä¸€å‡¦ç†ã®ãŸã‚ä»¥ä¸‹ã®å‡¦ç†ã‚’å‘¼ã¶ã ã‘ã«ã—ã¾ã™ã€‚ã‚¯ãƒªãƒƒã‚¯æ™‚ã®ä»•æ§˜ã¨å·®ç•°ãŒç™ºç”Ÿã—ãŸã‚‰ä¿®æ­£ã—ã¦ãã ã•ã„ã€‚
         HandleClick();
     }
 
-    //‘I‘ğ‚Ìˆ—
+    //é¸æŠæ™‚ã®å‡¦ç†
     private void HandleSelect()
     {
-        //TODO:SE1‚ÌÄ¶
+        //TODO:SE1ã®å†ç”Ÿ
     }
 
     /// <summary>
-    /// ƒJ[ƒh‚ğ‘}“ü‚·‚é
+    /// ã‚«ãƒ¼ãƒ‰ã‚’æŒ¿å…¥ã™ã‚‹
     /// </summary>
-    /// <param name="card">‘}“ü‚·‚éƒJ[ƒh</param>
+    /// <param name="card">æŒ¿å…¥ã™ã‚‹ã‚«ãƒ¼ãƒ‰</param>
     public void InsertCard(Card card)
     {
         _card = card;
 
         bool isNormalCard = _card is not EEX_null;
 
-        //•\¦ ”ñ•\¦
+        //è¡¨ç¤º éè¡¨ç¤º
         _selectable.image.enabled = isNormalCard;
 
-        //ƒNƒŠƒbƒN‚³‚ê‚½ê‡”ñ•\¦
+        //ã‚¯ãƒªãƒƒã‚¯ã•ã‚ŒãŸå ´åˆéè¡¨ç¤º
         _selectable.interactable = isNormalCard;
     }
     public Card GetCardName()
