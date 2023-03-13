@@ -28,7 +28,7 @@ public class EEX_null : Card
 
     public override bool IsDisposedOfAfterSell => throw new System.NotImplementedException();
 
-    public override Sprite CardSprite => throw new System.NotImplementedException();
+    public override IReadOnlyList<Sprite> CardSprite => throw new System.NotImplementedException();
 
     public override void Buy()
     {
