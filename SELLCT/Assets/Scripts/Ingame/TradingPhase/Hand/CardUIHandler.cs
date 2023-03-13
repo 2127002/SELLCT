@@ -90,6 +90,13 @@ public class CardUIHandler : MonoBehaviour
         }
 
         _eventSystem.SetSelectedGameObject(_selectable.gameObject);
+
+        foreach (var item in _images)
+        {
+            Vector2 sizeDelta = item.rectTransform.sizeDelta;
+            sizeDelta.Scale(correction);
+            item.rectTransform.sizeDelta = sizeDelta;
+        }
     }
 
     //左クリック時処理
