@@ -2530,8 +2530,6 @@ MonoBehaviour:
     initcount: 1
   - card: {fileID: 2058171968}
     initcount: 1
-  - card: {fileID: 1785525373}
-    initcount: 1
   _probabilityDeck: []
   _drawCount: 0
   _handMediator: {fileID: 379178481}
@@ -3932,7 +3930,6 @@ Transform:
   - {fileID: 854960962}
   - {fileID: 1159339319}
   - {fileID: 2134259531}
-  - {fileID: 1785525372}
   - {fileID: 2058171967}
   m_Father: {fileID: 1255751109}
   m_RootOrder: -1
@@ -3953,8 +3950,6 @@ MonoBehaviour:
   - card: {fileID: 1159339318}
     initcount: 10
   - card: {fileID: 2134259532}
-    initcount: 4
-  - card: {fileID: 1785525373}
     initcount: 4
   - card: {fileID: 2058171968}
     initcount: 4
@@ -5576,63 +5571,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1778377815}
   m_CullTransparentMesh: 1
---- !u!1 &1785525371
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1785525372}
-  - component: {fileID: 1785525373}
-  m_Layer: 0
-  m_Name: E9_SE
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1785525372
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1785525371}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1246967504}
-  m_RootOrder: -1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1785525373
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1785525371}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6d1f9ad816dc80e45b1dd4afda838710, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _parameter:
-    _price: 9
-    _name: 
-    _text: 
-    _rarity: 1
-    _isDisposedOfAfterSell: 0
-  _controller: {fileID: 96249318}
-  _baseSprite: {fileID: 21300000, guid: 1171f09a005028c459adfa7ed03bd03e, type: 3}
-  _number: {fileID: 0}
-  _chineseCharacters: {fileID: 21300000, guid: 79551c9f2ebef2b4e9d542448ecc9809, type: 3}
-  _hiragana: {fileID: 0}
-  _katakana: {fileID: 0}
-  _handMediator: {fileID: 379178481}
 --- !u!1 &1834887530
 GameObject:
   m_ObjectHideFlags: 0
