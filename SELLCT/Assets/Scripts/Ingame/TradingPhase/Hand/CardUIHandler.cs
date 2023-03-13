@@ -22,6 +22,7 @@ public class CardUIHandler : MonoBehaviour
     [SerializeField] PointerExitDetector _exitDetector;
     [SerializeField] SubmitDetector _submitDetector;
     [SerializeField] SelectDetector _selectDetector;
+    [SerializeField] DeselectDetector _deselectDetector;
 
     //デッキと手札の管理者。Subはメインの逆のmediator。
     [SerializeField] DeckMediator _deckMediator;
@@ -41,6 +42,11 @@ public class CardUIHandler : MonoBehaviour
     Card _card;
     EventSystem _eventSystem;
 
+    //選択時画像サイズ補正値
+    const float CORRECTION_SIZE = 1.25f;
+    static readonly Vector2 correction = new(CORRECTION_SIZE, CORRECTION_SIZE);
+    static readonly Vector2 recorrection = new(1f / CORRECTION_SIZE, 1f / CORRECTION_SIZE);
+
     private void Awake()
     {
         _eventSystem = EventSystem.current;
@@ -51,6 +57,7 @@ public class CardUIHandler : MonoBehaviour
         _exitDetector.AddListener(HandleExit);
         _submitDetector.AddListener(HandleSubmit);
         _selectDetector.AddListener(HandleSelect);
+        _deselectDetector.AddListener(HandleDeselect);
 
         SetFirstSelectable();
 
@@ -68,6 +75,7 @@ public class CardUIHandler : MonoBehaviour
         _exitDetector.RemoveListener(HandleExit);
         _submitDetector.RemoveListener(HandleSubmit);
         _selectDetector.RemoveListener(HandleSelect);
+        _deselectDetector.RemoveListener(HandleDeselect);
     }
 
     private void SetFirstSelectable()
@@ -180,6 +188,23 @@ public class CardUIHandler : MonoBehaviour
     private void HandleSelect()
     {
         //TODO:SE1の再生
+        foreach (var item in _images)
+        {
+            Vector2 sizeDelta = item.rectTransform.sizeDelta;
+            sizeDelta.Scale(correction);
+            item.rectTransform.sizeDelta = sizeDelta;
+        }
+    }
+
+    //選択から外れた時の処理
+    private void HandleDeselect()
+    {
+        foreach (var item in _images)
+        {
+            Vector2 sizeDelta = item.rectTransform.sizeDelta;
+            sizeDelta.Scale(recorrection);
+            item.rectTransform.sizeDelta = sizeDelta;
+        }
     }
 
     /// <summary>
