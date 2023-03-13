@@ -22,7 +22,9 @@ public class CardUIHandler : MonoBehaviour
     [SerializeField] SubmitDetector _submitDetector;
     [SerializeField] SelectDetector _selectDetector;
 
+    //デッキと手札の管理者。Subはメインの逆のmediator。
     [SerializeField] DeckMediator _deckMediator;
+    [SerializeField] DeckMediator _subDeckMediator;
 
     [SerializeField] Selectable _selectable;
 
@@ -83,15 +85,11 @@ public class CardUIHandler : MonoBehaviour
         //EntityTypeに適した処理を呼ぶ。
         if (_entityType == EntityType.Player)
         {
-            _card.Sell();
-
             //売る処理のみ下記処理を行う。
             OnSell();
         }
         else if (_entityType == EntityType.Trader)
         {
-            _card.Buy();
-
             //買う処理のみ下記処理を行う。
             OnBuy();
         }
@@ -103,29 +101,41 @@ public class CardUIHandler : MonoBehaviour
 
     private void OnBuy()
     {
+        Card purchasedCard = _card;
+
+        //手札補充は行わない
+        _deckMediator.RemoveHandCard(purchasedCard);
+        InsertCard(EEX_null.Instance);
+
         //商人の手札購入処理
-        _traderController.CurrentTrader.OnPlayerSell(_card);
+        _traderController.CurrentTrader.OnPlayerBuy();
+
+        //プレイヤー購入山札に追加する
+        _subDeckMediator.AddBuyingDeck(purchasedCard);
 
         SetNextSelectable();
 
-        //手札補充は行わない
-        InsertCard(EEX_null.Instance);
+        purchasedCard.Buy();
     }
 
     private void OnSell()
     {
-        //商人の手札売却処理
-        _traderController.CurrentTrader.OnPlayerSell(_card);
-        
-        //商人山札に追加する
-        if (!_card.IsDisposedOfAfterSell)
-        {
-            _deckMediator.AddBuyingDeck(_card);
-        }
+        Card selledCard = _card;
 
         //手札から削除し、新たにカードを引く
-        _deckMediator.RemoveHandCard(_card);
+        _deckMediator.RemoveHandCard(selledCard);
         InsertCard(_deckMediator.TakeDeckCard());
+
+        //商人の手札売却処理
+        _traderController.CurrentTrader.OnPlayerSell(selledCard);
+
+        //商人購入山札に追加する
+        if (!selledCard.IsDisposedOfAfterSell)
+        {
+            _subDeckMediator.AddBuyingDeck(selledCard);
+        }
+
+        selledCard.Sell();
     }
 
     private void SetNextSelectable()

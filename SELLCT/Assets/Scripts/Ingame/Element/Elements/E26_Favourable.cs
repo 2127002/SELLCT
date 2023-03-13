@@ -35,7 +35,11 @@ public class E26_Favourable : Card
 
     public override void Sell()
     {
-        _favourableView.SetActive(false);
+        //このエレメントが何も無いなら下記を実行
+        if (!_handMediator.ContainsCard(this))
+        {
+            _favourableView.SetActive(false);
+        }
 
         _controller.IncreaseMoney(_parameter.GetMoney());
     }

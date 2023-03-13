@@ -103,6 +103,6 @@ public class GoodsMediator : DeckMediator
 
     public override bool ContainsCard(Card card)
     {
-        return _traderController.CurrentTrader.TraderDeck.ContainsCard(card);
+        return _traderController.CurrentTrader.TraderDeck.ContainsCard(card) || _hand.ContainsCard(card) || _buyingCardDeck.ContainsCard(card);
     }
 }

@@ -34,6 +34,11 @@ public class Hand : MonoBehaviour
     {
         return _handCapacity;
     }
+
+    public bool ContainsCard(Card card)
+    {
+        return _cards.Contains(card);
+    }
 }
 
 public class HandCapacityExceededException : System.Exception
