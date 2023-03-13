@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
@@ -26,7 +27,11 @@ public class CardUIHandler : MonoBehaviour
     [SerializeField] DeckMediator _deckMediator;
     [SerializeField] DeckMediator _subDeckMediator;
 
+    //選択肢
     [SerializeField] Selectable _selectable;
+
+    //カード表示
+    [SerializeField] List<Image> _images;
 
     [SerializeField] TraderController _traderController;
 
@@ -187,10 +192,10 @@ public class CardUIHandler : MonoBehaviour
 
         bool isNormalCard = _card is not EEX_null;
 
-        _selectable.image.enabled = isNormalCard;
+        SetImagesEnabled(isNormalCard);
         _selectable.interactable = isNormalCard;
 
-        if (isNormalCard) _selectable.image.sprite = card.CardSprite;
+        if (isNormalCard) SetImagesSprite(card.CardSprite);
     }
 
     public Card GetCardName()
@@ -200,5 +205,27 @@ public class CardUIHandler : MonoBehaviour
     public bool NullCheck()
     {
         return _card is EEX_null;
+    }
+
+    private void SetImagesEnabled(bool enabled)
+    {
+        foreach (var image in _images)
+        {
+            image.enabled = enabled;
+        }
+    }
+
+    private void SetImagesSprite(IReadOnlyList<Sprite> sprites)
+    {
+        for (int i = 0; i < _images.Count; i++)
+        {
+            if (sprites[i] == null)
+            {
+                _images[i].enabled = false;
+                continue;
+            }
+
+            _images[i].sprite = sprites[i];
+        }
     }
 }
