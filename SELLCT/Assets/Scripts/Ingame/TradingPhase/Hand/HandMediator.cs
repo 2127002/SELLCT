@@ -107,6 +107,6 @@ public class HandMediator : DeckMediator
 
     public override bool ContainsCard(Card card)
     {
-        return _playerDeck.ContainsCard(card);
+        return _playerDeck.ContainsCard(card) || _hand.ContainsCard(card) || _buyingCardDeck.ContainsCard(card);
     }
 }
