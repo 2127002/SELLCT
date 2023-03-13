@@ -534,7 +534,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 180, y: 240}
+  m_SizeDelta: {x: 225, y: 288}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &109353458
 MonoBehaviour:
@@ -687,7 +687,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 180, y: 240}
+  m_SizeDelta: {x: 225, y: 288}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &212117531
 CanvasRenderer:
@@ -1239,7 +1239,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 180, y: 240}
+  m_SizeDelta: {x: 225, y: 288}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &395190026
 GameObject:
@@ -1277,7 +1277,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 180, y: 240}
+  m_SizeDelta: {x: 225, y: 288}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &395190028
 MonoBehaviour:
@@ -1410,6 +1410,7 @@ GameObject:
   - component: {fileID: 412978146}
   - component: {fileID: 412978149}
   - component: {fileID: 412978151}
+  - component: {fileID: 412978152}
   - component: {fileID: 412978148}
   m_Layer: 0
   m_Name: U3_Card01
@@ -1436,7 +1437,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: -650, y: 390}
-  m_SizeDelta: {x: 180, y: 240}
+  m_SizeDelta: {x: 225, y: 288}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!114 &412978141
 MonoBehaviour:
@@ -1493,6 +1494,7 @@ MonoBehaviour:
   _exitDetector: {fileID: 412978146}
   _submitDetector: {fileID: 412978149}
   _selectDetector: {fileID: 412978151}
+  _deselectDetector: {fileID: 412978152}
   _deckMediator: {fileID: 1979056035}
   _subDeckMediator: {fileID: 379178481}
   _selectable: {fileID: 412978148}
@@ -1601,6 +1603,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 48a04cbd9df80554c87c1902dbf2fc8f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &412978152
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 412978139}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: abefe34f9339649479d1ae17ee146b52, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &465574992
 GameObject:
   m_ObjectHideFlags: 0
@@ -1618,6 +1632,7 @@ GameObject:
   - component: {fileID: 465574999}
   - component: {fileID: 465575002}
   - component: {fileID: 465575004}
+  - component: {fileID: 465575005}
   - component: {fileID: 465575001}
   m_Layer: 0
   m_Name: U3_Card02
@@ -1644,7 +1659,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: -410, y: 390}
-  m_SizeDelta: {x: 180, y: 240}
+  m_SizeDelta: {x: 225, y: 288}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!114 &465574994
 MonoBehaviour:
@@ -1701,6 +1716,7 @@ MonoBehaviour:
   _exitDetector: {fileID: 465574999}
   _submitDetector: {fileID: 465575002}
   _selectDetector: {fileID: 465575004}
+  _deselectDetector: {fileID: 465575005}
   _deckMediator: {fileID: 1979056035}
   _subDeckMediator: {fileID: 379178481}
   _selectable: {fileID: 465575001}
@@ -1807,6 +1823,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 48a04cbd9df80554c87c1902dbf2fc8f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &465575005
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 465574992}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: abefe34f9339649479d1ae17ee146b52, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &554965024
@@ -2025,7 +2053,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 180, y: 240}
+  m_SizeDelta: {x: 225, y: 288}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &607930777
 GameObject:
@@ -2101,7 +2129,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 180, y: 240}
+  m_SizeDelta: {x: 225, y: 288}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &608937509
 GameObject:
@@ -2350,7 +2378,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 180, y: 240}
+  m_SizeDelta: {x: 225, y: 288}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &678142235
 CanvasRenderer:
@@ -2580,7 +2608,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 180, y: 240}
+  m_SizeDelta: {x: 225, y: 288}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &854960961
 GameObject:
@@ -2668,7 +2696,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 180, y: 240}
+  m_SizeDelta: {x: 225, y: 288}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &895497742
 CanvasRenderer:
@@ -2854,6 +2882,7 @@ GameObject:
   - component: {fileID: 1014988827}
   - component: {fileID: 1014988831}
   - component: {fileID: 1014988833}
+  - component: {fileID: 1014988834}
   - component: {fileID: 1014988829}
   m_Layer: 0
   m_Name: U1_Card03
@@ -2884,7 +2913,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: -170, y: -215}
-  m_SizeDelta: {x: 180, y: 240}
+  m_SizeDelta: {x: 225, y: 288}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1014988822
 MonoBehaviour:
@@ -2941,6 +2970,7 @@ MonoBehaviour:
   _exitDetector: {fileID: 1014988827}
   _submitDetector: {fileID: 1014988831}
   _selectDetector: {fileID: 1014988833}
+  _deselectDetector: {fileID: 1014988834}
   _deckMediator: {fileID: 379178481}
   _subDeckMediator: {fileID: 1979056035}
   _selectable: {fileID: 1014988829}
@@ -3052,6 +3082,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 48a04cbd9df80554c87c1902dbf2fc8f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1014988834
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1014988820}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: abefe34f9339649479d1ae17ee146b52, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &1103139947
@@ -3297,6 +3339,7 @@ GameObject:
   - component: {fileID: 1138849350}
   - component: {fileID: 1138849353}
   - component: {fileID: 1138849355}
+  - component: {fileID: 1138849356}
   - component: {fileID: 1138849352}
   m_Layer: 0
   m_Name: U3_Card04
@@ -3323,7 +3366,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 70, y: 390}
-  m_SizeDelta: {x: 180, y: 240}
+  m_SizeDelta: {x: 225, y: 288}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!114 &1138849345
 MonoBehaviour:
@@ -3380,6 +3423,7 @@ MonoBehaviour:
   _exitDetector: {fileID: 1138849350}
   _submitDetector: {fileID: 1138849353}
   _selectDetector: {fileID: 1138849355}
+  _deselectDetector: {fileID: 1138849356}
   _deckMediator: {fileID: 1979056035}
   _subDeckMediator: {fileID: 379178481}
   _selectable: {fileID: 1138849352}
@@ -3486,6 +3530,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 48a04cbd9df80554c87c1902dbf2fc8f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1138849356
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1138849343}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: abefe34f9339649479d1ae17ee146b52, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &1159339317
@@ -4131,6 +4187,7 @@ GameObject:
   - component: {fileID: 1365934645}
   - component: {fileID: 1365934649}
   - component: {fileID: 1365934651}
+  - component: {fileID: 1365934652}
   - component: {fileID: 1365934647}
   m_Layer: 0
   m_Name: U1_Card02
@@ -4161,7 +4218,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: -410, y: -215}
-  m_SizeDelta: {x: 180, y: 240}
+  m_SizeDelta: {x: 225, y: 288}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1365934640
 MonoBehaviour:
@@ -4218,6 +4275,7 @@ MonoBehaviour:
   _exitDetector: {fileID: 1365934645}
   _submitDetector: {fileID: 1365934649}
   _selectDetector: {fileID: 1365934651}
+  _deselectDetector: {fileID: 1365934652}
   _deckMediator: {fileID: 379178481}
   _subDeckMediator: {fileID: 1979056035}
   _selectable: {fileID: 1365934647}
@@ -4331,6 +4389,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 48a04cbd9df80554c87c1902dbf2fc8f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1365934652
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1365934638}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: abefe34f9339649479d1ae17ee146b52, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1449596399
 GameObject:
   m_ObjectHideFlags: 0
@@ -4402,6 +4472,7 @@ GameObject:
   - component: {fileID: 1451028737}
   - component: {fileID: 1451028741}
   - component: {fileID: 1451028743}
+  - component: {fileID: 1451028744}
   - component: {fileID: 1451028739}
   m_Layer: 0
   m_Name: U1_Card01
@@ -4432,7 +4503,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: -650, y: -215}
-  m_SizeDelta: {x: 180, y: 240}
+  m_SizeDelta: {x: 225, y: 288}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1451028732
 MonoBehaviour:
@@ -4489,6 +4560,7 @@ MonoBehaviour:
   _exitDetector: {fileID: 1451028737}
   _submitDetector: {fileID: 1451028741}
   _selectDetector: {fileID: 1451028743}
+  _deselectDetector: {fileID: 1451028744}
   _deckMediator: {fileID: 379178481}
   _subDeckMediator: {fileID: 1979056035}
   _selectable: {fileID: 1451028739}
@@ -4600,6 +4672,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 48a04cbd9df80554c87c1902dbf2fc8f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1451028744
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1451028730}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: abefe34f9339649479d1ae17ee146b52, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &1499731484
@@ -4753,6 +4837,7 @@ GameObject:
   - component: {fileID: 1553350095}
   - component: {fileID: 1553350098}
   - component: {fileID: 1553350100}
+  - component: {fileID: 1553350101}
   - component: {fileID: 1553350097}
   m_Layer: 0
   m_Name: U3_Card03
@@ -4779,7 +4864,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: -170, y: 390}
-  m_SizeDelta: {x: 180, y: 240}
+  m_SizeDelta: {x: 225, y: 288}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!114 &1553350090
 MonoBehaviour:
@@ -4836,6 +4921,7 @@ MonoBehaviour:
   _exitDetector: {fileID: 1553350095}
   _submitDetector: {fileID: 1553350098}
   _selectDetector: {fileID: 1553350100}
+  _deselectDetector: {fileID: 1553350101}
   _deckMediator: {fileID: 1979056035}
   _subDeckMediator: {fileID: 379178481}
   _selectable: {fileID: 1553350097}
@@ -4942,6 +5028,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 48a04cbd9df80554c87c1902dbf2fc8f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1553350101
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1553350088}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: abefe34f9339649479d1ae17ee146b52, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &1635799162
@@ -5098,7 +5196,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 180, y: 240}
+  m_SizeDelta: {x: 225, y: 288}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1654134669
 CanvasRenderer:
@@ -5174,7 +5272,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 180, y: 240}
+  m_SizeDelta: {x: 225, y: 288}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1722775360
 MonoBehaviour:
@@ -5250,7 +5348,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 180, y: 240}
+  m_SizeDelta: {x: 225, y: 288}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1727783373
 CanvasRenderer:
@@ -5433,7 +5531,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 180, y: 240}
+  m_SizeDelta: {x: 225, y: 288}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1778377817
 MonoBehaviour:
@@ -5616,7 +5714,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 180, y: 240}
+  m_SizeDelta: {x: 225, y: 288}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1894054626
 CanvasRenderer:
@@ -5692,7 +5790,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 180, y: 240}
+  m_SizeDelta: {x: 225, y: 288}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1940024621
 MonoBehaviour:
@@ -5749,6 +5847,7 @@ GameObject:
   - component: {fileID: 1952927792}
   - component: {fileID: 1952927796}
   - component: {fileID: 1952927798}
+  - component: {fileID: 1952927799}
   - component: {fileID: 1952927794}
   m_Layer: 0
   m_Name: U1_Card04
@@ -5779,7 +5878,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 70, y: -215}
-  m_SizeDelta: {x: 180, y: 240}
+  m_SizeDelta: {x: 225, y: 288}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1952927787
 MonoBehaviour:
@@ -5836,6 +5935,7 @@ MonoBehaviour:
   _exitDetector: {fileID: 1952927792}
   _submitDetector: {fileID: 1952927796}
   _selectDetector: {fileID: 1952927798}
+  _deselectDetector: {fileID: 1952927799}
   _deckMediator: {fileID: 379178481}
   _subDeckMediator: {fileID: 1979056035}
   _selectable: {fileID: 1952927794}
@@ -5947,6 +6047,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 48a04cbd9df80554c87c1902dbf2fc8f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1952927799
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1952927785}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: abefe34f9339649479d1ae17ee146b52, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &1979056032
@@ -6146,7 +6258,7 @@ MonoBehaviour:
     _rarity: 1
     _isDisposedOfAfterSell: 0
   _controller: {fileID: 96249318}
-  _baseSprite: {fileID: 21300000, guid: 4f6d522d6050f2c40a155c7f5a1cfa26, type: 3}
+  _baseSprite: {fileID: 0}
   _number: {fileID: 0}
   _chineseCharacters: {fileID: 0}
   _hiragana: {fileID: 0}
@@ -6246,7 +6358,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 180, y: 240}
+  m_SizeDelta: {x: 225, y: 288}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &2140106000
 CanvasRenderer:
