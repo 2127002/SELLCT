@@ -9,7 +9,6 @@ public class CardParameter
     [SerializeField, Min(0)] int _price;
     [SerializeField] string _name;
     [SerializeField] string _text;
-    [SerializeField, Min(0)] int _initialCardCount;
 
     [SerializeField, Min(1)] int _rarity;
     [SerializeField] bool _isDisposedOfAfterSell;
@@ -31,11 +30,6 @@ public class CardParameter
     public string GetText()
     {
         return _text;
-    }
-
-    public int GetInitialCardCount()
-    {
-        return _initialCardCount;
     }
 
     public int Rarity()
