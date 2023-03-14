@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -222,12 +223,17 @@ public class CardUIHandler : MonoBehaviour
     {
         _card = card;
 
+        //一旦すべての表示を消す
+        SetImagesEnabled(false);
+
         bool isNormalCard = _card is not EEX_null;
 
-        SetImagesEnabled(isNormalCard);
         _selectable.interactable = isNormalCard;
 
-        if (isNormalCard) SetImagesSprite(card.CardSprite);
+        if (isNormalCard)
+        {
+            SetImagesSprite(card.CardSprite);
+        }
     }
 
     public Card GetCardName()
@@ -251,13 +257,12 @@ public class CardUIHandler : MonoBehaviour
     {
         for (int i = 0; i < _images.Count; i++)
         {
-            if (sprites[i] == null)
-            {
-                _images[i].enabled = false;
-                continue;
-            }
+            if (sprites[i] == null) continue;
 
             _images[i].sprite = sprites[i];
+
+            //i==0はbaseなため必ず表示
+            if (i != 0) _images[i].enabled = StringManager.hasElements[i - 1];
         }
     }
 }
