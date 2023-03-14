@@ -255,6 +255,8 @@ public class CardUIHandler : MonoBehaviour
 
     private void SetImagesSprite(IReadOnlyList<Sprite> sprites)
     {
+        _images[0].enabled = true;
+
         for (int i = 0; i < _images.Count; i++)
         {
             if (sprites[i] == null) continue;

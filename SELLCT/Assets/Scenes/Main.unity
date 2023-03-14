@@ -574,6 +574,87 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 109353456}
   m_CullTransparentMesh: 1
+--- !u!1 &119969105
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 119969106}
+  - component: {fileID: 119969108}
+  - component: {fileID: 119969107}
+  m_Layer: 0
+  m_Name: E17_Number
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &119969106
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 119969105}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1246967504}
+  m_RootOrder: -1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &119969107
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 119969105}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d37be42cd75f03f4c8e443ec502860c2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _numberImages:
+  - {fileID: 1727783374}
+  - {fileID: 2140106001}
+  - {fileID: 1894054627}
+  - {fileID: 1778377817}
+  - {fileID: 173134046}
+  - {fileID: 1943454995}
+  - {fileID: 397537691}
+  - {fileID: 1739031468}
+--- !u!114 &119969108
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 119969105}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ae6817942a0e9da40a0e85356ffb75ef, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _parameter:
+    _price: 0
+    _name: 
+    _text: 
+    _rarity: 0
+    _isDisposedOfAfterSell: 0
+  _controller: {fileID: 96249318}
+  _baseSprite: {fileID: 21300000, guid: 43d220280f3e18041a13ffe6173e02e6, type: 3}
+  _number: {fileID: 21300000, guid: 857bfee269ac0e94bbc1d4a9c9800d7c, type: 3}
+  _chineseCharacters: {fileID: 21300000, guid: 44e9f18bdcd0d494aa4ac95fa2ce76a1, type: 3}
+  _hiragana: {fileID: 0}
+  _katakana: {fileID: 0}
+  _alphabet: {fileID: 0}
+  _handMediator: {fileID: 379178481}
+  _numberHandView: {fileID: 119969107}
 --- !u!1 &135926537
 GameObject:
   m_ObjectHideFlags: 0
@@ -3167,6 +3248,8 @@ MonoBehaviour:
     initcount: 1
   - card: {fileID: 1785525373}
     initcount: 1
+  - card: {fileID: 119969108}
+    initcount: 1
   - card: {fileID: 212574422}
     initcount: 1
   - card: {fileID: 2058171968}
@@ -5178,6 +5261,7 @@ Transform:
   - {fileID: 992571183}
   - {fileID: 2134259531}
   - {fileID: 1785525372}
+  - {fileID: 119969106}
   - {fileID: 212574423}
   - {fileID: 2058171967}
   m_Father: {fileID: 1255751109}
@@ -5203,6 +5287,8 @@ MonoBehaviour:
   - card: {fileID: 2134259532}
     initcount: 4
   - card: {fileID: 1785525373}
+    initcount: 4
+  - card: {fileID: 119969108}
     initcount: 4
   - card: {fileID: 212574422}
     initcount: 4
