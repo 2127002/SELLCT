@@ -13,6 +13,7 @@ public class E14_TextBox : Card
     [SerializeField] Sprite _chineseCharacters = default!;
     [SerializeField] Sprite _hiragana = default!;
     [SerializeField] Sprite _katakana = default!;
+    [SerializeField] Sprite _alphabet = default!;
     [SerializeField] HandMediator _handMediator = default!;
     [SerializeField] Image _u5 = default!;
     [SerializeField] Image _u13 = default!;
@@ -32,6 +33,7 @@ public class E14_TextBox : Card
                 result.Add(_chineseCharacters);
                 result.Add(_hiragana);
                 result.Add(_katakana);
+                result.Add(_alphabet);
             }
 
             return result;
