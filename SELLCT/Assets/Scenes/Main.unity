@@ -3250,6 +3250,8 @@ MonoBehaviour:
     initcount: 1
   - card: {fileID: 119969108}
     initcount: 1
+  - card: {fileID: 1873354563}
+    initcount: 1
   - card: {fileID: 212574422}
     initcount: 1
   - card: {fileID: 2058171968}
@@ -3896,6 +3898,7 @@ MonoBehaviour:
   _chineseCharacters: {fileID: 0}
   _hiragana: {fileID: 0}
   _katakana: {fileID: 0}
+  _alphabet: {fileID: 0}
   _handMediator: {fileID: 379178481}
   _selectable: {fileID: 43193401}
   _u7: {fileID: 43193399}
@@ -5262,6 +5265,7 @@ Transform:
   - {fileID: 2134259531}
   - {fileID: 1785525372}
   - {fileID: 119969106}
+  - {fileID: 1873354561}
   - {fileID: 212574423}
   - {fileID: 2058171967}
   m_Father: {fileID: 1255751109}
@@ -5293,6 +5297,8 @@ MonoBehaviour:
   - card: {fileID: 212574422}
     initcount: 4
   - card: {fileID: 2058171968}
+    initcount: 4
+  - card: {fileID: 1873354563}
     initcount: 4
 --- !u!1 &1255751108
 GameObject:
@@ -7624,6 +7630,87 @@ Transform:
   m_Father: {fileID: 1449596401}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1873354560
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1873354561}
+  - component: {fileID: 1873354563}
+  - component: {fileID: 1873354562}
+  m_Layer: 0
+  m_Name: E18_Kanji
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1873354561
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1873354560}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1246967504}
+  m_RootOrder: -1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1873354562
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1873354560}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7d81c508d3744114aa96fb5844e00526, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _numberImages:
+  - {fileID: 1654134670}
+  - {fileID: 678142236}
+  - {fileID: 801708145}
+  - {fileID: 1940024621}
+  - {fileID: 1332376184}
+  - {fileID: 1802749128}
+  - {fileID: 1280348522}
+  - {fileID: 1464592293}
+--- !u!114 &1873354563
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1873354560}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c0050991e2313f042bf3a68723adafbe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _parameter:
+    _price: 0
+    _name: 
+    _text: 
+    _rarity: 0
+    _isDisposedOfAfterSell: 0
+  _controller: {fileID: 96249318}
+  _baseSprite: {fileID: 21300000, guid: 4f6d522d6050f2c40a155c7f5a1cfa26, type: 3}
+  _number: {fileID: 0}
+  _chineseCharacters: {fileID: 0}
+  _hiragana: {fileID: 0}
+  _katakana: {fileID: 0}
+  _alphabet: {fileID: 0}
+  _handMediator: {fileID: 379178481}
+  _kanjiHandView: {fileID: 1873354562}
 --- !u!1 &1889125123
 GameObject:
   m_ObjectHideFlags: 0
