@@ -11,6 +11,7 @@ public class E8_BGM : Card
     [SerializeField] Sprite _chineseCharacters = default!;
     [SerializeField] Sprite _hiragana = default!;
     [SerializeField] Sprite _katakana = default!;
+    [SerializeField] Sprite _alphabet = default!;
     [SerializeField] HandMediator _handMediator = default!;
 
     readonly List<Sprite> result = new();
@@ -29,6 +30,7 @@ public class E8_BGM : Card
                 result.Add(_chineseCharacters);
                 result.Add(_hiragana);
                 result.Add(_katakana);
+                result.Add(_alphabet);
             }
 
             return result;

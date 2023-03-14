@@ -12,6 +12,7 @@ public class E0_Life : Card
     [SerializeField] Sprite _chineseCharacters = default!;
     [SerializeField] Sprite _hiragana = default!;
     [SerializeField] Sprite _katakana = default!;
+    [SerializeField] Sprite _alphabet = default!;
     [SerializeField] HandMediator _handMediator = default!;
 
     readonly List<Sprite> result = new();
@@ -30,6 +31,7 @@ public class E0_Life : Card
                 result.Add(_chineseCharacters);
                 result.Add(_hiragana);
                 result.Add(_katakana);
+                result.Add(_alphabet);
             }
 
             return result;
@@ -62,7 +64,7 @@ public class E0_Life : Card
         //売った際に命が1枚もないならゲームオーバー
         if (_handMediator.ContainsCard(this)) return;
 
-        Debug.LogWarning("命がなくなりました。シーン3に遷移する処理は未実装なため続行されます。");
+        Debug.LogWarning(StringManager.ToDisplayString("命がなくなりました！シーン3に遷移する処理は未実装なため続行されます。"));
         //TODO:シーン3に遷移
     }
 }
