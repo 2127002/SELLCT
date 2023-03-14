@@ -10,6 +10,10 @@ public class TR2_RuinedNobility : Trader
     TraderDeck _deck = new();
 
     public override TraderDeck TraderDeck => _deck;
+    private void Awake()
+    {
+        _favorability = _traderParameter.InitialFavorability();
+    }
 
     public override void CreateDeck(CardPool pool)
     {
@@ -59,6 +63,7 @@ public class TR2_RuinedNobility : Trader
 
     public override string StartMessage()
     {
+        return "Hello. My name is TR2 deGozaru.";
         throw new System.NotImplementedException();
     }
 
