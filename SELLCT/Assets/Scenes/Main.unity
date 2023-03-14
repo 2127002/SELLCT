@@ -3252,6 +3252,10 @@ MonoBehaviour:
     initcount: 1
   - card: {fileID: 1873354563}
     initcount: 1
+  - card: {fileID: 1194751558}
+    initcount: 1
+  - card: {fileID: 774389281}
+    initcount: 1
   - card: {fileID: 212574422}
     initcount: 1
   - card: {fileID: 2058171968}
@@ -3260,6 +3264,87 @@ MonoBehaviour:
   _drawCount: 0
   _handMediator: {fileID: 379178481}
   _cardPool: {fileID: 1246967505}
+--- !u!1 &774389278
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 774389279}
+  - component: {fileID: 774389281}
+  - component: {fileID: 774389280}
+  m_Layer: 0
+  m_Name: E20_Katakana
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &774389279
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 774389278}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1246967504}
+  m_RootOrder: -1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &774389280
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 774389278}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 67091637df5bfc44d8cc14da8dbcb9b7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _katakanaImages:
+  - {fileID: 594189630}
+  - {fileID: 394884629}
+  - {fileID: 109353458}
+  - {fileID: 607930778}
+  - {fileID: 522171880}
+  - {fileID: 394230613}
+  - {fileID: 1241069311}
+  - {fileID: 1920696683}
+--- !u!114 &774389281
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 774389278}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 327de3e064546de45a1f95adb29390c6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _parameter:
+    _price: 0
+    _name: 
+    _text: 
+    _rarity: 0
+    _isDisposedOfAfterSell: 0
+  _controller: {fileID: 96249318}
+  _baseSprite: {fileID: 21300000, guid: 0fb748c56efc3c74eb343d531f979177, type: 3}
+  _number: {fileID: 0}
+  _chineseCharacters: {fileID: 0}
+  _hiragana: {fileID: 0}
+  _katakana: {fileID: 21300000, guid: 9e54a27e69bf3cf4fa68a7de94961d93, type: 3}
+  _alphabet: {fileID: 0}
+  _handMediator: {fileID: 379178481}
+  _katakanaHandView: {fileID: 774389280}
 --- !u!1 &801708144
 GameObject:
   m_ObjectHideFlags: 0
@@ -5348,6 +5433,7 @@ Transform:
   - {fileID: 119969106}
   - {fileID: 1873354561}
   - {fileID: 1194751556}
+  - {fileID: 774389279}
   - {fileID: 212574423}
   - {fileID: 2058171967}
   m_Father: {fileID: 1255751109}
@@ -5376,11 +5462,15 @@ MonoBehaviour:
     initcount: 4
   - card: {fileID: 119969108}
     initcount: 4
+  - card: {fileID: 1873354563}
+    initcount: 4
+  - card: {fileID: 1194751558}
+    initcount: 4
+  - card: {fileID: 774389281}
+    initcount: 4
   - card: {fileID: 212574422}
     initcount: 4
   - card: {fileID: 2058171968}
-    initcount: 4
-  - card: {fileID: 1873354563}
     initcount: 4
 --- !u!1 &1255751108
 GameObject:
