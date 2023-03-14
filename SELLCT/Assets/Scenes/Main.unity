@@ -2924,6 +2924,8 @@ MonoBehaviour:
   _confirmedDeck:
   - card: {fileID: 1159339318}
     initcount: 1
+  - card: {fileID: 992571184}
+    initcount: 1
   - card: {fileID: 2134259532}
     initcount: 1
   - card: {fileID: 1785525373}
@@ -3288,6 +3290,65 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 978314704}
   m_CullTransparentMesh: 1
+--- !u!1 &992571182
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 992571183}
+  - component: {fileID: 992571184}
+  m_Layer: 0
+  m_Name: E7_Move
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &992571183
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 992571182}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1246967504}
+  m_RootOrder: -1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &992571184
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 992571182}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 010dbcf0c10e44142a519491a79015fe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _parameter:
+    _price: 0
+    _name: 
+    _text: 
+    _rarity: 0
+    _isDisposedOfAfterSell: 0
+  _controller: {fileID: 96249318}
+  _baseSprite: {fileID: 21300000, guid: 4f6d522d6050f2c40a155c7f5a1cfa26, type: 3}
+  _number: {fileID: 0}
+  _chineseCharacters: {fileID: 0}
+  _hiragana: {fileID: 0}
+  _katakana: {fileID: 0}
+  _handMediator: {fileID: 379178481}
+  _selectable: {fileID: 43193401}
+  _u7: {fileID: 43193399}
 --- !u!1 &1006028164
 GameObject:
   m_ObjectHideFlags: 0
@@ -4642,6 +4703,7 @@ Transform:
   m_Children:
   - {fileID: 854960962}
   - {fileID: 1159339319}
+  - {fileID: 992571183}
   - {fileID: 2134259531}
   - {fileID: 1785525372}
   - {fileID: 2058171967}
@@ -4663,6 +4725,8 @@ MonoBehaviour:
   _cardCapacity:
   - card: {fileID: 1159339318}
     initcount: 10
+  - card: {fileID: 992571184}
+    initcount: 4
   - card: {fileID: 2134259532}
     initcount: 4
   - card: {fileID: 1785525373}
