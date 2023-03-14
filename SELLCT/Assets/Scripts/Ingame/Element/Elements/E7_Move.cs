@@ -13,6 +13,7 @@ public class E7_Move : Card
     [SerializeField] Sprite _chineseCharacters = default!;
     [SerializeField] Sprite _hiragana = default!;
     [SerializeField] Sprite _katakana = default!;
+    [SerializeField] Sprite _alphabet = default!;
     [SerializeField] HandMediator _handMediator = default!;
     //‘I‘ðŽˆ
     [SerializeField] Selectable _selectable;
@@ -33,6 +34,7 @@ public class E7_Move : Card
                 result.Add(_chineseCharacters);
                 result.Add(_hiragana);
                 result.Add(_katakana);
+                result.Add(_alphabet);
             }
 
             return result;
