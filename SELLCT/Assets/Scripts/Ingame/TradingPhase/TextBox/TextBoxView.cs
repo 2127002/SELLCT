@@ -45,6 +45,6 @@ public class TextBoxView : MonoBehaviour
     }
     public void UpdeteText(string text)
     {
-        _text.text = text;
+        _text.text = StringManager.ToDisplayString(text);
     }
 }

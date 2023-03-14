@@ -11,6 +11,7 @@ public class E26_Favourable : Card
     [SerializeField] Sprite _chineseCharacters = default!;
     [SerializeField] Sprite _hiragana = default!;
     [SerializeField] Sprite _katakana = default!;
+    [SerializeField] Sprite _alphabet = default!;
     [SerializeField] FavourableView _favourableView = default!;
     [SerializeField] HandMediator _handMediator = default!;
 
@@ -23,13 +24,14 @@ public class E26_Favourable : Card
         get
         {
             //‰Šú‰»
-            if(result.Count == 0)
+            if (result.Count == 0)
             {
                 result.Add(_baseSprite);
                 result.Add(_number);
                 result.Add(_chineseCharacters);
                 result.Add(_hiragana);
                 result.Add(_katakana);
+                result.Add(_alphabet);
             }
 
             return result;
