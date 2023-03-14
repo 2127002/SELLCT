@@ -5002,6 +5002,87 @@ Transform:
   m_Father: {fileID: 1449596401}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1194751555
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1194751556}
+  - component: {fileID: 1194751558}
+  - component: {fileID: 1194751557}
+  m_Layer: 0
+  m_Name: E19_Hiragana
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1194751556
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1194751555}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1246967504}
+  m_RootOrder: -1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1194751557
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1194751555}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6552bf9cbacbeef48be43e1659a6f1fa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _numberImages:
+  - {fileID: 395190028}
+  - {fileID: 895497743}
+  - {fileID: 1722775360}
+  - {fileID: 212117532}
+  - {fileID: 977984518}
+  - {fileID: 593543708}
+  - {fileID: 1152254113}
+  - {fileID: 1006028166}
+--- !u!114 &1194751558
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1194751555}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a20dc70a71e710b4bb3975029e67fc29, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _parameter:
+    _price: 0
+    _name: 
+    _text: 
+    _rarity: 0
+    _isDisposedOfAfterSell: 0
+  _controller: {fileID: 96249318}
+  _baseSprite: {fileID: 21300000, guid: 4f6d522d6050f2c40a155c7f5a1cfa26, type: 3}
+  _number: {fileID: 0}
+  _chineseCharacters: {fileID: 0}
+  _hiragana: {fileID: 0}
+  _katakana: {fileID: 0}
+  _alphabet: {fileID: 0}
+  _handMediator: {fileID: 379178481}
+  _hiraganaHandView: {fileID: 1194751557}
 --- !u!1 &1213578943
 GameObject:
   m_ObjectHideFlags: 0
@@ -5266,6 +5347,7 @@ Transform:
   - {fileID: 1785525372}
   - {fileID: 119969106}
   - {fileID: 1873354561}
+  - {fileID: 1194751556}
   - {fileID: 212574423}
   - {fileID: 2058171967}
   m_Father: {fileID: 1255751109}
