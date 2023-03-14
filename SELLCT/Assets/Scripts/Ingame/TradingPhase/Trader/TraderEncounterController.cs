@@ -9,6 +9,6 @@ public class TraderEncounterController : MonoBehaviour
 
     private void Awake()
     {
-        _traderController.SetTrader(_tradersInstance.Traders[0]);
+        _traderController.SetTrader(_tradersInstance.Traders[1]);
     }
 }
