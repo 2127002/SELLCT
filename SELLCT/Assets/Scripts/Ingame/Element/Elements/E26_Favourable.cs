@@ -14,6 +14,7 @@ public class E26_Favourable : Card
     [SerializeField] Sprite _alphabet = default!;
     [SerializeField] FavourableView _favourableView = default!;
     [SerializeField] HandMediator _handMediator = default!;
+    [SerializeField] PhaseController _phaseController = default!;
 
     readonly List<Sprite> result = new();
 
@@ -39,6 +40,16 @@ public class E26_Favourable : Card
     }
 
     private void Awake()
+    {
+        _phaseController.onTradingPhaseStart += OnPhaseStart;
+    }
+
+    private void OnDestroy()
+    {
+        _phaseController.onTradingPhaseStart -= OnPhaseStart;
+    }
+
+    private void OnPhaseStart()
     {
         bool enabled = _handMediator.ContainsCard(this);
 

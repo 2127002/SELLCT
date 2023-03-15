@@ -15,7 +15,6 @@ public class E1_Buy : Card
     [SerializeField] Sprite _katakana = default!;
     [SerializeField] Sprite _alphabet = default!;
     [SerializeField] HandMediator _handMediator = default!;
-    [SerializeField] Selectable _selectable;
     [SerializeField] Color color = default!;
     [SerializeField] Image _u3Card1 = default!;
     [SerializeField] Image _u3Card2 = default!;

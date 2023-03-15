@@ -18,30 +18,31 @@ public class CardUIHandler : MonoBehaviour
 
     //このようにDetectorにわざわざ分けているのは、interfaceのメソッドがpublicになるからです。
     //外部から意図しないタイミングで呼ばれることを避けるため回りくどい手を使っています。
-    [SerializeField] LeftClickDetector _clickDetector;
-    [SerializeField] PointerEnterDetector _enterDetector;
-    [SerializeField] PointerExitDetector _exitDetector;
-    [SerializeField] SubmitDetector _submitDetector;
-    [SerializeField] SelectDetector _selectDetector;
-    [SerializeField] DeselectDetector _deselectDetector;
+    [SerializeField] LeftClickDetector _clickDetector = default!;
+    [SerializeField] PointerEnterDetector _enterDetector = default!;
+    [SerializeField] PointerExitDetector _exitDetector=default!;
+    [SerializeField] SubmitDetector _submitDetector=default!;
+    [SerializeField] SelectDetector _selectDetector = default!;
+    [SerializeField] DeselectDetector _deselectDetector = default!;
 
     //デッキと手札の管理者。Subはメインの逆のmediator。
-    [SerializeField] DeckMediator _deckMediator;
-    [SerializeField] DeckMediator _subDeckMediator;
+    [SerializeField] DeckMediator _deckMediator = default!;
+    [SerializeField] DeckMediator _subDeckMediator = default!;
 
     //選択肢
-    [SerializeField] Selectable _selectable;
+    [SerializeField] Selectable _selectable = default!;
 
     //カード表示
-    [SerializeField] List<Image> _images;
+    [SerializeField] List<Image> _images = default!;
 
-    [SerializeField] TraderController _traderController;
+    [SerializeField] PhaseController _phaseController = default!;
+
+    [SerializeField] TraderController _traderController = default!;
 
     [SerializeField] EntityType _entityType;
     [SerializeField] bool _isFirstSelectable;
 
-    Card _card;
-    EventSystem _eventSystem;
+    Card _card = default!;
 
     //選択時画像サイズ補正値
     const float CORRECTION_SIZE = 1.25f;
@@ -50,8 +51,6 @@ public class CardUIHandler : MonoBehaviour
 
     private void Awake()
     {
-        _eventSystem = EventSystem.current;
-
         //購読
         _clickDetector.AddListener(HandleClick);
         _enterDetector.AddListener(HandleEnter);
@@ -59,8 +58,7 @@ public class CardUIHandler : MonoBehaviour
         _submitDetector.AddListener(HandleSubmit);
         _selectDetector.AddListener(HandleSelect);
         _deselectDetector.AddListener(HandleDeselect);
-
-        SetFirstSelectable();
+        _phaseController.onTradingPhaseStart += SetFirstSelectable;
 
         //わかりやすくするため仮に選択時の色を赤に変更。今後の変更推奨
         var b = _selectable.colors;
@@ -77,6 +75,7 @@ public class CardUIHandler : MonoBehaviour
         _submitDetector.RemoveListener(HandleSubmit);
         _selectDetector.RemoveListener(HandleSelect);
         _deselectDetector.RemoveListener(HandleDeselect);
+        _phaseController.onTradingPhaseStart -= SetFirstSelectable;
     }
 
     private void SetFirstSelectable()
@@ -84,13 +83,13 @@ public class CardUIHandler : MonoBehaviour
         //初期選択のチェックボックスがtrueだったら登録
         if (!_isFirstSelectable) return;
 
-        if (_eventSystem.currentSelectedGameObject != null)
+        if (EventSystem.current.currentSelectedGameObject != null)
         {
-            Debug.LogWarning("すでに別のオブジェクトが選択されています。" + gameObject + "の登録は棄却されました。正しい仕様を確認してください。" + _eventSystem.currentSelectedGameObject);
+            Debug.LogWarning("すでに別のオブジェクトが選択されています。" + gameObject + "の登録は棄却されました。正しい仕様を確認してください。" + EventSystem.current.currentSelectedGameObject);
             return;
         }
 
-        _eventSystem.SetSelectedGameObject(_selectable.gameObject);
+        EventSystem.current.SetSelectedGameObject(_selectable.gameObject);
 
         foreach (var item in _images)
         {
@@ -168,7 +167,7 @@ public class CardUIHandler : MonoBehaviour
         next ??= _selectable.FindSelectableOnUp();
         next ??= _selectable.FindSelectableOnDown();
 
-        if (next != null) _eventSystem.SetSelectedGameObject(next.gameObject);
+        if (next != null) EventSystem.current.SetSelectedGameObject(next.gameObject);
     }
 
     //カーソルをかざした際の処理

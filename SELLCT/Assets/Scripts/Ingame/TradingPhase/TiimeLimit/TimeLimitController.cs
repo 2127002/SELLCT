@@ -1,3 +1,4 @@
+using Cysharp.Threading.Tasks;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -5,19 +6,41 @@ using UnityEngine;
 
 public class TimeLimitController : MonoBehaviour
 {
-    [SerializeField] TimeLimit _timeLimit;
-    [SerializeField] TradingPhaseCompletionHandler _phaseCompletionHandler;
+    [SerializeField, Min(0)] int _timeLimitValueInSeconds;
+    [SerializeField] PhaseController _phaseController = default!;
 
-    Action _onTimeLimit;
+    TimeLimit _timeLimit;
+
+    public event Action OnTimeLimit;
+
+    private void Awake()
+    {
+        _phaseController.onTradingPhaseStart += OnPhaseStart;
+        _phaseController.onTradingPhaseComplete.Add(OnPhaseComplete);
+    }
+
+    private void OnPhaseStart()
+    {
+        _timeLimit = new(_timeLimitValueInSeconds);
+    }
+
+    private async UniTask OnPhaseComplete()
+    {
+        var token = this.GetCancellationTokenOnDestroy();
+
+        _timeLimit = null;
+
+        await UniTask.Yield(token);
+    }
 
     private void Update()
     {
-        _timeLimit.DecreaseTimeDeltaTime();
+        if (_timeLimit != null) _timeLimit.DecreaseTimeDeltaTime();
     }
 
     private void FixedUpdate()
     {
-        TimeLimitChecker();
+        if (_timeLimit != null) TimeLimitChecker();
     }
 
     private void TimeLimitChecker()
@@ -26,20 +49,9 @@ public class TimeLimitController : MonoBehaviour
 
         Debug.Log("制限時間です");
 
-        _onTimeLimit?.Invoke();
-        _phaseCompletionHandler.OnComplete();
+        OnTimeLimit?.Invoke();
 
         //制限時間になったらスクリプトごと無効にする
         enabled = false;
-    }
-
-    public void AddListener(Action onTimeLimit)
-    {
-        _onTimeLimit += onTimeLimit;
-    }
-
-    public void RemoveListener(Action onTimeLimit)
-    {
-        _onTimeLimit -= onTimeLimit;
     }
 }

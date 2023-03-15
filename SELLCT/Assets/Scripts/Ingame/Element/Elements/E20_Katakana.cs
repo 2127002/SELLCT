@@ -14,6 +14,7 @@ public class E20_Katakana : Card
     [SerializeField] Sprite _alphabet = default!;
     [SerializeField] HandMediator _handMediator = default!;
     [SerializeField] KatakanaHandView _katakanaHandView = default!;
+    [SerializeField] PhaseController _phaseController = default!;
 
     readonly List<Sprite> result = new();
 
@@ -38,14 +39,27 @@ public class E20_Katakana : Card
         }
     }
 
+    int elementIndex = (int)StringManager.Element.E20;
+
     private void Awake()
     {
-        StringManager.hasElements[3] = _handMediator.ContainsCard(this);
+        _phaseController.onTradingPhaseStart += OnPhaseStart;
+        _katakanaHandView.Set();
+    }
+
+    private void OnPhaseStart()
+    {
+        StringManager.hasElements[elementIndex] = _handMediator.ContainsCard(this);
+    }
+
+    private void OnDestroy()
+    {
+        _phaseController.onTradingPhaseStart -= OnPhaseStart;
     }
 
     public override void Buy()
     {
-        StringManager.hasElements[3] = true;
+        StringManager.hasElements[elementIndex] = true;
         _controller.DecreaseMoney(_parameter.GetMoney());
     }
 
@@ -59,7 +73,7 @@ public class E20_Katakana : Card
         _controller.IncreaseMoney(_parameter.GetMoney());
 
         if (_handMediator.ContainsCard(this)) return;
-        StringManager.hasElements[3] = false;
+        StringManager.hasElements[elementIndex] = false;
         _katakanaHandView.Set();
     }
 }

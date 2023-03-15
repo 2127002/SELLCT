@@ -8,31 +8,26 @@ public class TradingNextButtonHandler : MonoBehaviour
 {
     //このようにDetectorにわざわざ分けているのは、interfaceのメソッドがpublicになるからです。
     //外部から意図しないタイミングで呼ばれることを避けるため回りくどい手を使っています。
-    [SerializeField] LeftClickDetector _clickDetector;
-    [SerializeField] PointerEnterDetector _enterDetector;
-    [SerializeField] PointerExitDetector _exitDetector;
-    [SerializeField] SubmitDetector _submitDetector;
-    [SerializeField] SelectDetector _selectDetector;
-    [SerializeField] Selectable _selectable;
+    [SerializeField] LeftClickDetector _clickDetector = default!;
+    [SerializeField] PointerEnterDetector _enterDetector = default!;
+    [SerializeField] PointerExitDetector _exitDetector = default!;
+    [SerializeField] SubmitDetector _submitDetector = default!;
+    [SerializeField] SelectDetector _selectDetector = default!;
+    [SerializeField] Selectable _selectable = default!;
 
-    [SerializeField] TradingPhaseCompletionHandler _phaseCompletionHandler;
+    [SerializeField] PhaseController _phaseController = default!;
 
     [SerializeField] bool _isFirstSelectable;
 
-    EventSystem _eventSystem;
-
     private void Awake()
     {
-        _eventSystem = EventSystem.current;
-
         //購読
         _clickDetector.AddListener(HandleClick);
         _enterDetector.AddListener(HandleEnter);
         _exitDetector.AddListener(HandleExit);
         _submitDetector.AddListener(HandleSubmit);
         _selectDetector.AddListener(HandleSelect);
-
-        SetFirstSelectable();
+        _phaseController.onTradingPhaseStart += SetFirstSelectable;
 
         //わかりやすくするため仮に選択時の色を赤に変更。今後の変更推奨
         var b = _selectable.colors;
@@ -48,6 +43,7 @@ public class TradingNextButtonHandler : MonoBehaviour
         _exitDetector.RemoveListener(HandleExit);
         _submitDetector.RemoveListener(HandleSubmit);
         _selectDetector.RemoveListener(HandleSelect);
+        _phaseController.onTradingPhaseStart -= SetFirstSelectable;
     }
 
     private void SetFirstSelectable()
@@ -55,19 +51,19 @@ public class TradingNextButtonHandler : MonoBehaviour
         //初期選択のチェックボックスがtrueだったら登録
         if (!_isFirstSelectable) return;
 
-        if (_eventSystem.currentSelectedGameObject != null)
+        if (EventSystem.current.currentSelectedGameObject != null)
         {
-            Debug.LogWarning("すでに別のオブジェクトが選択されています。" + gameObject + "の登録は棄却されました。正しい仕様を確認してください。" + _eventSystem.currentSelectedGameObject);
+            Debug.LogWarning("すでに別のオブジェクトが選択されています。" + gameObject + "の登録は棄却されました。正しい仕様を確認してください。" + EventSystem.current.currentSelectedGameObject);
             return;
         }
 
-        _eventSystem.SetSelectedGameObject(_selectable.gameObject);
+        EventSystem.current.SetSelectedGameObject(_selectable.gameObject);
     }
 
     private void HandleClick()
     {
         //フェーズ終了を知らせる
-        _phaseCompletionHandler.OnComplete();
+        _phaseController.CompleteTradingPhase();
     }
 
     private void HandleEnter()

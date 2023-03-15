@@ -14,6 +14,7 @@ public class E19_Hiragana : Card
     [SerializeField] Sprite _alphabet = default!;
     [SerializeField] HandMediator _handMediator = default!;
     [SerializeField] HiraganaHandView _hiraganaHandView = default!;
+    [SerializeField] PhaseController _phaseController = default!;
 
     readonly List<Sprite> result = new();
 
@@ -38,14 +39,27 @@ public class E19_Hiragana : Card
         }
     }
 
+    int elementIndex = (int)StringManager.Element.E19;
+
     private void Awake()
     {
-        StringManager.hasElements[2] = _handMediator.ContainsCard(this);
+        _phaseController.onTradingPhaseStart += OnPhaseStart;
+    }
+
+    private void OnPhaseStart()
+    {
+        StringManager.hasElements[elementIndex] = _handMediator.ContainsCard(this);
+        _hiraganaHandView.Set();
+    }
+
+    private void OnDestroy()
+    {
+        _phaseController.onTradingPhaseStart -= OnPhaseStart;
     }
 
     public override void Buy()
     {
-        StringManager.hasElements[2] = true;
+        StringManager.hasElements[elementIndex] = true;
         _controller.DecreaseMoney(_parameter.GetMoney());
     }
 
@@ -59,7 +73,7 @@ public class E19_Hiragana : Card
         _controller.IncreaseMoney(_parameter.GetMoney());
 
         if (_handMediator.ContainsCard(this)) return;
-        StringManager.hasElements[2] = false;
+        StringManager.hasElements[elementIndex] = false;
         _hiraganaHandView.Set();
     }
 }
