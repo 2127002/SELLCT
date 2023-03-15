@@ -1160,6 +1160,7 @@ MonoBehaviour:
   _phaseController: {fileID: 495064998}
   _timeLimitController: {fileID: 296562001}
   _inputSystemDetector: {fileID: 391254979}
+  _canvas: {fileID: 233741556}
 --- !u!114 &251747937
 MonoBehaviour:
   m_ObjectHideFlags: 0
