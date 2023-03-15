@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class NextButtonHandler : MonoBehaviour
+public class ExplorationNextButtonHandler : MonoBehaviour
 {
     //このようにDetectorにわざわざ分けているのは、interfaceのメソッドがpublicになるからです。
     //外部から意図しないタイミングで呼ばれることを避けるため回りくどい手を使っています。
@@ -15,16 +15,12 @@ public class NextButtonHandler : MonoBehaviour
     [SerializeField] SelectDetector _selectDetector;
     [SerializeField] Selectable _selectable;
 
-    [SerializeField] TradingPhaseCompletionHandler _phaseCompletionHandler;
-
     [SerializeField] bool _isFirstSelectable;
 
-    EventSystem _eventSystem;
+    [SerializeField] PhaseController _phaseController;
 
     private void Awake()
     {
-        _eventSystem = EventSystem.current;
-
         //購読
         _clickDetector.AddListener(HandleClick);
         _enterDetector.AddListener(HandleEnter);
@@ -55,19 +51,21 @@ public class NextButtonHandler : MonoBehaviour
         //初期選択のチェックボックスがtrueだったら登録
         if (!_isFirstSelectable) return;
 
-        if (_eventSystem.currentSelectedGameObject != null)
+        if (EventSystem.current.currentSelectedGameObject != null)
         {
-            Debug.LogWarning("すでに別のオブジェクトが選択されています。" + gameObject + "の登録は棄却されました。正しい仕様を確認してください。" + _eventSystem.currentSelectedGameObject);
+            Debug.LogWarning("すでに別のオブジェクトが選択されています。" + gameObject + "の登録は棄却されました。正しい仕様を確認してください。" + EventSystem.current.currentSelectedGameObject);
             return;
         }
 
-        _eventSystem.SetSelectedGameObject(_selectable.gameObject);
+        EventSystem.current.SetSelectedGameObject(_selectable.gameObject);
     }
 
     private void HandleClick()
     {
         //フェーズ終了を知らせる
-        _phaseCompletionHandler.OnComplete();
+        EventSystem.current.SetSelectedGameObject(null);
+
+        //_phaseController.onExplorationPhaseStart;
     }
 
     private void HandleEnter()

@@ -4,13 +4,14 @@ using UnityEngine;
 
 public class TraderDeckGenerator : MonoBehaviour
 {
-    [SerializeField] CardPool _cardPool = default!;
-
     [SerializeField] TradersInstance _tradersInstance = default!;
 
-    //Edit > Project Settings > Script Execution Order‚ÅÀs‡‚ğ’²®‚µ‚Ä‚¢‚Ü‚·B
-    private void Awake()
+    CardPool _cardPool = default!;
+
+    public void Generate(CardPool pool)
     {
+        _cardPool = pool;
+
         AddTrader2_7Deck();
         AddTrader1Deck();
     }

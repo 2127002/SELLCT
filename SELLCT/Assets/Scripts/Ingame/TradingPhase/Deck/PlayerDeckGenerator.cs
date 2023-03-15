@@ -11,11 +11,12 @@ public class PlayerDeckGenerator : MonoBehaviour
     [SerializeField, Min(0)] int _drawCount = default!;
 
     [SerializeField] HandMediator _handMediator = default!;
-    [SerializeField] CardPool _cardPool = default!;
+    CardPool _cardPool = default!;
 
-    //Edit > Project Settings > Script Execution Order‚ÅÀs‡‚ğ’²®‚µ‚Ä‚¢‚Ü‚·B
-    private void Awake()
+    public void Generate(CardPool pool)
     {
+        _cardPool = pool;
+
         AddConfirmedDeck();
         AddProbabilityDeck();
     }
