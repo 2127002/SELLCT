@@ -43,7 +43,7 @@ public class E20_Katakana : Card
 
     private void Awake()
     {
-        _phaseController.onTradingPhaseStart += OnPhaseStart;
+        _phaseController.OnTradingPhaseStart.Add(OnPhaseStart);
         _katakanaHandView.Set();
     }
 
@@ -54,7 +54,7 @@ public class E20_Katakana : Card
 
     private void OnDestroy()
     {
-        _phaseController.onTradingPhaseStart -= OnPhaseStart;
+        _phaseController.OnTradingPhaseStart.Remove(OnPhaseStart);
     }
 
     public override void Buy()

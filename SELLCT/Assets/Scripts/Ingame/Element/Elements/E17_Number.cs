@@ -15,7 +15,7 @@ public class E17_Number : Card
     [SerializeField] HandMediator _handMediator = default!;
     [SerializeField] NumberHandView _numberHandView = default!;
     [SerializeField] PhaseController _phaseController = default!;
-    
+
     readonly List<Sprite> result = new();
 
     public override bool IsDisposedOfAfterSell => _parameter.IsDisposedOfAfterSell();
@@ -43,7 +43,7 @@ public class E17_Number : Card
 
     private void Awake()
     {
-        _phaseController.onTradingPhaseStart += OnPhaseStart;
+        _phaseController.OnTradingPhaseStart.Add(OnPhaseStart);
     }
 
     private void OnPhaseStart()
@@ -54,7 +54,7 @@ public class E17_Number : Card
 
     private void OnDestroy()
     {
-        _phaseController.onTradingPhaseStart -= OnPhaseStart;
+        _phaseController.OnTradingPhaseStart.Remove(OnPhaseStart);
     }
 
     public override void Buy()

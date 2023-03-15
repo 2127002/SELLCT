@@ -44,7 +44,7 @@ public class E21_Alphabet : Card
 
     private void Awake()
     {
-        _phaseController.onTradingPhaseStart += OnPhaseStart;
+        _phaseController.OnTradingPhaseStart.Add(OnPhaseStart);
     }
 
     private void OnPhaseStart()
@@ -55,7 +55,7 @@ public class E21_Alphabet : Card
 
     private void OnDestroy()
     {
-        _phaseController.onTradingPhaseStart -= OnPhaseStart;
+        _phaseController.OnTradingPhaseStart.Remove(OnPhaseStart);
     }
 
     public override void Buy()

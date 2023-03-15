@@ -41,12 +41,12 @@ public class E26_Favourable : Card
 
     private void Awake()
     {
-        _phaseController.onTradingPhaseStart += OnPhaseStart;
+        _phaseController.OnTradingPhaseStart.Add(OnPhaseStart);
     }
 
     private void OnDestroy()
     {
-        _phaseController.onTradingPhaseStart -= OnPhaseStart;
+        _phaseController.OnTradingPhaseStart.Remove(OnPhaseStart);
     }
 
     private void OnPhaseStart()

@@ -8,7 +8,7 @@ public class ExplorationPhaseController : MonoBehaviour
 
     private void Awake()
     {
-        _phaseController.onExplorationPhaseStart += OnPhaseStart;
+        _phaseController.OnExplorationPhaseStart += OnPhaseStart;
     }
 
     private void OnPhaseStart()

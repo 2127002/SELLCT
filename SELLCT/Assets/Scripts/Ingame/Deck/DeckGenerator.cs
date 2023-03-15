@@ -13,7 +13,7 @@ public class DeckGenerator : MonoBehaviour
 
     private void Awake()
     {
-        _phaseController.onGameStart += GenerateDeck;
+        _phaseController.OnGameStart += GenerateDeck;
     }
 
     private void GenerateDeck()

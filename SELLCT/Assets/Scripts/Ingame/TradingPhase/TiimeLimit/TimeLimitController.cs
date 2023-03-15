@@ -15,8 +15,14 @@ public class TimeLimitController : MonoBehaviour
 
     private void Awake()
     {
-        _phaseController.onTradingPhaseStart += OnPhaseStart;
-        _phaseController.onTradingPhaseComplete.Add(OnPhaseComplete);
+        _phaseController.OnTradingPhaseStart.Add(OnPhaseStart);
+        _phaseController.OnTradingPhaseComplete.Add(OnPhaseComplete);
+    }
+
+    private void OnDestroy()
+    {
+        _phaseController.OnTradingPhaseStart.Remove(OnPhaseStart);
+        _phaseController.OnTradingPhaseComplete.Remove(OnPhaseComplete);
     }
 
     private void OnPhaseStart()

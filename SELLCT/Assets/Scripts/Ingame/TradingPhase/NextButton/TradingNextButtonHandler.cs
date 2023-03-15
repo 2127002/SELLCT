@@ -27,7 +27,7 @@ public class TradingNextButtonHandler : MonoBehaviour
         _exitDetector.AddListener(HandleExit);
         _submitDetector.AddListener(HandleSubmit);
         _selectDetector.AddListener(HandleSelect);
-        _phaseController.onTradingPhaseStart += SetFirstSelectable;
+        _phaseController.OnTradingPhaseStart.Add(SetFirstSelectable);
 
         //わかりやすくするため仮に選択時の色を赤に変更。今後の変更推奨
         var b = _selectable.colors;
@@ -43,7 +43,7 @@ public class TradingNextButtonHandler : MonoBehaviour
         _exitDetector.RemoveListener(HandleExit);
         _submitDetector.RemoveListener(HandleSubmit);
         _selectDetector.RemoveListener(HandleSelect);
-        _phaseController.onTradingPhaseStart -= SetFirstSelectable;
+        _phaseController.OnTradingPhaseStart.Remove(SetFirstSelectable);
     }
 
     private void SetFirstSelectable()

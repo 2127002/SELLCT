@@ -13,12 +13,12 @@ public class TraderEncounterController : MonoBehaviour
 
     private void Awake()
     {
-        _phaseController.onTradingPhaseStart += NextTraderSelection;
+        _phaseController.OnTradingPhaseStart.Add(NextTraderSelection);
     }
 
     private void OnDestroy()
     {
-        _phaseController.onTradingPhaseStart -= NextTraderSelection;
+        _phaseController.OnTradingPhaseStart.Remove(NextTraderSelection);
     }
 
     private void NextTraderSelection()

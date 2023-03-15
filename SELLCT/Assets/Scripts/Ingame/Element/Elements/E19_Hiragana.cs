@@ -43,7 +43,7 @@ public class E19_Hiragana : Card
 
     private void Awake()
     {
-        _phaseController.onTradingPhaseStart += OnPhaseStart;
+        _phaseController.OnTradingPhaseStart.Add(OnPhaseStart);
     }
 
     private void OnPhaseStart()
@@ -54,7 +54,7 @@ public class E19_Hiragana : Card
 
     private void OnDestroy()
     {
-        _phaseController.onTradingPhaseStart -= OnPhaseStart;
+        _phaseController.OnTradingPhaseStart.Remove(OnPhaseStart);
     }
 
     public override void Buy()

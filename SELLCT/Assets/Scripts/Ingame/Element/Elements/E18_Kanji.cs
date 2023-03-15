@@ -39,11 +39,11 @@ public class E18_Kanji : Card
         }
     }
 
-    int elementIndex = (int)StringManager.Element.E17;
+    int elementIndex = (int)StringManager.Element.E18;
 
     private void Awake()
     {
-        _phaseController.onTradingPhaseStart += OnPhaseStart;
+        _phaseController.OnTradingPhaseStart.Add(OnPhaseStart);
     }
 
     private void OnPhaseStart()
@@ -54,7 +54,7 @@ public class E18_Kanji : Card
 
     private void OnDestroy()
     {
-        _phaseController.onTradingPhaseStart -= OnPhaseStart;
+        _phaseController.OnTradingPhaseStart.Remove(OnPhaseStart);
     }
 
     public override void Buy()

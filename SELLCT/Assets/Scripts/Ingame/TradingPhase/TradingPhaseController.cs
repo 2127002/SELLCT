@@ -22,9 +22,9 @@ public class TradingPhaseController : MonoBehaviour
 
     private void Awake()
     {
-        _phaseController.onTradingPhaseComplete.Add(OnComplete);
-        _phaseController.onTradingPhaseStart += OnPhaseStart;
-        _phaseController.onExplorationPhaseStart += OnExplorationPhaseStart;
+        _phaseController.OnTradingPhaseComplete.Add(OnComplete);
+        _phaseController.OnTradingPhaseStart.Add(OnPhaseStart);
+        _phaseController.OnExplorationPhaseStart += OnExplorationPhaseStart;
 
         //タイムリミットになったらフェーズを完了する
         _timeLimitController.OnTimeLimit += _phaseController.CompleteTradingPhase;
@@ -46,9 +46,9 @@ public class TradingPhaseController : MonoBehaviour
 
     private void OnDestroy()
     {
-        _phaseController.onTradingPhaseComplete.Remove(OnComplete);
-        _phaseController.onTradingPhaseStart -= OnPhaseStart;
-        _phaseController.onExplorationPhaseStart -= OnExplorationPhaseStart;
+        _phaseController.OnTradingPhaseComplete.Remove(OnComplete);
+        _phaseController.OnTradingPhaseStart.Remove(OnPhaseStart);
+        _phaseController.OnExplorationPhaseStart -= OnExplorationPhaseStart;
 
         _timeLimitController.OnTimeLimit -= _phaseController.CompleteTradingPhase;
         _inputSystemDetector.OnNavigateAction -= OnNavigate;

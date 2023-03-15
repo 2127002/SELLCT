@@ -13,12 +13,12 @@ public class TraderController : MonoBehaviour
 
     private void Awake()
     {
-        _phaseController.onTradingPhaseStart += _traderView.OnPhaseStart;
+        _phaseController.OnTradingPhaseStart.Add(_traderView.OnPhaseStart);
     }
 
     private void OnDestroy()
     {
-        _phaseController.onTradingPhaseStart -= _traderView.OnPhaseStart;
+        _phaseController.OnTradingPhaseStart.Remove(_traderView.OnPhaseStart);
     }
 
     public void SetTrader(Trader trader)

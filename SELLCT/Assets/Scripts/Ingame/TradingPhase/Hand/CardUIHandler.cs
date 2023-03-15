@@ -1,3 +1,4 @@
+using Cysharp.Threading.Tasks;
 using System;
 using System.Collections.Generic;
 using UnityEngine;
@@ -20,8 +21,8 @@ public class CardUIHandler : MonoBehaviour
     //外部から意図しないタイミングで呼ばれることを避けるため回りくどい手を使っています。
     [SerializeField] LeftClickDetector _clickDetector = default!;
     [SerializeField] PointerEnterDetector _enterDetector = default!;
-    [SerializeField] PointerExitDetector _exitDetector=default!;
-    [SerializeField] SubmitDetector _submitDetector=default!;
+    [SerializeField] PointerExitDetector _exitDetector = default!;
+    [SerializeField] SubmitDetector _submitDetector = default!;
     [SerializeField] SelectDetector _selectDetector = default!;
     [SerializeField] DeselectDetector _deselectDetector = default!;
 
@@ -58,12 +59,27 @@ public class CardUIHandler : MonoBehaviour
         _submitDetector.AddListener(HandleSubmit);
         _selectDetector.AddListener(HandleSelect);
         _deselectDetector.AddListener(HandleDeselect);
-        _phaseController.onTradingPhaseStart += SetFirstSelectable;
+        _phaseController.OnTradingPhaseStart.Add(SetFirstSelectable);
+        _phaseController.OnTradingPhaseComplete.Add(OnComplete);
 
         //わかりやすくするため仮に選択時の色を赤に変更。今後の変更推奨
         var b = _selectable.colors;
         b.selectedColor = Color.red;
         _selectable.colors = b;
+    }
+
+    private async UniTask OnComplete()
+    {
+        var token = this.GetCancellationTokenOnDestroy();
+
+        //デッキに返却する
+        if (_card is not EEX_null)
+        {
+            _deckMediator.RemoveHandCard(_card);
+            _deckMediator.AddDeck(_card);
+            InsertCard(EEX_null.Instance);
+        }
+        await UniTask.Yield(token);
     }
 
     private void OnDestroy()
@@ -75,7 +91,8 @@ public class CardUIHandler : MonoBehaviour
         _submitDetector.RemoveListener(HandleSubmit);
         _selectDetector.RemoveListener(HandleSelect);
         _deselectDetector.RemoveListener(HandleDeselect);
-        _phaseController.onTradingPhaseStart -= SetFirstSelectable;
+        _phaseController.OnTradingPhaseStart.Remove(SetFirstSelectable);
+        _phaseController.OnTradingPhaseComplete.Remove(OnComplete);
     }
 
     private void SetFirstSelectable()
@@ -90,13 +107,6 @@ public class CardUIHandler : MonoBehaviour
         }
 
         EventSystem.current.SetSelectedGameObject(_selectable.gameObject);
-
-        foreach (var item in _images)
-        {
-            Vector2 sizeDelta = item.rectTransform.sizeDelta;
-            sizeDelta.Scale(correction);
-            item.rectTransform.sizeDelta = sizeDelta;
-        }
     }
 
     //左クリック時処理

@@ -65,7 +65,7 @@ public class ExplorationNextButtonHandler : MonoBehaviour
         //フェーズ終了を知らせる
         EventSystem.current.SetSelectedGameObject(null);
 
-        //_phaseController.onExplorationPhaseStart;
+        _phaseController.CompleteExplorationPhase();
     }
 
     private void HandleEnter()

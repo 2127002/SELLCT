@@ -15,14 +15,14 @@ public class GoodsMediator : DeckMediator
 
     private void Awake()
     {
-        _phaseController.onTradingPhaseComplete.Add(OnComplete);
-        _phaseController.onTradingPhaseStart += InitTakeCard;
+        _phaseController.OnTradingPhaseComplete.Add(OnComplete);
+        _phaseController.OnTradingPhaseStart.Add(InitTakeCard);
     }
 
     private void OnDestroy()
     {
-        _phaseController.onTradingPhaseComplete.Remove(OnComplete);
-        _phaseController.onTradingPhaseStart -= InitTakeCard;
+        _phaseController.OnTradingPhaseComplete.Remove(OnComplete);
+        _phaseController.OnTradingPhaseStart.Remove(InitTakeCard);
     }
 
     //売買フェーズ終了時に行う処理。
