@@ -15,6 +15,7 @@ public class E7_Move : Card
     [SerializeField] Sprite _katakana = default!;
     [SerializeField] Sprite _alphabet = default!;
     [SerializeField] HandMediator _handMediator = default!;
+    //選択肢
     [SerializeField] Selectable _selectable;
     [SerializeField] Image _u7 = default!;
 
@@ -42,6 +43,10 @@ public class E7_Move : Card
 
     public override void Buy()
     {
+        //TODO:SE301の再生
+        //TODO:画面全体を脈動させるアニメーション
+        //TODO:テキストボックスを更新する
+
         _controller.DecreaseMoney(_parameter.GetMoney());
     }
 
