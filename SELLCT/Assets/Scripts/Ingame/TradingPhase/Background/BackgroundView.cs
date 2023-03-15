@@ -7,7 +7,7 @@ public class BackgroundView : MonoBehaviour
 {
     [SerializeField] FadeInView _fadeinView;
 
-    private void Start()
+    public void OnPhaseStart()
     {
         _fadeinView.StartFade().Forget();
     }

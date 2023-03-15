@@ -12,12 +12,12 @@ public class TradingPhaseView : MonoBehaviour
     [SerializeField] FadeInView _fadeinView;
     [SerializeField] FadeOutView _fadeoutView;
 
-    private void Start()
+    public void OnPhaseStart()
     {
         _fadeinView.StartFade().Forget();
     }
 
-    public async UniTask StartFadeout()
+    public async UniTask OnPhaseComplete()
     {
        await _fadeoutView.StartFade();
     }

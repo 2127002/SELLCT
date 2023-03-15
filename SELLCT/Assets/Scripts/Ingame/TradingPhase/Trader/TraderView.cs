@@ -7,9 +7,8 @@ public class TraderView : MonoBehaviour
 {
     [SerializeField] FadeInView _fadeinView;
 
-    void Start()
+    public void OnPhaseStart()
     {
         _fadeinView.StartFade().Forget();
     }
-
 }

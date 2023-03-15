@@ -4,6 +4,15 @@ using UnityEngine;
 
 public class StringManager
 {
+    public enum Element
+    {
+        E17,
+        E18,
+        E19,
+        E20,
+        E21,
+    }
+
     /// <summary>
     /// 表示用エレメント（E17～E21）を所持しているか。index番号はE17 = 0, E18 = 1, ... , E21 = 4
     /// </summary>

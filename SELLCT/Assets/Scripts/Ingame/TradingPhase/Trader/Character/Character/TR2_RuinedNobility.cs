@@ -53,7 +53,7 @@ public class TR2_RuinedNobility : Trader
 
     public override string EndMessage()
     {
-        throw new System.NotImplementedException();
+        return "See you...";
     }
 
     public override string SellMessage(Card card)
@@ -64,7 +64,6 @@ public class TR2_RuinedNobility : Trader
     public override string StartMessage()
     {
         return "Hello. My name is TR2 deGozaru.";
-        throw new System.NotImplementedException();
     }
 
     public override void OnPlayerSell(Card selledCard)

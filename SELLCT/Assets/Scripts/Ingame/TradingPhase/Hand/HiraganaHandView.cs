@@ -7,11 +7,6 @@ public class HiraganaHandView : MonoBehaviour
 {
     [SerializeField] List<Image> _numberImages;
 
-    private void Awake()
-    {
-        Set();
-    }
-
     public void Set()
     {
         foreach (var item in _numberImages)

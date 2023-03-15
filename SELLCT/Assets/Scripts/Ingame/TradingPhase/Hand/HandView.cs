@@ -7,7 +7,6 @@ public class HandView : MonoBehaviour
 {
     [SerializeField] List<Image> _handImages;
 
-    //Edit > Project Settings > Script Execution Order‚ÅÀs‡‚ğ’²®‚µ‚Ä‚¢‚Ü‚·B
     private void Awake()
     {
         //‰Šú‚Í‘S‚ÄÁ‚·

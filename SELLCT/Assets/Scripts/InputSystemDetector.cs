@@ -6,30 +6,12 @@ using UnityEngine.InputSystem;
 
 public class InputSystemDetector : MonoBehaviour
 {
-    /// <summary>
-    /// Awakeでインスタンスを取得しています。Awake以降で使用してください。
-    /// </summary>
-    public static InputSystemDetector Instance { get; private set; }
+    public event Action<InputAction.CallbackContext> OnNavigateAction;
 
-    Action<InputAction.CallbackContext> onNavigate;
-
-    private void Awake()
-    {
-        Instance = this;
-    }
-
-    public void AddNavigate(Action<InputAction.CallbackContext> action)
-    {
-        onNavigate += action;
-    }
-
-    public void RemoveNavigate(Action<InputAction.CallbackContext> action)
-    {
-        onNavigate -= action;
-    }
-
+    //InputSystem側で呼び出しています。
+    //このメソッドに参照があれば想定していない挙動をしているものと思われます。
     public void OnNavigate(InputAction.CallbackContext context)
     {
-        onNavigate?.Invoke(context);
+        OnNavigateAction?.Invoke(context);
     }
 }

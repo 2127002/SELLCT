@@ -3,10 +3,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[Serializable]
 class TimeLimit
 {
-    [SerializeField] float _valueInSeconds;
+    float _valueInSeconds;
 
     public TimeLimit(float valueInSeconds)
     {

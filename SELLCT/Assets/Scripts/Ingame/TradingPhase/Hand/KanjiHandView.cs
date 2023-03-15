@@ -7,10 +7,6 @@ public class KanjiHandView : MonoBehaviour
 {
     [SerializeField] List<Image> _numberImages;
 
-    private void Awake()
-    {
-        Set();
-    }
 
     public void Set()
     {
