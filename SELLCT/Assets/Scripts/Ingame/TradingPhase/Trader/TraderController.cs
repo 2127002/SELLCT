@@ -5,9 +5,21 @@ using UnityEngine;
 
 public class TraderController : MonoBehaviour
 {
-    [SerializeField] TextBoxView _textBox;
+    [SerializeField] TraderView _traderView = default!;
+    [SerializeField] TextBoxView _textBox = default!;
+    [SerializeField] PhaseController _phaseController = default!;
 
-    Trader _currentTrader;
+    Trader _currentTrader = default!;
+
+    private void Awake()
+    {
+        _phaseController.OnTradingPhaseStart.Add(_traderView.OnPhaseStart);
+    }
+
+    private void OnDestroy()
+    {
+        _phaseController.OnTradingPhaseStart.Remove(_traderView.OnPhaseStart);
+    }
 
     public void SetTrader(Trader trader)
     {

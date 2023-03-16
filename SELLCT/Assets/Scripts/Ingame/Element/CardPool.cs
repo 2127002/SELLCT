@@ -10,8 +10,7 @@ public class CardPool : MonoBehaviour
     [SerializeField] List<InitCardCount> _cardCapacity;
     readonly List<Card> _cardPool = new();
 
-    //Edit > Project Settings > Script Execution Order‚ÅÀs‡‚ğ’²®‚µ‚Ä‚¢‚Ü‚·B
-    void Awake()
+    public void Init()
     {
         //‰Šú‰»
         foreach (var item in _cardCapacity)

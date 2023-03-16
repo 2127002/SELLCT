@@ -14,6 +14,7 @@ public class E17_Number : Card
     [SerializeField] Sprite _alphabet = default!;
     [SerializeField] HandMediator _handMediator = default!;
     [SerializeField] NumberHandView _numberHandView = default!;
+    [SerializeField] PhaseController _phaseController = default!;
 
     readonly List<Sprite> result = new();
 
@@ -38,14 +39,27 @@ public class E17_Number : Card
         }
     }
 
+    int elementIndex = (int)StringManager.Element.E17;
+
     private void Awake()
     {
-        StringManager.hasElements[0] = _handMediator.ContainsCard(this);
+        _phaseController.OnTradingPhaseStart.Add(OnPhaseStart);
+    }
+
+    private void OnPhaseStart()
+    {
+        StringManager.hasElements[elementIndex] = _handMediator.ContainsCard(this);
+        _numberHandView.Set();
+    }
+
+    private void OnDestroy()
+    {
+        _phaseController.OnTradingPhaseStart.Remove(OnPhaseStart);
     }
 
     public override void Buy()
     {
-        StringManager.hasElements[0] = true;
+        StringManager.hasElements[elementIndex] = true;
         _controller.DecreaseMoney(_parameter.GetMoney());
     }
 
@@ -59,7 +73,7 @@ public class E17_Number : Card
         _controller.IncreaseMoney(_parameter.GetMoney());
 
         if (_handMediator.ContainsCard(this)) return;
-        StringManager.hasElements[0] = false;
+        StringManager.hasElements[elementIndex] = false;
         _numberHandView.Set();
     }
 }

@@ -1,3 +1,4 @@
+using Cysharp.Threading.Tasks;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -6,7 +7,7 @@ public class HandMediator : DeckMediator
 {
     [SerializeField] Hand _hand = default!;
     [SerializeField] List<CardUIHandler> _clickHandlers = new();
-    [SerializeField] TradingPhaseCompletionHandler _completionHandler;
+    [SerializeField] PhaseController _phaseController = default!;
 
     //プレイヤーのデッキ
     PlayerDeck _playerDeck = new();
@@ -16,23 +17,21 @@ public class HandMediator : DeckMediator
 
     private void Awake()
     {
-        _completionHandler.AddListener(OnComplete);
-    }
-
-    private void Start()
-    {
-        //手札配布
-        InitTakeCard();
+        _phaseController.OnTradingPhaseComplete.Add(OnComplete);
+        _phaseController.OnTradingPhaseStart.Add(InitTakeCard);
     }
 
     private void OnDestroy()
     {
-        _completionHandler.RemoveListener(OnComplete);
+        _phaseController.OnTradingPhaseComplete.Remove(OnComplete);
+        _phaseController.OnTradingPhaseStart.Remove(InitTakeCard);
     }
 
     //売買フェーズ終了時に行う処理。
-    private void OnComplete()
+    private async UniTask OnComplete()
     {
+        var token = this.GetCancellationTokenOnDestroy();
+
         while (true)
         {
             Card card = _buyingCardDeck.Draw();
@@ -41,6 +40,8 @@ public class HandMediator : DeckMediator
 
             _playerDeck.Add(card);
         }
+
+        await UniTask.Yield(token);
     }
 
     private void InitTakeCard()

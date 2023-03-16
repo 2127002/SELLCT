@@ -1,3 +1,4 @@
+using Cysharp.Threading.Tasks;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -9,59 +10,79 @@ using UnityEngine.InputSystem;
 /// </summary>
 public class TradingPhaseController : MonoBehaviour
 {
-    [SerializeField] TradingPhaseView _view;
-    [SerializeField] TradingPhaseCompletionHandler _completionHandler;
-    [SerializeField] TextBoxView _textBoxView;
-    [SerializeField] TraderController _traderController;
+    [SerializeField] TradingPhaseView _view = default!;
+    [SerializeField] TextBoxView _textBoxView = default!;
+    [SerializeField] TraderController _traderController = default!;
+    [SerializeField] PhaseController _phaseController = default!;
+    [SerializeField] TimeLimitController _timeLimitController = default!;
+    [SerializeField] InputSystemDetector _inputSystemDetector = default!;
+    [SerializeField] Canvas _canvas = default!;
 
-    EventSystem _eventSystem;
-    GameObject _lastSelectedObject;
+    GameObject _lastSelectedObject = default!;
 
     private void Awake()
     {
-        _completionHandler.AddListener(OnComplete);
+        _phaseController.OnTradingPhaseComplete.Add(OnComplete);
+        _phaseController.OnTradingPhaseStart.Add(OnPhaseStart);
+        _phaseController.OnExplorationPhaseStart += OnExplorationPhaseStart;
 
-        _eventSystem = EventSystem.current;
+        //タイムリミットになったらフェーズを完了する
+        _timeLimitController.OnTimeLimit += _phaseController.CompleteTradingPhase;
+
+        _inputSystemDetector.OnNavigateAction += OnNavigate;
+    }
+
+    private void OnExplorationPhaseStart()
+    {
+        _canvas.enabled = false;
     }
 
     private void Start()
     {
         //現在選択中のUIオブジェクトを登録。
         //選択中オブジェクトの初期化処理がAwakeで行われるためStartに配置しています。
-        _lastSelectedObject = _eventSystem.currentSelectedGameObject;
+        _lastSelectedObject = EventSystem.current.currentSelectedGameObject;
     }
 
-    private void OnEnable()
+    private void OnDestroy()
     {
-        InputSystemDetector.Instance.AddNavigate(OnNavigate);
+        _phaseController.OnTradingPhaseComplete.Remove(OnComplete);
+        _phaseController.OnTradingPhaseStart.Remove(OnPhaseStart);
+        _phaseController.OnExplorationPhaseStart -= OnExplorationPhaseStart;
+
+        _timeLimitController.OnTimeLimit -= _phaseController.CompleteTradingPhase;
+        _inputSystemDetector.OnNavigateAction -= OnNavigate;
     }
 
-    private void OnDisable()
+    //売買フェーズ開始時処理
+    private void OnPhaseStart()
     {
-        InputSystemDetector.Instance.RemoveNavigate(OnNavigate);
+        _view.OnPhaseStart();
+        _canvas.enabled = true;
     }
 
-    private async void OnComplete()
+    //売買フェーズ終了時処理（待機可）
+    private async UniTask OnComplete()
     {
         //テキストの表示
         _textBoxView.UpdeteText(_traderController.CurrentTrader.EndMessage());
         await _textBoxView.DisplayTextOneByOne();
 
         //フェードアウト
-        await _view.StartFadeout();
+        await _view.OnPhaseComplete();
 
         //TODO：BGM1のフェードアウト
     }
 
     private void OnNavigate(InputAction.CallbackContext context)
     {
-        if (_eventSystem.currentSelectedGameObject != null)
+        if (EventSystem.current.currentSelectedGameObject != null)
         {
-            _lastSelectedObject = _eventSystem.currentSelectedGameObject;
+            _lastSelectedObject = EventSystem.current.currentSelectedGameObject;
             return;
         }
 
         //未選択時のみ実行
-        _eventSystem.SetSelectedGameObject(_lastSelectedObject);
+        EventSystem.current.SetSelectedGameObject(_lastSelectedObject);
     }
 }

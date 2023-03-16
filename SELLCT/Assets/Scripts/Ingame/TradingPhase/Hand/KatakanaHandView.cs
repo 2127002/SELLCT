@@ -7,11 +7,6 @@ public class KatakanaHandView : MonoBehaviour
 {
     [SerializeField] List<Image> _katakanaImages;
 
-    private void Awake()
-    {
-        Set();
-    }
-
     public void Set()
     {
         foreach (var item in _katakanaImages)

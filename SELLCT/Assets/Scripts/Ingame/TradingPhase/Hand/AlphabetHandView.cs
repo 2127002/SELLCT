@@ -7,11 +7,6 @@ public class AlphabetHandView : MonoBehaviour
 {
     [SerializeField] List<Image> _alphabetImages;
 
-    private void Awake()
-    {
-        Set();
-    }
-
     public void Set()
     {
         foreach (var item in _alphabetImages)
