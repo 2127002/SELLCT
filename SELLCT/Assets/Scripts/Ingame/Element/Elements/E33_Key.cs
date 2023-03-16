@@ -50,5 +50,6 @@ public class E33_Key : Card
     public override void Sell()
     {
         _controller.IncreaseMoney(_parameter.GetMoney());
+        if (_handMediator.ContainsCard(this)) return;
     }
 }

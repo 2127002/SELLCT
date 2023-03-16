@@ -15,7 +15,7 @@ public class E1_Buy : Card
     [SerializeField] Sprite _katakana = default!;
     [SerializeField] Sprite _alphabet = default!;
     [SerializeField] HandMediator _handMediator = default!;
-    [SerializeField] Color color = default!;
+    [SerializeField] Color changeColor = default!;
     [SerializeField] Image _u3Card1 = default!;
     [SerializeField] Image _u3Card2 = default!;
     [SerializeField] Image _u3Card3 = default!;
@@ -32,7 +32,7 @@ public class E1_Buy : Card
     {
         get
         {
-            //‰Šú‰»
+            //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
             if (result.Count == 0)
             {
                 result.Add(_baseSprite);
@@ -55,7 +55,7 @@ public class E1_Buy : Card
 
     public override void Passive()
     {
-        //TODO:SE2‚ÌÄ¶
+        //TODO:SE2ï¿½ÌÄï¿½
     }
 
     public override void Sell()
@@ -67,10 +67,10 @@ public class E1_Buy : Card
     public void BuyChecker()
     {
         if (_handMediator.ContainsCard(this)) return;
-        _u3Card1.color = color;
-        _u3Card2.color = color;
-        _u3Card3.color = color;
-        _u3Card4.color = color;
+        _u3Card1.color = changeColor;
+        _u3Card2.color = changeColor;
+        _u3Card3.color = changeColor;
+        _u3Card4.color = changeColor;
         _u3Card1Selectable.interactable = false;
         _u3Card2Selectable.interactable = false;
         _u3Card3Selectable.interactable = false;
