@@ -38,6 +38,7 @@ public class E19_Hiragana : Card
             return result;
         }
     }
+    public override bool ContainsPlayerDeck => _handMediator.ContainsCard(this);
 
     int elementIndex = (int)StringManager.Element.E19;
 

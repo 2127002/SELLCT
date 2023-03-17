@@ -38,6 +38,7 @@ public class E20_Katakana : Card
             return result;
         }
     }
+    public override bool ContainsPlayerDeck => _handMediator.ContainsCard(this);
 
     int elementIndex = (int)StringManager.Element.E20;
 

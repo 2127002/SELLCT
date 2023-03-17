@@ -39,6 +39,7 @@ public class E21_Alphabet : Card
             return result;
         }
     }
+    public override bool ContainsPlayerDeck => _handMediator.ContainsCard(this);
 
     int elementIndex = (int)StringManager.Element.E21;
 

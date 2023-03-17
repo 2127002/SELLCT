@@ -30,6 +30,8 @@ public class EEX_null : Card
 
     public override IReadOnlyList<Sprite> CardSprite => throw new System.NotImplementedException();
 
+    public override bool ContainsPlayerDeck => throw new System.NotImplementedException();
+
     public override void Buy()
     {
         throw new System.NotImplementedException();

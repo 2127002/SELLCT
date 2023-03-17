@@ -38,6 +38,7 @@ public class E26_Favourable : Card
             return result;
         }
     }
+    public override bool ContainsPlayerDeck => _handMediator.ContainsCard(this);
 
     private void Awake()
     {
