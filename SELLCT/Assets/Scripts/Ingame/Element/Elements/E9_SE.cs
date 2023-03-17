@@ -36,6 +36,7 @@ public class E9_SE : Card
             return result;
         }
     }
+    public override bool ContainsPlayerDeck => _handMediator.ContainsCard(this);
 
     public override void Buy()
     {

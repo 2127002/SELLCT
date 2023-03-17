@@ -37,6 +37,7 @@ public class E0_Life : Card
             return result;
         }
     }
+    public override bool ContainsPlayerDeck => _handMediator.ContainsCard(this);
 
     public override void Buy()
     {

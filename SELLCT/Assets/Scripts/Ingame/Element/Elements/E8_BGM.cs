@@ -36,6 +36,7 @@ public class E8_BGM : Card
             return result;
         }
     }
+    public override bool ContainsPlayerDeck => _handMediator.ContainsCard(this);
 
     public override void Buy()
     {

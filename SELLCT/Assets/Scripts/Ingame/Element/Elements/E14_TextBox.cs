@@ -39,6 +39,7 @@ public class E14_TextBox : Card
             return result;
         }
     }
+    public override bool ContainsPlayerDeck => _handMediator.ContainsCard(this);
 
     public override void Buy()
     {

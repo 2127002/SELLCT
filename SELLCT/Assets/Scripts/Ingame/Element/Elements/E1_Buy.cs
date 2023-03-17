@@ -46,6 +46,7 @@ public class E1_Buy : Card
             return result;
         }
     }
+    public override bool ContainsPlayerDeck => _handMediator.ContainsCard(this);
 
     public override void Buy()
     {

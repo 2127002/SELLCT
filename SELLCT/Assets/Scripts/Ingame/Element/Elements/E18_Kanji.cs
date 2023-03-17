@@ -38,6 +38,7 @@ public class E18_Kanji : Card
             return result;
         }
     }
+    public override bool ContainsPlayerDeck => _handMediator.ContainsCard(this);
 
     int elementIndex = (int)StringManager.Element.E18;
 
