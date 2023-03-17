@@ -4,10 +4,10 @@ using UnityEngine;
 
 public abstract class DeckMediator : MonoBehaviour
 {
-    public abstract Card TakeDeckCard();
+    public abstract void DrawCard();
     public abstract void RemoveHandCard(Card card);
     public abstract void AddDeck(Card card);
-    public abstract void RearrangeCardSlots();
+    public abstract void UpdeteCardSprites();
     public abstract void AddBuyingDeck(Card card);
     /// <summary>
     /// 山札か手札、購入直後デッキに指定カードが存在するか返す
@@ -21,4 +21,10 @@ public abstract class DeckMediator : MonoBehaviour
     /// <param name="card">判定したいカード</param>
     /// <returns>存在した枚数</returns>
     public abstract int FindAll(Card card);
+    /// <summary>
+    /// CardUIHandlerに応じた手札のカードを取得する
+    /// </summary>
+    /// <param name="handler">カードの情報を取得したいCardUIHandler</param>
+    /// <returns>取得したカード</returns>
+    public abstract Card GetCardAtCardUIHandler(CardUIHandler handler);
 }

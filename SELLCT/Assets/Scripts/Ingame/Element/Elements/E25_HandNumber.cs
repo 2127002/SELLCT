@@ -42,7 +42,7 @@ public class E25_HandNumber : Card
     private void Awake()
     {
         int add = _handMediator.FindAll(this);
-        _playerHand.AddHandCapacity(add);
+        //_playerHand.AddHandCapacity(add);
     }
 
     public override void Buy()

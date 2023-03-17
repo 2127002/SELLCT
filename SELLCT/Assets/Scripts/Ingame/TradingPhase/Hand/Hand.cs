@@ -9,9 +9,12 @@ public class Hand : MonoBehaviour
     readonly List<Card> _cards = new();
     int _addHandCapacityValue = 0;
 
+    public int Capacity => _handCapacity + _addHandCapacityValue;
+    public IReadOnlyList<Card> Cards => _cards;
+
     public void Add(Card card)
     {
-        if (_cards.Count >= HandCapacity()) throw new HandCapacityExceededException();
+        if (_cards.Count >= Capacity) throw new HandCapacityExceededException();
 
         _cards.Add(card);
     }
@@ -29,12 +32,7 @@ public class Hand : MonoBehaviour
 
     public int CalcDrawableCount()
     {
-        return HandCapacity() - _cards.Count;
-    }
-
-    public int HandCapacity()
-    {
-        return _handCapacity + _addHandCapacityValue;
+        return Capacity - _cards.Count;
     }
 
     public bool ContainsCard(Card card)
@@ -53,7 +51,7 @@ public class Hand : MonoBehaviour
     {
         _addHandCapacityValue += amount;
 
-        if(_addHandCapacityValue<0)throw new System.ArgumentOutOfRangeException();
+        if (_addHandCapacityValue < 0) throw new System.ArgumentOutOfRangeException();
     }
 }
 

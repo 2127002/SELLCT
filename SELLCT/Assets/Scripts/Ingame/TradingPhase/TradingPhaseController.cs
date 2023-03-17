@@ -16,6 +16,7 @@ public class TradingPhaseController : MonoBehaviour
     [SerializeField] PhaseController _phaseController = default!;
     [SerializeField] TimeLimitController _timeLimitController = default!;
     [SerializeField] InputSystemDetector _inputSystemDetector = default!;
+    [SerializeField] CardUIHandler _firstSelectable = default!;
     [SerializeField] Canvas _canvas = default!;
 
     GameObject _lastSelectedObject = default!;
@@ -58,6 +59,7 @@ public class TradingPhaseController : MonoBehaviour
     private void OnPhaseStart()
     {
         _view.OnPhaseStart();
+        EventSystem.current.SetSelectedGameObject(_firstSelectable.gameObject);
         _canvas.enabled = true;
     }
 

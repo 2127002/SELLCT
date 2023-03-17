@@ -17,19 +17,23 @@ public class PhaseController : MonoBehaviour
 
     Phase _currentPhase = Phase.None;
 
-    public event Action OnGameStart;
-    public event Action OnExplorationPhaseStart;
-    
     //意図的にアクションの実行順を入れ替えたいため、Listにしています。
-    public List<Action> OnTradingPhaseStart = new();
+    public readonly List<Action> OnGameStart = new();
+    public event Action OnExplorationPhaseStart;
+
+    //意図的にアクションの実行順を入れ替えたいため、Listにしています。
+    public readonly List<Action> OnTradingPhaseStart = new();
     public event Action OnExplorationPhaseComplete;
-    public List<Func<UniTask>> OnTradingPhaseComplete = new();
+    public readonly List<Func<UniTask>> OnTradingPhaseComplete = new();
 
     //イベントの登録が終わってから実行したいため、Startで行う。
     private void Start()
     {
         //ゲーム開始時処理
-        OnGameStart?.Invoke();
+        for (int i = 0; i < OnGameStart.Count; i++)
+        {
+            OnGameStart[i]?.Invoke();
+        }
 
         //初期フェーズは探索フェーズ
         StartExplorationPhase();

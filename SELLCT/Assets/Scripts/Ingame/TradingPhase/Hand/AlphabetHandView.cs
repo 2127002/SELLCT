@@ -5,13 +5,18 @@ using UnityEngine.UI;
 
 public class AlphabetHandView : MonoBehaviour
 {
-    [SerializeField] List<Image> _alphabetImages;
+    readonly List<Image> _alphabetImages = new();
 
     public void Set()
     {
         foreach (var item in _alphabetImages)
         {
-            item.enabled = StringManager.hasElements[4];
+            item.enabled = StringManager.hasElements[(int)StringManager.Element.E21];
         }
+    }
+
+    public void Add(Image alphabetImage)
+    {
+        _alphabetImages.Add(alphabetImage);
     }
 }

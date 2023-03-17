@@ -5,13 +5,18 @@ using UnityEngine.UI;
 
 public class KatakanaHandView : MonoBehaviour
 {
-    [SerializeField] List<Image> _katakanaImages;
+    readonly List<Image> _katakanaImages = new();
 
     public void Set()
     {
         foreach (var item in _katakanaImages)
         {
-            item.enabled = StringManager.hasElements[3];
+            item.enabled = StringManager.hasElements[(int)StringManager.Element.E20];
         }
+    }
+
+    public void Add(Image katakanaImage)
+    {
+        _katakanaImages.Add(katakanaImage);
     }
 }
