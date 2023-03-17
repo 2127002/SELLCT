@@ -47,8 +47,7 @@ public class CardUIHandler : MonoBehaviour
 
     //選択時画像サイズ補正値
     const float CORRECTION_SIZE = 1.25f;
-    static readonly Vector2 correction = new(CORRECTION_SIZE, CORRECTION_SIZE);
-    static readonly Vector2 recorrection = new(1f / CORRECTION_SIZE, 1f / CORRECTION_SIZE);
+    static readonly Vector3 correction = new(CORRECTION_SIZE, CORRECTION_SIZE, CORRECTION_SIZE);
 
     private void Awake()
     {
@@ -109,8 +108,7 @@ public class CardUIHandler : MonoBehaviour
         EventSystem.current.SetSelectedGameObject(_selectable.gameObject);
     }
 
-    //左クリック時処理
-    private void HandleClick()
+    private void OnSubmit()
     {
         //EntityTypeに適した処理を呼ぶ。
         if (_entityType == EntityType.Player)
@@ -180,6 +178,12 @@ public class CardUIHandler : MonoBehaviour
         if (next != null) EventSystem.current.SetSelectedGameObject(next.gameObject);
     }
 
+    //左クリック時処理
+    private void HandleClick()
+    {
+        OnSubmit();
+    }
+
     //カーソルをかざした際の処理
     private void HandleEnter()
     {
@@ -198,30 +202,20 @@ public class CardUIHandler : MonoBehaviour
     private void HandleSubmit()
     {
         //同一処理のため以下の処理を呼ぶだけにします。クリック時の仕様と差異が発生したら修正してください。
-        HandleClick();
+        OnSubmit();
     }
 
     //選択時の処理
     private void HandleSelect()
     {
         //TODO:SE1の再生
-        foreach (var item in _images)
-        {
-            Vector2 sizeDelta = item.rectTransform.sizeDelta;
-            sizeDelta.Scale(correction);
-            item.rectTransform.sizeDelta = sizeDelta;
-        }
+        _selectable.image.rectTransform.localScale = correction;
     }
 
     //選択から外れた時の処理
     private void HandleDeselect()
     {
-        foreach (var item in _images)
-        {
-            Vector2 sizeDelta = item.rectTransform.sizeDelta;
-            sizeDelta.Scale(recorrection);
-            item.rectTransform.sizeDelta = sizeDelta;
-        }
+        _selectable.image.rectTransform.localScale = Vector3.one;
     }
 
     /// <summary>

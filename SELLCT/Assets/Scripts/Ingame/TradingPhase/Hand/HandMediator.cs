@@ -10,10 +10,10 @@ public class HandMediator : DeckMediator
     [SerializeField] PhaseController _phaseController = default!;
 
     //プレイヤーのデッキ
-    PlayerDeck _playerDeck = new();
+    readonly PlayerDeck _playerDeck = new();
 
     //購入したカードが一時的に入るデッキ
-    BuyingCardDeck _buyingCardDeck = new();
+    readonly BuyingCardDeck _buyingCardDeck = new();
 
     private void Awake()
     {
@@ -109,5 +109,10 @@ public class HandMediator : DeckMediator
     public override bool ContainsCard(Card card)
     {
         return _playerDeck.ContainsCard(card) || _hand.ContainsCard(card) || _buyingCardDeck.ContainsCard(card);
+    }
+
+    public override int FindAll(Card card)
+    {
+        return _playerDeck.FindAll(card) + _hand.FindAll(card) + _buyingCardDeck.FindAll(card);
     }
 }

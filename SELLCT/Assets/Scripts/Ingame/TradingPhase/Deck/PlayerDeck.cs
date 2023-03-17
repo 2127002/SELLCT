@@ -29,4 +29,11 @@ public class PlayerDeck : IDeck
     {
         return _deck.Contains(card);
     }
+
+    public int FindAll(Card card)
+    {
+        var list = _deck.FindAll(c => c.Equals(card));
+
+        return list.Count;
+    }
 }

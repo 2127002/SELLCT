@@ -7,4 +7,5 @@ public interface IDeck
     void Add(Card card);
     Card Draw();
     public bool ContainsCard(Card card);
+    public int FindAll(Card card);
 }

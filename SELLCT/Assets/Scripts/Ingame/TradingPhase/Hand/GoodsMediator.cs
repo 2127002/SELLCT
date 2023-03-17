@@ -106,4 +106,8 @@ public class GoodsMediator : DeckMediator
     {
         return _traderController.CurrentTrader.TraderDeck.ContainsCard(card) || _hand.ContainsCard(card) || _buyingCardDeck.ContainsCard(card);
     }
+
+    public override int FindAll(Card card)
+    {
+        return _traderController.CurrentTrader.TraderDeck.FindAll(card) + _hand.FindAll(card) + _buyingCardDeck.FindAll(card);    }
 }

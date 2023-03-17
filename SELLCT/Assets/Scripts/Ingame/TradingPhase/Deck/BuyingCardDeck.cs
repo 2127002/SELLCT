@@ -26,4 +26,11 @@ public class BuyingCardDeck : IDeck
     {
         return _cards.Contains(card);
     }
+
+    public int FindAll(Card card)
+    {
+        var list = _cards.FindAll(c => c.Equals(card));
+
+        return list.Count;
+    }
 }
