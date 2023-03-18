@@ -40,6 +40,22 @@ public class TraderDeck : IDeck
         return EEX_null.Instance;
     }
 
+    /// <summary>
+    /// E37‚ğŠ‚µ‚Ä‚¢‚½Û‚Ìƒhƒ[
+    /// </summary>
+    /// <returns></returns>
+    public Card LackDraw()
+    {
+        int index = Random.Range(0, _cards.Count);
+
+        if (_cards.Count == 0) return EEX_null.Instance;
+
+        Card card = _cards[index];
+        _cards.Remove(card);
+
+        return card;
+    }
+
     public bool ContainsCard(Card card)
     {
         return _cards.Contains(card);

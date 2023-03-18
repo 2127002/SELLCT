@@ -10,6 +10,7 @@ public class GoodsMediator : DeckMediator
     [SerializeField] TraderController _traderController = default!;
     [SerializeField] PhaseController _phaseController = default!;
     [SerializeField] CardUIGenerator _cardUIGenerator = default!;
+    [SerializeField] E37_Lack _lack = default!;
 
     //プレイヤーが売却したカードが一時的に入るデッキ
     readonly BuyingCardDeck _buyingCardDeck = new();
@@ -84,8 +85,16 @@ public class GoodsMediator : DeckMediator
     public override void DrawCard()
     {
         if (_hand.CalcDrawableCount() <= 0) return;
-
-        Card top = _traderController.CurrentTrader.TraderDeck.Draw();
+        
+        Card card;
+        if (_lack.ContainsPlayerDeck)
+        {
+            card = _traderController.CurrentTrader.TraderDeck.LackDraw();
+        }
+        else
+        {
+            card = _traderController.CurrentTrader.TraderDeck.Draw();
+        }
 
         //ドローするときにCardUIがなければ作り出す
         int capacityDifference = _hand.Capacity - _cardUIInstance.Handlers.Count;
@@ -96,10 +105,10 @@ public class GoodsMediator : DeckMediator
         }
 
         //UI要素に追加
-        _cardUIInstance.Handlers[_hand.Cards.Count].SetCardSprites(top);
+        _cardUIInstance.Handlers[_hand.Cards.Count].SetCardSprites(card);
 
         //手札に追加
-        _hand.Add(top);
+        _hand.Add(card);
     }
 
     public override void RemoveHandCard(Card card)

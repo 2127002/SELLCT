@@ -72,6 +72,8 @@ public class E34_Knife : Card
     public override void Sell()
     {
         _controller.IncreaseMoney(_parameter.GetMoney());
+
+        if (_handMediator.ContainsCard(this)) return;
         _E34CommandImage.gameObject.SetActive(false);
     }
 }
