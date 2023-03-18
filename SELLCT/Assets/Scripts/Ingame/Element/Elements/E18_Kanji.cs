@@ -45,6 +45,7 @@ public class E18_Kanji : Card
     private void Awake()
     {
         _phaseController.OnTradingPhaseStart.Add(OnPhaseStart);
+        _phaseController.OnExplorationPhaseStart += OnPhaseStart;
     }
 
     private void OnPhaseStart()
@@ -56,6 +57,7 @@ public class E18_Kanji : Card
     private void OnDestroy()
     {
         _phaseController.OnTradingPhaseStart.Remove(OnPhaseStart);
+        _phaseController.OnExplorationPhaseStart -= OnPhaseStart;
     }
 
     public override void Buy()
