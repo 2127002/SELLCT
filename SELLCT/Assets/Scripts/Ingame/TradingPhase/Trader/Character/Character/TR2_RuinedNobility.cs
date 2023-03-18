@@ -36,6 +36,12 @@ public class TR2_RuinedNobility : Trader
             Card card = pool.Draw(list[index]);
             list.RemoveAt(index);
 
+            //今引いたカードがpoolの最後のカードならもう抽選されないようにする
+            if (!pool.Pool().Contains(card))
+            {
+                list.RemoveAll(x => x == card);
+            }
+
             if (card is EEX_null) break;
             _deck.Add(card);
         }

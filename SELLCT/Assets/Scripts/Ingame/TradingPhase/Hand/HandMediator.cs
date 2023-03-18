@@ -32,6 +32,7 @@ public class HandMediator : DeckMediator
     {
         var token = this.GetCancellationTokenOnDestroy();
 
+        //購入デッキのカードをすべて山札に戻す
         while (true)
         {
             Card card = _buyingCardDeck.Draw();
@@ -41,7 +42,23 @@ public class HandMediator : DeckMediator
             _playerDeck.Add(card);
         }
 
+        //手札のカードをすべて山札に戻す
+        RemoveAllHandCards();
+
         await UniTask.Yield(token);
+    }
+
+    private void RemoveAllHandCards()
+    {
+        int handCardCount = _hand.Cards.Count;
+
+        for (int i = 0; i < handCardCount; i++)
+        {
+            Card card = _hand.Cards[0];
+
+            _hand.Remove(card);
+            _playerDeck.Add(card);
+        }
     }
 
     private void InitTakeCard()
