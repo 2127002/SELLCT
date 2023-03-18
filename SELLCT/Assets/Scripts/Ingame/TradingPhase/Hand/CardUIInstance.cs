@@ -33,11 +33,19 @@ public class CardUIInstance : MonoBehaviour
     public void Remove(CardUIHandler handler)
     {
         _handlers.Remove(handler);
+
+        _numberHandView.Remove(handler.CardImages[1]);
+        _kanjiHandView.Remove(handler.CardImages[2]);
+        _hiraganaHandView.Remove(handler.CardImages[3]);
+        _katakanaHandView.Remove(handler.CardImages[4]);
+        _alphabetHandView.Remove(handler.CardImages[5]);
+
+        Destroy(handler.gameObject);
     }
 
     public void RemoveAt(int index)
     {
-        _handlers.RemoveAt(index);
+        Remove(_handlers[index]);
     }
 
     public IReadOnlyList<CardUIHandler> Handlers => _handlers;

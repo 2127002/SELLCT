@@ -62,6 +62,7 @@ public class E20_Katakana : Card
     {
         StringManager.hasElements[elementIndex] = true;
         _controller.DecreaseMoney(_parameter.GetMoney());
+        _katakanaHandView.Set();
     }
 
     public override void Passive()

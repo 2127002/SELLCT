@@ -12,6 +12,8 @@ public class KanjiHandView : MonoBehaviour
     {
         foreach (var item in _kanjiImages)
         {
+            if (item.sprite == null) continue;
+
             item.enabled = StringManager.hasElements[(int)StringManager.Element.E18];
         }
     }
@@ -20,4 +22,10 @@ public class KanjiHandView : MonoBehaviour
     {
         _kanjiImages.Add(kanjiImage);
     }
+
+    public void Remove(Image image)
+    {
+        _kanjiImages.Remove(image);
+    }
+
 }

@@ -62,6 +62,7 @@ public class E19_Hiragana : Card
     {
         StringManager.hasElements[elementIndex] = true;
         _controller.DecreaseMoney(_parameter.GetMoney());
+        _hiraganaHandView.Set();
     }
 
     public override void Passive()

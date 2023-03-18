@@ -52,13 +52,7 @@ public class HandMediator : DeckMediator
         //手札補充
         for (int i = 0; i < drawableCount; i++)
         {
-            Card card = _playerDeck.Draw();
-
-            //手札に追加
-            _hand.Add(card);
-
-            //UIをセットする
-            _cardUIInstance.Handlers[i].SetCardSprites(card);
+            DrawCard();
         }
     }
 
@@ -86,6 +80,9 @@ public class HandMediator : DeckMediator
         if (_hand.CalcDrawableCount() == 0) return;
 
         Card card = _playerDeck.Draw();
+
+        //UIをセットする
+        _cardUIInstance.Handlers[_hand.Cards.Count].SetCardSprites(card);
 
         //手札に追加
         _hand.Add(card);

@@ -11,6 +11,8 @@ public class KatakanaHandView : MonoBehaviour
     {
         foreach (var item in _katakanaImages)
         {
+            if (item.sprite == null) continue;
+
             item.enabled = StringManager.hasElements[(int)StringManager.Element.E20];
         }
     }
@@ -19,4 +21,10 @@ public class KatakanaHandView : MonoBehaviour
     {
         _katakanaImages.Add(katakanaImage);
     }
+
+    public void Remove(Image image)
+    {
+        _katakanaImages.Remove(image);
+    }
+
 }

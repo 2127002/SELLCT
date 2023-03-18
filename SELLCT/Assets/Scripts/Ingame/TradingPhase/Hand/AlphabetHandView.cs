@@ -11,6 +11,7 @@ public class AlphabetHandView : MonoBehaviour
     {
         foreach (var item in _alphabetImages)
         {
+            if (item.sprite == null) continue;
             item.enabled = StringManager.hasElements[(int)StringManager.Element.E21];
         }
     }
@@ -18,5 +19,10 @@ public class AlphabetHandView : MonoBehaviour
     public void Add(Image alphabetImage)
     {
         _alphabetImages.Add(alphabetImage);
+    }
+
+    public void Remove(Image image)
+    {
+        _alphabetImages.Remove(image);
     }
 }

@@ -11,6 +11,8 @@ public class HiraganaHandView : MonoBehaviour
     {
         foreach (var item in _hiraganaImages)
         {
+            if (item.sprite == null) continue;
+
             item.enabled = StringManager.hasElements[(int)StringManager.Element.E19];
         }
     }
@@ -19,4 +21,10 @@ public class HiraganaHandView : MonoBehaviour
     {
         _hiraganaImages.Add(hiraganaImage);
     }
+
+    public void Remove(Image image)
+    {
+        _hiraganaImages.Remove(image);
+    }
+
 }

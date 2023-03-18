@@ -158,8 +158,12 @@ public class CardUIHandler : MonoBehaviour, IPointerClickHandler, IPointerEnterH
         for (int i = 1; i < _cardImages.Count; i++)
         {
             //カードに該当文字が無い場合の対応
-            if (card.CardSprite[i] == null) continue;
-
+            if (card.CardSprite[i] == null)
+            {
+                _cardImages[i].sprite = null;
+                _cardImages[i].enabled = false;
+                continue;
+            }
             //Spriteをセットし、エレメントの所持状況で表示を切り替える
             //index番号はbase分がズレている。
             _cardImages[i].sprite = card.CardSprite[i];

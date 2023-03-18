@@ -42,6 +42,7 @@ public class PhaseController : MonoBehaviour
     private void OnDestroy()
     {
         //ƒŠƒXƒi[‚Ì‰ğœ
+        OnGameStart.Clear();
         OnExplorationPhaseStart = null;
         OnTradingPhaseStart.Clear();
         OnExplorationPhaseComplete = null;

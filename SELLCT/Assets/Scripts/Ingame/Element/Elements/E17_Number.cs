@@ -62,6 +62,7 @@ public class E17_Number : Card
     {
         StringManager.hasElements[elementIndex] = true;
         _controller.DecreaseMoney(_parameter.GetMoney());
+        _numberHandView.Set();
     }
 
     public override void Passive()

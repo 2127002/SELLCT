@@ -63,6 +63,7 @@ public class E21_Alphabet : Card
     {
         StringManager.hasElements[elementIndex] = true;
         _controller.DecreaseMoney(_parameter.GetMoney());
+        _alphabetHandView.Set();
     }
 
     public override void Passive()

@@ -62,6 +62,7 @@ public class E18_Kanji : Card
     {
         StringManager.hasElements[elementIndex] = true;
         _controller.DecreaseMoney(_parameter.GetMoney());
+        _kanjiHandView.Set();
     }
 
     public override void Passive()

@@ -11,6 +11,8 @@ public class NumberHandView : MonoBehaviour
     {
         foreach (var item in _numberImages)
         {
+            if (item.sprite == null) continue;
+
             item.enabled = StringManager.hasElements[(int)StringManager.Element.E17];
         }
     }
@@ -19,4 +21,10 @@ public class NumberHandView : MonoBehaviour
     {
         _numberImages.Add(numberImage);
     }
+
+    public void Remove(Image image)
+    {
+        _numberImages.Remove(image);
+    }
+
 }

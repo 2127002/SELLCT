@@ -34,4 +34,13 @@ public class CardUIGenerator : MonoBehaviour
             _cardUIInstance.Add(newHandler);
         }
     }
+
+    public void Generate()
+    {
+        var newHandler = Instantiate(_handler, _parent);
+
+        newHandler.name = _handlerName + (_cardUIInstance.Handlers.Count + 1);
+
+        _cardUIInstance.Add(newHandler);
+    }
 }

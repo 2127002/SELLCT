@@ -48,13 +48,7 @@ public class GoodsMediator : DeckMediator
 
         for (int i = 0; i < drawableCount; i++)
         {
-            Card top = _traderController.CurrentTrader.TraderDeck.Draw();
-
-            //ŽèŽD‚É’Ç‰Á
-            _hand.Add(top);
-
-            //UI—v‘f‚É’Ç‰Á
-            _cardUIInstance.Handlers[i].SetCardSprites(top);
+            DrawCard();
         }
     }
 
@@ -63,6 +57,9 @@ public class GoodsMediator : DeckMediator
         if (_hand.CalcDrawableCount() == 0) return;
 
         Card top = _traderController.CurrentTrader.TraderDeck.Draw();
+
+        //UI—v‘f‚É’Ç‰Á
+        _cardUIInstance.Handlers[_hand.Cards.Count].SetCardSprites(top);
 
         //ŽèŽD‚É’Ç‰Á
         _hand.Add(top);
