@@ -42,6 +42,11 @@ public class CommandUIHandler : MonoBehaviour
 
     private void OnPhaseStart()
     {
+        if (_card == null)
+        {
+            Debug.LogWarning("U6エレメントカードがnullです");return;
+        }
+
         bool containsCard = _card.ContainsPlayerDeck;
 
         //Grid Layout Groupで管理しているため、ImageのEnableではなくGameObjectからオンオフします

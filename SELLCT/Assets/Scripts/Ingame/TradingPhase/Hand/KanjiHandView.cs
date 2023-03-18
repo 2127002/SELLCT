@@ -5,14 +5,27 @@ using UnityEngine.UI;
 
 public class KanjiHandView : MonoBehaviour
 {
-    [SerializeField] List<Image> _numberImages;
+    readonly List<Image> _kanjiImages = new();
 
 
     public void Set()
     {
-        foreach (var item in _numberImages)
+        foreach (var item in _kanjiImages)
         {
-            item.enabled = StringManager.hasElements[1];
+            if (item.sprite == null) continue;
+
+            item.enabled = StringManager.hasElements[(int)StringManager.Element.E18];
         }
     }
+
+    public void Add(Image kanjiImage)
+    {
+        _kanjiImages.Add(kanjiImage);
+    }
+
+    public void Remove(Image image)
+    {
+        _kanjiImages.Remove(image);
+    }
+
 }

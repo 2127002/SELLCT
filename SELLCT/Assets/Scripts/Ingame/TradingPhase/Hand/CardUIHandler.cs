@@ -6,7 +6,7 @@ using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
 
-public class CardUIHandler : MonoBehaviour
+public class CardUIHandler : MonoBehaviour, IPointerClickHandler, IPointerEnterHandler, IPointerExitHandler,ISubmitHandler,ISelectHandler,IDeselectHandler
 {
     enum EntityType
     {
@@ -17,15 +17,6 @@ public class CardUIHandler : MonoBehaviour
         Invalid,
     }
 
-    //このようにDetectorにわざわざ分けているのは、interfaceのメソッドがpublicになるからです。
-    //外部から意図しないタイミングで呼ばれることを避けるため回りくどい手を使っています。
-    [SerializeField] LeftClickDetector _clickDetector = default!;
-    [SerializeField] PointerEnterDetector _enterDetector = default!;
-    [SerializeField] PointerExitDetector _exitDetector = default!;
-    [SerializeField] SubmitDetector _submitDetector = default!;
-    [SerializeField] SelectDetector _selectDetector = default!;
-    [SerializeField] DeselectDetector _deselectDetector = default!;
-
     //デッキと手札の管理者。Subはメインの逆のmediator。
     [SerializeField] DeckMediator _deckMediator = default!;
     [SerializeField] DeckMediator _subDeckMediator = default!;
@@ -34,246 +25,219 @@ public class CardUIHandler : MonoBehaviour
     [SerializeField] Selectable _selectable = default!;
 
     //カード表示
-    [SerializeField] List<Image> _images = default!;
-
-    [SerializeField] PhaseController _phaseController = default!;
+    [SerializeField] List<Image> _cardImages = default!;
 
     [SerializeField] TraderController _traderController = default!;
 
     [SerializeField] EntityType _entityType;
-    [SerializeField] bool _isFirstSelectable;
-
-    Card _card = default!;
 
     //選択時画像サイズ補正値
     const float CORRECTION_SIZE = 1.25f;
-    static readonly Vector2 correction = new(CORRECTION_SIZE, CORRECTION_SIZE);
-    static readonly Vector2 recorrection = new(1f / CORRECTION_SIZE, 1f / CORRECTION_SIZE);
+    static readonly Vector3 correction = new(CORRECTION_SIZE, CORRECTION_SIZE, CORRECTION_SIZE);
+
+    public IReadOnlyList<Image> CardImages => _cardImages;
 
     private void Awake()
     {
-        //購読
-        _clickDetector.AddListener(HandleClick);
-        _enterDetector.AddListener(HandleEnter);
-        _exitDetector.AddListener(HandleExit);
-        _submitDetector.AddListener(HandleSubmit);
-        _selectDetector.AddListener(HandleSelect);
-        _deselectDetector.AddListener(HandleDeselect);
-        _phaseController.OnTradingPhaseStart.Add(SetFirstSelectable);
-        _phaseController.OnTradingPhaseComplete.Add(OnComplete);
-
         //わかりやすくするため仮に選択時の色を赤に変更。今後の変更推奨
         var b = _selectable.colors;
         b.selectedColor = Color.red;
         _selectable.colors = b;
     }
 
-    private async UniTask OnComplete()
+    private void OnSubmit()
     {
-        var token = this.GetCancellationTokenOnDestroy();
+        Card card = _deckMediator.GetCardAtCardUIHandler(this);
 
-        //デッキに返却する
-        if (_card is not EEX_null)
-        {
-            _deckMediator.RemoveHandCard(_card);
-            _deckMediator.AddDeck(_card);
-            InsertCard(EEX_null.Instance);
-        }
-        await UniTask.Yield(token);
-    }
+        //そのカードを手札からなくす
+        _deckMediator.RemoveHandCard(card);
 
-    private void OnDestroy()
-    {
-        //購読解除
-        _clickDetector.RemoveListener(HandleClick);
-        _enterDetector.RemoveListener(HandleEnter);
-        _exitDetector.RemoveListener(HandleExit);
-        _submitDetector.RemoveListener(HandleSubmit);
-        _selectDetector.RemoveListener(HandleSelect);
-        _deselectDetector.RemoveListener(HandleDeselect);
-        _phaseController.OnTradingPhaseStart.Remove(SetFirstSelectable);
-        _phaseController.OnTradingPhaseComplete.Remove(OnComplete);
-    }
-
-    private void SetFirstSelectable()
-    {
-        //初期選択のチェックボックスがtrueだったら登録
-        if (!_isFirstSelectable) return;
-
-        if (EventSystem.current.currentSelectedGameObject != null)
-        {
-            Debug.LogWarning("すでに別のオブジェクトが選択されています。" + gameObject + "の登録は棄却されました。正しい仕様を確認してください。" + EventSystem.current.currentSelectedGameObject);
-            return;
-        }
-
-        EventSystem.current.SetSelectedGameObject(_selectable.gameObject);
-    }
-
-    //左クリック時処理
-    private void HandleClick()
-    {
         //EntityTypeに適した処理を呼ぶ。
         if (_entityType == EntityType.Player)
         {
             //売る処理のみ下記処理を行う。
-            OnSell();
+            OnSell(card);
         }
         else if (_entityType == EntityType.Trader)
         {
             //買う処理のみ下記処理を行う。
-            OnBuy();
+            OnBuy(card);
         }
-        else throw new System.NotImplementedException();
+        else throw new NotImplementedException();
 
         //手札整理
-        _deckMediator.RearrangeCardSlots();
+        _deckMediator.UpdeteCardSprites();
     }
 
-    private void OnBuy()
+    private void OnBuy(Card purchasedCard)
     {
-        Card purchasedCard = _card;
-
-        //手札補充は行わない
-        _deckMediator.RemoveHandCard(purchasedCard);
-        InsertCard(EEX_null.Instance);
-
+        //※手札補充は行わない
         //商人の手札購入処理
         _traderController.CurrentTrader.OnPlayerBuy();
 
         //プレイヤー購入山札に追加する
         _subDeckMediator.AddBuyingDeck(purchasedCard);
 
+        //Selectableの位置を切り替える
         SetNextSelectable();
 
+        //カードの購入時効果を発動する
         purchasedCard.Buy();
     }
 
-    private void OnSell()
+    private void OnSell(Card soldCard)
     {
-        Card selledCard = _card;
-
-        //手札から削除し、新たにカードを引く
-        _deckMediator.RemoveHandCard(selledCard);
-        InsertCard(_deckMediator.TakeDeckCard());
+        //新たにカードを引く
+        _deckMediator.DrawCard();
 
         //商人の手札売却処理
-        _traderController.CurrentTrader.OnPlayerSell(selledCard);
+        _traderController.CurrentTrader.OnPlayerSell(soldCard);
 
-        //商人購入山札に追加する
-        if (!selledCard.IsDisposedOfAfterSell)
+        //売却時即時消滅カード以外なら
+        if (!soldCard.IsDisposedOfAfterSell)
         {
-            _subDeckMediator.AddBuyingDeck(selledCard);
+            //商人購入山札に追加する
+            _subDeckMediator.AddBuyingDeck(soldCard);
         }
 
-        selledCard.Sell();
+        //カードの売却時効果を発動する
+        soldCard.Sell();
     }
 
     private void SetNextSelectable()
     {
         Selectable next = _selectable.FindSelectableOnLeft();
 
-        //nullだった場合こちらに遷移する
-        next ??= _selectable.FindSelectableOnRight();
-        next ??= _selectable.FindSelectableOnUp();
-        next ??= _selectable.FindSelectableOnDown();
+        //??演算子はUnityオブジェクトに対して非推奨らしいのでネストさせます
+        if (next == null)
+        {
+            next = _selectable.FindSelectableOnRight();
 
-        if (next != null) EventSystem.current.SetSelectedGameObject(next.gameObject);
+            if(next == null)
+            {
+                next = _selectable.FindSelectableOnUp();
+
+                if (next == null)
+                {
+                    next = _selectable.FindSelectableOnDown();
+                    
+                    //ここまでやってnullだったら終わり
+                    if (next == null) return;
+                }
+            }
+        }
+
+        EventSystem.current.SetSelectedGameObject(next.gameObject);
+    }
+    
+    /// <summary>
+    /// カードに応じて表示を切り替える
+    /// </summary>
+    /// <param name="card">表示したいカード</param>
+    public void SetCardSprites(Card card)
+    {
+        //一旦すべての表示を消す
+        DisableAllImages();
+
+        //カードがnull相当だった場合、早期リターン
+        if (card is EEX_null)
+        {
+            //選択できない状態にする
+            _selectable.interactable = false;
+            return;
+        }
+
+        //選択可能な状態にする
+        _selectable.interactable = true;
+
+        //0番目はBaseなため必ず表示される
+        _cardImages[0].enabled = true;
+        _cardImages[0].sprite = card.CardSprite[0];
+
+        //以降の文字要素は、エレメントの所持状況で表示が切り替わる
+        for (int i = 1; i < _cardImages.Count; i++)
+        {
+            //カードに該当文字が無い場合の対応
+            if (card.CardSprite[i] == null)
+            {
+                _cardImages[i].sprite = null;
+                _cardImages[i].enabled = false;
+                continue;
+            }
+            //Spriteをセットし、エレメントの所持状況で表示を切り替える
+            //index番号はbase分がズレている。
+            _cardImages[i].sprite = card.CardSprite[i];
+            _cardImages[i].enabled = StringManager.hasElements[i - 1];
+        }
     }
 
-    //カーソルをかざした際の処理
-    private void HandleEnter()
+    private void DisableAllImages()
     {
+        foreach (var image in _cardImages)
+        {
+            image.enabled = false;
+        }
+    }
+
+    [Obsolete("UnityのEventを受け取って実行されるメソッドです。Eventを受け取る以外の使用は想定されていません。",true)]
+    public void OnPointerClick(PointerEventData eventData)
+    {
+        if (eventData == null) throw new NullReferenceException();
+
+        //左クリック以外行わない
+        if (eventData.button != PointerEventData.InputButton.Left) return;
+
+        //同一処理のため以下の処理を呼ぶだけにします。
+        //Submit時の仕様と差異が発生したら修正してください。
+        OnSubmit();
+    }
+
+    [Obsolete("UnityのEventを受け取って実行されるメソッドです。Eventを受け取る以外の使用は想定されていません。", true)]
+    public void OnPointerEnter(PointerEventData eventData)
+    {
+        if (eventData == null) throw new NullReferenceException();
+
         //TODO：今後ここに具体的なカーソルをかざした際の処理を追加する
+
         _selectable.Select();
     }
-
-    //カーソルを外した際の処理
-    private void HandleExit()
+    
+    [Obsolete("UnityのEventを受け取って実行されるメソッドです。Eventを受け取る以外の使用は想定されていません。", true)]
+    public void OnPointerExit(PointerEventData eventData)
     {
+        if (eventData == null) throw new NullReferenceException();
+
         //TODO：今後ここに具体的なカーソルを外した際の処理を追加する
         EventSystem.current.SetSelectedGameObject(null);
     }
 
-    //決定時の処理
-    private void HandleSubmit()
+    [Obsolete("UnityのEventを受け取って実行されるメソッドです。Eventを受け取る以外の使用は想定されていません。", true)]
+    public void OnSubmit(BaseEventData eventData)
     {
-        //同一処理のため以下の処理を呼ぶだけにします。クリック時の仕様と差異が発生したら修正してください。
-        HandleClick();
+        if (eventData == null) throw new NullReferenceException();
+
+        //同一処理のため以下の処理を呼ぶだけにします。
+        //クリック時の仕様と差異が発生したら修正してください。
+        OnSubmit();
     }
 
-    //選択時の処理
-    private void HandleSelect()
+    [Obsolete("UnityのEventを受け取って実行されるメソッドです。Eventを受け取る以外の使用は想定されていません。", true)]
+    public void OnSelect(BaseEventData eventData)
     {
+        if (eventData == null) throw new NullReferenceException();
+
         //TODO:SE1の再生
-        foreach (var item in _images)
-        {
-            Vector2 sizeDelta = item.rectTransform.sizeDelta;
-            sizeDelta.Scale(correction);
-            item.rectTransform.sizeDelta = sizeDelta;
-        }
+
+        //拡大率を指定値に変える
+        _selectable.image.rectTransform.localScale = correction;
     }
 
-    //選択から外れた時の処理
-    private void HandleDeselect()
+    [Obsolete("UnityのEventを受け取って実行されるメソッドです。Eventを受け取る以外の使用は想定されていません。", true)]
+    public void OnDeselect(BaseEventData eventData)
     {
-        foreach (var item in _images)
-        {
-            Vector2 sizeDelta = item.rectTransform.sizeDelta;
-            sizeDelta.Scale(recorrection);
-            item.rectTransform.sizeDelta = sizeDelta;
-        }
-    }
+        if (eventData == null) throw new NullReferenceException();
 
-    /// <summary>
-    /// カードを挿入する
-    /// </summary>
-    /// <param name="card">挿入するカード</param>
-    public void InsertCard(Card card)
-    {
-        _card = card;
-
-        //一旦すべての表示を消す
-        SetImagesEnabled(false);
-
-        bool isNormalCard = _card is not EEX_null;
-
-        _selectable.interactable = isNormalCard;
-
-        if (isNormalCard)
-        {
-            SetImagesSprite(card.CardSprite);
-        }
-    }
-
-    public Card GetCardName()
-    {
-        return _card;
-    }
-    public bool NullCheck()
-    {
-        return _card is EEX_null;
-    }
-
-    private void SetImagesEnabled(bool enabled)
-    {
-        foreach (var image in _images)
-        {
-            image.enabled = enabled;
-        }
-    }
-
-    private void SetImagesSprite(IReadOnlyList<Sprite> sprites)
-    {
-        _images[0].enabled = true;
-
-        for (int i = 0; i < _images.Count; i++)
-        {
-            if (sprites[i] == null) continue;
-
-            _images[i].sprite = sprites[i];
-
-            //i==0はbaseなため必ず表示
-            if (i != 0) _images[i].enabled = StringManager.hasElements[i - 1];
-        }
+        //拡大率を初期値に戻す
+        _selectable.image.rectTransform.localScale = Vector3.one;
     }
 }

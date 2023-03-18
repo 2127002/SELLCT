@@ -6,12 +6,12 @@ using UnityEngine;
 public class GoodsMediator : DeckMediator
 {
     [SerializeField] Hand _hand = default!;
-    [SerializeField] List<CardUIHandler> _clickHandlers = new();
+    [SerializeField] CardUIInstance _cardUIInstance = default!;
     [SerializeField] TraderController _traderController = default!;
     [SerializeField] PhaseController _phaseController = default!;
-    
+
     //プレイヤーが売却したカードが一時的に入るデッキ
-    BuyingCardDeck _buyingCardDeck = new();
+    readonly BuyingCardDeck _buyingCardDeck = new();
 
     private void Awake()
     {
@@ -48,26 +48,21 @@ public class GoodsMediator : DeckMediator
 
         for (int i = 0; i < drawableCount; i++)
         {
-            Card top = _traderController.CurrentTrader.TraderDeck.Draw();
-
-            //手札に追加
-            _hand.Add(top);
-
-            //UI要素に追加
-            _clickHandlers[i].InsertCard(top);
+            DrawCard();
         }
     }
 
-    public override Card TakeDeckCard()
+    public override void DrawCard()
     {
-        if (_hand.CalcDrawableCount() == 0) return EEX_null.Instance;
+        if (_hand.CalcDrawableCount() == 0) return;
 
         Card top = _traderController.CurrentTrader.TraderDeck.Draw();
 
+        //UI要素に追加
+        _cardUIInstance.Handlers[_hand.Cards.Count].SetCardSprites(top);
+
         //手札に追加
         _hand.Add(top);
-
-        return top;
     }
 
     public override void RemoveHandCard(Card card)
@@ -80,20 +75,22 @@ public class GoodsMediator : DeckMediator
         _traderController.CurrentTrader.TraderDeck.Add(card);
     }
 
-    public override void RearrangeCardSlots()
+    public override void UpdeteCardSprites()
     {
-        int handCapacity = _hand.HandCapacity();
+        int handCapacity = _hand.Capacity;
+        int currentHandCount = _hand.Cards.Count;
 
-        //順番入れ替え
-        for (int i = 0; i < handCapacity - 1; i++)
+        //手札を反映させる
+        for (int i = 0; i < currentHandCount; i++)
         {
-            if (true == _clickHandlers[i].NullCheck())
-            {
-                //カード名取得
-                var cardName = _clickHandlers[i + 1].GetCardName();
-                _clickHandlers[i + 1].InsertCard(EEX_null.Instance);
-                _clickHandlers[i].InsertCard(cardName);
-            }
+            _cardUIInstance.Handlers[i].SetCardSprites(_hand.Cards[i]);
+        }
+
+        //手札がキャパシティより少ないなら非表示にする
+        //数を合わせた配置にしないで、カードが無いことを示します。
+        for (int i = currentHandCount; i < handCapacity; i++)
+        {
+            _cardUIInstance.Handlers[i].SetCardSprites(EEX_null.Instance);
         }
     }
 
@@ -105,5 +102,24 @@ public class GoodsMediator : DeckMediator
     public override bool ContainsCard(Card card)
     {
         return _traderController.CurrentTrader.TraderDeck.ContainsCard(card) || _hand.ContainsCard(card) || _buyingCardDeck.ContainsCard(card);
+    }
+
+    public override int FindAll(Card card)
+    {
+        return _traderController.CurrentTrader.TraderDeck.FindAll(card) + _hand.FindAll(card) + _buyingCardDeck.FindAll(card);
+    }
+
+    public override Card GetCardAtCardUIHandler(CardUIHandler handler)
+    {
+        for (int i = 0; i < _cardUIInstance.Handlers.Count; i++)
+        {
+            //インスタンスが一致していたら同じインデックス番号の手札を返す
+            if (handler == _cardUIInstance.Handlers[i])
+            {
+                return _hand.Cards[i];
+            }
+        }
+
+        throw new System.NullReferenceException("指定されたHandlerが見つかりませんでした。HandlerがMediatorに登録されているか確認してください。" + handler);
     }
 }

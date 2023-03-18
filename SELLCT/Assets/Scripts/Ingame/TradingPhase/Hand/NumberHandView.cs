@@ -5,13 +5,26 @@ using UnityEngine.UI;
 
 public class NumberHandView : MonoBehaviour
 {
-    [SerializeField] List<Image> _numberImages;
+    readonly List<Image> _numberImages = new();
 
     public void Set()
     {
         foreach (var item in _numberImages)
         {
-            item.enabled = StringManager.hasElements[0];
+            if (item.sprite == null) continue;
+
+            item.enabled = StringManager.hasElements[(int)StringManager.Element.E17];
         }
     }
+
+    public void Add(Image numberImage)
+    {
+        _numberImages.Add(numberImage);
+    }
+
+    public void Remove(Image image)
+    {
+        _numberImages.Remove(image);
+    }
+
 }

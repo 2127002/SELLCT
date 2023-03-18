@@ -9,11 +9,11 @@ public class IngameController : MonoBehaviour
 
     private void Awake()
     {
-        _phaseController.OnGameStart += _view.OnGameStart;
+        _phaseController.OnGameStart.Add(_view.OnGameStart);
     }
 
     private void OnDestroy()
     {
-        _phaseController.OnGameStart -= _view.OnGameStart;
+        _phaseController.OnGameStart.Remove(_view.OnGameStart);
     }
 }

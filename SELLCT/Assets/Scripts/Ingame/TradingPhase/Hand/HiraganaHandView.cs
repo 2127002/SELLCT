@@ -5,13 +5,26 @@ using UnityEngine.UI;
 
 public class HiraganaHandView : MonoBehaviour
 {
-    [SerializeField] List<Image> _numberImages;
+    readonly List<Image> _hiraganaImages = new();
 
     public void Set()
     {
-        foreach (var item in _numberImages)
+        foreach (var item in _hiraganaImages)
         {
-            item.enabled = StringManager.hasElements[2];
+            if (item.sprite == null) continue;
+
+            item.enabled = StringManager.hasElements[(int)StringManager.Element.E19];
         }
     }
+
+    public void Add(Image hiraganaImage)
+    {
+        _hiraganaImages.Add(hiraganaImage);
+    }
+
+    public void Remove(Image image)
+    {
+        _hiraganaImages.Remove(image);
+    }
+
 }

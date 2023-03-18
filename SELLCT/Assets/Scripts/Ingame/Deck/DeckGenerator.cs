@@ -13,7 +13,12 @@ public class DeckGenerator : MonoBehaviour
 
     private void Awake()
     {
-        _phaseController.OnGameStart += GenerateDeck;
+        _phaseController.OnGameStart.Add(GenerateDeck);
+    }
+
+    private void OnDestroy()
+    {
+        _phaseController.OnGameStart.Remove(GenerateDeck);
     }
 
     private void GenerateDeck()

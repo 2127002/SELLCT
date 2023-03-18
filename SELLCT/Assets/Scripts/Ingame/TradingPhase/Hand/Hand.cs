@@ -7,10 +7,14 @@ public class Hand : MonoBehaviour
     [SerializeField, Min(0)] int _handCapacity;
 
     readonly List<Card> _cards = new();
+    int _addHandCapacityValue = 0;
+
+    public int Capacity => _handCapacity + _addHandCapacityValue;
+    public IReadOnlyList<Card> Cards => _cards;
 
     public void Add(Card card)
     {
-        if(_cards.Count >= _handCapacity)throw new HandCapacityExceededException();
+        if (_cards.Count >= Capacity) throw new HandCapacityExceededException();
 
         _cards.Add(card);
     }
@@ -28,16 +32,26 @@ public class Hand : MonoBehaviour
 
     public int CalcDrawableCount()
     {
-        return _handCapacity - _cards.Count;
-    }
-    public int HandCapacity()
-    {
-        return _handCapacity;
+        return Capacity - _cards.Count;
     }
 
     public bool ContainsCard(Card card)
     {
         return _cards.Contains(card);
+    }
+
+    public int FindAll(Card card)
+    {
+        var list = _cards.FindAll(c => c.Equals(card));
+
+        return list.Count;
+    }
+
+    public void AddHandCapacity(int amount)
+    {
+        _addHandCapacityValue += amount;
+
+        if (_addHandCapacityValue < 0) throw new System.ArgumentOutOfRangeException();
     }
 }
 
