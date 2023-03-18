@@ -89,6 +89,8 @@ public class E32_Rest : Card
     public override void Sell()
     {
         _controller.IncreaseMoney(_parameter.GetMoney());
+
+        if (_handMediator.ContainsCard(this)) return;
         _E32CommandImage.gameObject.SetActive(false);
     }
 }

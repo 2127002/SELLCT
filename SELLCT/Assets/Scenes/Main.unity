@@ -2234,6 +2234,7 @@ Transform:
   - {fileID: 1274645116}
   - {fileID: 26477151}
   - {fileID: 682657745}
+  - {fileID: 1928785345}
   m_Father: {fileID: 251747933}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -2283,6 +2284,8 @@ MonoBehaviour:
   - card: {fileID: 26477152}
     initcount: 4
   - card: {fileID: 682657746}
+    initcount: 4
+  - card: {fileID: 1928785346}
     initcount: 4
 --- !u!1 &907251443
 GameObject:
@@ -5093,6 +5096,7 @@ MonoBehaviour:
   _traderController: {fileID: 1210986883}
   _phaseController: {fileID: 495064998}
   _cardUIGenerator: {fileID: 1960932979}
+  _lack: {fileID: 1928785346}
 --- !u!114 &1723587018
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5325,6 +5329,8 @@ MonoBehaviour:
   - card: {fileID: 26477152}
     initcount: 1
   - card: {fileID: 682657746}
+    initcount: 1
+  - card: {fileID: 1928785346}
     initcount: 1
   _probabilityDeck: []
   _drawCount: 0
@@ -5703,6 +5709,64 @@ MonoBehaviour:
   _image: {fileID: 1094509368}
   _normalSprite: {fileID: 0}
   _restSprite: {fileID: 0}
+--- !u!1 &1928785344
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1928785345}
+  - component: {fileID: 1928785346}
+  m_Layer: 0
+  m_Name: E37_Lack
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1928785345
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1928785344}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 902597265}
+  m_RootOrder: -1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1928785346
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1928785344}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 47392c054627a5d4187cf111133a9eea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _parameter:
+    _price: 0
+    _name: 
+    _text: 
+    _rarity: 0
+    _isDisposedOfAfterSell: 0
+  _controller: {fileID: 157262628}
+  _baseSprite: {fileID: 21300000, guid: 37eb79c17f838544f9274f7dbc5b2165, type: 3}
+  _number: {fileID: 0}
+  _chineseCharacters: {fileID: 21300000, guid: 297d47bf26b356c49974902824b24b52, type: 3}
+  _hiragana: {fileID: 0}
+  _katakana: {fileID: 0}
+  _alphabet: {fileID: 0}
+  _handMediator: {fileID: 1975269151}
 --- !u!1 &1960932977
 GameObject:
   m_ObjectHideFlags: 0
