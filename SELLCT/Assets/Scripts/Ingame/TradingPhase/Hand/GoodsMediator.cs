@@ -9,6 +9,7 @@ public class GoodsMediator : DeckMediator
     [SerializeField] CardUIInstance _cardUIInstance = default!;
     [SerializeField] TraderController _traderController = default!;
     [SerializeField] PhaseController _phaseController = default!;
+    [SerializeField] CardUIGenerator _cardUIGenerator = default!;
 
     //プレイヤーが売却したカードが一時的に入るデッキ
     readonly BuyingCardDeck _buyingCardDeck = new();
@@ -25,11 +26,11 @@ public class GoodsMediator : DeckMediator
         _phaseController.OnTradingPhaseStart.Remove(InitTakeCard);
     }
 
-    //売買フェーズ終了時に行う処理。
     private async UniTask OnComplete()
     {
         var token = this.GetCancellationTokenOnDestroy();
 
+        //購入デッキのカードをすべて山札に戻す
         while (true)
         {
             Card card = _buyingCardDeck.Draw();
@@ -39,11 +40,39 @@ public class GoodsMediator : DeckMediator
             _traderController.CurrentTrader.TraderDeck.Add(card);
         }
 
+        //手札のカードをすべて山札に戻す
+        RemoveAllHandCards();
+
         await UniTask.Yield(token);
     }
 
+    private void RemoveAllHandCards()
+    {
+        int handCardCount = _hand.Cards.Count;
+
+        for (int i = 0; i < handCardCount; i++)
+        {
+            Card card = _hand.Cards[0];
+
+            _hand.Remove(card);
+
+            if (card is EEX_null) continue;
+            _traderController.CurrentTrader.TraderDeck.Add(card);
+        }
+    }
+
+
     private void InitTakeCard()
     {
+        //キャパシティより多かったらその分を削除する
+        int capacityDifference = _cardUIInstance.Handlers.Count - _hand.Capacity;
+
+        for (int i = 0; i < capacityDifference; i++)
+        {
+            _cardUIInstance.RemoveAt(_cardUIInstance.Handlers.Count - 1);
+        }
+
+        //それからドローする
         int drawableCount = _hand.CalcDrawableCount();
 
         for (int i = 0; i < drawableCount; i++)
@@ -54,9 +83,17 @@ public class GoodsMediator : DeckMediator
 
     public override void DrawCard()
     {
-        if (_hand.CalcDrawableCount() == 0) return;
+        if (_hand.CalcDrawableCount() <= 0) return;
 
         Card top = _traderController.CurrentTrader.TraderDeck.Draw();
+
+        //ドローするときにCardUIがなければ作り出す
+        int capacityDifference = _hand.Capacity - _cardUIInstance.Handlers.Count;
+
+        for (int i = 0; i < capacityDifference; i++)
+        {
+            _cardUIGenerator.Generate();
+        }
 
         //UI要素に追加
         _cardUIInstance.Handlers[_hand.Cards.Count].SetCardSprites(top);
@@ -79,6 +116,14 @@ public class GoodsMediator : DeckMediator
     {
         int handCapacity = _hand.Capacity;
         int currentHandCount = _hand.Cards.Count;
+
+        //CardUIがなければ作り出す
+        int capacityDifference = _hand.Capacity - _cardUIInstance.Handlers.Count;
+
+        for (int i = 0; i < capacityDifference; i++)
+        {
+            _cardUIGenerator.Generate();
+        }
 
         //手札を反映させる
         for (int i = 0; i < currentHandCount; i++)

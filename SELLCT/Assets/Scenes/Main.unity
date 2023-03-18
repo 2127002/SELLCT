@@ -577,6 +577,66 @@ RectTransform:
   m_AnchoredPosition: {x: 360, y: -240}
   m_SizeDelta: {x: 600, y: 780}
   m_Pivot: {x: 0, y: 0}
+--- !u!1 &227483397
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 227483398}
+  - component: {fileID: 227483399}
+  m_Layer: 0
+  m_Name: E28_ShopNumber
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &227483398
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 227483397}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 902597265}
+  m_RootOrder: -1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &227483399
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 227483397}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1211ccac88005b34aaa554e1aae14d09, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _parameter:
+    _price: 28
+    _name: 
+    _text: 
+    _rarity: 0
+    _isDisposedOfAfterSell: 0
+  _controller: {fileID: 157262628}
+  _baseSprite: {fileID: 21300000, guid: 9759ec9b54cfa4841ac38bbfeee805f5, type: 3}
+  _number: {fileID: 0}
+  _chineseCharacters: {fileID: 0}
+  _hiragana: {fileID: 0}
+  _katakana: {fileID: 0}
+  _alphabet: {fileID: 0}
+  _handMediator: {fileID: 1975269151}
+  _traderHand: {fileID: 1723587018}
+  _phaseController: {fileID: 495064998}
 --- !u!1 &233741552
 GameObject:
   m_ObjectHideFlags: 0
@@ -2110,6 +2170,7 @@ Transform:
   - {fileID: 1049933559}
   - {fileID: 941202355}
   - {fileID: 1858823706}
+  - {fileID: 227483398}
   - {fileID: 26477151}
   m_Father: {fileID: 251747933}
   m_RootOrder: -1
@@ -2152,6 +2213,8 @@ MonoBehaviour:
   - card: {fileID: 941202356}
     initcount: 4
   - card: {fileID: 1858823707}
+    initcount: 4
+  - card: {fileID: 227483399}
     initcount: 4
   - card: {fileID: 26477152}
     initcount: 4
@@ -4900,6 +4963,7 @@ MonoBehaviour:
   _cardUIInstance: {fileID: 1960932980}
   _traderController: {fileID: 1210986883}
   _phaseController: {fileID: 495064998}
+  _cardUIGenerator: {fileID: 1960932979}
 --- !u!114 &1723587018
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5124,6 +5188,8 @@ MonoBehaviour:
   - card: {fileID: 941202356}
     initcount: 1
   - card: {fileID: 1858823707}
+    initcount: 1
+  - card: {fileID: 227483399}
     initcount: 1
   - card: {fileID: 26477152}
     initcount: 1
