@@ -10,7 +10,7 @@ public class CardParameter
     [SerializeField] string _name;
     [SerializeField] string _text;
 
-    [SerializeField, Min(1)] int _rarity;
+    [SerializeField, Min(1)] int _rarity = 1;
     [SerializeField] bool _isDisposedOfAfterSell;
 
     Money _money;
