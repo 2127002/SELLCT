@@ -171,7 +171,7 @@ MonoBehaviour:
     _price: 0
     _name: 
     _text: 
-    _rarity: 0
+    _rarity: 1
     _isDisposedOfAfterSell: 0
   _controller: {fileID: 157262628}
   _baseSprite: {fileID: 21300000, guid: 4f6d522d6050f2c40a155c7f5a1cfa26, type: 3}
@@ -625,7 +625,7 @@ MonoBehaviour:
     _price: 28
     _name: 
     _text: 
-    _rarity: 0
+    _rarity: 1
     _isDisposedOfAfterSell: 0
   _controller: {fileID: 157262628}
   _baseSprite: {fileID: 21300000, guid: 9759ec9b54cfa4841ac38bbfeee805f5, type: 3}
@@ -932,7 +932,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a04af4dbbc6a42b4d955ee29fe79d7b0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _timeLimitValueInSeconds: 100
+  _timeLimitRate: 50
   _phaseController: {fileID: 495064998}
 --- !u!1 &300763814
 GameObject:
@@ -1344,6 +1344,68 @@ MonoBehaviour:
     _text: 
     _rarity: 0
     _isDisposedOfAfterSell: 0
+--- !u!1 &449189164
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 449189165}
+  - component: {fileID: 449189166}
+  m_Layer: 0
+  m_Name: E24_Time
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &449189165
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 449189164}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 902597265}
+  m_RootOrder: -1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &449189166
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 449189164}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dd6ff212822ef844180a6fb6e17dfcb6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _parameter:
+    _price: 0
+    _name: 
+    _text: 
+    _rarity: 1
+    _isDisposedOfAfterSell: 0
+  _controller: {fileID: 157262628}
+  _baseSprite: {fileID: 21300000, guid: 4f6d522d6050f2c40a155c7f5a1cfa26, type: 3}
+  _number: {fileID: 0}
+  _chineseCharacters: {fileID: 0}
+  _hiragana: {fileID: 0}
+  _katakana: {fileID: 0}
+  _alphabet: {fileID: 0}
+  _handMediator: {fileID: 1975269151}
+  _phaseController: {fileID: 495064998}
+  _timeLimitController: {fileID: 296562001}
+  _addValueInSeconds: 10
+  _reduceValueInSeconds: 10
 --- !u!1 &469186485
 GameObject:
   m_ObjectHideFlags: 0
@@ -2048,7 +2110,7 @@ MonoBehaviour:
     _price: 0
     _name: 
     _text: 
-    _rarity: 0
+    _rarity: 1
     _isDisposedOfAfterSell: 0
   _controller: {fileID: 157262628}
   _baseSprite: {fileID: 21300000, guid: 3c64f6fe91d4bba4bbe55fc1480b031e, type: 3}
@@ -2121,7 +2183,7 @@ MonoBehaviour:
     _price: 0
     _name: 
     _text: 
-    _rarity: 0
+    _rarity: 1
     _isDisposedOfAfterSell: 0
   _controller: {fileID: 157262628}
   _baseSprite: {fileID: 21300000, guid: 0fb748c56efc3c74eb343d531f979177, type: 3}
@@ -2228,6 +2290,7 @@ Transform:
   - {fileID: 1589025318}
   - {fileID: 704934654}
   - {fileID: 1049933559}
+  - {fileID: 449189165}
   - {fileID: 941202355}
   - {fileID: 1858823706}
   - {fileID: 227483398}
@@ -2272,6 +2335,8 @@ MonoBehaviour:
   - card: {fileID: 704934656}
     initcount: 4
   - card: {fileID: 1049933561}
+    initcount: 4
+  - card: {fileID: 449189166}
     initcount: 4
   - card: {fileID: 941202356}
     initcount: 4
@@ -2493,7 +2558,7 @@ MonoBehaviour:
     _price: 0
     _name: 
     _text: 
-    _rarity: 0
+    _rarity: 1
     _isDisposedOfAfterSell: 0
   _controller: {fileID: 157262628}
   _baseSprite: {fileID: 21300000, guid: 8d19ec7d9c4d26d4c8787ee03443b924, type: 3}
@@ -3547,7 +3612,7 @@ MonoBehaviour:
     _price: 0
     _name: 
     _text: 
-    _rarity: 0
+    _rarity: 1
     _isDisposedOfAfterSell: 0
   _controller: {fileID: 157262628}
   _baseSprite: {fileID: 21300000, guid: 27ee7f8f35fda344793f4bb72e9c05e2, type: 3}
@@ -4818,7 +4883,7 @@ MonoBehaviour:
     _price: 0
     _name: 
     _text: 
-    _rarity: 0
+    _rarity: 1
     _isDisposedOfAfterSell: 0
   _controller: {fileID: 157262628}
   _baseSprite: {fileID: 21300000, guid: 881798b77426a8f47b533dcc4767e9e5, type: 3}
@@ -5180,7 +5245,7 @@ MonoBehaviour:
     _price: 0
     _name: 
     _text: 
-    _rarity: 0
+    _rarity: 1
     _isDisposedOfAfterSell: 0
   _controller: {fileID: 157262628}
   _baseSprite: {fileID: 21300000, guid: 4f6d522d6050f2c40a155c7f5a1cfa26, type: 3}
@@ -5318,6 +5383,8 @@ MonoBehaviour:
     initcount: 1
   - card: {fileID: 1049933561}
     initcount: 1
+  - card: {fileID: 449189166}
+    initcount: 2
   - card: {fileID: 941202356}
     initcount: 1
   - card: {fileID: 1858823707}
@@ -5427,7 +5494,7 @@ MonoBehaviour:
     _price: 0
     _name: 
     _text: 
-    _rarity: 0
+    _rarity: 1
     _isDisposedOfAfterSell: 0
   _controller: {fileID: 157262628}
   _baseSprite: {fileID: 21300000, guid: 0c6a2a64ca9f9c946a7dbbd1674cf5bd, type: 3}
@@ -5560,7 +5627,7 @@ MonoBehaviour:
     _price: 0
     _name: 
     _text: 
-    _rarity: 0
+    _rarity: 1
     _isDisposedOfAfterSell: 0
   _controller: {fileID: 157262628}
   _baseSprite: {fileID: 21300000, guid: 43d220280f3e18041a13ffe6173e02e6, type: 3}
@@ -5757,7 +5824,7 @@ MonoBehaviour:
     _price: 0
     _name: 
     _text: 
-    _rarity: 0
+    _rarity: 1
     _isDisposedOfAfterSell: 0
   _controller: {fileID: 157262628}
   _baseSprite: {fileID: 21300000, guid: 37eb79c17f838544f9274f7dbc5b2165, type: 3}
@@ -6041,7 +6108,7 @@ MonoBehaviour:
     _price: 0
     _name: 
     _text: 
-    _rarity: 0
+    _rarity: 1
     _isDisposedOfAfterSell: 0
   _controller: {fileID: 157262628}
   _baseSprite: {fileID: 21300000, guid: 1f2ada7376fe1ff43b083b45745df221, type: 3}
@@ -6185,7 +6252,7 @@ MonoBehaviour:
     _price: 0
     _name: 
     _text: 
-    _rarity: 0
+    _rarity: 1
     _isDisposedOfAfterSell: 0
   _controller: {fileID: 157262628}
   _baseSprite: {fileID: 21300000, guid: 4f6d522d6050f2c40a155c7f5a1cfa26, type: 3}

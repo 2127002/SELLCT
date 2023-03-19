@@ -6,7 +6,9 @@ using UnityEngine;
 
 public class TimeLimitController : MonoBehaviour
 {
-    [SerializeField, Min(0)] int _timeLimitValueInSeconds;
+    [Header("最大値と初期値（E24の所持数*この値）の計算に使用します。")]
+    [SerializeField, Min(0)] float _timeLimitRate;
+
     [SerializeField] PhaseController _phaseController = default!;
 
     TimeLimit _timeLimit;
@@ -15,19 +17,12 @@ public class TimeLimitController : MonoBehaviour
 
     private void Awake()
     {
-        _phaseController.OnTradingPhaseStart.Add(OnPhaseStart);
         _phaseController.OnTradingPhaseComplete.Add(OnPhaseComplete);
     }
 
     private void OnDestroy()
     {
-        _phaseController.OnTradingPhaseStart.Remove(OnPhaseStart);
         _phaseController.OnTradingPhaseComplete.Remove(OnPhaseComplete);
-    }
-
-    private void OnPhaseStart()
-    {
-        _timeLimit = new(_timeLimitValueInSeconds);
     }
 
     private async UniTask OnPhaseComplete()
@@ -56,8 +51,20 @@ public class TimeLimitController : MonoBehaviour
         Debug.Log("制限時間です");
 
         OnTimeLimit?.Invoke();
+        _timeLimit = null;
+    }
 
-        //制限時間になったらスクリプトごと無効にする
-        enabled = false;
+    public void Generate(int currentE24Count)
+    {
+        _timeLimit = new(currentE24Count * _timeLimitRate, _timeLimitRate);
+    }
+
+    public void AddTimeLimit(float value, int currentE24Count)
+    {
+        _timeLimit = _timeLimit.AddTimeLimit(new(value, _timeLimitRate), currentE24Count);
+    }
+    public void ReduceTimeLimit(float value, int currentE24Count)
+    {
+        _timeLimit = _timeLimit.ReduceTimeLimit(new(value, _timeLimitRate), currentE24Count);
     }
 }
