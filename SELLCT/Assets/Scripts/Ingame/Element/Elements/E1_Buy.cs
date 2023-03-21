@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
+using System.Linq;
+using UnityEditor.Experimental.GraphView;
 
 public class E1_Buy : Card
 {
@@ -16,15 +18,7 @@ public class E1_Buy : Card
     [SerializeField] Sprite _alphabet = default!;
     [SerializeField] HandMediator _handMediator = default!;
     [SerializeField] Color changeColor = default!;
-    [SerializeField] Image _u3Card1 = default!;
-    [SerializeField] Image _u3Card2 = default!;
-    [SerializeField] Image _u3Card3 = default!;
-    [SerializeField] Image _u3Card4 = default!;
-    [SerializeField] Selectable _u3Card1Selectable = default!;
-    [SerializeField] Selectable _u3Card2Selectable = default!;
-    [SerializeField] Selectable _u3Card3Selectable = default!;
-    [SerializeField] Selectable _u3Card4Selectable = default!;
-
+    [SerializeField] CardUIInstance cardUIInstance = default!;
     readonly List<Sprite> result = new();
     public override bool IsDisposedOfAfterSell => _parameter.IsDisposedOfAfterSell();
     public override int Rarity => _parameter.Rarity();
@@ -32,7 +26,6 @@ public class E1_Buy : Card
     {
         get
         {
-            //������
             if (result.Count == 0)
             {
                 result.Add(_baseSprite);
@@ -56,7 +49,7 @@ public class E1_Buy : Card
 
     public override void Passive()
     {
-        //TODO:SE2�̍Đ�
+        //TODO:SE2
     }
 
     public override void Sell()
@@ -64,21 +57,18 @@ public class E1_Buy : Card
         _controller.IncreaseMoney(_parameter.GetMoney());
         BuyChecker();
     }
-
-    public void BuyChecker()
+    private void BuyChecker()
     {
         if (_handMediator.ContainsCard(this)) return;
-        _u3Card1.color = changeColor;
-        _u3Card2.color = changeColor;
-        _u3Card3.color = changeColor;
-        _u3Card4.color = changeColor;
-        _u3Card1Selectable.interactable = false;
-        _u3Card2Selectable.interactable = false;
-        _u3Card3Selectable.interactable = false;
-        _u3Card4Selectable.interactable = false;
-        _u3Card1.GetComponent<LeftClickDetector>().enabled = false;
-        _u3Card2.GetComponent<LeftClickDetector>().enabled = false;
-        _u3Card3.GetComponent<LeftClickDetector>().enabled = false;
-        _u3Card4.GetComponent<LeftClickDetector>().enabled = false;
+
+        foreach (var cardUIHandler in cardUIInstance.Handlers)
+        {
+            cardUIHandler.DisableSelectability();
+
+            foreach (var cardImage in cardUIHandler.CardImages)
+            {
+                cardImage.color = changeColor;
+            }
+        }
     }
 }

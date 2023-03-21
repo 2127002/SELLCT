@@ -26,6 +26,8 @@ public class E2_Sell : Card
     [SerializeField] Selectable _u3Card3Selectable = default!;
     [SerializeField] Selectable _u3Card4Selectable = default!;
 
+    E1_Buy e1_Buy = default!;
+
     bool currentColor = true;
     readonly List<Sprite> result = new();
     public override bool IsDisposedOfAfterSell => _parameter.IsDisposedOfAfterSell();
@@ -71,48 +73,49 @@ public class E2_Sell : Card
 
     public void SellChecker(bool checker)
     {
-        var u3childCard1 = _u3Card1.GetComponentsInChildren<Image>();
-        var u3childCard2 = _u3Card2.GetComponentsInChildren<Image>();
-        var u3childCard3 = _u3Card3.GetComponentsInChildren<Image>();
-        var u3childCard4 = _u3Card4.GetComponentsInChildren<Image>();
+        //e1_Buy.BuyChecker();
+        //var u3childCard1 = _u3Card1.GetComponentsInChildren<Image>();
+        //var u3childCard2 = _u3Card2.GetComponentsInChildren<Image>();
+        //var u3childCard3 = _u3Card3.GetComponentsInChildren<Image>();
+        //var u3childCard4 = _u3Card4.GetComponentsInChildren<Image>();
 
-        if(checker == true)
-        {
-            for (int i = 0; i < 6; i++)
-            {
-                u3childCard1[i].color = defaultColor;
-                u3childCard2[i].color = defaultColor;
-                u3childCard3[i].color = defaultColor;
-                u3childCard4[i].color = defaultColor;
-            }
-            _u3Card1Selectable.interactable = true;
-            _u3Card2Selectable.interactable = true;
-            _u3Card3Selectable.interactable = true;
-            _u3Card4Selectable.interactable = true;
-            _u3Card1.GetComponent<LeftClickDetector>().enabled = true;
-            _u3Card2.GetComponent<LeftClickDetector>().enabled = true;
-            _u3Card3.GetComponent<LeftClickDetector>().enabled = true;
-            _u3Card4.GetComponent<LeftClickDetector>().enabled = true;
-            Debug.Log("表示");
-        }
-        else
-        {
-            for (int i = 0; i < 6; i++)
-            {
-                u3childCard1[i].color = changeColor;
-                u3childCard2[i].color = changeColor;
-                u3childCard3[i].color = changeColor;
-                u3childCard4[i].color = changeColor;
-            }
-            _u3Card1Selectable.interactable = false;
-            _u3Card2Selectable.interactable = false;
-            _u3Card3Selectable.interactable = false;
-            _u3Card4Selectable.interactable = false;
-            _u3Card1.GetComponent<LeftClickDetector>().enabled = false;
-            _u3Card2.GetComponent<LeftClickDetector>().enabled = false;
-            _u3Card3.GetComponent<LeftClickDetector>().enabled = false;
-            _u3Card4.GetComponent<LeftClickDetector>().enabled = false;
-            Debug.Log("非表示");
-        }
+        //if(checker == true)
+        //{
+        //    for (int i = 0; i < 6; i++)
+        //    {
+        //        u3childCard1[i].color = defaultColor;
+        //        u3childCard2[i].color = defaultColor;
+        //        u3childCard3[i].color = defaultColor;
+        //        u3childCard4[i].color = defaultColor;
+        //    }
+        //    _u3Card1Selectable.interactable = true;
+        //    _u3Card2Selectable.interactable = true;
+        //    _u3Card3Selectable.interactable = true;
+        //    _u3Card4Selectable.interactable = true;
+        //    _u3Card1.GetComponent<LeftClickDetector>().enabled = true;
+        //    _u3Card2.GetComponent<LeftClickDetector>().enabled = true;
+        //    _u3Card3.GetComponent<LeftClickDetector>().enabled = true;
+        //    _u3Card4.GetComponent<LeftClickDetector>().enabled = true;
+        //    Debug.Log("表示");
+        //}
+        //else
+        //{
+        //    for (int i = 0; i < 6; i++)
+        //    {
+        //        u3childCard1[i].color = changeColor;
+        //        u3childCard2[i].color = changeColor;
+        //        u3childCard3[i].color = changeColor;
+        //        u3childCard4[i].color = changeColor;
+        //    }
+        //    _u3Card1Selectable.interactable = false;
+        //    _u3Card2Selectable.interactable = false;
+        //    _u3Card3Selectable.interactable = false;
+        //    _u3Card4Selectable.interactable = false;
+        //    _u3Card1.GetComponent<LeftClickDetector>().enabled = false;
+        //    _u3Card2.GetComponent<LeftClickDetector>().enabled = false;
+        //    _u3Card3.GetComponent<LeftClickDetector>().enabled = false;
+        //    _u3Card4.GetComponent<LeftClickDetector>().enabled = false;
+        //    Debug.Log("非表示");
+        //}
     }
 }
