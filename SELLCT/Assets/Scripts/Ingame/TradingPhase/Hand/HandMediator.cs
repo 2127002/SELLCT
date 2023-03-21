@@ -98,11 +98,11 @@ public class HandMediator : DeckMediator
 
         Card card = _playerDeck.Draw();
 
-        //UIをセットする
-        _cardUIInstance.Handlers[_hand.Cards.Count].SetCardSprites(card);
-
         //手札に追加
         _hand.Add(card);
+
+        //UIをセットする
+        _cardUIInstance.Handlers[_hand.Cards.Count - 1].SetCardSprites(card);
     }
 
     public override void RemoveHandCard(Card card)

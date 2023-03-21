@@ -85,7 +85,7 @@ public class GoodsMediator : DeckMediator
     public override void DrawCard()
     {
         if (_hand.CalcDrawableCount() <= 0) return;
-        
+
         Card card;
         if (_lack.ContainsPlayerDeck)
         {
@@ -104,11 +104,11 @@ public class GoodsMediator : DeckMediator
             _cardUIGenerator.Generate();
         }
 
-        //UI—v‘f‚É’Ç‰Á
-        _cardUIInstance.Handlers[_hand.Cards.Count].SetCardSprites(card);
-
         //ŽèŽD‚É’Ç‰Á
         _hand.Add(card);
+
+        //UI—v‘f‚É’Ç‰Á
+        _cardUIInstance.Handlers[_hand.Cards.Count - 1].SetCardSprites(card);
     }
 
     public override void RemoveHandCard(Card card)

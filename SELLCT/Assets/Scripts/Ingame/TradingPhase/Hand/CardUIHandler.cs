@@ -31,6 +31,8 @@ public class CardUIHandler : MonoBehaviour, IPointerClickHandler, IPointerEnterH
 
     [SerializeField] EntityType _entityType;
 
+    [SerializeField] Card _buyOrSell = default;
+
     //選択時画像サイズ補正値
     const float CORRECTION_SIZE = 1.25f;
     static readonly Vector3 correction = new(CORRECTION_SIZE, CORRECTION_SIZE, CORRECTION_SIZE);
@@ -146,9 +148,9 @@ public class CardUIHandler : MonoBehaviour, IPointerClickHandler, IPointerEnterH
             _selectable.interactable = false;
             return;
         }
-
-        //選択可能な状態にする
-        _selectable.interactable = true;
+     
+        //E1がデッキに存在する場合選択可能
+        _selectable.interactable = _buyOrSell.ContainsPlayerDeck;
 
         //0番目はBaseなため必ず表示される
         _cardImages[0].enabled = true;
@@ -183,6 +185,8 @@ public class CardUIHandler : MonoBehaviour, IPointerClickHandler, IPointerEnterH
     public void OnPointerClick(PointerEventData eventData)
     {
         if (eventData == null) throw new NullReferenceException();
+
+        if (!_selectable.interactable) return;
 
         //左クリック以外行わない
         if (eventData.button != PointerEventData.InputButton.Left) return;
@@ -239,5 +243,10 @@ public class CardUIHandler : MonoBehaviour, IPointerClickHandler, IPointerEnterH
 
         //拡大率を初期値に戻す
         _selectable.image.rectTransform.localScale = Vector3.one;
+    }
+
+    public void DisableSelectability()
+    {
+        _selectable.interactable = false;
     }
 }
