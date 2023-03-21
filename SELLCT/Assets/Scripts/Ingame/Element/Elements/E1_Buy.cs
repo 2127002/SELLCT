@@ -65,9 +65,9 @@ public class E1_Buy : Card
         {
             cardUIHandler.DisableSelectability();
 
-            foreach(var cardImage in cardUIHandler.CardImages)
+            foreach (var cardImage in cardUIHandler.CardImages)
             {
-               // cardImage.color = changeColor;
+                cardImage.color = changeColor;
             }
         }
     }
