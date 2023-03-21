@@ -2187,6 +2187,7 @@ Transform:
   - {fileID: 1240537338}
   - {fileID: 1050709443}
   - {fileID: 1890776590}
+  - {fileID: 1317302476}
   - {fileID: 2044394405}
   - {fileID: 1891691740}
   - {fileID: 1803076677}
@@ -2230,6 +2231,8 @@ MonoBehaviour:
   - card: {fileID: 1050709444}
     initcount: 4
   - card: {fileID: 1890776591}
+    initcount: 4
+  - card: {fileID: 1317302477}
     initcount: 4
   - card: {fileID: 2044394406}
     initcount: 4
@@ -3577,6 +3580,68 @@ MonoBehaviour:
     m_DisabledTrigger: Disabled
   m_Interactable: 1
   m_TargetGraphic: {fileID: 1294855995}
+--- !u!1 &1317302475
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1317302476}
+  - component: {fileID: 1317302477}
+  m_Layer: 0
+  m_Name: E11_Vivid
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1317302476
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1317302475}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 902597265}
+  m_RootOrder: -1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1317302477
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1317302475}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f74aae9fea5712245ac4bc46d77ed709, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _parameter:
+    _price: 0
+    _name: 
+    _text: 
+    _rarity: 1
+    _isDisposedOfAfterSell: 0
+  _controller: {fileID: 157262628}
+  _baseSprite: {fileID: 21300000, guid: c49609c35ebe84345b813807e383a176, type: 3}
+  _number: {fileID: 0}
+  _chineseCharacters: {fileID: 21300000, guid: 606ebeff8500fc046ba8618cd66f153e, type: 3}
+  _hiragana: {fileID: 0}
+  _katakana: {fileID: 0}
+  _alphabet: {fileID: 0}
+  _handMediator: {fileID: 1975269151}
+  _vivid: {fileID: 2100000, guid: f911bf6d76c5c254faef486eeec726b9, type: 2}
+  _vividIncreasePercent: 10
+  _vividDecreasePercent: 50
+  _firstVividPercent: 100
 --- !u!1 &1349179047
 GameObject:
   m_ObjectHideFlags: 0
@@ -5121,6 +5186,8 @@ MonoBehaviour:
     initcount: 1
   - card: {fileID: 1890776591}
     initcount: 2
+  - card: {fileID: 1317302477}
+    initcount: 1
   - card: {fileID: 2044394406}
     initcount: 1
   - card: {fileID: 1891691742}
