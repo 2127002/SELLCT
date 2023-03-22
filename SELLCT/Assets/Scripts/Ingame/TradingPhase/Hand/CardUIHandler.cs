@@ -245,6 +245,10 @@ public class CardUIHandler : MonoBehaviour, IPointerClickHandler, IPointerEnterH
         _selectable.image.rectTransform.localScale = Vector3.one;
     }
 
+    public void EnabledSelectebility()
+    {
+        _selectable.interactable = true;
+    }
     public void DisableSelectability()
     {
         _selectable.interactable = false;
