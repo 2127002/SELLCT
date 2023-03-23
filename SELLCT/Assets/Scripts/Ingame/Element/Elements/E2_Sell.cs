@@ -19,8 +19,6 @@ public class E2_Sell : Card
     [SerializeField] Color changeColor = default!;
     [SerializeField] CardUIInstance cardUIInstance = default!;
 
-    bool currentColor = true;
-
     readonly List<Sprite> result = new();
     public override bool IsDisposedOfAfterSell => _parameter.IsDisposedOfAfterSell();
     public override int Rarity => _parameter.Rarity();
@@ -46,8 +44,8 @@ public class E2_Sell : Card
     public override void Buy()
     {
         _controller.DecreaseMoney(_parameter.GetMoney());
-        Debug.Log("”ƒ‚¤");
-        SellChecker(defaultColor);
+
+        BuyChecker();
     }
 
     public override void Passive()
@@ -57,28 +55,33 @@ public class E2_Sell : Card
 
     public override void Sell()
     {
-        if (_handMediator.ContainsCard(this)) return;
         _controller.IncreaseMoney(_parameter.GetMoney());
-        Debug.Log("”„‚é");
-        SellChecker(changeColor);
-    }
 
-    public void SellChecker(Color color)
+        if (_handMediator.ContainsCard(this)) return;
+
+        SellChecker();
+    }
+    public void BuyChecker()
     {
         foreach (var cardUIHandler in cardUIInstance.Handlers)
         {
-            if (color == defaultColor)
-            {
-                cardUIHandler.EnabledSelectebility();
-            }
-            else
-            {
-                cardUIHandler.DisableSelectability();
-            }
+            cardUIHandler.EnabledSelectebility();
 
             foreach (var cardImage in cardUIHandler.CardImages)
             {
-                cardImage.color = color;
+                cardImage.color = defaultColor;
+            }
+        }
+    }
+    public void SellChecker()
+    {
+        foreach (var cardUIHandler in cardUIInstance.Handlers)
+        {
+            cardUIHandler.DisableSelectability();
+
+            foreach (var cardImage in cardUIHandler.CardImages)
+            {
+                cardImage.color = changeColor;
             }
         }
     }
