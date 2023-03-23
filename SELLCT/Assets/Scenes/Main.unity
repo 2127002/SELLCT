@@ -479,7 +479,7 @@ MonoBehaviour:
     _rarity: 1
     _isDisposedOfAfterSell: 0
   _controller: {fileID: 157262628}
-  _baseSprite: {fileID: 21300000, guid: 9759ec9b54cfa4841ac38bbfeee805f5, type: 3}
+  _baseSprite: {fileID: 21300000, guid: 4f6d522d6050f2c40a155c7f5a1cfa26, type: 3}
   _number: {fileID: 0}
   _chineseCharacters: {fileID: 0}
   _hiragana: {fileID: 0}
@@ -901,16 +901,9 @@ MonoBehaviour:
   _katakana: {fileID: 0}
   _alphabet: {fileID: 0}
   _handMediator: {fileID: 1975269151}
-  defaultColor: {r: 0.41176474, g: 0.41176474, b: 0.41176474, a: 0}
-  changeColor: {r: 0.21960786, g: 0.21960786, b: 0.21960786, a: 0}
-  _u3Card1: {fileID: 0}
-  _u3Card2: {fileID: 0}
-  _u3Card3: {fileID: 0}
-  _u3Card4: {fileID: 0}
-  _u3Card1Selectable: {fileID: 0}
-  _u3Card2Selectable: {fileID: 0}
-  _u3Card3Selectable: {fileID: 0}
-  _u3Card4Selectable: {fileID: 0}
+  defaultColor: {r: 1, g: 1, b: 1, a: 1}
+  changeColor: {r: 0.972549, g: 0.8039216, b: 0.8039216, a: 0.49803922}
+  cardUIInstance: {fileID: 907251447}
 --- !u!1 &324477192
 GameObject:
   m_ObjectHideFlags: 0
