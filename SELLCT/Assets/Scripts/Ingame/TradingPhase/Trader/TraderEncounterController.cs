@@ -30,6 +30,7 @@ public class TraderEncounterController : MonoBehaviour
         int index = Random.Range(0, availableTraders.Count);
         Trader selectedTrader = availableTraders[index];
 
+        _prebTrader = selectedTrader;
         _traderController.SetTrader(selectedTrader);
     }
 }

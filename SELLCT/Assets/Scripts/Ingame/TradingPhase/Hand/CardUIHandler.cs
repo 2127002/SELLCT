@@ -1,6 +1,7 @@
 using Cysharp.Threading.Tasks;
 using System;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
@@ -26,6 +27,7 @@ public class CardUIHandler : MonoBehaviour, IPointerClickHandler, IPointerEnterH
 
     //カード表示
     [SerializeField] List<Image> _cardImages = default!;
+    [SerializeField] TextMeshProUGUI _cardText = default!;
 
     [SerializeField] TraderController _traderController = default!;
 
@@ -139,7 +141,7 @@ public class CardUIHandler : MonoBehaviour, IPointerClickHandler, IPointerEnterH
     public void SetCardSprites(Card card)
     {
         //一旦すべての表示を消す
-        DisableAllImages();
+        DisableAllCardUIs();
 
         //カードがnull相当だった場合、早期リターン
         if (card is EEX_null)
@@ -166,19 +168,29 @@ public class CardUIHandler : MonoBehaviour, IPointerClickHandler, IPointerEnterH
                 _cardImages[i].enabled = false;
                 continue;
             }
+
             //Spriteをセットし、エレメントの所持状況で表示を切り替える
             //index番号はbase分がズレている。
             _cardImages[i].sprite = card.CardSprite[i];
             _cardImages[i].enabled = StringManager.hasElements[i - 1];
         }
+
+        //テキストで名前を表示するエレメントか判定
+        bool isPrintText = card is E30_Name;
+
+        //表示する
+        _cardText.enabled = isPrintText;
+        _cardText.text = card.CardName;
     }
 
-    private void DisableAllImages()
+    private void DisableAllCardUIs()
     {
         foreach (var image in _cardImages)
         {
             image.enabled = false;
         }
+
+        _cardText.enabled = false;
     }
 
     [Obsolete("UnityのEventを受け取って実行されるメソッドです。Eventを受け取る以外の使用は想定されていません。",true)]

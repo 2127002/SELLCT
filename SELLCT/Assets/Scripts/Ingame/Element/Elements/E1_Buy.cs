@@ -20,6 +20,8 @@ public class E1_Buy : Card
     [SerializeField] Color changeColor = default!;
     [SerializeField] CardUIInstance cardUIInstance = default!;
     readonly List<Sprite> result = new();
+
+    public override string CardName => _parameter.GetName();
     public override bool IsDisposedOfAfterSell => _parameter.IsDisposedOfAfterSell();
     public override int Rarity => _parameter.Rarity();
     public override IReadOnlyList<Sprite> CardSprite

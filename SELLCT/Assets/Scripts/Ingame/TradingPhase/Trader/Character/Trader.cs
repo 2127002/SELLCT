@@ -5,6 +5,9 @@ using UnityEngine;
 public abstract class Trader : MonoBehaviour
 {
     public abstract TraderDeck TraderDeck { get; }
+    public abstract string Name { get; set; }
+    public abstract int InitialDisplayItemCount { get; }
+    public abstract Sprite Sprite { get; }
     public abstract void CreateDeck(CardPool pool);
     public abstract void OnPlayerSell(Card card);
     public abstract void OnPlayerBuy();

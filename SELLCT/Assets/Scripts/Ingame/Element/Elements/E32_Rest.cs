@@ -27,6 +27,7 @@ public class E32_Rest : Card
 
     bool _isRest = false;
 
+    public override string CardName => _parameter.GetName();
     public override bool IsDisposedOfAfterSell => _parameter.IsDisposedOfAfterSell();
     public override int Rarity => _parameter.Rarity();
     public override IReadOnlyList<Sprite> CardSprite

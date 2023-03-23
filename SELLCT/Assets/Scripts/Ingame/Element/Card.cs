@@ -6,6 +6,7 @@ using UnityEngine;
 //“¯‚¶Œø‰Ê‚ğ‚Â’ŠÛƒNƒ‰ƒX‚É‚µ‚Ü‚·B
 public abstract class Card : MonoBehaviour
 {
+    public abstract string CardName { get; }
     public abstract IReadOnlyList<Sprite> CardSprite { get; }
     public abstract bool IsDisposedOfAfterSell { get; }
     public abstract int Rarity { get; }

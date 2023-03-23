@@ -11,7 +11,7 @@ using UnityEngine.InputSystem;
 public class TradingPhaseController : MonoBehaviour
 {
     [SerializeField] TradingPhaseView _view = default!;
-    [SerializeField] TextBoxView _textBoxView = default!;
+    [SerializeField] TextBoxController _textBoxController = default!;
     [SerializeField] TraderController _traderController = default!;
     [SerializeField] PhaseController _phaseController = default!;
     [SerializeField] TimeLimitController _timeLimitController = default!;
@@ -67,8 +67,7 @@ public class TradingPhaseController : MonoBehaviour
     private async UniTask OnComplete()
     {
         //テキストの表示
-        _textBoxView.UpdeteText(_traderController.CurrentTrader.EndMessage());
-        await _textBoxView.DisplayTextOneByOne();
+        await _textBoxController.UpdateText(_traderController.CurrentTrader.Name, _traderController.CurrentTrader.EndMessage());
 
         //フェードアウト
         await _view.OnPhaseComplete();
