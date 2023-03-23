@@ -19,6 +19,8 @@ public class E7_Move : Card
     [SerializeField] Image _u7 = default!;
 
     readonly List<Sprite> result = new();
+
+    public override string CardName => _parameter.GetName();
     public override bool IsDisposedOfAfterSell => _parameter.IsDisposedOfAfterSell();
     public override int Rarity => _parameter.Rarity();
     public override IReadOnlyList<Sprite> CardSprite

@@ -6,14 +6,26 @@ using UnityEngine;
 public class TR1_NormalTrader : Trader
 {
     [SerializeField] TraderParameter _traderParameter;
+    [SerializeField] Sprite _sprite;
     Favorability _favorability;
     readonly TraderDeck _deck = new();
 
     public override TraderDeck TraderDeck => _deck;
 
+    public override string Name
+    {
+        get => _traderParameter.Name;
+        set => _traderParameter.Name = value;
+    }
+
+    public override int InitialDisplayItemCount => _traderParameter.InitialDisplayItemCount;
+
+    public override Sprite Sprite => _sprite;
+
     private void Awake()
     {
-        _favorability = _traderParameter.InitialFavorability();
+        _favorability = _traderParameter.InitialFavorability;
+        _traderParameter.Name = _traderParameter.DefalutName;
     }
 
     public override void CreateDeck(CardPool pool)
@@ -29,12 +41,12 @@ public class TR1_NormalTrader : Trader
 
     public override string StartMessage()
     {
-        return "Hello. My name is normal trader.";
+        return "「奈落における通貨はカラットと呼ばれている」\r\n「あらゆる存在にとって等しく価値のある輝き」\r\n「さて、それは何なんだろうな」";
     }
 
     public override string EndMessage()
     {
-        return "Good Bye.";
+        return "「毎度あり」\r\n「まぁ、また直ぐに会うことになるだろう」";
     }
 
     public override string CardMessage(Card card)
@@ -61,16 +73,16 @@ public class TR1_NormalTrader : Trader
     public override void OnPlayerBuy()
     {
         //買い処理はお気に入りエレメントは関係ない
-        _favorability = _favorability.Add(_traderParameter.AddFavorabilityValue());
+        _favorability = _favorability.Add(_traderParameter.AddFavorabilityValue);
     }
 
     private void AddFavorability(Card card)
     {
-        Favorability totalAddValue = _traderParameter.AddFavorabilityValue();
+        Favorability totalAddValue = _traderParameter.AddFavorabilityValue;
 
-        if (_traderParameter.FavoriteCards().Contains(card))
+        if (_traderParameter.FavoriteCards.Contains(card))
         {
-            totalAddValue.Add(_traderParameter.FavoriteCardAddValue());
+            totalAddValue.Add(_traderParameter.FavoriteCardAddValue);
         }
 
         _favorability = _favorability.Add(totalAddValue);

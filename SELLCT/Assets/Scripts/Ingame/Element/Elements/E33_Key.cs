@@ -16,6 +16,8 @@ public class E33_Key : Card
     [SerializeField] Sprite _alphabet = default!;
     [SerializeField] HandMediator _handMediator = default!;
     readonly List<Sprite> result = new();
+
+    public override string CardName => _parameter.GetName();
     public override bool IsDisposedOfAfterSell => _parameter.IsDisposedOfAfterSell();
     public override int Rarity => _parameter.Rarity();
     public override IReadOnlyList<Sprite> CardSprite

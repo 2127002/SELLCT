@@ -5,13 +5,21 @@ using System.Collections.Generic;
 using System.Threading;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class TextBoxView : MonoBehaviour
 {
     [SerializeField, Min(0)] int _delayFrame = 3;
-    [SerializeField] TextMeshProUGUI _text;
 
-    CancellationTokenSource _cancellationTokenSource;
+    //U5
+    [SerializeField] Image _messageImage = default!;
+    [SerializeField] TextMeshProUGUI _messageText = default!;
+
+    //U13
+    [SerializeField] Image _speakerImage = default!;
+    [SerializeField] TextMeshProUGUI _speakerText = default!;
+
+    CancellationTokenSource _cancellationTokenSource = default!;
 
     public async UniTask DisplayTextOneByOne()
     {
@@ -21,13 +29,13 @@ public class TextBoxView : MonoBehaviour
         _cancellationTokenSource?.Cancel();
         _cancellationTokenSource = CancellationTokenSource.CreateLinkedTokenSource(cancellationToken);
 
-        string s = _text.text;
+        string s = _messageText.text;
 
         for (int i = 0; i <= s.Length; i++)
         {
             // 範囲演算子を用いています。Substringと同じ効果です
             string newText = s[..i];
-            _text.text = newText;
+            _messageText.text = newText;
 
             try
             {
@@ -43,8 +51,25 @@ public class TextBoxView : MonoBehaviour
         // CancellationTokenSourceをnullにする
         _cancellationTokenSource = null;
     }
-    public void UpdeteText(string text)
+
+    /// <summary>
+    /// テキストを変更します。
+    /// </summary>
+    /// <param name="speaker"></param>
+    /// <param name="speakerSprite"></param>
+    /// <param name="message"></param>
+    public void UpdateText(string speaker, string message)
     {
-        _text.text = StringManager.ToDisplayString(text);
+        _speakerText.text = speaker.ToDisplayString();
+        _messageText.text = message.ToDisplayString();
+    }
+
+    public void UpdateDisplay(bool hasE14)
+    {
+        bool spekerImageEnabled = !string.IsNullOrEmpty(_speakerText.text) && hasE14;
+
+        //ImageだけでTextはE14によって左右されない
+        _speakerImage.enabled = spekerImageEnabled;
+        _messageImage.enabled = hasE14;
     }
 }

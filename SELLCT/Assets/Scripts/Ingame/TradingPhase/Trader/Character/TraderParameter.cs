@@ -14,46 +14,57 @@ public struct TraderParameter
     [SerializeField] int _addFavorabilityValue;
     [SerializeField] int _favoriteCardAddValue;
     [SerializeField] FavourableView _favourableView;
+    [SerializeField] string _defalutName;
+    string _name;
 
     Favorability initialFavorability;
     Favorability addFavorabilityValue;
     Favorability favoriteCardAddValue;
 
-    public IReadOnlyList<Card> FavoriteCards()
+    public IReadOnlyList<Card> FavoriteCards => _favoriteCards;
+
+    public IReadOnlyList<PriorityCard> PriorityCards => _priorityCards;
+
+    public Favorability InitialFavorability
     {
-        return _favoriteCards;
+        get
+        {
+            initialFavorability ??= new(_initialFavorability, _favourableView);
+            return initialFavorability;
+        }
     }
 
-    public IReadOnlyList<PriorityCard> PriorityCards()
+    public int InitialDisplayItemCount => _initialDisplayItemCount;
+
+    public int InitalDeckCount => _initialDeckCount;
+
+    public Favorability AddFavorabilityValue
     {
-        return _priorityCards;
+        get
+        {
+            addFavorabilityValue ??= new(_addFavorabilityValue, _favourableView);
+            return addFavorabilityValue;
+        }
     }
 
-    public int InitialDisplayItemCount()
+    public Favorability FavoriteCardAddValue
     {
-        return _initialDisplayItemCount;
+        get
+        {
+            favoriteCardAddValue ??= new(_favoriteCardAddValue, _favourableView);
+            return favoriteCardAddValue;
+        }
     }
 
-    public Favorability InitialFavorability()
+    public string DefalutName => _defalutName;
+    public string Name
     {
-        initialFavorability ??= new(_initialFavorability,_favourableView);
-        return initialFavorability;
-    }
+        get => _name;
+        set
+        {
+            if (string.IsNullOrEmpty(value)) throw new System.ArgumentNullException("value");
 
-    public int InitalDeckCount()
-    {
-        return _initialDeckCount;
-    }
-
-    public Favorability AddFavorabilityValue()
-    {
-        addFavorabilityValue ??= new(_addFavorabilityValue, _favourableView);
-        return addFavorabilityValue;
-    }
-
-    public Favorability FavoriteCardAddValue()
-    {
-        favoriteCardAddValue ??= new(_favoriteCardAddValue, _favourableView);
-        return favoriteCardAddValue;
+            _name = value;
+        }
     }
 }

@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class StringManager
+public static class StringManager
 {
     public enum Element
     {
@@ -18,10 +18,17 @@ public class StringManager
     /// </summary>
     public static bool[] hasElements = new bool[5];
 
-    private static List<char> conformString = new();
+    private static readonly List<char> conformString = new();
 
-    public static string ToDisplayString(string s)
+    /// <summary>
+    /// エレメントの効果で変更される表示文字列に変更します。O(N)程度かかります。
+    /// </summary>
+    /// <param name="s">変更したい文字列</param>
+    /// <returns>変更後の文字列</returns>
+    public static string ToDisplayString(this string s)
     {
+        if (string.IsNullOrEmpty(s)) return string.Empty;
+
         int size = s.Length;
 
         conformString.Clear();
@@ -29,8 +36,8 @@ public class StringManager
         for (int i = 0; i < size; i++)
         {
             char c = s[i];
-
             char add;
+
             //数字
             if (c is >= '0' and <= '9')
             {

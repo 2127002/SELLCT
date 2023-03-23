@@ -24,7 +24,20 @@ public class CardParameter
 
     public string GetName()
     {
+        if (string.IsNullOrEmpty(_name)) return "No Name";
+
         return _name;
+    }    
+    
+    public void SetName(string name)
+    {
+        if (string.IsNullOrEmpty(name))
+        {
+            _name = "No Name";
+            return;
+        }
+
+        _name = name;
     }
 
     public string GetText()

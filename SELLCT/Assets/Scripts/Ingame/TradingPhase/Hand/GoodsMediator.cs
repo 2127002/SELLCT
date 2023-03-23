@@ -67,14 +67,14 @@ public class GoodsMediator : DeckMediator
     {
         //キャパシティより多かったらその分を削除する
         int capacityDifference = _cardUIInstance.Handlers.Count - _hand.Capacity;
-
+        
         for (int i = 0; i < capacityDifference; i++)
         {
             _cardUIInstance.RemoveAt(_cardUIInstance.Handlers.Count - 1);
         }
 
         //それからドローする
-        int drawableCount = _hand.CalcDrawableCount();
+        int drawableCount = Mathf.Min(_traderController.CurrentTrader.InitialDisplayItemCount, _hand.CalcDrawableCount());
 
         for (int i = 0; i < drawableCount; i++)
         {

@@ -6,13 +6,26 @@ using UnityEngine;
 public class TR2_RuinedNobility : Trader
 {
     [SerializeField] TraderParameter _traderParameter;
+    [SerializeField] Sprite _sprite;
     Favorability _favorability;
-    TraderDeck _deck = new();
+    readonly TraderDeck _deck = new();
 
     public override TraderDeck TraderDeck => _deck;
+
+    public override string Name
+    {
+        get => _traderParameter.Name;
+        set => _traderParameter.Name = value;
+    }
+
+    public override int InitialDisplayItemCount => _traderParameter.InitialDisplayItemCount;
+
+    public override Sprite Sprite => _sprite;
+
     private void Awake()
     {
-        _favorability = _traderParameter.InitialFavorability();
+        _favorability = _traderParameter.InitialFavorability;
+        _traderParameter.Name = _traderParameter.DefalutName;
     }
 
     public override void CreateDeck(CardPool pool)
@@ -20,7 +33,7 @@ public class TR2_RuinedNobility : Trader
         List<Card> list = new();
         list.AddRange(pool.Pool());
 
-        foreach (var item in _traderParameter.PriorityCards())
+        foreach (var item in _traderParameter.PriorityCards)
         {
             for (int i = 0; i < item.Priority; i++)
             {
@@ -28,7 +41,7 @@ public class TR2_RuinedNobility : Trader
             }
         }
 
-        for (int i = 0; i < _traderParameter.InitalDeckCount(); i++)
+        for (int i = 0; i < _traderParameter.InitalDeckCount; i++)
         {
             int index = Random.Range(0, list.Count);
             if (list.Count <= index) break;
@@ -59,7 +72,7 @@ public class TR2_RuinedNobility : Trader
 
     public override string EndMessage()
     {
-        return "See you...";
+        return "「時は宝石なり」\r\n「誰の言葉かって？」\r\n「俺の言葉だよ」";
     }
 
     public override string SellMessage(Card card)
@@ -69,7 +82,7 @@ public class TR2_RuinedNobility : Trader
 
     public override string StartMessage()
     {
-        return "Hello. My name is TR2 deGozaru.";
+        return "「ここは随分と暗いな」\r\n「けれど、暗闇でこそ輝くものに価値はある」\r\n「さて、今日はどんな宝石を持ってきたんだ？」";
     }
 
     public override void OnPlayerSell(Card selledCard)
@@ -82,16 +95,16 @@ public class TR2_RuinedNobility : Trader
     public override void OnPlayerBuy()
     {
         //買い処理はお気に入りエレメントは関係ない
-        _favorability = _favorability.Add(_traderParameter.AddFavorabilityValue());
+        _favorability = _favorability.Add(_traderParameter.AddFavorabilityValue);
     }
 
     private void AddFavorability(Card card)
     {
-        Favorability totalAddValue = _traderParameter.AddFavorabilityValue();
+        Favorability totalAddValue = _traderParameter.AddFavorabilityValue;
 
-        if (_traderParameter.FavoriteCards().Contains(card))
+        if (_traderParameter.FavoriteCards.Contains(card))
         {
-            totalAddValue.Add(_traderParameter.FavoriteCardAddValue());
+            totalAddValue.Add(_traderParameter.FavoriteCardAddValue);
         }
 
         _favorability = _favorability.Add(totalAddValue);
