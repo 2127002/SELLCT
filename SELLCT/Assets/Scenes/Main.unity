@@ -805,6 +805,7 @@ MonoBehaviour:
   _timeLimitController: {fileID: 296562001}
   _inputSystemDetector: {fileID: 391254979}
   _firstSelectable: {fileID: 8999427033305422426}
+  _playerMonologue: {fileID: 505569845}
   _canvas: {fileID: 233741556}
 --- !u!114 &251747937
 MonoBehaviour:
@@ -1965,6 +1966,79 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 500785465}
   m_CullTransparentMesh: 1
+--- !u!1 &505569843
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 505569844}
+  - component: {fileID: 505569846}
+  - component: {fileID: 505569845}
+  m_Layer: 0
+  m_Name: E16_Communication
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &505569844
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 505569843}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 902597265}
+  m_RootOrder: -1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &505569845
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 505569843}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 569ab5f204febcc448a25dda0bcd594b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _e16: {fileID: 505569846}
+  _e30: {fileID: 2037373640}
+--- !u!114 &505569846
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 505569843}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 92719c8580cdef1459d1ce8bde189fd6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _parameter:
+    _price: 0
+    _name: 
+    _text: 
+    _rarity: 1
+    _isDisposedOfAfterSell: 0
+  _controller: {fileID: 157262628}
+  _baseSprite: {fileID: 21300000, guid: 7b2184d1e1af8204189a936161f8d75f, type: 3}
+  _number: {fileID: 0}
+  _chineseCharacters: {fileID: 0}
+  _hiragana: {fileID: 0}
+  _katakana: {fileID: 21300000, guid: 9f0a31e0ad3efe54a9738f51503735a8, type: 3}
+  _alphabet: {fileID: 0}
+  _handMediator: {fileID: 1975269151}
 --- !u!1 &583175627
 GameObject:
   m_ObjectHideFlags: 0
@@ -2817,6 +2891,7 @@ Transform:
   - {fileID: 1317302476}
   - {fileID: 1801727036}
   - {fileID: 2044394405}
+  - {fileID: 505569844}
   - {fileID: 1891691740}
   - {fileID: 1803076677}
   - {fileID: 1589025318}
@@ -2872,6 +2947,8 @@ MonoBehaviour:
   - card: {fileID: 1801727037}
     initcount: 4
   - card: {fileID: 2044394406}
+    initcount: 4
+  - card: {fileID: 505569846}
     initcount: 4
   - card: {fileID: 1891691742}
     initcount: 4
@@ -3459,14 +3536,16 @@ MonoBehaviour:
     _priorityCards:
     - _card: {fileID: 917396756}
       _priority: 0
+    - _card: {fileID: 1801727037}
+      _priority: 10
+    - _card: {fileID: 505569846}
+      _priority: 1000
     - _card: {fileID: 704934656}
       _priority: 0
     - _card: {fileID: 1049933561}
       _priority: 0
     - _card: {fileID: 941202356}
       _priority: 0
-    - _card: {fileID: 1801727037}
-      _priority: 1000
     _initialDisplayItemCount: 4
     _initialFavorability: 0
     _initialDeckCount: 4
@@ -4095,6 +4174,7 @@ MonoBehaviour:
   _traderView: {fileID: 1210986886}
   _textBoxController: {fileID: 1775029163}
   _phaseController: {fileID: 495064998}
+  _playerMonologue: {fileID: 505569845}
 --- !u!224 &1210986884
 RectTransform:
   m_ObjectHideFlags: 0
@@ -6602,6 +6682,8 @@ MonoBehaviour:
   - card: {fileID: 1801727037}
     initcount: 2
   - card: {fileID: 2044394406}
+    initcount: 1
+  - card: {fileID: 505569846}
     initcount: 1
   - card: {fileID: 1891691742}
     initcount: 1

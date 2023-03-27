@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class Trader : MonoBehaviour
+public abstract class Trader : MonoBehaviour, IConversationMessage
 {
     public abstract TraderDeck TraderDeck { get; }
     public abstract string Name { get; set; }
