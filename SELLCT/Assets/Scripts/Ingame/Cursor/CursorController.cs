@@ -9,6 +9,8 @@ using UnityEngine.InputSystem;
 //カーソル（クロスヘア）に関する処理です。
 public class CursorController : MonoBehaviour
 {
+    [SerializeField] CursorView _cursorView = default!;
+
     [SerializeField] InputActionReference _moveAction = default!;
     [SerializeField] float _cursorSpeed = default!;
     [SerializeField] RectTransform _cursorTransform = default!;
@@ -108,5 +110,17 @@ public class CursorController : MonoBehaviour
 
         if (context.performed) _isCursorMoving = true;
         if (context.canceled) _isCursorMoving = false;
+    }
+
+    public void Enable()
+    {
+        enabled = true;
+        _cursorView.Enable();
+    }
+
+    public void Disable()
+    {
+        enabled = false;
+        _cursorView.Disable();
     }
 }
