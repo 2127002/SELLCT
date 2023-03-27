@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class TradingNextButtonHandler : MonoBehaviour
+public class TradingNextButtonHandler : MonoBehaviour, ISelectableHighlight
 {
     //このようにDetectorにわざわざ分けているのは、interfaceのメソッドがpublicになるからです。
     //外部から意図しないタイミングで呼ばれることを避けるため回りくどい手を使っています。
@@ -19,6 +19,8 @@ public class TradingNextButtonHandler : MonoBehaviour
 
     [SerializeField] bool _isFirstSelectable;
 
+    Color _defalutSelectColor = default!;
+
     private void Awake()
     {
         //購読
@@ -29,10 +31,7 @@ public class TradingNextButtonHandler : MonoBehaviour
         _selectDetector.AddListener(HandleSelect);
         _phaseController.OnTradingPhaseStart.Add(SetFirstSelectable);
 
-        //わかりやすくするため仮に選択時の色を赤に変更。今後の変更推奨
-        var b = _selectable.colors;
-        b.selectedColor = Color.red;
-        _selectable.colors = b;
+        _defalutSelectColor = _selectable.colors.selectedColor;
     }
 
     private void OnDestroy()
@@ -87,5 +86,25 @@ public class TradingNextButtonHandler : MonoBehaviour
     private void HandleSelect()
     {
         //TODO:SE1の再生
+    }
+
+    public void EnableHighlight()
+    {
+        var selectableColors = _selectable.colors;
+        selectableColors.selectedColor = _defalutSelectColor;
+        _selectable.colors = selectableColors;
+    }
+
+    public void DisableHighlight()
+    {
+        var selectableColors = _selectable.colors;
+
+        //元の色を保存しておく
+        _defalutSelectColor = selectableColors.selectedColor;
+
+        //ハイライトを消す
+        //実際はハイライト色を通常色に変えてるだけ
+        selectableColors.selectedColor = selectableColors.normalColor;
+        _selectable.colors = selectableColors;
     }
 }

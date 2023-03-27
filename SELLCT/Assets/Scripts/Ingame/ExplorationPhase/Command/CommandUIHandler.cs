@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class CommandUIHandler : MonoBehaviour
+public class CommandUIHandler : MonoBehaviour, ISelectableHighlight
 {
     //このようにDetectorにわざわざ分けているのは、interfaceのメソッドがpublicになるからです。
     //外部から意図しないタイミングで呼ばれることを避けるため回りくどい手を使っています。
@@ -22,6 +22,8 @@ public class CommandUIHandler : MonoBehaviour
 
     [SerializeField] Card _card = default!;
 
+    Color _defalutSelectColor = default!;
+
     private void Awake()
     {
         //購読
@@ -34,17 +36,14 @@ public class CommandUIHandler : MonoBehaviour
 
         _phaseController.OnExplorationPhaseStart += OnPhaseStart;
 
-        //わかりやすくするため仮に選択時の色を赤に変更。今後の変更推奨
-        var b = _selectable.colors;
-        b.selectedColor = Color.red;
-        _selectable.colors = b;
+        _defalutSelectColor = _selectable.colors.selectedColor;
     }
 
     private void OnPhaseStart()
     {
         if (_card == null)
         {
-            Debug.LogWarning("U6エレメントカードがnullです");return;
+            Debug.LogWarning("U6エレメントカードがnullです"); return;
         }
 
         bool containsCard = _card.ContainsPlayerDeck;
@@ -106,5 +105,25 @@ public class CommandUIHandler : MonoBehaviour
     //選択から外れた時の処理
     private void HandleDeselect()
     {
+    }
+
+    public void EnableHighlight()
+    {
+        var selectableColors = _selectable.colors;
+        selectableColors.selectedColor = _defalutSelectColor;
+        _selectable.colors = selectableColors;
+    }
+
+    public void DisableHighlight()
+    {
+        var selectableColors = _selectable.colors;
+
+        //元の色を保存しておく
+        _defalutSelectColor = selectableColors.selectedColor;
+
+        //ハイライトを消す
+        //実際はハイライト色を通常色に変えてるだけ
+        selectableColors.selectedColor = selectableColors.normalColor;
+        _selectable.colors = selectableColors;
     }
 }
