@@ -12,6 +12,7 @@ public class CursorController : MonoBehaviour
     [SerializeField] CursorView _cursorView = default!;
 
     [SerializeField] InputActionReference _moveAction = default!;
+    [SerializeField] InputActionReference _clickAction = default!;
     [SerializeField] float _cursorSpeed = default!;
     [SerializeField] RectTransform _cursorTransform = default!;
     [SerializeField] PhaseController _phaseController = default!;
@@ -41,6 +42,8 @@ public class CursorController : MonoBehaviour
         _moveAction.action.Enable();
         _moveAction.action.performed += OnCursorMove;
         _moveAction.action.canceled += OnCursorMove;
+        _clickAction.action.Enable();
+        _clickAction.action.performed += OnClick;
     }
 
     private void OnDisable()
@@ -89,18 +92,18 @@ public class CursorController : MonoBehaviour
         if (!_isCursorMoving) return;
 
         //全ボタンに実行
-        foreach (var rectTrans in _rectTransforms)
+        for (int i = 0; i < _rectTransforms.Count; i++)
         {
             //CanvasのRenderModeが変更されたらバグります。この設定ではWorldSpaceを想定しています
-            bool pointerContains = rectTrans.GetWorldRect(Vector2.one).Contains(_cursorTransform.anchoredPosition);
+            bool pointerContains = _rectTransforms[i].GetWorldRect(Vector2.one).Contains(_cursorTransform.anchoredPosition);
 
             //カーソル（クロスヘア）が画像上に来たら選択する
             if (pointerContains)
             {
-                _currentSelectedRectTransform = rectTrans;
+                _currentSelectedRectTransform = _rectTransforms[i];
 
                 //選択されたことをオブジェクトに通知する
-                ExecuteEvents.Execute(rectTrans.gameObject, new PointerEventData(EventSystem.current), ExecuteEvents.pointerEnterHandler);
+                ExecuteEvents.Execute(_rectTransforms[i].gameObject, new PointerEventData(EventSystem.current), ExecuteEvents.pointerEnterHandler);
             }
         }
 
@@ -126,6 +129,13 @@ public class CursorController : MonoBehaviour
         if (context.canceled) _isCursorMoving = false;
     }
 
+    private void OnClick(InputAction.CallbackContext context)
+    {
+        if (_currentSelectedRectTransform == null) return;
+
+        ExecuteEvents.Execute(_currentSelectedRectTransform.gameObject, new PointerEventData(EventSystem.current), ExecuteEvents.pointerClickHandler);
+    }
+
     public void Enable()
     {
         enabled = true;
@@ -136,5 +146,15 @@ public class CursorController : MonoBehaviour
     {
         enabled = false;
         _cursorView.Disable();
+    }
+
+    public void AddRectTransform(RectTransform rectTransform)
+    {
+        _rectTransforms.Add(rectTransform);
+    }
+
+    public void RemoveRectTransform(RectTransform rectTransform)
+    {
+        _rectTransforms.Remove(rectTransform);
     }
 }

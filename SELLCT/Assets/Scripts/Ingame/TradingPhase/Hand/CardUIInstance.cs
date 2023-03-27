@@ -14,6 +14,8 @@ public class CardUIInstance : MonoBehaviour
     [SerializeField] KatakanaHandView _katakanaHandView = default!;
     [SerializeField] AlphabetHandView _alphabetHandView = default!;
 
+    [SerializeField] CursorController _cursorController = default!;
+
     private void Awake()
     {
         Add(_firstHandler);
@@ -39,6 +41,8 @@ public class CardUIInstance : MonoBehaviour
         _hiraganaHandView.Remove(handler.CardImages[3]);
         _katakanaHandView.Remove(handler.CardImages[4]);
         _alphabetHandView.Remove(handler.CardImages[5]);
+
+        _cursorController.RemoveRectTransform(handler.GetComponent<RectTransform>());
 
         Destroy(handler.gameObject);
     }
