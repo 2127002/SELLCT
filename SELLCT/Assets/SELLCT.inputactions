@@ -302,7 +302,7 @@
                     "id": "aa872825-cbb1-4601-874a-27262b2292eb",
                     "expectedControlType": "Vector2",
                     "processors": "",
-                    "interactions": "",
+                    "interactions": "Press(behavior=1)",
                     "initialStateCheck": true
                 },
                 {
@@ -311,7 +311,7 @@
                     "id": "faf7b3c4-4055-4576-9a0a-e2424e3d295c",
                     "expectedControlType": "Button",
                     "processors": "",
-                    "interactions": "",
+                    "interactions": "Press(behavior=1)",
                     "initialStateCheck": true
                 },
                 {

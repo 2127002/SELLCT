@@ -174,9 +174,9 @@ MonoBehaviour:
     _rarity: 1
     _isDisposedOfAfterSell: 0
   _controller: {fileID: 157262628}
-  _baseSprite: {fileID: 21300000, guid: 4f6d522d6050f2c40a155c7f5a1cfa26, type: 3}
+  _baseSprite: {fileID: 21300000, guid: 7c9d96f5dd01db848a0017518c30bbb6, type: 3}
   _number: {fileID: 0}
-  _chineseCharacters: {fileID: 0}
+  _chineseCharacters: {fileID: 21300000, guid: 5d6245118d4c82541bf7ec208097529f, type: 3}
   _hiragana: {fileID: 0}
   _katakana: {fileID: 0}
   _alphabet: {fileID: 0}
@@ -479,9 +479,9 @@ MonoBehaviour:
     _rarity: 1
     _isDisposedOfAfterSell: 0
   _controller: {fileID: 157262628}
-  _baseSprite: {fileID: 21300000, guid: 4f6d522d6050f2c40a155c7f5a1cfa26, type: 3}
+  _baseSprite: {fileID: 21300000, guid: f23cf34a8a0513a40a26325d79ec790f, type: 3}
   _number: {fileID: 0}
-  _chineseCharacters: {fileID: 0}
+  _chineseCharacters: {fileID: 21300000, guid: 78f016094fb24fd4eaa2e113a49d1769, type: 3}
   _hiragana: {fileID: 0}
   _katakana: {fileID: 0}
   _alphabet: {fileID: 0}
@@ -894,10 +894,10 @@ MonoBehaviour:
     _rarity: 1
     _isDisposedOfAfterSell: 0
   _controller: {fileID: 157262628}
-  _baseSprite: {fileID: 21300000, guid: 9759ec9b54cfa4841ac38bbfeee805f5, type: 3}
+  _baseSprite: {fileID: 21300000, guid: 612ada5e59b0b3c4b892e5c5983c55e6, type: 3}
   _number: {fileID: 0}
-  _chineseCharacters: {fileID: 0}
-  _hiragana: {fileID: 0}
+  _chineseCharacters: {fileID: 21300000, guid: f0b01c9135c70604da68ae9bf6ac6b85, type: 3}
+  _hiragana: {fileID: 21300000, guid: 149b2c63174b149458572bc3d0682ca6, type: 3}
   _katakana: {fileID: 0}
   _alphabet: {fileID: 0}
   _handMediator: {fileID: 1975269151}
@@ -1293,6 +1293,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _cursorView: {fileID: 406218267}
   _moveAction: {fileID: 7945006522262241866, guid: 1acd10e19b4601845803d349e0c26cdf,
+    type: 3}
+  _clickAction: {fileID: 24458068589472722, guid: 1acd10e19b4601845803d349e0c26cdf,
     type: 3}
   _cursorSpeed: 1000
   _cursorTransform: {fileID: 406218262}
@@ -2556,6 +2558,7 @@ MonoBehaviour:
   _phaseController: {fileID: 495064998}
   _handler: {fileID: 6495868728072664683}
   _hand: {fileID: 1975269152}
+  _cursorController: {fileID: 406218264}
   _handlerName: U1_Card
 --- !u!114 &907251447
 MonoBehaviour:
@@ -2575,6 +2578,7 @@ MonoBehaviour:
   _hiraganaHandView: {fileID: 1589025319}
   _katakanaHandView: {fileID: 704934655}
   _alphabetHandView: {fileID: 1049933560}
+  _cursorController: {fileID: 406218264}
 --- !u!1 &917396754
 GameObject:
   m_ObjectHideFlags: 0
@@ -5382,10 +5386,10 @@ MonoBehaviour:
     _rarity: 1
     _isDisposedOfAfterSell: 0
   _controller: {fileID: 157262628}
-  _baseSprite: {fileID: 21300000, guid: 881798b77426a8f47b533dcc4767e9e5, type: 3}
+  _baseSprite: {fileID: 21300000, guid: abbd760ddac690648b550833fa524718, type: 3}
   _number: {fileID: 0}
   _chineseCharacters: {fileID: 0}
-  _hiragana: {fileID: 0}
+  _hiragana: {fileID: 21300000, guid: fcfd09ce1a20b1c45bdb0bd7e238968e, type: 3}
   _katakana: {fileID: 0}
   _alphabet: {fileID: 0}
   _handMediator: {fileID: 1975269151}
@@ -5744,9 +5748,9 @@ MonoBehaviour:
     _rarity: 1
     _isDisposedOfAfterSell: 0
   _controller: {fileID: 157262628}
-  _baseSprite: {fileID: 21300000, guid: 4f6d522d6050f2c40a155c7f5a1cfa26, type: 3}
+  _baseSprite: {fileID: 21300000, guid: 977fc69f0102a6d4eb4de1553b56b86a, type: 3}
   _number: {fileID: 0}
-  _chineseCharacters: {fileID: 0}
+  _chineseCharacters: {fileID: 21300000, guid: 48ee9576b15ac784dbf48642438ba7ba, type: 3}
   _hiragana: {fileID: 0}
   _katakana: {fileID: 0}
   _alphabet: {fileID: 0}
@@ -6021,9 +6025,9 @@ MonoBehaviour:
     _rarity: 1
     _isDisposedOfAfterSell: 0
   _controller: {fileID: 157262628}
-  _baseSprite: {fileID: 21300000, guid: 0c6a2a64ca9f9c946a7dbbd1674cf5bd, type: 3}
+  _baseSprite: {fileID: 21300000, guid: 64e5c6e53d9b73f468fa17032b4baf35, type: 3}
   _number: {fileID: 0}
-  _chineseCharacters: {fileID: 0}
+  _chineseCharacters: {fileID: 21300000, guid: c0e3df88e2e232141a21920acd3d4654, type: 3}
   _hiragana: {fileID: 0}
   _katakana: {fileID: 0}
   _alphabet: {fileID: 0}
@@ -6081,9 +6085,9 @@ MonoBehaviour:
     _rarity: 1
     _isDisposedOfAfterSell: 0
   _controller: {fileID: 157262628}
-  _baseSprite: {fileID: 21300000, guid: 4f6d522d6050f2c40a155c7f5a1cfa26, type: 3}
+  _baseSprite: {fileID: 21300000, guid: e86dc8f91cece554692d538269fc9cfc, type: 3}
   _number: {fileID: 0}
-  _chineseCharacters: {fileID: 0}
+  _chineseCharacters: {fileID: 21300000, guid: 847e0f5524be6d140980081730d72ca2, type: 3}
   _hiragana: {fileID: 0}
   _katakana: {fileID: 0}
   _alphabet: {fileID: 0}
@@ -6477,6 +6481,7 @@ MonoBehaviour:
   _phaseController: {fileID: 495064998}
   _handler: {fileID: 8999427033305422426}
   _hand: {fileID: 1723587018}
+  _cursorController: {fileID: 406218264}
   _handlerName: U3_Card
 --- !u!114 &1960932980
 MonoBehaviour:
@@ -6496,6 +6501,7 @@ MonoBehaviour:
   _hiraganaHandView: {fileID: 1589025319}
   _katakanaHandView: {fileID: 704934655}
   _alphabetHandView: {fileID: 1049933560}
+  _cursorController: {fileID: 406218264}
 --- !u!114 &1960932981
 MonoBehaviour:
   m_ObjectHideFlags: 0

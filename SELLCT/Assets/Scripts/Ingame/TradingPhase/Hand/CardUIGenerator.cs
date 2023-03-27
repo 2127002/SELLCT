@@ -9,6 +9,7 @@ public class CardUIGenerator : MonoBehaviour
     [SerializeField] PhaseController _phaseController = default!;
     [SerializeField] CardUIHandler _handler = default!;
     [SerializeField] Hand _hand = default!;
+    [SerializeField] CursorController _cursorController = default!;
 
     [SerializeField] string _handlerName = default!;
 
@@ -42,5 +43,6 @@ public class CardUIGenerator : MonoBehaviour
         newHandler.name = _handlerName + (_cardUIInstance.Handlers.Count + 1);
 
         _cardUIInstance.Add(newHandler);
+        _cursorController.AddRectTransform(newHandler.GetComponent<RectTransform>());
     }
 }
