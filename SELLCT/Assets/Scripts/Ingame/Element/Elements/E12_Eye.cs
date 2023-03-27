@@ -5,7 +5,7 @@ using UnityEditor;
 #endif
 using UnityEngine;
 
-public class E11_Vivid : Card
+public class E12_Eye : Card
 {
     [SerializeField] CardParameter _parameter = default!;
     [SerializeField] MoneyPossessedController _controller = default!;
@@ -17,18 +17,18 @@ public class E11_Vivid : Card
     [SerializeField] Sprite _alphabet = default!;
     [SerializeField] HandMediator _handMediator = default!;
 
-    [SerializeField] Material _vivid = default!;
-    [Header("Defaultの彩度を100%として、以下の値で上昇します。\n例：値が10の場合 100%→110%")]
-    [SerializeField, Range(0, 150f)] float _vividIncreasePercent;
-    [Header("Defaultの彩度を100%として、以下の値で減少します。\n例：値が4.5の場合 55%→50.5%")]
-    [SerializeField, Range(0, 150f)] float _vividDecreasePercent;
+    [SerializeField] Material _eye = default!;
+    [Header("Defaultの解像度を1倍として、以下の値で上昇します。\n例：値が2の場合 0.5→1")]
+    [SerializeField, Range(1f, 2160f)] float _eyeIncreaseValue;
+    [Header("Defaultの解像度を1倍として、以下の値で減少します。\n例：値が0.7の場合 1→0.7")]
+    [SerializeField, Range(0.0001f, 1f)] float _eyeDecreaseValue;
 
-    [Header("初期の彩度を設定します。Defaultの彩度は100%です。\nまた、初期のエレメント所持数に関係なくこの値になります。")]
-    [SerializeField, Range(0, 150f)] float _firstVividPercent = 100f;
+    [Header("初期の解像度を設定します。\nまた、初期のエレメント所持数に関係なくこの値になります。")]
+    [SerializeField, Range(0, 2160f)] float _firstEye = 1080f;
 
-    float _currentVividValue = 1.0f;
-    const float MAX_VALUE = 1.5f;
-    const float MIN_VALUE = 0;
+    float _currentEyeValue = 1.0f;
+    const float MAX_VALUE = 2160f;
+    const float MIN_VALUE = 1;
 
     readonly List<Sprite> result = new();
 
@@ -58,15 +58,15 @@ public class E11_Vivid : Card
     private void Awake()
     {
         //最初の所持枚数と関係なく設定される。フェーズと関係なく設定するため、問題が生じたら変更推奨
-        _currentVividValue = _firstVividPercent / 100f;
-        SetVivid();
+        _currentEyeValue = _firstEye;
+        SetEye();
     }
 
     public override void Buy()
     {
         _controller.DecreaseMoney(_parameter.GetMoney());
 
-        IncreaseVividValue();
+        IncreaseEyeValue();
     }
 
     public override void Passive()
@@ -78,68 +78,67 @@ public class E11_Vivid : Card
     {
         _controller.IncreaseMoney(_parameter.GetMoney());
 
-        DesreaseVividValue();
+        DesreaseEyeValue();
     }
 
-    private void IncreaseVividValue()
+    private void IncreaseEyeValue()
     {
-        _currentVividValue = Mathf.Min(MAX_VALUE, _currentVividValue + (_vividIncreasePercent / 100f));
+        _currentEyeValue = Mathf.Min(MAX_VALUE, _currentEyeValue * _eyeIncreaseValue);
 
-        SetVivid();
+        SetEye();
     }
 
-    private void DesreaseVividValue()
+    private void DesreaseEyeValue()
     {
-        _currentVividValue = Mathf.Max(MIN_VALUE, _currentVividValue - (_vividDecreasePercent / 100f));
+        _currentEyeValue = Mathf.Max(MIN_VALUE, _currentEyeValue * _eyeDecreaseValue);
 
-        SetVivid();
+        SetEye();
     }
 
-    private void SetVivid()
+    private void SetEye()
     {
-        _vivid.SetFloat("_Saturation", _currentVividValue);
+        _eye.SetFloat("_Resolution", _currentEyeValue);
     }
 
 
 #if UNITY_EDITOR
-    //E11内部のクラスです。Vividの変更は、PlayMode外に引き継がれるためリセットするボタンを用意します。
-    class VividResetWindow : EditorWindow
+    class EyeResetWindow : EditorWindow
     {
-        private E11_Vivid _vivid;
-        private float _vividValue = 100f;
-        public void SetVivid(E11_Vivid vivid)
+        private E12_Eye _eye;
+        private float _eyeValue = 1080f;
+        public void SetEye(E12_Eye eye)
         {
-            _vivid = vivid;
+            _eye = eye;
         }
 
-        [MenuItem("Window/Util/Vivid Window")]
+        [MenuItem("Window/Util/Eye Window")]
         public static void ShowWindow()
         {
-            VividResetWindow window = GetWindow<VividResetWindow>("Vivid Changer");
-            E11_Vivid vivid = FindObjectOfType<E11_Vivid>();
-            window.SetVivid(vivid);
+            EyeResetWindow window = GetWindow<EyeResetWindow>("Eye Changer");
+            E12_Eye eye = FindObjectOfType<E12_Eye>();
+            window.SetEye(eye);
         }
 
         private void OnGUI()
         {
-            if (_vivid != null)
+            if (_eye != null)
             {
                 if (GUILayout.Button("Reset"))
                 {
-                    _vivid._vivid.SetFloat("_Saturation", 1f);
-                    _vividValue = 100f;
+                    _eye._eye.SetFloat("_Resolution", 1080f);
+                    _eyeValue = 1080f;
                 }
                 GUILayout.Space(10);
-                if (GUILayout.Button("Set Vivid"))
+                if (GUILayout.Button("Set EyeValue"))
                 {
-                    _vivid._vivid.SetFloat("_Saturation", _vividValue / 100f);
+                    _eye._eye.SetFloat("_Resolution", _eyeValue);
                 }
 
-                _vividValue = EditorGUILayout.Slider("Vivid Value", _vividValue, 0f, 150f);
+                _eyeValue = EditorGUILayout.Slider("Eye Value", _eyeValue, 1f, 2160f);
             }
             else
             {
-                EditorGUILayout.HelpBox("E11_Vivid object not found in scene.", MessageType.Warning);
+                EditorGUILayout.HelpBox("E12_Eye object not found in scene.", MessageType.Warning);
                 if (GUILayout.Button("Reload"))
                 {
                     ShowWindow();
@@ -148,4 +147,5 @@ public class E11_Vivid : Card
         }
     }
 #endif
+
 }
