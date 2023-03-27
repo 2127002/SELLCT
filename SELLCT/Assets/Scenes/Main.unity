@@ -2815,6 +2815,7 @@ Transform:
   - {fileID: 1050709443}
   - {fileID: 1890776590}
   - {fileID: 1317302476}
+  - {fileID: 1801727036}
   - {fileID: 2044394405}
   - {fileID: 1891691740}
   - {fileID: 1803076677}
@@ -2867,6 +2868,8 @@ MonoBehaviour:
   - card: {fileID: 1890776591}
     initcount: 4
   - card: {fileID: 1317302477}
+    initcount: 4
+  - card: {fileID: 1801727037}
     initcount: 4
   - card: {fileID: 2044394406}
     initcount: 4
@@ -3457,11 +3460,13 @@ MonoBehaviour:
     - _card: {fileID: 917396756}
       _priority: 0
     - _card: {fileID: 704934656}
-      _priority: 1009
+      _priority: 0
     - _card: {fileID: 1049933561}
       _priority: 0
     - _card: {fileID: 941202356}
       _priority: 0
+    - _card: {fileID: 1801727037}
+      _priority: 1000
     _initialDisplayItemCount: 4
     _initialFavorability: 0
     _initialDeckCount: 4
@@ -6594,6 +6599,8 @@ MonoBehaviour:
     initcount: 2
   - card: {fileID: 1317302477}
     initcount: 1
+  - card: {fileID: 1801727037}
+    initcount: 2
   - card: {fileID: 2044394406}
     initcount: 1
   - card: {fileID: 1891691742}
@@ -6857,6 +6864,68 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1800241645}
   m_CullTransparentMesh: 1
+--- !u!1 &1801727035
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1801727036}
+  - component: {fileID: 1801727037}
+  m_Layer: 0
+  m_Name: E12_Eye
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1801727036
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1801727035}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 902597265}
+  m_RootOrder: -1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1801727037
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1801727035}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 076e80d8142445d439cb86f1931c10ed, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _parameter:
+    _price: 0
+    _name: 
+    _text: 
+    _rarity: 1
+    _isDisposedOfAfterSell: 0
+  _controller: {fileID: 157262628}
+  _baseSprite: {fileID: 21300000, guid: 8896252e86aecb645b09bc0f5903871e, type: 3}
+  _number: {fileID: 0}
+  _chineseCharacters: {fileID: 21300000, guid: ffacea285538b244d9ad7b8fea96bd59, type: 3}
+  _hiragana: {fileID: 0}
+  _katakana: {fileID: 0}
+  _alphabet: {fileID: 0}
+  _handMediator: {fileID: 1975269151}
+  _eye: {fileID: 2100000, guid: 3ae17b568a4b3c242b3fedbd0f04b7fa, type: 2}
+  _eyeIncreaseValue: 2
+  _eyeDecreaseValue: 0.5
+  _firstEye: 1080
 --- !u!1 &1803076676
 GameObject:
   m_ObjectHideFlags: 0
