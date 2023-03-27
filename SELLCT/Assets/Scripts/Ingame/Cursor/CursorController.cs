@@ -51,6 +51,8 @@ public class CursorController : MonoBehaviour
         _moveAction.action.Disable();
         _moveAction.action.performed -= OnCursorMove;
         _moveAction.action.canceled += OnCursorMove;
+        _clickAction.action.Disable();
+        _clickAction.action.performed -= OnClick;
     }
 
     private void OnDestroy()

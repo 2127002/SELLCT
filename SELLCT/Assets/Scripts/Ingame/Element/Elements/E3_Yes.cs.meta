@@ -12,7 +12,7 @@ MonoImporter:
   - _katakana: {instanceID: 0}
   - _alphabet: {fileID: 21300000, guid: bb6b96147d5029f40af3cec502acfc5b, type: 3}
   - _handMediator: {instanceID: 0}
-  executionOrder: 0
+  executionOrder: 100
   icon: {instanceID: 0}
   userData: 
   assetBundleName: 

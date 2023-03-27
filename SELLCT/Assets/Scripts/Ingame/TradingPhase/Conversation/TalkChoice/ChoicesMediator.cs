@@ -8,6 +8,16 @@ public class ChoicesMediator : MonoBehaviour
     [SerializeField] ChoicesManager _choiceManager = default!;
     [SerializeField] List<ConversationChoiceHandler> _choiceHandlers = default!;
 
+    private async void Start()
+    {
+       await UniTask.Yield();
+        List<int> choices = new List<int>();
+        choices.Add(0);
+        choices.Add(1);
+        choices.Add(2);
+        InsertConversationChoice(choices);
+    }
+
     public void InsertConversationChoice(List<int> IDs)
     {
         for (int i = 0; i < IDs.Count; i++)
