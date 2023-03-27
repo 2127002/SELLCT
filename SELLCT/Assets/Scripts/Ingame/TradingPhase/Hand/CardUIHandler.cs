@@ -1,13 +1,11 @@
-using Cysharp.Threading.Tasks;
 using System;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
-using UnityEngine.InputSystem;
 using UnityEngine.UI;
 
-public class CardUIHandler : MonoBehaviour, IPointerClickHandler, IPointerEnterHandler, IPointerExitHandler,ISubmitHandler,ISelectHandler,IDeselectHandler
+public class CardUIHandler : MonoBehaviour, IPointerClickHandler, IPointerEnterHandler, IPointerExitHandler, ISubmitHandler, ISelectHandler, IDeselectHandler, ISelectableHighlight
 {
     enum EntityType
     {
@@ -35,6 +33,8 @@ public class CardUIHandler : MonoBehaviour, IPointerClickHandler, IPointerEnterH
 
     [SerializeField] Card _buyOrSell = default;
 
+    Color _defalutSelectColor = default!;
+
     //選択時画像サイズ補正値
     const float CORRECTION_SIZE = 1.25f;
     static readonly Vector3 correction = new(CORRECTION_SIZE, CORRECTION_SIZE, CORRECTION_SIZE);
@@ -43,10 +43,7 @@ public class CardUIHandler : MonoBehaviour, IPointerClickHandler, IPointerEnterH
 
     private void Awake()
     {
-        //わかりやすくするため仮に選択時の色を赤に変更。今後の変更推奨
-        var b = _selectable.colors;
-        b.selectedColor = Color.red;
-        _selectable.colors = b;
+        _defalutSelectColor = _selectable.colors.selectedColor;
     }
 
     private void OnSubmit()
@@ -117,14 +114,14 @@ public class CardUIHandler : MonoBehaviour, IPointerClickHandler, IPointerEnterH
         {
             next = _selectable.FindSelectableOnRight();
 
-            if(next == null)
+            if (next == null)
             {
                 next = _selectable.FindSelectableOnUp();
 
                 if (next == null)
                 {
                     next = _selectable.FindSelectableOnDown();
-                    
+
                     //ここまでやってnullだったら終わり
                     if (next == null) return;
                 }
@@ -133,7 +130,7 @@ public class CardUIHandler : MonoBehaviour, IPointerClickHandler, IPointerEnterH
 
         EventSystem.current.SetSelectedGameObject(next.gameObject);
     }
-    
+
     /// <summary>
     /// カードに応じて表示を切り替える
     /// </summary>
@@ -150,7 +147,7 @@ public class CardUIHandler : MonoBehaviour, IPointerClickHandler, IPointerEnterH
             _selectable.interactable = false;
             return;
         }
-     
+
         //E1がデッキに存在する場合選択可能
         _selectable.interactable = _buyOrSell.ContainsPlayerDeck;
 
@@ -193,7 +190,7 @@ public class CardUIHandler : MonoBehaviour, IPointerClickHandler, IPointerEnterH
         _cardText.enabled = false;
     }
 
-    [Obsolete("UnityのEventを受け取って実行されるメソッドです。Eventを受け取る以外の使用は想定されていません。",true)]
+    [Obsolete("UnityのEventを受け取って実行されるメソッドです。Eventを受け取る以外の使用は想定されていません。", true)]
     public void OnPointerClick(PointerEventData eventData)
     {
         if (eventData == null) throw new NullReferenceException();
@@ -217,7 +214,7 @@ public class CardUIHandler : MonoBehaviour, IPointerClickHandler, IPointerEnterH
 
         _selectable.Select();
     }
-    
+
     [Obsolete("UnityのEventを受け取って実行されるメソッドです。Eventを受け取る以外の使用は想定されていません。", true)]
     public void OnPointerExit(PointerEventData eventData)
     {
@@ -266,5 +263,26 @@ public class CardUIHandler : MonoBehaviour, IPointerClickHandler, IPointerEnterH
     public void DisableSelectability()
     {
         _selectable.interactable = false;
+    }
+
+    public void EnableHighlight()
+    {
+        //もとに戻す
+        var selectableColors = _selectable.colors;
+        selectableColors.selectedColor = _defalutSelectColor;
+        _selectable.colors = selectableColors;
+    }
+
+    public void DisableHighlight()
+    {
+        var selectableColors = _selectable.colors;
+
+        //元の色を保存しておく
+        _defalutSelectColor = selectableColors.selectedColor;
+
+        //ハイライトを消す
+        //実際はハイライト色を通常色に変えてるだけ
+        selectableColors.selectedColor = selectableColors.normalColor;
+        _selectable.colors = selectableColors;
     }
 }
