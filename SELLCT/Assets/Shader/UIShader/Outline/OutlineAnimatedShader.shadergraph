@@ -1276,7 +1276,7 @@
     "m_Type": "UnityEditor.ShaderGraph.Vector1MaterialSlot",
     "m_ObjectId": "0efdb91a2cdeb182bb17fcacbf630a47",
     "m_Id": 0,
-    "m_DisplayName": "Outline Thickness",
+    "m_DisplayName": "OutlineThickness",
     "m_SlotType": 1,
     "m_Hidden": false,
     "m_ShaderOutputName": "Out",
@@ -1797,7 +1797,7 @@
     "m_Guid": {
         "m_GuidSerialized": "694fc53e-4b9a-47f8-b439-81f34a25b30a"
     },
-    "m_Name": "Outline Color 2",
+    "m_Name": "OutlineColor 2",
     "m_DefaultRefNameVersion": 0,
     "m_RefNameGeneratedByDisplayName": "",
     "m_DefaultReferenceName": "Color_B35FED2C",
@@ -1833,10 +1833,10 @@
             "m_Id": "883e0f6330c4ec87bd71a6d41a585586"
         },
         {
-            "m_Id": "fe3b73301701a883810510055adc4299"
+            "m_Id": "25ea0dc9eee0bb8b9f9bc61ea9687cfb"
         },
         {
-            "m_Id": "25ea0dc9eee0bb8b9f9bc61ea9687cfb"
+            "m_Id": "fe3b73301701a883810510055adc4299"
         }
     ]
 }
@@ -2140,7 +2140,7 @@
     "m_Type": "UnityEditor.ShaderGraph.Texture2DMaterialSlot",
     "m_ObjectId": "38ae68de8fceb08ea15aee38e5052018",
     "m_Id": 0,
-    "m_DisplayName": "MainTex",
+    "m_DisplayName": "BaseMap",
     "m_SlotType": 1,
     "m_Hidden": false,
     "m_ShaderOutputName": "Out",
@@ -3377,7 +3377,7 @@
     "m_Type": "UnityEditor.ShaderGraph.Texture2DMaterialSlot",
     "m_ObjectId": "704e6141bd8df2808adfed9cfbea5ddf",
     "m_Id": 0,
-    "m_DisplayName": "MainTex",
+    "m_DisplayName": "BaseMap",
     "m_SlotType": 1,
     "m_Hidden": false,
     "m_ShaderOutputName": "Out",
@@ -3504,7 +3504,7 @@
     "m_Type": "UnityEditor.ShaderGraph.Texture2DMaterialSlot",
     "m_ObjectId": "745b2ab6b8a43283b55a5453e6396934",
     "m_Id": 0,
-    "m_DisplayName": "MainTex",
+    "m_DisplayName": "BaseMap",
     "m_SlotType": 1,
     "m_Hidden": false,
     "m_ShaderOutputName": "Out",
@@ -3662,7 +3662,7 @@
     "m_Type": "UnityEditor.ShaderGraph.Texture2DMaterialSlot",
     "m_ObjectId": "7bc0cf8a4ea4a88389430130d0994de3",
     "m_Id": 0,
-    "m_DisplayName": "MainTex",
+    "m_DisplayName": "BaseMap",
     "m_SlotType": 1,
     "m_Hidden": false,
     "m_ShaderOutputName": "Out",
@@ -3786,7 +3786,7 @@
     "m_Guid": {
         "m_GuidSerialized": "092126fc-cc83-48d7-b127-279247d7f280"
     },
-    "m_Name": "Outline Color",
+    "m_Name": "OutlineColor",
     "m_DefaultRefNameVersion": 0,
     "m_RefNameGeneratedByDisplayName": "",
     "m_DefaultReferenceName": "Color_E91DE48D",
@@ -4660,7 +4660,7 @@
     "m_Type": "UnityEditor.ShaderGraph.Vector4MaterialSlot",
     "m_ObjectId": "b8b474742b073f82a54389c285c65e6d",
     "m_Id": 0,
-    "m_DisplayName": "Outline Color 2",
+    "m_DisplayName": "OutlineColor 2",
     "m_SlotType": 1,
     "m_Hidden": false,
     "m_ShaderOutputName": "Out",
@@ -5514,7 +5514,7 @@
     "m_Guid": {
         "m_GuidSerialized": "5015a425-ea0b-4793-b3da-7af09bce0fde"
     },
-    "m_Name": "MainTex",
+    "m_Name": "BaseMap",
     "m_DefaultRefNameVersion": 0,
     "m_RefNameGeneratedByDisplayName": "",
     "m_DefaultReferenceName": "Texture2D_9C592D13",
@@ -6276,7 +6276,7 @@
     "m_Type": "UnityEditor.ShaderGraph.Vector4MaterialSlot",
     "m_ObjectId": "f4eb946f0b11d283938c87ca36744ed8",
     "m_Id": 0,
-    "m_DisplayName": "Outline Color",
+    "m_DisplayName": "OutlineColor",
     "m_SlotType": 1,
     "m_Hidden": false,
     "m_ShaderOutputName": "Out",
@@ -6301,7 +6301,7 @@
     "m_Type": "UnityEditor.ShaderGraph.Texture2DMaterialSlot",
     "m_ObjectId": "f684356198f4648cbba3f01547e346f4",
     "m_Id": 0,
-    "m_DisplayName": "MainTex",
+    "m_DisplayName": "BaseMap",
     "m_SlotType": 1,
     "m_Hidden": false,
     "m_ShaderOutputName": "Out",
@@ -6532,7 +6532,7 @@
     "m_Guid": {
         "m_GuidSerialized": "8ee8ad0c-59d5-43ea-84ca-844e612e1816"
     },
-    "m_Name": "Outline Thickness",
+    "m_Name": "OutlineThickness",
     "m_DefaultRefNameVersion": 0,
     "m_RefNameGeneratedByDisplayName": "",
     "m_DefaultReferenceName": "Vector1_97928E5F",
