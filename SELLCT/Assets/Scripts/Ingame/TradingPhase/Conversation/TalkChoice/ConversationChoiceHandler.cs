@@ -22,9 +22,18 @@ public class ConversationChoiceHandler : MonoBehaviour, IPointerEnterHandler, IP
             return;
         }
 
+        if(talkChoice is NothingChoice)
+        {
+            if (!talkChoice.Enabled)
+            {
+                gameObject.SetActive(false);
+                return;
+            }
+        }
+
         gameObject.SetActive(true);
 
-        _text.text = _talkChoice.Text;
+        _text.text = _talkChoice.Text.ToDisplayString();
         _selectable.interactable = _talkChoice.Enabled;
     }
 
