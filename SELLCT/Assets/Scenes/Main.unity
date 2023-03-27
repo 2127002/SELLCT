@@ -3539,9 +3539,9 @@ MonoBehaviour:
     - _card: {fileID: 1801727037}
       _priority: 10
     - _card: {fileID: 505569846}
-      _priority: 1000
+      _priority: 10
     - _card: {fileID: 704934656}
-      _priority: 0
+      _priority: 1000
     - _card: {fileID: 1049933561}
       _priority: 0
     - _card: {fileID: 941202356}

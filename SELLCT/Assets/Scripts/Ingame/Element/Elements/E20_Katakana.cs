@@ -47,12 +47,12 @@ public class E20_Katakana : Card
     {
         _phaseController.OnTradingPhaseStart.Add(OnPhaseStart);
         _phaseController.OnExplorationPhaseStart += OnPhaseStart;
-        _katakanaHandView.Set();
     }
 
     private void OnPhaseStart()
     {
         StringManager.hasElements[elementIndex] = _handMediator.ContainsCard(this);
+        _katakanaHandView.Set();
     }
 
     private void OnDestroy()
