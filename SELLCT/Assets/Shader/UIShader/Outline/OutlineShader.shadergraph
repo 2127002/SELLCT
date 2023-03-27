@@ -128,7 +128,11 @@
         }
     ],
     "m_GroupDatas": [],
-    "m_StickyNoteDatas": [],
+    "m_StickyNoteDatas": [
+        {
+            "m_Id": "6da70202f3cd4ff5a4749a98fa98dc0d"
+        }
+    ],
     "m_Edges": [
         {
             "m_OutputSlot": {
@@ -2427,6 +2431,26 @@
         "X",
         "Y"
     ]
+}
+
+{
+    "m_SGVersion": 0,
+    "m_Type": "UnityEditor.ShaderGraph.StickyNoteData",
+    "m_ObjectId": "6da70202f3cd4ff5a4749a98fa98dc0d",
+    "m_Title": "バグ",
+    "m_Content": "SubGraph使おうとするとバグる...\n原因もよーわからん\n",
+    "m_TextSize": 0,
+    "m_Theme": 0,
+    "m_Position": {
+        "serializedVersion": "2",
+        "x": 729.8944702148438,
+        "y": -82.34685516357422,
+        "width": 200.0,
+        "height": 160.0
+    },
+    "m_Group": {
+        "m_Id": ""
+    }
 }
 
 {
