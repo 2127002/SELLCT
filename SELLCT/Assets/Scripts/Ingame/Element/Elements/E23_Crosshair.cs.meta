@@ -1,0 +1,21 @@
+fileFormatVersion: 2
+guid: 1d49c038c6ecc5745ad10afc96d7e49d
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - _controller: {instanceID: 0}
+  - _baseSprite: {fileID: 21300000, guid: a8a5399f5ab864840b7800c4eda12e93, type: 3}
+  - _number: {instanceID: 0}
+  - _chineseCharacters: {fileID: 21300000, guid: db1f07cca098af942bb17e99f8443b39,
+      type: 3}
+  - _hiragana: {instanceID: 0}
+  - _katakana: {instanceID: 0}
+  - _alphabet: {instanceID: 0}
+  - _handMediator: {instanceID: 0}
+  - _cursorController: {instanceID: 0}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

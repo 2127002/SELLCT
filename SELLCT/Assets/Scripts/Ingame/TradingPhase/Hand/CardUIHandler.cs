@@ -232,6 +232,8 @@ public class CardUIHandler : MonoBehaviour, IPointerClickHandler, IPointerEnterH
     {
         if (eventData == null) throw new NullReferenceException();
 
+        if (!_selectable.interactable) return;
+
         //同一処理のため以下の処理を呼ぶだけにします。
         //クリック時の仕様と差異が発生したら修正してください。
         OnSubmit();
