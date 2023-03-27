@@ -9,6 +9,7 @@ public class TraderController : MonoBehaviour
     [SerializeField] TraderView _traderView = default!;
     [SerializeField] TextBoxController _textBoxController = default!;
     [SerializeField] PhaseController _phaseController = default!;
+    [SerializeField] PlayerMonologue _playerMonologue = default!;
 
     Trader _currentTrader = default!;
 
@@ -30,8 +31,15 @@ public class TraderController : MonoBehaviour
         //仮に表情差分が追加されることになったらこの処理では負いきれません。
         _traderView.SetSprite(trader.Sprite);
 
+        //プレイヤーの独白に置き換えるか判定する
+        string speaker = _playerMonologue.SwitchToPlayerMonologue ?
+            _playerMonologue.Speaker : trader.Name;
+
+        string startMessage = _playerMonologue.SwitchToPlayerMonologue ?
+            _playerMonologue.StartMessage() : trader.StartMessage();
+
         //出会いのテキストを表示する
-        _textBoxController.UpdateText(trader.Name, trader.StartMessage()).Forget();
+        _textBoxController.UpdateText(speaker, startMessage).Forget();
     }
 
     public Trader CurrentTrader => _currentTrader;
