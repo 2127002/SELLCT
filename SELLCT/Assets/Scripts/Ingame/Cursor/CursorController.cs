@@ -16,15 +16,22 @@ public class CursorController : MonoBehaviour
     [SerializeField] RectTransform _cursorTransform = default!;
     [SerializeField] PhaseController _phaseController = default!;
 
-    Vector2 _cursorPosition = default!;
+    Vector2 _moveAxis = default!;
+    Vector2 _cursorPos = default!;
 
     readonly List<RectTransform> _rectTransforms = new();
 
     bool _isCursorMoving = default!;
     RectTransform _currentSelectedRectTransform = default!;
 
+    const float MAXWIDTH = 1920f;
+    const float MAXHEIGHT = 1080f;
+
     private void Awake()
     {
+        Cursor.visible = false;
+        Cursor.lockState = CursorLockMode.Locked;
+
         _phaseController.OnExplorationPhaseStart += Init;
         _phaseController.OnTradingPhaseStart.Add(Init);
     }
@@ -58,7 +65,14 @@ public class CursorController : MonoBehaviour
 
     private void CursorMoving()
     {
-        _cursorTransform.anchoredPosition += _cursorSpeed * Time.deltaTime * _cursorPosition;
+        _cursorTransform.anchoredPosition += _cursorSpeed * Time.deltaTime * _moveAxis;
+
+        //カーソルが画面外に出ないように調整
+        float posX = Mathf.Clamp(_cursorTransform.anchoredPosition.x, -MAXWIDTH / 2 + _cursorView.CursorSizeDelta.x / 2, MAXWIDTH / 2 - _cursorView.CursorSizeDelta.x / 2);
+        float posY = Mathf.Clamp(_cursorTransform.anchoredPosition.y, -MAXHEIGHT / 2 + _cursorView.CursorSizeDelta.y / 2, MAXHEIGHT / 2 - _cursorView.CursorSizeDelta.y / 2); ;
+        _cursorPos.Set(posX, posY);
+
+        _cursorTransform.anchoredPosition = _cursorPos;
     }
 
     private void Init()
@@ -106,7 +120,7 @@ public class CursorController : MonoBehaviour
 
     private void OnCursorMove(InputAction.CallbackContext context)
     {
-        _cursorPosition = context.ReadValue<Vector2>();
+        _moveAxis = context.ReadValue<Vector2>();
 
         if (context.performed) _isCursorMoving = true;
         if (context.canceled) _isCursorMoving = false;

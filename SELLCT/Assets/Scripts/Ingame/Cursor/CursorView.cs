@@ -7,6 +7,8 @@ public class CursorView : MonoBehaviour
 {
     [SerializeField] Image _cursorImage = default!;
 
+    public Vector2 CursorSizeDelta => _cursorImage.rectTransform.sizeDelta;
+
     public void Enable()
     {
         enabled = true;
