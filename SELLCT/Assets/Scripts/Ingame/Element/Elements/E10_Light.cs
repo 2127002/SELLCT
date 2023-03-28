@@ -55,6 +55,7 @@ public class E10_Light : Card
         }
     }
     public override bool ContainsPlayerDeck => _handMediator.ContainsCard(this);
+    public int FindAll => _handMediator.FindAll(this);
 
     private void Awake()
     {

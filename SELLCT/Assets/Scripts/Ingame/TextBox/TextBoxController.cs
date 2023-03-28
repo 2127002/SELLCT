@@ -6,13 +6,22 @@ using UnityEngine;
 public class TextBoxController : MonoBehaviour
 {
     [SerializeField] TextBoxView _textBoxView = default!;
-    [SerializeField] E14_TextBox _e14 = default!;
 
     public async UniTask UpdateText(string speaker, string message)
     {
         _textBoxView.UpdateText(speaker, message);
-        _textBoxView.UpdateDisplay(_e14.ContainsPlayerDeck);
+        _textBoxView.UpdateDisplay();
 
         await _textBoxView.DisplayTextOneByOne();
+    }
+
+    public void Enable()
+    {
+        _textBoxView.Enable();
+    }
+
+    public void Disable()
+    {
+        _textBoxView.Disable();
     }
 }
