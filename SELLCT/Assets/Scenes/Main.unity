@@ -5267,7 +5267,7 @@ MonoBehaviour:
   _selectable: {fileID: 1424207578}
   _isFirstSelectable: 0
   _phaseController: {fileID: 495064998}
-  _floor01: {fileID: 0}
+  _floor01: {fileID: 2129735619}
 --- !u!114 &1424207573
 MonoBehaviour:
   m_ObjectHideFlags: 0
