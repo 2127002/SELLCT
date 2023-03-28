@@ -67,7 +67,7 @@ public class GoodsMediator : DeckMediator
     {
         //キャパシティより多かったらその分を削除する
         int capacityDifference = _cardUIInstance.Handlers.Count - _hand.Capacity;
-        
+
         for (int i = 0; i < capacityDifference; i++)
         {
             _cardUIInstance.RemoveAt(_cardUIInstance.Handlers.Count - 1);
@@ -79,6 +79,13 @@ public class GoodsMediator : DeckMediator
         for (int i = 0; i < drawableCount; i++)
         {
             DrawCard();
+        }
+
+        //提示商品枚数より残り山札のほうが少なかったら、残ったHandlerにNull相当を入れて表示を消す。
+        //Handler自体を消さないのは商人山札が無いことを示すためです。
+        for (int i = drawableCount; i < _cardUIInstance.Handlers.Count; i++)
+        {
+            _cardUIInstance.Handlers[i].SetCardSprites(EEX_null.Instance);
         }
     }
 
