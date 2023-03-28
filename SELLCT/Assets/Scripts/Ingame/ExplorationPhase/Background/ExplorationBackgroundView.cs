@@ -9,7 +9,7 @@ public class ExplorationBackgroundView : MonoBehaviour
     [SerializeField] Sprite _normalSprite;
     [SerializeField] Sprite _restSprite;
 
-    public void OnWakeUp()
+    public void ConvertWakeUp()
     {
         //仮置きです。Spriteの実装とともに削除してください。
         _image.color = Color.gray;
@@ -17,7 +17,7 @@ public class ExplorationBackgroundView : MonoBehaviour
         _image.sprite = _normalSprite;
     }
 
-    public void OnRest()
+    public void ConvertRest()
     {
         //仮置きです。Spriteの実装とともに削除してください。
         _image.color = Color.cyan;

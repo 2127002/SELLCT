@@ -1,3 +1,4 @@
+using Cysharp.Threading.Tasks;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -22,6 +23,8 @@ public class E32_Rest : Card
     [SerializeField] Sprite _wakeUpSprite = default!;
 
     [SerializeField] ExplorationBackgroundView _backgroundView = default!;
+    [SerializeField] TextBoxController _textBoxController = default!;
+    [SerializeField] Floor01Condition _floor01Condition = default!;
 
     readonly List<Sprite> result = new();
 
@@ -76,14 +79,25 @@ public class E32_Rest : Card
         if (_isRest)
         {
             _E32CommandImage.sprite = _wakeUpSprite;
-            _backgroundView.OnRest();
+            _backgroundView.ConvertWakeUp();
             _isRest = false;
+
+            _textBoxController.UpdateText(null, "よし、探索再開だ。").Forget();
         }
         else
         {
             _E32CommandImage.sprite = _restSprite;
-            _backgroundView.OnWakeUp();
+            _backgroundView.ConvertRest();
             _isRest = true;
+
+
+            string s = "少し休憩するか。";
+            if (_floor01Condition.OnRest())
+            {
+                s = "...あぁ、急がば回れとはこういうことだったんだな。この星座の道順を辿っていこう。";
+            }
+
+            _textBoxController.UpdateText(null, s).Forget();
         }
     }
 

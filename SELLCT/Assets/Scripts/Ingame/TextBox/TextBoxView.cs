@@ -21,6 +21,8 @@ public class TextBoxView : MonoBehaviour
 
     CancellationTokenSource _cancellationTokenSource = default!;
 
+    bool _imageEnabled;
+
     public async UniTask DisplayTextOneByOne()
     {
         var cancellationToken = this.GetCancellationTokenOnDestroy();
@@ -64,12 +66,26 @@ public class TextBoxView : MonoBehaviour
         _messageText.text = message.ToDisplayString();
     }
 
-    public void UpdateDisplay(bool hasE14)
+    public void UpdateDisplay()
     {
-        bool spekerImageEnabled = !string.IsNullOrEmpty(_speakerText.text) && hasE14;
+        bool spekerImageEnabled = !string.IsNullOrEmpty(_speakerText.text) && _imageEnabled;
 
         //ImageÇæÇØÇ≈TextÇÕE14Ç…ÇÊÇ¡Çƒç∂âEÇ≥ÇÍÇ»Ç¢
         _speakerImage.enabled = spekerImageEnabled;
-        _messageImage.enabled = hasE14;
+        _messageImage.enabled = _imageEnabled;
+    }
+
+    public void Enable()
+    {
+        _messageImage.enabled = true;
+        _speakerImage.enabled = true;
+        _imageEnabled = true;
+    }    
+    
+    public void Disable()
+    {
+        _messageImage.enabled = false;
+        _speakerImage.enabled = false;
+        _imageEnabled = false;
     }
 }

@@ -18,6 +18,7 @@ public class ExplorationNextButtonHandler : MonoBehaviour,ISelectableHighlight
     [SerializeField] bool _isFirstSelectable;
 
     [SerializeField] PhaseController _phaseController;
+    [SerializeField] Floor01Condition _floor01;
 
     Color _defalutSelectColor = default!;
 
@@ -62,10 +63,16 @@ public class ExplorationNextButtonHandler : MonoBehaviour,ISelectableHighlight
 
     private void HandleClick()
     {
+        OnSubmit();
+    }
+
+    private void OnSubmit()
+    {
         //フェーズ終了を知らせる
         EventSystem.current.SetSelectedGameObject(null);
 
         _phaseController.CompleteExplorationPhase();
+        _floor01.OnNextButtonPressed();
     }
 
     private void HandleEnter()
@@ -82,8 +89,7 @@ public class ExplorationNextButtonHandler : MonoBehaviour,ISelectableHighlight
 
     private void HandleSubmit()
     {
-        //同一処理のため以下の処理を呼ぶだけにします。クリック時の仕様と差異が発生したら修正してください。
-        HandleClick();
+        OnSubmit();
     }
 
     private void HandleSelect()

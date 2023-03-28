@@ -15,8 +15,8 @@ public class E14_TextBox : Card
     [SerializeField] Sprite _katakana = default!;
     [SerializeField] Sprite _alphabet = default!;
     [SerializeField] HandMediator _handMediator = default!;
-    [SerializeField] Image _u5 = default!;
-    [SerializeField] Image _u13 = default!;
+    [SerializeField] TextBoxController _textBoxController = default!;
+    [SerializeField] PhaseController _phaseController = default!;
 
     readonly List<Sprite> result = new();
 
@@ -43,14 +43,26 @@ public class E14_TextBox : Card
     }
     public override bool ContainsPlayerDeck => _handMediator.ContainsCard(this);
 
+    private void Awake()
+    {
+        _phaseController.OnGameStart.Add(OnGameStart);
+    }
+
+    private void OnDestroy()
+    {
+        _phaseController.OnGameStart.Remove(OnGameStart);
+    }
+
+    private void OnGameStart()
+    {
+        if (ContainsPlayerDeck) _textBoxController.Enable();
+        else _textBoxController.Disable();
+    }
+
     public override void Buy()
     {
-        //TODO:SE301の再生
-        //TODO:画面全体を脈動させるアニメーション
-        //TODO:テキストボックスを更新する
-
         _controller.DecreaseMoney(_parameter.GetMoney());
-        BuyTextBoxChecker();
+        _textBoxController.Enable();
     }
 
     public override void Passive()
@@ -61,24 +73,8 @@ public class E14_TextBox : Card
     public override void Sell()
     {
         _controller.IncreaseMoney(_parameter.GetMoney());
-        SellTextBoxChecker();
-    }
-
-    public void BuyTextBoxChecker()
-    {
-        if (_u5.enabled == false && _u13.enabled == false)
-        {
-            _u5.enabled = true;
-            _u13.enabled = true;
-        }
-    }
-    public void SellTextBoxChecker()
-    {
         if (_handMediator.ContainsCard(this)) return;
-        if (_u5.enabled == true && _u13.enabled == true)
-        {
-            _u5.enabled = false;
-            _u13.enabled = false;
-        }
+
+        _textBoxController.Disable();
     }
 }
