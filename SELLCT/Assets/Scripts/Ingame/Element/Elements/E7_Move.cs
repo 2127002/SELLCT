@@ -16,7 +16,7 @@ public class E7_Move : Card
 
     public override void Passive()
     {
-        // DoNothing
+        throw new System.NotImplementedException();
     }
 
     public override void Sell()

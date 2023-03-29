@@ -39,7 +39,7 @@ public class E10_Light : Card
 
     public override void Passive()
     {
-        // DoNothing
+        throw new System.NotImplementedException();
     }
 
     public override void Sell()

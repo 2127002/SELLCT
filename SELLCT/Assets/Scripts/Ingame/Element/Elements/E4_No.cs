@@ -24,7 +24,7 @@ public class E4_No : Card
 
     public override void Passive()
     {
-        // DoNothing
+        throw new System.NotImplementedException();
     }
 
     public override void Sell()

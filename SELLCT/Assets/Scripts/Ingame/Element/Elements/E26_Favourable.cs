@@ -33,7 +33,7 @@ public class E26_Favourable : Card
 
     public override void Passive()
     {
-        // Do Nothing
+        throw new System.NotImplementedException();
     }
 
     public override void Sell()

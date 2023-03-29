@@ -18,7 +18,7 @@ public class E1_Buy : Card
 
     public override void Passive()
     {
-        //TODO:SE2
+        throw new System.NotImplementedException();
     }
 
     public override void Sell()

@@ -42,7 +42,7 @@ public class E25_HandNumber : Card
 
     public override void Passive()
     {
-        // DoNothing
+        throw new System.NotImplementedException();
     }
 
     public override void Sell()

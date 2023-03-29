@@ -36,7 +36,7 @@ public class E20_Katakana : Card
 
     public override void Passive()
     {
-        // DoNothing
+        throw new System.NotImplementedException();
     }
 
     public override void Sell()
