@@ -8,16 +8,6 @@ using UnityEngine;
 
 public class E10_Light : Card
 {
-    [SerializeField] CardParameter _parameter = default!;
-    [SerializeField] MoneyPossessedController _controller = default!;
-    [SerializeField] Sprite _baseSprite = default!;
-    [SerializeField] Sprite _number = default!;
-    [SerializeField] Sprite _chineseCharacters = default!;
-    [SerializeField] Sprite _hiragana = default!;
-    [SerializeField] Sprite _katakana = default!;
-    [SerializeField] Sprite _alphabet = default!;
-    [SerializeField] HandMediator _handMediator = default!;
-
     [SerializeField] Material _brightness = default!;
     [Header("Defaultの明るさを100%として、以下の値で上昇します。\n例：値が10の場合 100%→110%")]
     [SerializeField, Range(0, 150f)] float _brightnessIncreasePercent;
@@ -31,30 +21,6 @@ public class E10_Light : Card
     const float MAX_VALUE = 1.5f;
     const float MIN_VALUE = 0;
 
-    readonly List<Sprite> result = new();
-
-    public override string CardName => _parameter.GetName();
-    public override bool IsDisposedOfAfterSell => _parameter.IsDisposedOfAfterSell();
-    public override int Rarity => _parameter.Rarity();
-    public override IReadOnlyList<Sprite> CardSprite
-    {
-        get
-        {
-            //初期化
-            if (result.Count == 0)
-            {
-                result.Add(_baseSprite);
-                result.Add(_number);
-                result.Add(_chineseCharacters);
-                result.Add(_hiragana);
-                result.Add(_katakana);
-                result.Add(_alphabet);
-            }
-
-            return result;
-        }
-    }
-    public override bool ContainsPlayerDeck => _handMediator.ContainsCard(this);
     public int FindAll => _handMediator.FindAll(this);
 
     private void Awake()
