@@ -54,6 +54,7 @@ public class E11_Vivid : Card
         }
     }
     public override bool ContainsPlayerDeck => _handMediator.ContainsCard(this);
+    public int FindAll => _handMediator.FindAll(this);
 
     private void Awake()
     {
