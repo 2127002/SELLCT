@@ -44,6 +44,8 @@ public class CardUIHandler : MonoBehaviour, IPointerClickHandler, IPointerEnterH
     private void Awake()
     {
         _defalutSelectColor = _selectable.colors.selectedColor;
+
+        _selectable.image.rectTransform.localScale = Vector3.one;
     }
 
     private void OnSubmit()
