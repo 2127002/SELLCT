@@ -10,7 +10,7 @@ public abstract class Card : MonoBehaviour
     [SerializeField] protected CardParameter _parameter = default!;
 
     [Header("所持金を管理するオブジェクトを選択してください。")]
-    [SerializeField] protected MoneyPossessedController _moneyPossessedCcontroller = default!;
+    [SerializeField] protected MoneyPossessedController _moneyPossessedController = default!;
     
     [Header("カードイラストです。該当するイラストがない場合はNoneのままにしてください。")]
     [SerializeField] Sprite _baseSprite = default!;

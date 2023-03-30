@@ -10,7 +10,7 @@ public class E8_BGM : Card
     {
         //TODO:BGMÇÃçƒê∂
 
-        _moneyPossessedCcontroller.DecreaseMoney(_parameter.GetMoney());
+        _moneyPossessedController.DecreaseMoney(_parameter.GetMoney());
     }
 
     public override void OnPressedU6Button()
@@ -22,7 +22,7 @@ public class E8_BGM : Card
     {
         StopBGM();
 
-        _moneyPossessedCcontroller.IncreaseMoney(_parameter.GetMoney());
+        _moneyPossessedController.IncreaseMoney(_parameter.GetMoney());
     }
 
     private void StopBGM()

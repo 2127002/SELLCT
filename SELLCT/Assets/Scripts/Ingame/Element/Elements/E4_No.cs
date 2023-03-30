@@ -19,7 +19,7 @@ public class E4_No : Card
 
     public override void Buy()
     {
-        _moneyPossessedCcontroller.DecreaseMoney(_parameter.GetMoney());
+        _moneyPossessedController.DecreaseMoney(_parameter.GetMoney());
 
         _choicesManager.Enable(_noChoice.Id);
     }
@@ -31,7 +31,7 @@ public class E4_No : Card
 
     public override void Sell()
     {
-        _moneyPossessedCcontroller.IncreaseMoney(_parameter.GetMoney());
+        _moneyPossessedController.IncreaseMoney(_parameter.GetMoney());
         if (_handMediator.ContainsCard(this)) return;
 
         _choicesManager.Disable(_noChoice.Id);

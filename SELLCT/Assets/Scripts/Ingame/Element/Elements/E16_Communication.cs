@@ -8,7 +8,7 @@ public class E16_Communication : Card
 
     public override void Buy()
     {
-        _moneyPossessedCcontroller.DecreaseMoney(_parameter.GetMoney());
+        _moneyPossessedController.DecreaseMoney(_parameter.GetMoney());
     }
 
     public override void OnPressedU6Button()
@@ -18,7 +18,7 @@ public class E16_Communication : Card
 
     public override void Sell()
     {
-        _moneyPossessedCcontroller.IncreaseMoney(_parameter.GetMoney());
+        _moneyPossessedController.IncreaseMoney(_parameter.GetMoney());
         if (_handMediator.ContainsCard(this)) return;
     }
 }

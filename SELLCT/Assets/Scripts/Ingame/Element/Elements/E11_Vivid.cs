@@ -31,7 +31,7 @@ public class E11_Vivid : Card
 
     public override void Buy()
     {
-        _moneyPossessedCcontroller.DecreaseMoney(_parameter.GetMoney());
+        _moneyPossessedController.DecreaseMoney(_parameter.GetMoney());
 
         IncreaseVividValue();
     }
@@ -43,7 +43,7 @@ public class E11_Vivid : Card
 
     public override void Sell()
     {
-        _moneyPossessedCcontroller.IncreaseMoney(_parameter.GetMoney());
+        _moneyPossessedController.IncreaseMoney(_parameter.GetMoney());
 
         DesreaseVividValue();
     }

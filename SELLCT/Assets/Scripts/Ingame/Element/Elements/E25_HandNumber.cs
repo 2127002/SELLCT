@@ -34,7 +34,7 @@ public class E25_HandNumber : Card
 
     public override void Buy()
     {
-        _moneyPossessedCcontroller.DecreaseMoney(_parameter.GetMoney());
+        _moneyPossessedController.DecreaseMoney(_parameter.GetMoney());
         _playerHand.AddHandCapacity(1);
 
         //Handlerを作ってからカードを引く
@@ -49,7 +49,7 @@ public class E25_HandNumber : Card
 
     public override void Sell()
     {
-        _moneyPossessedCcontroller.IncreaseMoney(_parameter.GetMoney());
+        _moneyPossessedController.IncreaseMoney(_parameter.GetMoney());
         _playerHand.AddHandCapacity(-1);
 
         //先に引いたカードをデッキに戻す

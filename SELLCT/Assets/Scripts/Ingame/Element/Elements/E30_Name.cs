@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class E30_Name : Card
@@ -10,7 +8,7 @@ public class E30_Name : Card
 
     public override void Buy()
     {
-        _moneyPossessedCcontroller.DecreaseMoney(_parameter.GetMoney());
+        _moneyPossessedController.DecreaseMoney(_parameter.GetMoney());
     }
 
     public override void OnPressedU6Button()
@@ -20,7 +18,7 @@ public class E30_Name : Card
 
     public override void Sell()
     {
-        _moneyPossessedCcontroller.IncreaseMoney(_parameter.GetMoney());
+        _moneyPossessedController.IncreaseMoney(_parameter.GetMoney());
 
         //残りのNameカードがあってもなくてもトレーダーに名前を付ける
         _traderController.CurrentTrader.Name = _parameter.GetName();
