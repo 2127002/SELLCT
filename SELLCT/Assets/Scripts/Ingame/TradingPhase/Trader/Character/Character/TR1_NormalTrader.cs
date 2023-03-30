@@ -5,27 +5,9 @@ using UnityEngine;
 
 public class TR1_NormalTrader : Trader
 {
-    [SerializeField] TraderParameter _traderParameter;
-    [SerializeField] Sprite _sprite;
-    Favorability _favorability;
-    readonly TraderDeck _deck = new();
-
-    public override TraderDeck TraderDeck => _deck;
-
-    public override string Name
+    protected override void Awake()
     {
-        get => _traderParameter.Name;
-        set => _traderParameter.Name = value;
-    }
-
-    public override int InitialDisplayItemCount => _traderParameter.InitialDisplayItemCount;
-
-    public override Sprite Sprite => _sprite;
-
-    private void Awake()
-    {
-        _favorability = _traderParameter.InitialFavorability;
-        _traderParameter.Name = _traderParameter.DefalutName;
+        base.Awake();
     }
 
     public override void CreateDeck(CardPool pool)
@@ -35,7 +17,7 @@ public class TR1_NormalTrader : Trader
             Card card = pool.Draw();
             if (card.Id < 0) break;
 
-            _deck.Add(card);
+            deck.Add(card);
         }
     }
 
@@ -67,24 +49,20 @@ public class TR1_NormalTrader : Trader
     public override void OnPlayerSell(Card selledCard)
     {
         //TODO：もし与えられたカードが仲間カードなら好感度減少処理を行う。
-        AddFavorability(selledCard);
+
+        Favorability totalAddValue = traderParameter.AddFavorabilityValue;
+
+        if (traderParameter.FavoriteCards.Contains(selledCard))
+        {
+            totalAddValue.Add(traderParameter.FavoriteCardBonus);
+        }
+
+        favorability = favorability.Add(totalAddValue);
     }
 
     public override void OnPlayerBuy()
     {
         //買い処理はお気に入りエレメントは関係ない
-        _favorability = _favorability.Add(_traderParameter.AddFavorabilityValue);
-    }
-
-    private void AddFavorability(Card card)
-    {
-        Favorability totalAddValue = _traderParameter.AddFavorabilityValue;
-
-        if (_traderParameter.FavoriteCards.Contains(card))
-        {
-            totalAddValue.Add(_traderParameter.FavoriteCardAddValue);
-        }
-
-        _favorability = _favorability.Add(totalAddValue);
+        favorability = favorability.Add(traderParameter.AddFavorabilityValue);
     }
 }

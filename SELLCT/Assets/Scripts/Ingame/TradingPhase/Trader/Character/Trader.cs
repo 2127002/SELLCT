@@ -4,10 +4,29 @@ using UnityEngine;
 
 public abstract class Trader : MonoBehaviour, IConversationMessage
 {
-    public abstract TraderDeck TraderDeck { get; }
-    public abstract string Name { get; set; }
-    public abstract int InitialDisplayItemCount { get; }
-    public abstract Sprite Sprite { get; }
+    [SerializeField] protected TraderParameter traderParameter;
+    [SerializeField] protected Sprite sprite;
+    protected Favorability favorability;
+    protected readonly TraderDeck deck = new();
+
+    protected virtual void Awake()
+    {
+        favorability = traderParameter.InitialFavorability;
+        traderParameter.Name = traderParameter.DefalutName;
+    }
+
+    public virtual TraderDeck TraderDeck => deck;
+    public virtual string Name
+    {
+        get => traderParameter.Name;
+        set
+        {
+            if (string.IsNullOrEmpty(value)) value = "No name";
+            traderParameter.Name = value;
+        }
+    }
+    public virtual int InitialDisplayItemCount => traderParameter.InitialDisplayItemCount;
+    public virtual Sprite TraderSprite => sprite;
     public abstract void CreateDeck(CardPool pool);
     public abstract void OnPlayerSell(Card card);
     public abstract void OnPlayerBuy();

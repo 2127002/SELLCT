@@ -5,23 +5,35 @@ using UnityEngine;
 [System.Serializable]
 public struct TraderParameter
 {
-    [SerializeField, Tooltip("お気にいりエレメント")] List<Card> _favoriteCards;
-    [Header("抽選確率：(取り出したいカード数 + priority)/（残カードプール数）になります。")]
+    [Header("お気に入りエレメントの登録")]
+    [SerializeField] FavoriteCards _favoriteCard; 
+
+    [Header("優先抽選エレメントの登録\n抽選確率：(取り出したいカード数 + priority)/（残カードプール数）になります。")]
     [SerializeField] List<PriorityCard> _priorityCards;
+
+    [Header("初期商品提示枚数")]
     [SerializeField, Min(0)] int _initialDisplayItemCount;
-    [SerializeField, Range(0, 100)] int _initialFavorability;
+
+    [Header("初期デッキ枚数。-1を選択したら無限になります。")]
     [SerializeField, Min(-1)] int _initialDeckCount;
+
+    [Header("初期好感度")]
+    [SerializeField, Range(0, 100)] int _initialFavorability;
+
+    [Header("売買時に上昇する好感度の値です。")]
     [SerializeField] int _addFavorabilityValue;
-    [SerializeField] int _favoriteCardAddValue;
-    [SerializeField] FavourableView _favourableView;
+
+    [Header("初期の名前です。使えない文字があることに注意してください。（特殊文字など）")]
     [SerializeField] string _defalutName;
+
+    [SerializeField] FavourableView _favourableView;
     string _name;
 
     Favorability initialFavorability;
     Favorability addFavorabilityValue;
-    Favorability favoriteCardAddValue;
+    Favorability favoriteCardBonus;
 
-    public IReadOnlyList<Card> FavoriteCards => _favoriteCards;
+    public IReadOnlyList<Card> FavoriteCards => _favoriteCard.FavoriteCardsList;
 
     public IReadOnlyList<PriorityCard> PriorityCards => _priorityCards;
 
@@ -47,12 +59,12 @@ public struct TraderParameter
         }
     }
 
-    public Favorability FavoriteCardAddValue
+    public Favorability FavoriteCardBonus
     {
         get
         {
-            favoriteCardAddValue ??= new(_favoriteCardAddValue, _favourableView);
-            return favoriteCardAddValue;
+            favoriteCardBonus ??= new(_favoriteCard.Bonus, _favourableView);
+            return favoriteCardBonus;
         }
     }
 

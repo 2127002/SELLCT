@@ -5,23 +5,11 @@ using UnityEngine;
 
 public class TraderEncounterController : MonoBehaviour
 {
-    [SerializeField] TraderController _traderController = default!;
     [SerializeField] TradersInstance _tradersInstance = default!;
-    [SerializeField] PhaseController _phaseController = default!;
 
     Trader _prebTrader = null;
 
-    private void Awake()
-    {
-        _phaseController.OnTradingPhaseStart.Add(NextTraderSelection);
-    }
-
-    private void OnDestroy()
-    {
-        _phaseController.OnTradingPhaseStart.Remove(NextTraderSelection);
-    }
-
-    private void NextTraderSelection()
+    public Trader Selection()
     {
         //前回の商人を除いた新たなリストを作成する。
         var availableTraders = _tradersInstance.Traders.Where(t => t != _prebTrader).ToList();
@@ -31,6 +19,7 @@ public class TraderEncounterController : MonoBehaviour
         Trader selectedTrader = availableTraders[index];
 
         _prebTrader = selectedTrader;
-        _traderController.SetTrader(selectedTrader);
+
+        return selectedTrader;
     }
 }
