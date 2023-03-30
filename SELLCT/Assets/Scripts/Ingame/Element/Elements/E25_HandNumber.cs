@@ -53,7 +53,7 @@ public class E25_HandNumber : Card
         _playerHand.AddHandCapacity(-1);
 
         //先に引いたカードをデッキに戻す
-        _handMediator.AddDeck(_playerHand.Cards[^1]);
+        _handMediator.AddPlayerDeck(_playerHand.Cards[^1]);
         _playerHand.Remove(_playerHand.Cards[^1]);
 
         _cardUIInstance.RemoveAt(_cardUIInstance.Handlers.Count - 1);

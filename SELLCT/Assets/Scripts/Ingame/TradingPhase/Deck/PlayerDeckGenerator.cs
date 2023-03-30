@@ -36,7 +36,7 @@ public class PlayerDeckGenerator : MonoBehaviour
                     return;
                 }
 
-                _handMediator.AddDeck(card);
+                _handMediator.AddPlayerDeck(card);
             }
         }
     }
@@ -65,7 +65,7 @@ public class PlayerDeckGenerator : MonoBehaviour
 
             deck.RemoveAt(index);
 
-            _handMediator.AddDeck(card);
+            _handMediator.AddPlayerDeck(card);
         }
     }
 }
