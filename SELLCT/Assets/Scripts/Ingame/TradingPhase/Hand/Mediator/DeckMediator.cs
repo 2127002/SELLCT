@@ -6,8 +6,8 @@ public abstract class DeckMediator : MonoBehaviour
 {
     public abstract void DrawCard();
     public abstract void RemoveHandCard(Card card);
-    public abstract void AddDeck(Card card);
-    public abstract void UpdeteCardSprites();
+    public abstract void AddPlayerDeck(Card card);
+    public abstract void UpdateCardSprites();
     public abstract void AddBuyingDeck(Card card);
     /// <summary>
     /// 山札か手札、購入直後デッキに指定カードが存在するか返す

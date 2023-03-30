@@ -67,7 +67,7 @@ public class CardUIHandler : MonoBehaviour, IPointerClickHandler, IPointerEnterH
         else throw new NotImplementedException();
 
         //手札整理
-        _deckMediator.UpdeteCardSprites();
+        _deckMediator.UpdateCardSprites();
     }
 
     private void OnBuy(Card purchasedCard)

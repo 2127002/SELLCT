@@ -37,6 +37,7 @@ public class HandMediator : DeckMediator
         {
             Card card = _buyingCardDeck.Draw();
 
+            //限界までドローしたらNULL相当が来るためそれを検知する
             if (card.Id < 0) break;
 
             _playerDeck.Add(card);
@@ -50,9 +51,9 @@ public class HandMediator : DeckMediator
 
     private void RemoveAllHandCards()
     {
-        int handCardCount = _hand.Cards.Count;
+        int currentHandCount = _hand.Cards.Count;
 
-        for (int i = 0; i < handCardCount; i++)
+        for (int i = 0; i < currentHandCount; i++)
         {
             Card card = _hand.Cards[0];
 
@@ -73,7 +74,7 @@ public class HandMediator : DeckMediator
         }
     }
 
-    public override void UpdeteCardSprites()
+    public override void UpdateCardSprites()
     {
         int handCapacity = _hand.Capacity;
         int currentHandCount = _hand.Cards.Count;
@@ -110,7 +111,7 @@ public class HandMediator : DeckMediator
         _hand.Remove(card);
     }
 
-    public override void AddDeck(Card card)
+    public override void AddPlayerDeck(Card card)
     {
         _playerDeck.Add(card);
     }

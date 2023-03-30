@@ -62,7 +62,6 @@ public class GoodsMediator : DeckMediator
         }
     }
 
-
     private void InitTakeCard()
     {
         //キャパシティより多かったらその分を削除する
@@ -123,12 +122,12 @@ public class GoodsMediator : DeckMediator
         _hand.Remove(card);
     }
 
-    public override void AddDeck(Card card)
+    public override void AddPlayerDeck(Card card)
     {
         _traderController.CurrentTrader.TraderDeck.Add(card);
     }
 
-    public override void UpdeteCardSprites()
+    public override void UpdateCardSprites()
     {
         int handCapacity = _hand.Capacity;
         int currentHandCount = _hand.Cards.Count;
