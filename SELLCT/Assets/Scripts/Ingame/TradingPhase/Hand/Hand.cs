@@ -53,6 +53,11 @@ public class Hand : MonoBehaviour
 
         if (_addHandCapacityValue < 0) throw new System.ArgumentOutOfRangeException();
     }
+
+    public void SetDefaultHandCapacity(int newCapacity)
+    {
+        _handCapacity = newCapacity;
+    }
 }
 
 public class HandCapacityExceededException : System.Exception
