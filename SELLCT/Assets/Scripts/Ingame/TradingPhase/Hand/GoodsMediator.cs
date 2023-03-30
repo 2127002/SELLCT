@@ -74,7 +74,7 @@ public class GoodsMediator : DeckMediator
         }
 
         //‚»‚ê‚©‚çƒhƒ[‚·‚é
-        int drawableCount = Mathf.Min(_traderController.CurrentTrader.InitialDisplayItemCount, _hand.CalcDrawableCount());
+        int drawableCount = _hand.CalcDrawableCount();
 
         for (int i = 0; i < drawableCount; i++)
         {

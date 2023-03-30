@@ -8,6 +8,7 @@ public class TraderController : MonoBehaviour
     [SerializeField] TextBoxController _textBoxController = default!;
     [SerializeField] PhaseController _phaseController = default!;
     [SerializeField] PlayerMonologue _playerMonologue = default!;
+    [SerializeField] Hand _traderHand = default!;
 
     Trader _currentTrader = default!;
 
@@ -37,6 +38,9 @@ public class TraderController : MonoBehaviour
         //Spriteをトレーダーごとに変更する
         //仮に表情差分が追加されることになったらこの処理では負いきれません。
         _traderView.SetSprite(trader.TraderSprite);
+
+        //トレーダーによって初期展示数が異なる
+        _traderHand.SetDefaultHandCapacity(trader.InitialDisplayItemCount);
 
         //プレイヤーの独白に置き換えるか判定する
         bool switchToPlayerMonologue = _playerMonologue.SwitchToPlayerMonologue;

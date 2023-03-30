@@ -4625,6 +4625,7 @@ MonoBehaviour:
   _textBoxController: {fileID: 1775029163}
   _phaseController: {fileID: 495064998}
   _playerMonologue: {fileID: 505569845}
+  _traderHand: {fileID: 1723587018}
 --- !u!224 &1210986884
 RectTransform:
   m_ObjectHideFlags: 0
