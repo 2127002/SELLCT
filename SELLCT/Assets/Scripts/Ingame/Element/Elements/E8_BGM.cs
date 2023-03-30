@@ -4,14 +4,16 @@ using UnityEngine;
 
 public class E8_BGM : Card
 {
+    public override int Id => 8;
+
     public override void Buy()
     {
         //TODO:BGMÇÃçƒê∂
 
-        _controller.DecreaseMoney(_parameter.GetMoney());
+        _moneyPossessedCcontroller.DecreaseMoney(_parameter.GetMoney());
     }
 
-    public override void Passive()
+    public override void OnPressedU6Button()
     {
         throw new System.NotImplementedException();
     }
@@ -20,7 +22,7 @@ public class E8_BGM : Card
     {
         StopBGM();
 
-        _controller.IncreaseMoney(_parameter.GetMoney());
+        _moneyPossessedCcontroller.IncreaseMoney(_parameter.GetMoney());
     }
 
     private void StopBGM()

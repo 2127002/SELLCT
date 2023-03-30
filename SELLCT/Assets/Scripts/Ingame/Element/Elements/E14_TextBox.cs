@@ -9,6 +9,8 @@ public class E14_TextBox : Card
     [SerializeField] TextBoxController _textBoxController = default!;
     [SerializeField] PhaseController _phaseController = default!;
 
+    public override int Id => 14;
+
     private void Awake()
     {
         _phaseController.OnGameStart.Add(OnGameStart);
@@ -27,18 +29,18 @@ public class E14_TextBox : Card
 
     public override void Buy()
     {
-        _controller.DecreaseMoney(_parameter.GetMoney());
+        _moneyPossessedCcontroller.DecreaseMoney(_parameter.GetMoney());
         _textBoxController.Enable();
     }
 
-    public override void Passive()
+    public override void OnPressedU6Button()
     {
         throw new System.NotImplementedException();
     }
 
     public override void Sell()
     {
-        _controller.IncreaseMoney(_parameter.GetMoney());
+        _moneyPossessedCcontroller.IncreaseMoney(_parameter.GetMoney());
         if (_handMediator.ContainsCard(this)) return;
 
         _textBoxController.Disable();

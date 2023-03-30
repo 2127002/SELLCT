@@ -7,36 +7,38 @@ using System.Linq;
 
 public class E1_Buy : Card
 {
-    [SerializeField] Color changeColor = default!;
-    [SerializeField] CardUIInstance cardUIInstance = default!;
+    [SerializeField] Color _disabledColor = default!;
+    [SerializeField] CardUIInstance _goodsCardUIInstance = default!;
+
+    public override int Id => 1;
 
     public override void Buy()
     {
-        _controller.DecreaseMoney(_parameter.GetMoney());
-
+        _moneyPossessedCcontroller.DecreaseMoney(_parameter.GetMoney());
     }
 
-    public override void Passive()
+    public override void OnPressedU6Button()
     {
         throw new System.NotImplementedException();
     }
 
     public override void Sell()
     {
-        _controller.IncreaseMoney(_parameter.GetMoney());
-        BuyChecker();
+        _moneyPossessedCcontroller.IncreaseMoney(_parameter.GetMoney());
+        OnSell();
     }
-    private void BuyChecker()
+
+    private void OnSell()
     {
         if (_handMediator.ContainsCard(this)) return;
 
-        foreach (var cardUIHandler in cardUIInstance.Handlers)
+        foreach (var cardUIHandler in _goodsCardUIInstance.Handlers)
         {
             cardUIHandler.DisableSelectability();
 
             foreach (var cardImage in cardUIHandler.CardImages)
             {
-                cardImage.color = changeColor;
+                cardImage.color = _disabledColor;
             }
         }
     }

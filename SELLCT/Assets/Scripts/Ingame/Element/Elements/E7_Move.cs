@@ -9,19 +9,21 @@ public class E7_Move : Card
     [SerializeField] Selectable _selectable;
     [SerializeField] Image _u7 = default!;
 
+    public override int Id => 7;
+
     public override void Buy()
     {
-        _controller.DecreaseMoney(_parameter.GetMoney());
+        _moneyPossessedCcontroller.DecreaseMoney(_parameter.GetMoney());
     }
 
-    public override void Passive()
+    public override void OnPressedU6Button()
     {
         throw new System.NotImplementedException();
     }
 
     public override void Sell()
     {
-        _controller.IncreaseMoney(_parameter.GetMoney());
+        _moneyPossessedCcontroller.IncreaseMoney(_parameter.GetMoney());
         MoveChecker();
     }
 

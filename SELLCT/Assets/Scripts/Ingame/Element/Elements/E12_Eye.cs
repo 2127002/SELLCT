@@ -20,6 +20,8 @@ public class E12_Eye : Card
     const float MAX_VALUE = 2160f;
     const float MIN_VALUE = 1;
 
+    public override int Id => 12;
+
     private void Awake()
     {
         //最初の所持枚数と関係なく設定される。フェーズと関係なく設定するため、問題が生じたら変更推奨
@@ -29,19 +31,19 @@ public class E12_Eye : Card
 
     public override void Buy()
     {
-        _controller.DecreaseMoney(_parameter.GetMoney());
+        _moneyPossessedCcontroller.DecreaseMoney(_parameter.GetMoney());
 
         IncreaseEyeValue();
     }
 
-    public override void Passive()
+    public override void OnPressedU6Button()
     {
         throw new System.NotImplementedException();
     }
 
     public override void Sell()
     {
-        _controller.IncreaseMoney(_parameter.GetMoney());
+        _moneyPossessedCcontroller.IncreaseMoney(_parameter.GetMoney());
 
         DesreaseEyeValue();
     }

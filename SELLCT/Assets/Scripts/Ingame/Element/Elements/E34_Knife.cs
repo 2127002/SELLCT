@@ -9,6 +9,8 @@ public class E34_Knife : Card
     
     [SerializeField] Image _E34CommandImage = default!;
 
+    public override int Id => 34;
+
     private void Awake()
     {
         _phaseController.OnGameStart.Add(OnGameStart);
@@ -26,11 +28,11 @@ public class E34_Knife : Card
 
     public override void Buy()
     {
-        _controller.DecreaseMoney(_parameter.GetMoney());
+        _moneyPossessedCcontroller.DecreaseMoney(_parameter.GetMoney());
         _E34CommandImage.gameObject.SetActive(true);
     }
 
-    public override void Passive()
+    public override void OnPressedU6Button()
     {
         //TODO：シーン3に遷移
         Debug.LogWarning(StringManager.ToDisplayString("命がなくなりました！シーン3に遷移する処理は未実装なため続行されます。"));
@@ -38,7 +40,7 @@ public class E34_Knife : Card
 
     public override void Sell()
     {
-        _controller.IncreaseMoney(_parameter.GetMoney());
+        _moneyPossessedCcontroller.IncreaseMoney(_parameter.GetMoney());
 
         if (_handMediator.ContainsCard(this)) return;
         _E34CommandImage.gameObject.SetActive(false);

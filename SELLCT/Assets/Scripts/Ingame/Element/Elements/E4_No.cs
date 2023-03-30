@@ -8,6 +8,8 @@ public class E4_No : Card
 
     NoChoice _noChoice;
 
+    public override int Id => 4;
+
     //デッキ生成後に行いたいためStart。問題が発生したらAwakeに変更してPhaseControllerで実行順を調整してください。
     private void Start()
     {
@@ -17,19 +19,19 @@ public class E4_No : Card
 
     public override void Buy()
     {
-        _controller.DecreaseMoney(_parameter.GetMoney());
+        _moneyPossessedCcontroller.DecreaseMoney(_parameter.GetMoney());
 
         _choicesManager.Enable(_noChoice.Id);
     }
 
-    public override void Passive()
+    public override void OnPressedU6Button()
     {
         throw new System.NotImplementedException();
     }
 
     public override void Sell()
     {
-        _controller.IncreaseMoney(_parameter.GetMoney());
+        _moneyPossessedCcontroller.IncreaseMoney(_parameter.GetMoney());
         if (_handMediator.ContainsCard(this)) return;
 
         _choicesManager.Disable(_noChoice.Id);

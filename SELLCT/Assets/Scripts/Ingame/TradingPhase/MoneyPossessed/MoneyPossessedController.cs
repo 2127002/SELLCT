@@ -5,17 +5,17 @@ using UnityEngine;
 
 public class MoneyPossessedController : MonoBehaviour
 {
-    [SerializeField] int _defalutAmount = 100;
+    [SerializeField] int _defaultAmount = 100;
     Money _money;
 
     private void Awake()
     {
-        _money = new(_defalutAmount);
+        _money = new(_defaultAmount);
     }
 
     public void DecreaseMoney(Money money)
     {
-        if (money == null) throw new NullReferenceException();
+        if (money == null) throw new ArgumentNullException();
 
         try
         {
@@ -32,7 +32,7 @@ public class MoneyPossessedController : MonoBehaviour
 
     public void IncreaseMoney(Money money)
     {
-        if (money == null) throw new NullReferenceException();
+        if (money == null) throw new ArgumentNullException();
 
         _money = _money.Add(money);
 

@@ -7,6 +7,8 @@ public class E26_Favourable : Card
     [SerializeField] FavourableView _favourableView = default!;
     [SerializeField] PhaseController _phaseController = default!;
 
+    public override int Id => 26;
+
     private void Awake()
     {
         _phaseController.OnTradingPhaseStart.Add(OnPhaseStart);
@@ -28,10 +30,10 @@ public class E26_Favourable : Card
     {
         _favourableView.SetActive(true);
 
-        _controller.DecreaseMoney(_parameter.GetMoney());
+        _moneyPossessedCcontroller.DecreaseMoney(_parameter.GetMoney());
     }
 
-    public override void Passive()
+    public override void OnPressedU6Button()
     {
         throw new System.NotImplementedException();
     }
@@ -44,6 +46,6 @@ public class E26_Favourable : Card
             _favourableView.SetActive(false);
         }
 
-        _controller.IncreaseMoney(_parameter.GetMoney());
+        _moneyPossessedCcontroller.IncreaseMoney(_parameter.GetMoney());
     }
 }

@@ -141,7 +141,7 @@ public class CardUIHandler : MonoBehaviour, IPointerClickHandler, IPointerEnterH
         DisableAllCardUIs();
 
         //カードがnull相当だった場合、早期リターン
-        if (card is EEX_null)
+        if (card.Id < 0)
         {
             //選択できない状態にする
             _selectable.interactable = false;
@@ -173,7 +173,7 @@ public class CardUIHandler : MonoBehaviour, IPointerClickHandler, IPointerEnterH
         }
 
         //テキストで名前を表示するエレメントか判定
-        bool isPrintText = card is E30_Name;
+        bool isPrintText = card.Id == 30;
 
         //表示する
         _cardText.enabled = isPrintText;

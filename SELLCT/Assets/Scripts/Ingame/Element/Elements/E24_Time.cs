@@ -9,6 +9,8 @@ public class E24_Time : Card
     [SerializeField] float _addValueInSeconds;
     [SerializeField] float _reduceValueInSeconds;
 
+    public override int Id => 24;
+
     private void Awake()
     {
         _phaseController.OnTradingPhaseStart.Add(OnTradingPhaseStart);
@@ -22,10 +24,10 @@ public class E24_Time : Card
     public override void Buy()
     {
         _timeLimitController.AddTimeLimit(_addValueInSeconds, _handMediator.FindAll(this));
-        _controller.DecreaseMoney(_parameter.GetMoney());
+        _moneyPossessedCcontroller.DecreaseMoney(_parameter.GetMoney());
     }
 
-    public override void Passive()
+    public override void OnPressedU6Button()
     {
         throw new System.NotImplementedException();
     }
@@ -33,7 +35,7 @@ public class E24_Time : Card
     public override void Sell()
     {
         _timeLimitController.ReduceTimeLimit(_reduceValueInSeconds, _handMediator.FindAll(this));
-        _controller.IncreaseMoney(_parameter.GetMoney());
+        _moneyPossessedCcontroller.IncreaseMoney(_parameter.GetMoney());
     }
 
     private void OnTradingPhaseStart()

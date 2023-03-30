@@ -55,7 +55,7 @@ public class TR2_RuinedNobility : Trader
                 list.RemoveAll(x => x == card);
             }
 
-            if (card is EEX_null) break;
+            if (card.Id < 0) break;
             _deck.Add(card);
         }
     }

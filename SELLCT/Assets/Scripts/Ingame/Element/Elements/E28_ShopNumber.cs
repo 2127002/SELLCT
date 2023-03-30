@@ -7,6 +7,8 @@ public class E28_ShopNumber : Card
     [SerializeField] Hand _traderHand = default!;
     [SerializeField] PhaseController _phaseController = default!;
 
+    public override int Id => 28;
+
     private void Awake()
     {
         _phaseController.OnGameStart.Add(OnGameStart);
@@ -30,18 +32,18 @@ public class E28_ShopNumber : Card
 
     public override void Buy()
     {
-        _controller.DecreaseMoney(_parameter.GetMoney());
+        _moneyPossessedCcontroller.DecreaseMoney(_parameter.GetMoney());
         _traderHand.AddHandCapacity(1);
     }
 
-    public override void Passive()
+    public override void OnPressedU6Button()
     {
         throw new System.NotImplementedException();
     }
 
     public override void Sell()
     {
-        _controller.IncreaseMoney(_parameter.GetMoney());
+        _moneyPossessedCcontroller.IncreaseMoney(_parameter.GetMoney());
         _traderHand.AddHandCapacity(-1);
     }
 }

@@ -7,6 +7,8 @@ public class E22_Highlight : Card
     [SerializeField] HighlightController _highlightController = default!;
     [SerializeField] PhaseController _phaseController = default!;
 
+    public override int Id => 22;
+
     private void Start()
     {
         _phaseController.OnGameStart.Add(Init);
@@ -25,19 +27,19 @@ public class E22_Highlight : Card
 
     public override void Buy()
     {
-        _controller.DecreaseMoney(_parameter.GetMoney());
+        _moneyPossessedCcontroller.DecreaseMoney(_parameter.GetMoney());
 
         _highlightController.Enable();
     }
 
-    public override void Passive()
+    public override void OnPressedU6Button()
     {
         throw new System.NotImplementedException();
     }
 
     public override void Sell()
     {
-        _controller.IncreaseMoney(_parameter.GetMoney());
+        _moneyPossessedCcontroller.IncreaseMoney(_parameter.GetMoney());
         if (_handMediator.ContainsCard(this)) return;
 
         _highlightController.Disable();

@@ -9,6 +9,8 @@ public class E25_HandNumber : Card
     [SerializeField] CardUIInstance _cardUIInstance = default!;
     [SerializeField] CardUIGenerator _cardUIGenerator = default!;
 
+    public override int Id => 25;
+
     private void Awake()
     {
         _phaseController.OnGameStart.Add(OnGameStart);
@@ -32,7 +34,7 @@ public class E25_HandNumber : Card
 
     public override void Buy()
     {
-        _controller.DecreaseMoney(_parameter.GetMoney());
+        _moneyPossessedCcontroller.DecreaseMoney(_parameter.GetMoney());
         _playerHand.AddHandCapacity(1);
 
         //Handlerを作ってからカードを引く
@@ -40,14 +42,14 @@ public class E25_HandNumber : Card
         _handMediator.DrawCard();
     }
 
-    public override void Passive()
+    public override void OnPressedU6Button()
     {
         throw new System.NotImplementedException();
     }
 
     public override void Sell()
     {
-        _controller.IncreaseMoney(_parameter.GetMoney());
+        _moneyPossessedCcontroller.IncreaseMoney(_parameter.GetMoney());
         _playerHand.AddHandCapacity(-1);
 
         //先に引いたカードをデッキに戻す

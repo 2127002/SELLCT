@@ -7,7 +7,9 @@ public class E20_Katakana : Card
     [SerializeField] KatakanaHandView _katakanaHandView = default!;
     [SerializeField] PhaseController _phaseController = default!;
 
-    int elementIndex = (int)StringManager.Element.E20;
+    readonly int elementIndex = (int)StringManager.Element.E20;
+
+    public override int Id => 20;
 
     private void Awake()
     {
@@ -15,33 +17,32 @@ public class E20_Katakana : Card
         _phaseController.OnExplorationPhaseStart += OnPhaseStart;
     }
 
+    private void OnDestroy()
+    {
+        _phaseController.OnTradingPhaseStart.Remove(OnPhaseStart);
+        _phaseController.OnExplorationPhaseStart -= OnPhaseStart;
+    }
     private void OnPhaseStart()
     {
         StringManager.hasElements[elementIndex] = _handMediator.ContainsCard(this);
         _katakanaHandView.Set();
     }
 
-    private void OnDestroy()
-    {
-        _phaseController.OnTradingPhaseStart.Remove(OnPhaseStart);
-        _phaseController.OnExplorationPhaseStart -= OnPhaseStart;
-    }
-
     public override void Buy()
     {
         StringManager.hasElements[elementIndex] = true;
-        _controller.DecreaseMoney(_parameter.GetMoney());
+        _moneyPossessedCcontroller.DecreaseMoney(_parameter.GetMoney());
         _katakanaHandView.Set();
     }
 
-    public override void Passive()
+    public override void OnPressedU6Button()
     {
         throw new System.NotImplementedException();
     }
 
     public override void Sell()
     {
-        _controller.IncreaseMoney(_parameter.GetMoney());
+        _moneyPossessedCcontroller.IncreaseMoney(_parameter.GetMoney());
 
         if (_handMediator.ContainsCard(this)) return;
         StringManager.hasElements[elementIndex] = false;

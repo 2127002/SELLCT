@@ -19,6 +19,8 @@ public class E32_Rest : Card
 
     bool _isRest = false;
 
+    public override int Id => 32;
+
     private void Awake()
     {
         _phaseController.OnGameStart.Add(OnGameStart);
@@ -36,11 +38,11 @@ public class E32_Rest : Card
 
     public override void Buy()
     {
-        _controller.DecreaseMoney(_parameter.GetMoney());
+        _moneyPossessedCcontroller.DecreaseMoney(_parameter.GetMoney());
         _E32CommandImage.gameObject.SetActive(true);
     }
 
-    public override void Passive()
+    public override void OnPressedU6Button()
     {
         if (_isRest)
         {
@@ -69,7 +71,7 @@ public class E32_Rest : Card
 
     public override void Sell()
     {
-        _controller.IncreaseMoney(_parameter.GetMoney());
+        _moneyPossessedCcontroller.IncreaseMoney(_parameter.GetMoney());
 
         if (_handMediator.ContainsCard(this)) return;
         _E32CommandImage.gameObject.SetActive(false);

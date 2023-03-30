@@ -37,7 +37,7 @@ public class HandMediator : DeckMediator
         {
             Card card = _buyingCardDeck.Draw();
 
-            if (card is EEX_null) break;
+            if (card.Id < 0) break;
 
             _playerDeck.Add(card);
         }

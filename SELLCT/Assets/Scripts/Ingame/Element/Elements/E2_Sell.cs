@@ -6,51 +6,55 @@ using UnityEngine.EventSystems;
 
 public class E2_Sell : Card
 {
-    [SerializeField] Color defaultColor = default!;
-    [SerializeField] Color changeColor = default!;
-    [SerializeField] CardUIInstance cardUIInstance = default!;
+    [SerializeField] Color _defaultColor = default!;
+    [SerializeField] Color _disabledColor = default!;
+    [SerializeField] CardUIInstance _handCardUIInstance = default!;
+
+    public override int Id => 2;
 
     public override void Buy()
     {
-        _controller.DecreaseMoney(_parameter.GetMoney());
+        _moneyPossessedCcontroller.DecreaseMoney(_parameter.GetMoney());
 
-        BuyChecker();
+        OnBuy();
     }
 
-    public override void Passive()
+    public override void OnPressedU6Button()
     {
         throw new System.NotImplementedException();
     }
 
     public override void Sell()
     {
-        _controller.IncreaseMoney(_parameter.GetMoney());
+        _moneyPossessedCcontroller.IncreaseMoney(_parameter.GetMoney());
 
         if (_handMediator.ContainsCard(this)) return;
 
-        SellChecker();
+        OnSell();
     }
-    public void BuyChecker()
+
+    public void OnBuy()
     {
-        foreach (var cardUIHandler in cardUIInstance.Handlers)
+        foreach (var cardUIHandler in _handCardUIInstance.Handlers)
         {
             cardUIHandler.EnabledSelectebility();
 
             foreach (var cardImage in cardUIHandler.CardImages)
             {
-                cardImage.color = defaultColor;
+                cardImage.color = _defaultColor;
             }
         }
     }
-    public void SellChecker()
+
+    public void OnSell()
     {
-        foreach (var cardUIHandler in cardUIInstance.Handlers)
+        foreach (var cardUIHandler in _handCardUIInstance.Handlers)
         {
             cardUIHandler.DisableSelectability();
 
             foreach (var cardImage in cardUIHandler.CardImages)
             {
-                cardImage.color = changeColor;
+                cardImage.color = _disabledColor;
             }
         }
     }

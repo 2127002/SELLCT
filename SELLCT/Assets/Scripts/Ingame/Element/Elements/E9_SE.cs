@@ -4,14 +4,16 @@ using UnityEngine;
 
 public class E9_SE : Card
 {
+    public override int Id => 9;
+
     public override void Buy()
     {
         //TODO:SEÇÃçƒê∂
 
-        _controller.DecreaseMoney(_parameter.GetMoney());
+        _moneyPossessedCcontroller.DecreaseMoney(_parameter.GetMoney());
     }
 
-    public override void Passive()
+    public override void OnPressedU6Button()
     {
         throw new System.NotImplementedException();
     }
@@ -20,7 +22,7 @@ public class E9_SE : Card
     {
         StopSE();
 
-        _controller.IncreaseMoney(_parameter.GetMoney());
+        _moneyPossessedCcontroller.IncreaseMoney(_parameter.GetMoney());
     }
 
     private void StopSE()

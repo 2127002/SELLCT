@@ -17,6 +17,8 @@ public class EEX_null : Card
         }
     }
 
+    public override int Id => -1;
+
     private void Awake()
     {
         if (instance == null) instance = this;
@@ -26,7 +28,7 @@ public class EEX_null : Card
     {
         throw new System.NotImplementedException();
     }
-    public override void Passive()
+    public override void OnPressedU6Button()
     {
         throw new System.NotImplementedException();
     }

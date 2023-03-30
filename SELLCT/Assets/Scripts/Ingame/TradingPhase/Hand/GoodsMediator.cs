@@ -36,7 +36,7 @@ public class GoodsMediator : DeckMediator
         {
             Card card = _buyingCardDeck.Draw();
 
-            if (card is EEX_null) break;
+            if (card.Id < 0) break;
 
             _traderController.CurrentTrader.TraderDeck.Add(card);
         }
@@ -57,7 +57,7 @@ public class GoodsMediator : DeckMediator
 
             _hand.Remove(card);
 
-            if (card is EEX_null) continue;
+            if (card.Id < 0) continue;
             _traderController.CurrentTrader.TraderDeck.Add(card);
         }
     }
