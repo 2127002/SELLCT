@@ -7,7 +7,6 @@ public class KanjiHandView : MonoBehaviour
 {
     readonly List<Image> _kanjiImages = new();
 
-
     public void Set()
     {
         foreach (var item in _kanjiImages)
