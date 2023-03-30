@@ -30,7 +30,7 @@ public class PlayerDeckGenerator : MonoBehaviour
             {
                 Card card = _cardPool.Draw(item.Card);
 
-                if (card is EEX_null)
+                if (card.Id < 0)
                 {
                     Debug.LogError("カードプールに存在しないカードが選択されました。" + item.Card);
                     return;
@@ -57,7 +57,7 @@ public class PlayerDeckGenerator : MonoBehaviour
 
             Card card = _cardPool.Draw(deck[index].Card);
 
-            if (card is EEX_null)
+            if (card.Id < 0)
             {
                 Debug.LogError("カードプールに存在しないカードが選択されました。" + deck[index].Card);
                 return;

@@ -5,43 +5,11 @@ using UnityEngine.UI;
 
 public class E34_Knife : Card
 {
-    [SerializeField] CardParameter _parameter = default!;
-    [SerializeField] MoneyPossessedController _controller = default!;
-    [SerializeField] Sprite _baseSprite = default!;
-    [SerializeField] Sprite _number = default!;
-    [SerializeField] Sprite _chineseCharacters = default!;
-    [SerializeField] Sprite _hiragana = default!;
-    [SerializeField] Sprite _katakana = default!;
-    [SerializeField] Sprite _alphabet = default!;
-    [SerializeField] HandMediator _handMediator = default!;
     [SerializeField] PhaseController _phaseController = default!;
     
     [SerializeField] Image _E34CommandImage = default!;
 
-    readonly List<Sprite> result = new();
-
-    public override string CardName => _parameter.GetName();
-    public override bool IsDisposedOfAfterSell => _parameter.IsDisposedOfAfterSell();
-    public override int Rarity => _parameter.Rarity();
-    public override IReadOnlyList<Sprite> CardSprite
-    {
-        get
-        {
-            //初期化
-            if (result.Count == 0)
-            {
-                result.Add(_baseSprite);
-                result.Add(_number);
-                result.Add(_chineseCharacters);
-                result.Add(_hiragana);
-                result.Add(_katakana);
-                result.Add(_alphabet);
-            }
-
-            return result;
-        }
-    }
-    public override bool ContainsPlayerDeck => _handMediator.ContainsCard(this);
+    public override int Id => 34;
 
     private void Awake()
     {
@@ -60,11 +28,11 @@ public class E34_Knife : Card
 
     public override void Buy()
     {
-        _controller.DecreaseMoney(_parameter.GetMoney());
+        _moneyPossessedController.DecreaseMoney(_parameter.GetMoney());
         _E34CommandImage.gameObject.SetActive(true);
     }
 
-    public override void Passive()
+    public override void OnPressedU6Button()
     {
         //TODO：シーン3に遷移
         Debug.LogWarning(StringManager.ToDisplayString("命がなくなりました！シーン3に遷移する処理は未実装なため続行されます。"));
@@ -72,7 +40,7 @@ public class E34_Knife : Card
 
     public override void Sell()
     {
-        _controller.IncreaseMoney(_parameter.GetMoney());
+        _moneyPossessedController.IncreaseMoney(_parameter.GetMoney());
 
         if (_handMediator.ContainsCard(this)) return;
         _E34CommandImage.gameObject.SetActive(false);

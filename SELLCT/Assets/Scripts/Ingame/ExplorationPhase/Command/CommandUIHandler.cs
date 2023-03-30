@@ -94,7 +94,7 @@ public class CommandUIHandler : MonoBehaviour, ISelectableHighlight
     private void OnSubmit()
     {
         //U6—p‚Ìˆ—
-        _card.Passive();
+        _card.OnPressedU6Button();
     }
 
     //‘I‘ğ‚Ìˆ—

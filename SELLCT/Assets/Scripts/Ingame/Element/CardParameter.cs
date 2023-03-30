@@ -6,11 +6,12 @@ using UnityEngine;
 [Serializable]
 public class CardParameter
 {
+    [Header("購入/売却時の金額")]
     [SerializeField, Min(0)] int _price;
     [SerializeField] string _name;
-    [SerializeField] string _text;
-
+    [Header("カードのレアリティ。基本的に、数値が高い方がドロー確率が高い")]
     [SerializeField, Min(1)] int _rarity = 1;
+    [Header("カード売却時に消滅するか。チェックマークを入れることで商人のデッキに入らず消滅する。")]
     [SerializeField] bool _isDisposedOfAfterSell;
 
     Money _money;
@@ -38,11 +39,6 @@ public class CardParameter
         }
 
         _name = name;
-    }
-
-    public string GetText()
-    {
-        return _text;
     }
 
     public int Rarity()

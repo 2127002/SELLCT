@@ -4,58 +4,25 @@ using UnityEngine;
 
 public class E9_SE : Card
 {
-    [SerializeField] CardParameter _parameter = default!;
-    [SerializeField] MoneyPossessedController _controller = default!;
-    [SerializeField] Sprite _baseSprite = default!;
-    [SerializeField] Sprite _number = default!;
-    [SerializeField] Sprite _chineseCharacters = default!;
-    [SerializeField] Sprite _hiragana = default!;
-    [SerializeField] Sprite _katakana = default!;
-    [SerializeField] Sprite _alphabet = default!;
-    [SerializeField] HandMediator _handMediator = default!;
-
-    readonly List<Sprite> result = new();
-
-    public override string CardName => _parameter.GetName();
-    public override bool IsDisposedOfAfterSell => _parameter.IsDisposedOfAfterSell();
-    public override int Rarity => _parameter.Rarity();
-    public override IReadOnlyList<Sprite> CardSprite
-    {
-        get
-        {
-            //èâä˙âª
-            if (result.Count == 0)
-            {
-                result.Add(_baseSprite);
-                result.Add(_number);
-                result.Add(_chineseCharacters);
-                result.Add(_hiragana);
-                result.Add(_katakana);
-                result.Add(_alphabet);
-            }
-
-            return result;
-        }
-    }
-    public override bool ContainsPlayerDeck => _handMediator.ContainsCard(this);
+    public override int Id => 9;
 
     public override void Buy()
     {
         //TODO:SEÇÃçƒê∂
 
-        _controller.DecreaseMoney(_parameter.GetMoney());
+        _moneyPossessedController.DecreaseMoney(_parameter.GetMoney());
     }
 
-    public override void Passive()
+    public override void OnPressedU6Button()
     {
-        // DoNothing
+        throw new System.NotImplementedException();
     }
 
     public override void Sell()
     {
         StopSE();
 
-        _controller.IncreaseMoney(_parameter.GetMoney());
+        _moneyPossessedController.IncreaseMoney(_parameter.GetMoney());
     }
 
     private void StopSE()

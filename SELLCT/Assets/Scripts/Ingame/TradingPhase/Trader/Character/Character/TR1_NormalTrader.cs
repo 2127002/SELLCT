@@ -33,7 +33,7 @@ public class TR1_NormalTrader : Trader
         while (true)
         {
             Card card = pool.Draw();
-            if (card is EEX_null) break;
+            if (card.Id < 0) break;
 
             _deck.Add(card);
         }

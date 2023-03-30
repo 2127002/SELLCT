@@ -6,84 +6,55 @@ using UnityEngine.EventSystems;
 
 public class E2_Sell : Card
 {
-    [SerializeField] CardParameter _parameter = default!;
-    [SerializeField] MoneyPossessedController _controller = default!;
-    [SerializeField] Sprite _baseSprite = default!;
-    [SerializeField] Sprite _number = default!;
-    [SerializeField] Sprite _chineseCharacters = default!;
-    [SerializeField] Sprite _hiragana = default!;
-    [SerializeField] Sprite _katakana = default!;
-    [SerializeField] Sprite _alphabet = default!;
-    [SerializeField] HandMediator _handMediator = default!;
-    [SerializeField] Color defaultColor = default!;
-    [SerializeField] Color changeColor = default!;
-    [SerializeField] CardUIInstance cardUIInstance = default!;
+    [SerializeField] Color _defaultColor = default!;
+    [SerializeField] Color _disabledColor = default!;
+    [SerializeField] CardUIInstance _handCardUIInstance = default!;
 
-    readonly List<Sprite> result = new();
-
-    public override string CardName => _parameter.GetName();
-    public override bool IsDisposedOfAfterSell => _parameter.IsDisposedOfAfterSell();
-    public override int Rarity => _parameter.Rarity();
-    public override IReadOnlyList<Sprite> CardSprite
-    {
-        get
-        {
-            //èâä˙âª
-            if (result.Count == 0)
-            {
-                result.Add(_baseSprite);
-                result.Add(_number);
-                result.Add(_chineseCharacters);
-                result.Add(_hiragana);
-                result.Add(_katakana);
-                result.Add(_alphabet);
-            }
-            return result;
-        }
-    }
-    public override bool ContainsPlayerDeck => _handMediator.ContainsCard(this);
+    public override int Id => 2;
 
     public override void Buy()
     {
-        _controller.DecreaseMoney(_parameter.GetMoney());
+        _moneyPossessedController.DecreaseMoney(_parameter.GetMoney());
 
-        BuyChecker();
+        OnBuy();
     }
 
-    public override void Passive()
+    public override void OnPressedU6Button()
     {
-        //TODO:SE2ÇÃçƒê∂
+        throw new System.NotImplementedException();
     }
 
     public override void Sell()
     {
-        _controller.IncreaseMoney(_parameter.GetMoney());
+        _moneyPossessedController.IncreaseMoney(_parameter.GetMoney());
 
         if (_handMediator.ContainsCard(this)) return;
 
-        SellChecker();
+        OnSell();
     }
-    public void BuyChecker()
+
+    public void OnBuy()
     {
-        foreach (var cardUIHandler in cardUIInstance.Handlers)
+        foreach (var cardUIHandler in _handCardUIInstance.Handlers)
         {
             cardUIHandler.EnabledSelectebility();
 
             foreach (var cardImage in cardUIHandler.CardImages)
             {
-                cardImage.color = defaultColor;
+                cardImage.color = _defaultColor;
             }
         }
     }
-    public void SellChecker()
+
+    public void OnSell()
     {
-        foreach (var cardUIHandler in cardUIInstance.Handlers)
+        foreach (var cardUIHandler in _handCardUIInstance.Handlers)
         {
             cardUIHandler.DisableSelectability();
 
             foreach (var cardImage in cardUIHandler.CardImages)
             {
-                cardImage.color = changeColor;
+                cardImage.color = _disabledColor;
             }
         }
     }
