@@ -9,6 +9,8 @@ public class E28_ShopNumber : Card
 
     public override int Id => 28;
 
+    int _currentPhaseBuyingCount = 0;
+
     private void Awake()
     {
         _phaseController.OnGameStart.Add(OnGameStart);
@@ -33,7 +35,15 @@ public class E28_ShopNumber : Card
     public override void Buy()
     {
         _moneyPossessedController.DecreaseMoney(_parameter.GetMoney());
-        _traderHand.AddHandCapacity(1);
+
+        _currentPhaseBuyingCount++;
+
+        //既に登録していたら一旦解除する
+        _phaseController.OnTradingPhaseStart.Remove(AddHandCapacity);
+
+        //次回の売買フェーズから反映させる。実行順でドローよりも先にしたいため先頭にする。
+        //先頭にすることにより問題が発生したら、ドローより先になるように工面してください。
+        _phaseController.OnTradingPhaseStart.Insert(0, AddHandCapacity);
     }
 
     public override void OnPressedU6Button()
@@ -45,5 +55,15 @@ public class E28_ShopNumber : Card
     {
         _moneyPossessedController.IncreaseMoney(_parameter.GetMoney());
         _traderHand.AddHandCapacity(-1);
+    }
+
+    private void AddHandCapacity()
+    {
+        //現在の売買フェーズでこのエレメントを買った数分足す
+        _traderHand.AddHandCapacity(_currentPhaseBuyingCount);
+
+        //一度実行したら登録解除する
+        _phaseController.OnTradingPhaseStart.Remove(AddHandCapacity);
+        _currentPhaseBuyingCount = 0;
     }
 }
