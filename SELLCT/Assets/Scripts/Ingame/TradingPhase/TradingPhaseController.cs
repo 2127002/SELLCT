@@ -24,19 +24,14 @@ public class TradingPhaseController : MonoBehaviour
 
     private void Awake()
     {
+        _phaseController.OnGameStart.Add(OnGameStart);
         _phaseController.OnTradingPhaseComplete.Add(OnComplete);
         _phaseController.OnTradingPhaseStart.Add(OnPhaseStart);
-        _phaseController.OnExplorationPhaseStart += OnExplorationPhaseStart;
 
         //タイムリミットになったらフェーズを完了する
         _timeLimitController.OnTimeLimit += _phaseController.CompleteTradingPhase;
 
         _inputSystemDetector.OnNavigateAction += OnNavigate;
-    }
-
-    private void OnExplorationPhaseStart()
-    {
-        _canvas.enabled = false;
     }
 
     private void Start()
@@ -48,12 +43,17 @@ public class TradingPhaseController : MonoBehaviour
 
     private void OnDestroy()
     {
+        _phaseController.OnGameStart.Remove(OnGameStart);
         _phaseController.OnTradingPhaseComplete.Remove(OnComplete);
         _phaseController.OnTradingPhaseStart.Remove(OnPhaseStart);
-        _phaseController.OnExplorationPhaseStart -= OnExplorationPhaseStart;
 
         _timeLimitController.OnTimeLimit -= _phaseController.CompleteTradingPhase;
         _inputSystemDetector.OnNavigateAction -= OnNavigate;
+    }
+
+    private void OnGameStart()
+    {
+        _canvas.gameObject.SetActive(false);
     }
 
     //売買フェーズ開始時処理
@@ -61,7 +61,7 @@ public class TradingPhaseController : MonoBehaviour
     {
         _view.OnPhaseStart();
         EventSystem.current.SetSelectedGameObject(_firstSelectable.gameObject);
-        _canvas.enabled = true;
+        _canvas.gameObject.SetActive(true);
     }
 
     //売買フェーズ終了時処理（待機可）
@@ -80,6 +80,7 @@ public class TradingPhaseController : MonoBehaviour
         //フェードアウト
         await _view.OnPhaseComplete();
 
+        _canvas.gameObject.SetActive(false);
         //TODO：BGM1のフェードアウト
     }
 
