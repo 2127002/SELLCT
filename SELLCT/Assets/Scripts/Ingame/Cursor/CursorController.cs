@@ -110,7 +110,11 @@ public class CursorController : MonoBehaviour
         }
 
         //選択されているオブジェクトがなければ以降は行わない
-        if (_currentSelectedRectTransform == null) return;
+        if (_currentSelectedRectTransform == null)
+        {
+            EventSystem.current.SetSelectedGameObject(null);
+            return;
+        }
 
         //CanvasのRenderModeが変更されたらバグります。この設定ではWorldSpaceを想定しています        
         bool currentSelectedContains = _currentSelectedRectTransform.GetWorldRect(Vector2.one).Contains(_cursorTransform.anchoredPosition);
