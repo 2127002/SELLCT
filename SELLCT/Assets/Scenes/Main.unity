@@ -5022,7 +5022,6 @@ MonoBehaviour:
   _selectDetector: {fileID: 1294855996}
   _selectable: {fileID: 1294856004}
   _phaseController: {fileID: 495064998}
-  _isFirstSelectable: 0
 --- !u!222 &1294856002
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -5536,7 +5535,7 @@ GameObject:
   - component: {fileID: 1424207573}
   - component: {fileID: 1424207572}
   m_Layer: 0
-  m_Name: U7_NextButtonImage
+  m_Name: U7_ExplorationNextButtonImage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6492,6 +6491,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _phaseController: {fileID: 495064998}
   _canvas: {fileID: 616274029}
+  _firstSelectable: {fileID: 1424207578}
+  _navigateAction: {fileID: -7213562877630171189, guid: 1acd10e19b4601845803d349e0c26cdf,
+    type: 3}
 --- !u!114 &1586490156
 MonoBehaviour:
   m_ObjectHideFlags: 0
