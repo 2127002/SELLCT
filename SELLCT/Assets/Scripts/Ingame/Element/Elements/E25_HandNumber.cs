@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class E25_HandNumber : Card
 {
@@ -56,6 +57,14 @@ public class E25_HandNumber : Card
         _handMediator.AddPlayerDeck(_playerHand.Cards[^1]);
         _playerHand.Remove(_playerHand.Cards[^1]);
 
+        //CardUIInstanceの最終オブジェクトか判定
+        GameObject preb = EventSystem.current.currentSelectedGameObject;
+        bool isLast = preb == _cardUIInstance.Handlers[^1].gameObject;
+
+        //1つ無くす
         _cardUIInstance.RemoveAt(_cardUIInstance.Handlers.Count - 1);
+
+        //無くす前のCardUIInstanceの最終オブジェクトならSelectする
+        if (isLast) EventSystem.current.SetSelectedGameObject(_cardUIInstance.Handlers[^1].gameObject);
     }
 }
