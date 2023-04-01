@@ -17,8 +17,6 @@ public class TradingNextButtonHandler : MonoBehaviour, ISelectableHighlight
 
     [SerializeField] PhaseController _phaseController = default!;
 
-    [SerializeField] bool _isFirstSelectable;
-
     Color _defalutSelectColor = default!;
 
     private void Awake()
@@ -29,7 +27,6 @@ public class TradingNextButtonHandler : MonoBehaviour, ISelectableHighlight
         _exitDetector.AddListener(HandleExit);
         _submitDetector.AddListener(HandleSubmit);
         _selectDetector.AddListener(HandleSelect);
-        _phaseController.OnTradingPhaseStart.Add(SetFirstSelectable);
 
         _defalutSelectColor = _selectable.colors.selectedColor;
     }
@@ -42,21 +39,6 @@ public class TradingNextButtonHandler : MonoBehaviour, ISelectableHighlight
         _exitDetector.RemoveListener(HandleExit);
         _submitDetector.RemoveListener(HandleSubmit);
         _selectDetector.RemoveListener(HandleSelect);
-        _phaseController.OnTradingPhaseStart.Remove(SetFirstSelectable);
-    }
-
-    private void SetFirstSelectable()
-    {
-        //初期選択のチェックボックスがtrueだったら登録
-        if (!_isFirstSelectable) return;
-
-        if (EventSystem.current.currentSelectedGameObject != null)
-        {
-            Debug.LogWarning("すでに別のオブジェクトが選択されています。" + gameObject + "の登録は棄却されました。正しい仕様を確認してください。" + EventSystem.current.currentSelectedGameObject);
-            return;
-        }
-
-        EventSystem.current.SetSelectedGameObject(_selectable.gameObject);
     }
 
     private void HandleClick()

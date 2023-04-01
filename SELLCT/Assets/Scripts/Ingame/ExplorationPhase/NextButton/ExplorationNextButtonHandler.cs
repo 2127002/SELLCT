@@ -9,17 +9,17 @@ public class ExplorationNextButtonHandler : MonoBehaviour,ISelectableHighlight
 {
     //このようにDetectorにわざわざ分けているのは、interfaceのメソッドがpublicになるからです。
     //外部から意図しないタイミングで呼ばれることを避けるため回りくどい手を使っています。
-    [SerializeField] LeftClickDetector _clickDetector;
-    [SerializeField] PointerEnterDetector _enterDetector;
-    [SerializeField] PointerExitDetector _exitDetector;
-    [SerializeField] SubmitDetector _submitDetector;
-    [SerializeField] SelectDetector _selectDetector;
-    [SerializeField] Selectable _selectable;
+    [SerializeField] LeftClickDetector _clickDetector = default!;
+    [SerializeField] PointerEnterDetector _enterDetector = default!;
+    [SerializeField] PointerExitDetector _exitDetector = default!;
+    [SerializeField] SubmitDetector _submitDetector = default!;
+    [SerializeField] SelectDetector _selectDetector = default!;
+    [SerializeField] Selectable _selectable = default!;
 
     [SerializeField] bool _isFirstSelectable;
 
-    [SerializeField] PhaseController _phaseController;
-    [SerializeField] Floor01Condition _floor01;
+    [SerializeField] PhaseController _phaseController = default!;
+    [SerializeField] Floor01Condition _floor01 = default!;
 
     Color _defalutSelectColor = default!;
 
@@ -31,8 +31,6 @@ public class ExplorationNextButtonHandler : MonoBehaviour,ISelectableHighlight
         _exitDetector.AddListener(HandleExit);
         _submitDetector.AddListener(HandleSubmit);
         _selectDetector.AddListener(HandleSelect);
-
-        SetFirstSelectable();
 
         //わかりやすくするため仮に選択時の色を赤に変更。今後の変更推奨
         _defalutSelectColor = _selectable.colors.selectedColor;
@@ -46,20 +44,6 @@ public class ExplorationNextButtonHandler : MonoBehaviour,ISelectableHighlight
         _exitDetector.RemoveListener(HandleExit);
         _submitDetector.RemoveListener(HandleSubmit);
         _selectDetector.RemoveListener(HandleSelect);
-    }
-
-    private void SetFirstSelectable()
-    {
-        //初期選択のチェックボックスがtrueだったら登録
-        if (!_isFirstSelectable) return;
-
-        if (EventSystem.current.currentSelectedGameObject != null)
-        {
-            Debug.LogWarning("すでに別のオブジェクトが選択されています。" + gameObject + "の登録は棄却されました。正しい仕様を確認してください。" + EventSystem.current.currentSelectedGameObject);
-            return;
-        }
-
-        EventSystem.current.SetSelectedGameObject(_selectable.gameObject);
     }
 
     private void HandleClick()
