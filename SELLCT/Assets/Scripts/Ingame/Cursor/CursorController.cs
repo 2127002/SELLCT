@@ -85,7 +85,7 @@ public class CursorController : MonoBehaviour
         _rectTransforms.Clear();
 
         //IPointerEnterを持ち、現在有効なキャンバス内にあるRectTransformを格納。ある程度の計算量が必要
-        _rectTransforms.AddRange(FindObjectsOfType<RectTransform>().Where(x => x.GetComponent<IPointerEnterHandler>() != null && x.GetComponentInParent<Canvas>().enabled));
+        _rectTransforms.AddRange(FindObjectsByType<RectTransform>(FindObjectsSortMode.None).Where(x => x.GetComponent<IPointerEnterHandler>() != null && x.GetComponentInParent<Canvas>().enabled));
     }
 
     private void OnMoving()
