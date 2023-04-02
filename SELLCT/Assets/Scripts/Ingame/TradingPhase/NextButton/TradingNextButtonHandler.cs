@@ -4,15 +4,8 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class TradingNextButtonHandler : MonoBehaviour, ISelectableHighlight
+public class TradingNextButtonHandler : MonoBehaviour, ISelectableHighlight, IPointerEnterHandler, IPointerExitHandler,IPointerClickHandler,ISubmitHandler,ISelectHandler,IDeselectHandler
 {
-    //このようにDetectorにわざわざ分けているのは、interfaceのメソッドがpublicになるからです。
-    //外部から意図しないタイミングで呼ばれることを避けるため回りくどい手を使っています。
-    [SerializeField] LeftClickDetector _clickDetector = default!;
-    [SerializeField] PointerEnterDetector _enterDetector = default!;
-    [SerializeField] PointerExitDetector _exitDetector = default!;
-    [SerializeField] SubmitDetector _submitDetector = default!;
-    [SerializeField] SelectDetector _selectDetector = default!;
     [SerializeField] Selectable _selectable = default!;
 
     [SerializeField] PhaseController _phaseController = default!;
@@ -21,53 +14,44 @@ public class TradingNextButtonHandler : MonoBehaviour, ISelectableHighlight
 
     private void Awake()
     {
-        //購読
-        _clickDetector.AddListener(HandleClick);
-        _enterDetector.AddListener(HandleEnter);
-        _exitDetector.AddListener(HandleExit);
-        _submitDetector.AddListener(HandleSubmit);
-        _selectDetector.AddListener(HandleSelect);
-
         _defalutSelectColor = _selectable.colors.selectedColor;
     }
 
-    private void OnDestroy()
-    {
-        //購読解除
-        _clickDetector.RemoveListener(HandleClick);
-        _enterDetector.RemoveListener(HandleEnter);
-        _exitDetector.RemoveListener(HandleExit);
-        _submitDetector.RemoveListener(HandleSubmit);
-        _selectDetector.RemoveListener(HandleSelect);
-    }
-
-    private void HandleClick()
-    {
-        //フェーズ終了を知らせる
-        _phaseController.CompleteTradingPhase();
-    }
-
-    private void HandleEnter()
+    public void OnPointerEnter(PointerEventData eventData)
     {
         //TODO：今後ここに具体的なカーソルをかざした際の処理を追加する
         _selectable.Select();
     }
 
-    private void HandleExit()
+    public void OnPointerExit(PointerEventData eventData)
     {
         //TODO：今後ここに具体的なカーソルを外した際の処理を追加する
         EventSystem.current.SetSelectedGameObject(null);
     }
 
-    private void HandleSubmit()
+    public void OnPointerClick(PointerEventData eventData)
     {
-        //同一処理のため以下の処理を呼ぶだけにします。クリック時の仕様と差異が発生したら修正してください。
-        HandleClick();
+        Submit();
     }
 
-    private void HandleSelect()
+    public void OnSubmit(BaseEventData eventData)
+    {
+        Submit();
+    }
+
+    private void Submit()
+    {
+        //フェーズ終了を知らせる
+        _phaseController.CompleteTradingPhase();
+    }
+
+    public void OnSelect(BaseEventData eventData)
     {
         //TODO:SE1の再生
+    }
+
+    public void OnDeselect(BaseEventData eventData)
+    {
     }
 
     public void EnableHighlight()
