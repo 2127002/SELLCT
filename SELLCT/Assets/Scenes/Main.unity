@@ -3964,7 +3964,7 @@ MonoBehaviour:
       _favoriteCards: []
       _bonus: 0
     _priorityCards:
-    - _card: {fileID: 1890776591}
+    - _card: {fileID: 883828212}
       _priority: 1000
     _initialDisplayItemCount: 4
     _initialDeckCount: 4
