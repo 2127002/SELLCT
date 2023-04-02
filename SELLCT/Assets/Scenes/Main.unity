@@ -8844,12 +8844,12 @@ MonoBehaviour:
     _rarity: 1
     _isDisposedOfAfterSell: 0
   _moneyPossessedController: {fileID: 157262628}
-  _baseSprite: {fileID: 21300000, guid: 4f6d522d6050f2c40a155c7f5a1cfa26, type: 3}
-  _number: {fileID: 0}
-  _chineseCharacters: {fileID: 0}
-  _hiragana: {fileID: 0}
-  _katakana: {fileID: 0}
-  _alphabet: {fileID: 0}
+  _baseSprite: {fileID: 21300000, guid: 83b68de71cafb46459f34824bdd5f2ee, type: 3}
+  _number: {fileID: 21300000, guid: ab2046993b2a6094c950c073131f6902, type: 3}
+  _chineseCharacters: {fileID: 21300000, guid: ab2046993b2a6094c950c073131f6902, type: 3}
+  _hiragana: {fileID: 21300000, guid: ab2046993b2a6094c950c073131f6902, type: 3}
+  _katakana: {fileID: 21300000, guid: ab2046993b2a6094c950c073131f6902, type: 3}
+  _alphabet: {fileID: 21300000, guid: ab2046993b2a6094c950c073131f6902, type: 3}
   _handMediator: {fileID: 1975269151}
   _traderController: {fileID: 1210986883}
 --- !u!1 &2040257783
