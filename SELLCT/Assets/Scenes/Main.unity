@@ -1006,7 +1006,7 @@ MonoBehaviour:
   _phaseController: {fileID: 495064998}
   _timeLimitController: {fileID: 296562001}
   _inputSystemDetector: {fileID: 391254979}
-  _firstSelectable: {fileID: 8999427033305422426}
+  _firstSelectable: {fileID: 7680564825398813893}
   _playerMonologue: {fileID: 505569845}
   _canvas: {fileID: 233741556}
 --- !u!114 &251747937
@@ -3336,9 +3336,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 907251444}
-  - component: {fileID: 907251445}
   - component: {fileID: 907251447}
   - component: {fileID: 907251446}
+  - component: {fileID: 907251448}
   m_Layer: 0
   m_Name: U1_CardsParent
   m_TagString: Untagged
@@ -3353,7 +3353,7 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 907251443}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -3364,33 +3364,9 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -290, y: -215}
-  m_SizeDelta: {x: 945, y: 288}
+  m_AnchoredPosition: {x: -300, y: -210}
+  m_SizeDelta: {x: 1200, y: 300}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &907251445
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 907251443}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8a8695521f0d02e499659fee002a26c2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Padding:
-    m_Left: -313
-    m_Right: -343
-    m_Top: 0
-    m_Bottom: 0
-  m_ChildAlignment: 1
-  m_StartCorner: 0
-  m_StartAxis: 0
-  m_CellSize: {x: 225, y: 288}
-  m_Spacing: {x: 15, y: 0}
-  m_Constraint: 0
-  m_ConstraintCount: 2
 --- !u!114 &907251446
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3429,6 +3405,32 @@ MonoBehaviour:
   _katakanaHandView: {fileID: 704934655}
   _alphabetHandView: {fileID: 1049933560}
   _cursorController: {fileID: 406218264}
+--- !u!114 &907251448
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 907251443}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 30649d3a9faa99c48a7b1166b86bf2a0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Padding:
+    m_Left: 0
+    m_Right: 0
+    m_Top: 0
+    m_Bottom: 0
+  m_ChildAlignment: 4
+  m_Spacing: 0
+  m_ChildForceExpandWidth: 0
+  m_ChildForceExpandHeight: 0
+  m_ChildControlWidth: 0
+  m_ChildControlHeight: 0
+  m_ChildScaleWidth: 0
+  m_ChildScaleHeight: 0
+  m_ReverseArrangement: 0
 --- !u!1 &917396754
 GameObject:
   m_ObjectHideFlags: 0
@@ -3968,13 +3970,13 @@ MonoBehaviour:
       _favoriteCards: []
       _bonus: 0
     _priorityCards:
-    - _card: {fileID: 1890776591}
+    - _card: {fileID: 941202356}
       _priority: 1000
     _initialDisplayItemCount: 4
     _initialDeckCount: 4
     _initialFavorability: 0
     _addFavorabilityValue: 24
-    _defalutName: "\u6CA1\u843D\u8CB4\u65CF"
+    _defaultName: "\u6CA1\u843D\u8CB4\u65CF"
     _favourableView: {fileID: 1982680978}
   sprite: {fileID: 21300000, guid: 85496f8751f64a046bff42f2093494c8, type: 3}
 --- !u!4 &1064430993
@@ -4577,7 +4579,7 @@ MonoBehaviour:
     _initialDeckCount: -1
     _initialFavorability: 0
     _addFavorabilityValue: 24
-    _defalutName: "\u30C8\u30EC\u30FC\u30C0\u30FC"
+    _defaultName: "\u30C8\u30EC\u30FC\u30C0\u30FC"
     _favourableView: {fileID: 1982680978}
   sprite: {fileID: 21300000, guid: 9aebd705574f9e642aef1e5f59b3e4d8, type: 3}
 --- !u!1 &1210986881
@@ -8379,9 +8381,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1960932978}
-  - component: {fileID: 1960932981}
   - component: {fileID: 1960932980}
   - component: {fileID: 1960932979}
+  - component: {fileID: 1960932981}
   m_Layer: 0
   m_Name: U3_CardsParent
   m_TagString: Untagged
@@ -8396,7 +8398,7 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1960932977}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -8407,8 +8409,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -290, y: 246}
-  m_SizeDelta: {x: 945, y: 288}
+  m_AnchoredPosition: {x: -300, y: 270}
+  m_SizeDelta: {x: 1200, y: 300}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1960932979
 MonoBehaviour:
@@ -8457,21 +8459,23 @@ MonoBehaviour:
   m_GameObject: {fileID: 1960932977}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8a8695521f0d02e499659fee002a26c2, type: 3}
+  m_Script: {fileID: 11500000, guid: 30649d3a9faa99c48a7b1166b86bf2a0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   m_Padding:
-    m_Left: -313
-    m_Right: -313
+    m_Left: 0
+    m_Right: 0
     m_Top: 0
     m_Bottom: 0
-  m_ChildAlignment: 1
-  m_StartCorner: 0
-  m_StartAxis: 0
-  m_CellSize: {x: 225, y: 288}
-  m_Spacing: {x: 15, y: 0}
-  m_Constraint: 0
-  m_ConstraintCount: 2
+  m_ChildAlignment: 4
+  m_Spacing: 0
+  m_ChildForceExpandWidth: 0
+  m_ChildForceExpandHeight: 0
+  m_ChildControlWidth: 0
+  m_ChildControlHeight: 0
+  m_ChildScaleWidth: 0
+  m_ChildScaleHeight: 0
+  m_ReverseArrangement: 0
 --- !u!1 &1975269150
 GameObject:
   m_ObjectHideFlags: 0
@@ -8843,12 +8847,12 @@ MonoBehaviour:
     _rarity: 1
     _isDisposedOfAfterSell: 0
   _moneyPossessedController: {fileID: 157262628}
-  _baseSprite: {fileID: 21300000, guid: 4f6d522d6050f2c40a155c7f5a1cfa26, type: 3}
-  _number: {fileID: 0}
-  _chineseCharacters: {fileID: 0}
-  _hiragana: {fileID: 0}
-  _katakana: {fileID: 0}
-  _alphabet: {fileID: 0}
+  _baseSprite: {fileID: 21300000, guid: 83b68de71cafb46459f34824bdd5f2ee, type: 3}
+  _number: {fileID: 21300000, guid: ab2046993b2a6094c950c073131f6902, type: 3}
+  _chineseCharacters: {fileID: 21300000, guid: ab2046993b2a6094c950c073131f6902, type: 3}
+  _hiragana: {fileID: 21300000, guid: ab2046993b2a6094c950c073131f6902, type: 3}
+  _katakana: {fileID: 21300000, guid: ab2046993b2a6094c950c073131f6902, type: 3}
+  _alphabet: {fileID: 21300000, guid: ab2046993b2a6094c950c073131f6902, type: 3}
   _handMediator: {fileID: 1975269151}
   _traderController: {fileID: 1210986883}
 --- !u!1 &2040257783
@@ -9127,7 +9131,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_SizeDelta: {x: 225, y: 288}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &797066061168805856
 MonoBehaviour:
@@ -9271,7 +9275,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_SizeDelta: {x: 225, y: 288}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1317882453858772790
 GameObject:
@@ -9782,8 +9786,10 @@ MonoBehaviour:
   - {fileID: 8709485035699750024}
   _cardText: {fileID: 1022315533}
   _traderController: {fileID: 1210986883}
+  _phaseController: {fileID: 495064998}
   _entityType: 0
   _buyOrSell: {fileID: 322592332}
+  _defaultSizeDelta: {x: 225, y: 288}
 --- !u!114 &7358856788846396334
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10045,8 +10051,10 @@ MonoBehaviour:
   - {fileID: 1825944139870105006}
   _cardText: {fileID: 1068639690}
   _traderController: {fileID: 1210986883}
+  _phaseController: {fileID: 495064998}
   _entityType: 1
   _buyOrSell: {fileID: 2010756546}
+  _defaultSizeDelta: {x: 225, y: 288}
 --- !u!114 &9069546498969095532
 MonoBehaviour:
   m_ObjectHideFlags: 0

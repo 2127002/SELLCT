@@ -24,7 +24,7 @@ public struct TraderParameter
     [SerializeField] int _addFavorabilityValue;
 
     [Header("初期の名前です。使えない文字があることに注意してください。（特殊文字など）")]
-    [SerializeField] string _defalutName;
+    [SerializeField] string _defaultName;
 
     [SerializeField] FavourableView _favourableView;
     string _name;
@@ -68,7 +68,7 @@ public struct TraderParameter
         }
     }
 
-    public string DefalutName => _defalutName;
+    public string DefaultName => _defaultName;
     public string Name
     {
         get => _name;

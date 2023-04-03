@@ -10,7 +10,7 @@ public class HighlightController : MonoBehaviour
     {
         //個数は変更されるので毎回取得します
         //楽ですが効率があまり良くないので、仕様が確定した段階でより良くしてもいいかもしれません。
-        var selectableHighlights = FindObjectsOfType<Selectable>().Select(x => x.GetComponent<ISelectableHighlight>());
+        var selectableHighlights = FindObjectsByType<Selectable>(FindObjectsInactive.Include, FindObjectsSortMode.None).Select(x => x.GetComponent<ISelectableHighlight>());
 
         foreach (var item in selectableHighlights)
         {
@@ -22,7 +22,7 @@ public class HighlightController : MonoBehaviour
     {
         //個数は変更されるので毎回取得します
         //楽ですが効率があまり良くないので、仕様が確定した段階でより良くしてもいいかもしれません。
-        var selectableHighlights = FindObjectsOfType<Selectable>().Select(x => x.GetComponent<ISelectableHighlight>());
+        var selectableHighlights = FindObjectsByType<Selectable>(FindObjectsInactive.Include, FindObjectsSortMode.None).Select(x => x.GetComponent<ISelectableHighlight>());
 
         foreach (var item in selectableHighlights)
         {

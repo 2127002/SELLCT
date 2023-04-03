@@ -22,7 +22,7 @@ public class CommandUIHandler : MonoBehaviour, ISelectableHighlight
 
     [SerializeField] Card _card = default!;
 
-    Color _defalutSelectColor = default!;
+    Color _defaultSelectColor = default!;
 
     private void Awake()
     {
@@ -36,7 +36,7 @@ public class CommandUIHandler : MonoBehaviour, ISelectableHighlight
 
         _phaseController.OnExplorationPhaseStart += OnPhaseStart;
 
-        _defalutSelectColor = _selectable.colors.selectedColor;
+        _defaultSelectColor = _selectable.colors.selectedColor;
     }
 
     private void OnPhaseStart()
@@ -110,7 +110,7 @@ public class CommandUIHandler : MonoBehaviour, ISelectableHighlight
     public void EnableHighlight()
     {
         var selectableColors = _selectable.colors;
-        selectableColors.selectedColor = _defalutSelectColor;
+        selectableColors.selectedColor = _defaultSelectColor;
         _selectable.colors = selectableColors;
     }
 
@@ -119,7 +119,7 @@ public class CommandUIHandler : MonoBehaviour, ISelectableHighlight
         var selectableColors = _selectable.colors;
 
         //元の色を保存しておく
-        _defalutSelectColor = selectableColors.selectedColor;
+        _defaultSelectColor = selectableColors.selectedColor;
 
         //ハイライトを消す
         //実際はハイライト色を通常色に変えてるだけ

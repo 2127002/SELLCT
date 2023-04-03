@@ -10,7 +10,7 @@ public class TradingNextButtonHandler : MonoBehaviour, ISelectableHighlight, IPo
 
     [SerializeField] PhaseController _phaseController = default!;
 
-    Color _defalutSelectColor = default!;
+    Color _defaultSelectColor = default!;
 
     private void Awake()
     {
@@ -19,13 +19,13 @@ public class TradingNextButtonHandler : MonoBehaviour, ISelectableHighlight, IPo
 
     public void OnPointerEnter(PointerEventData eventData)
     {
-        //TODOF¡Œã‚±‚±‚É‹ï‘Ì“I‚ÈƒJ[ƒ\ƒ‹‚ğ‚©‚´‚µ‚½Û‚Ìˆ—‚ğ’Ç‰Á‚·‚é
+        //TODOï¼šä»Šå¾Œã“ã“ã«å…·ä½“çš„ãªã‚«ãƒ¼ã‚½ãƒ«ã‚’ã‹ã–ã—ãŸéš›ã®å‡¦ç†ã‚’è¿½åŠ ã™ã‚‹
         _selectable.Select();
     }
 
     public void OnPointerExit(PointerEventData eventData)
     {
-        //TODOF¡Œã‚±‚±‚É‹ï‘Ì“I‚ÈƒJ[ƒ\ƒ‹‚ğŠO‚µ‚½Û‚Ìˆ—‚ğ’Ç‰Á‚·‚é
+        //TODOï¼šä»Šå¾Œã“ã“ã«å…·ä½“çš„ãªã‚«ãƒ¼ã‚½ãƒ«ã‚’å¤–ã—ãŸéš›ã®å‡¦ç†ã‚’è¿½åŠ ã™ã‚‹
         EventSystem.current.SetSelectedGameObject(null);
     }
 
@@ -41,13 +41,13 @@ public class TradingNextButtonHandler : MonoBehaviour, ISelectableHighlight, IPo
 
     private void Submit()
     {
-        //ƒtƒF[ƒYI—¹‚ğ’m‚ç‚¹‚é
+        //ãƒ•ã‚§ãƒ¼ã‚ºçµ‚äº†ã‚’çŸ¥ã‚‰ã›ã‚‹
         _phaseController.CompleteTradingPhase();
     }
 
     public void OnSelect(BaseEventData eventData)
     {
-        //TODO:SE1‚ÌÄ¶
+        //TODO:SE1ã®å†ç”Ÿ
     }
 
     public void OnDeselect(BaseEventData eventData)
@@ -57,7 +57,7 @@ public class TradingNextButtonHandler : MonoBehaviour, ISelectableHighlight, IPo
     public void EnableHighlight()
     {
         var selectableColors = _selectable.colors;
-        selectableColors.selectedColor = _defalutSelectColor;
+        selectableColors.selectedColor = _defaultSelectColor;
         _selectable.colors = selectableColors;
     }
 
@@ -65,11 +65,11 @@ public class TradingNextButtonHandler : MonoBehaviour, ISelectableHighlight, IPo
     {
         var selectableColors = _selectable.colors;
 
-        //Œ³‚ÌF‚ğ•Û‘¶‚µ‚Ä‚¨‚­
-        _defalutSelectColor = selectableColors.selectedColor;
+        //å…ƒã®è‰²ã‚’ä¿å­˜ã—ã¦ãŠã
+        _defaultSelectColor = selectableColors.selectedColor;
 
-        //ƒnƒCƒ‰ƒCƒg‚ğÁ‚·
-        //ÀÛ‚ÍƒnƒCƒ‰ƒCƒgF‚ğ’ÊíF‚É•Ï‚¦‚Ä‚é‚¾‚¯
+        //ãƒã‚¤ãƒ©ã‚¤ãƒˆã‚’æ¶ˆã™
+        //å®Ÿéš›ã¯ãƒã‚¤ãƒ©ã‚¤ãƒˆè‰²ã‚’é€šå¸¸è‰²ã«å¤‰ãˆã¦ã‚‹ã ã‘
         selectableColors.selectedColor = selectableColors.normalColor;
         _selectable.colors = selectableColors;
     }
