@@ -19,10 +19,10 @@ public class CursorController : MonoBehaviour
 
     Vector2 _moveAxis = default!;
     Vector2 _cursorPos = default!;
+    Vector2 _prebPos = default!;
 
     readonly List<RectTransform> _rectTransforms = new();
 
-    bool _isCursorMoving = default!;
     RectTransform _currentSelectedRectTransform = default!;
 
     const float MAXWIDTH = 1920f;
@@ -91,48 +91,59 @@ public class CursorController : MonoBehaviour
     private void OnMoving()
     {
         //静止中は実行しない
-        if (!_isCursorMoving) return;
+        if (_prebPos == _cursorPos) return;
+        _prebPos = _cursorPos;
 
-        //全ボタンに実行
-        for (int i = 0; i < _rectTransforms.Count; i++)
+        //クロスヘアの下にある選択できるRectTransformを取得
+        RectTransform selected = GetRectTransformAtCrosshair();
+
+        //何もなかったら抜ける
+        if (selected == null)
         {
-            //CanvasのRenderModeが変更されたらバグります。この設定ではWorldSpaceを想定しています
-            bool pointerContains = _rectTransforms[i].GetWorldRect(Vector2.one).Contains(_cursorTransform.anchoredPosition);
-
-            //カーソル（クロスヘア）が画像上に来たら選択する
-            if (pointerContains)
+            //選択されているオブジェクトがなければ以降は行わない
+            if (_currentSelectedRectTransform == null)
             {
-                _currentSelectedRectTransform = _rectTransforms[i];
-
-                //選択されたことをオブジェクトに通知する
-                ExecuteEvents.Execute(_rectTransforms[i].gameObject, new PointerEventData(EventSystem.current), ExecuteEvents.pointerEnterHandler);
+                EventSystem.current.SetSelectedGameObject(null);
+                return;
             }
-        }
 
-        //選択されているオブジェクトがなければ以降は行わない
-        if (_currentSelectedRectTransform == null)
-        {
-            EventSystem.current.SetSelectedGameObject(null);
-            return;
-        }
-
-        //CanvasのRenderModeが変更されたらバグります。この設定ではWorldSpaceを想定しています        
-        bool currentSelectedContains = _currentSelectedRectTransform.GetWorldRect(Vector2.one).Contains(_cursorTransform.anchoredPosition);
-
-        if (!currentSelectedContains)
-        {
             //選択が外れたことをオブジェクトに通知する
             ExecuteEvents.Execute(_currentSelectedRectTransform.gameObject, new PointerEventData(EventSystem.current), ExecuteEvents.pointerExitHandler);
             _currentSelectedRectTransform = null;
+            return;
         }
+
+        //前回の選択と同じだったら以降は実行しない
+        if (selected.gameObject == EventSystem.current.currentSelectedGameObject) return;
+
+        //現在の選択画像を変更
+        _currentSelectedRectTransform = selected;
+
+        //選択されたことをオブジェクトに通知する
+        ExecuteEvents.Execute(_currentSelectedRectTransform.gameObject, new PointerEventData(EventSystem.current), ExecuteEvents.pointerEnterHandler);
+    }
+
+    private RectTransform GetRectTransformAtCrosshair()
+    {
+        //全ボタンに実行
+        foreach (RectTransform rectTransform in _rectTransforms)
+        {
+            //CanvasのRenderModeが変更されたらバグります。この設定ではWorldSpaceを想定しています
+            bool pointerContains = rectTransform.GetWorldRect(Vector2.one).Contains(_cursorTransform.anchoredPosition);
+
+            //カーソル（クロスヘア）が選択画像上でなかったら次の画像へ
+            if (!pointerContains) continue;
+
+            //発見したら抜ける
+            return rectTransform;
+        }
+
+        return null;
     }
 
     private void OnCursorMove(InputAction.CallbackContext context)
     {
         _moveAxis = context.ReadValue<Vector2>();
-
-        if (context.performed) _isCursorMoving = true;
-        if (context.canceled) _isCursorMoving = false;
     }
 
     private void OnClick(InputAction.CallbackContext context)

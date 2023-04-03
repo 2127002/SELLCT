@@ -21,7 +21,7 @@ public class ExplorationNextButtonHandler : MonoBehaviour,ISelectableHighlight
     [SerializeField] PhaseController _phaseController = default!;
     [SerializeField] Floor01Condition _floor01 = default!;
 
-    Color _defalutSelectColor = default!;
+    Color _defaultSelectColor = default!;
 
     private void Awake()
     {
@@ -33,7 +33,7 @@ public class ExplorationNextButtonHandler : MonoBehaviour,ISelectableHighlight
         _selectDetector.AddListener(HandleSelect);
 
         //わかりやすくするため仮に選択時の色を赤に変更。今後の変更推奨
-        _defalutSelectColor = _selectable.colors.selectedColor;
+        _defaultSelectColor = _selectable.colors.selectedColor;
     }
 
     private void OnDestroy()
@@ -85,7 +85,7 @@ public class ExplorationNextButtonHandler : MonoBehaviour,ISelectableHighlight
     public void EnableHighlight()
     {
         var selectableColors = _selectable.colors;
-        selectableColors.selectedColor = _defalutSelectColor;
+        selectableColors.selectedColor = _defaultSelectColor;
         _selectable.colors = selectableColors;
     }
 
@@ -94,7 +94,7 @@ public class ExplorationNextButtonHandler : MonoBehaviour,ISelectableHighlight
         var selectableColors = _selectable.colors;
 
         //元の色を保存しておく
-        _defalutSelectColor = selectableColors.selectedColor;
+        _defaultSelectColor = selectableColors.selectedColor;
 
         //ハイライトを消す
         //実際はハイライト色を通常色に変えてるだけ
