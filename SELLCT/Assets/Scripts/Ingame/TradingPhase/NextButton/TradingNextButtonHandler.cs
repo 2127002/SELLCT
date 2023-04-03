@@ -4,15 +4,8 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class TradingNextButtonHandler : MonoBehaviour, ISelectableHighlight
+public class TradingNextButtonHandler : MonoBehaviour, ISelectableHighlight, IPointerEnterHandler, IPointerExitHandler,IPointerClickHandler,ISubmitHandler,ISelectHandler,IDeselectHandler
 {
-    //‚±‚Ì‚æ‚¤‚ÉDetector‚É‚í‚´‚í‚´•ª‚¯‚Ä‚¢‚é‚Ì‚ÍAinterface‚Ìƒƒ\ƒbƒh‚ªpublic‚É‚È‚é‚©‚ç‚Å‚·B
-    //ŠO•”‚©‚çˆÓ}‚µ‚È‚¢ƒ^ƒCƒ~ƒ“ƒO‚ÅŒÄ‚Î‚ê‚é‚±‚Æ‚ğ”ğ‚¯‚é‚½‚ß‰ñ‚è‚­‚Ç‚¢è‚ğg‚Á‚Ä‚¢‚Ü‚·B
-    [SerializeField] LeftClickDetector _clickDetector = default!;
-    [SerializeField] PointerEnterDetector _enterDetector = default!;
-    [SerializeField] PointerExitDetector _exitDetector = default!;
-    [SerializeField] SubmitDetector _submitDetector = default!;
-    [SerializeField] SelectDetector _selectDetector = default!;
     [SerializeField] Selectable _selectable = default!;
 
     [SerializeField] PhaseController _phaseController = default!;
@@ -21,53 +14,44 @@ public class TradingNextButtonHandler : MonoBehaviour, ISelectableHighlight
 
     private void Awake()
     {
-        //w“Ç
-        _clickDetector.AddListener(HandleClick);
-        _enterDetector.AddListener(HandleEnter);
-        _exitDetector.AddListener(HandleExit);
-        _submitDetector.AddListener(HandleSubmit);
-        _selectDetector.AddListener(HandleSelect);
-
-        _defaultSelectColor = _selectable.colors.selectedColor;
+        _defalutSelectColor = _selectable.colors.selectedColor;
     }
 
-    private void OnDestroy()
+    public void OnPointerEnter(PointerEventData eventData)
     {
-        //w“Ç‰ğœ
-        _clickDetector.RemoveListener(HandleClick);
-        _enterDetector.RemoveListener(HandleEnter);
-        _exitDetector.RemoveListener(HandleExit);
-        _submitDetector.RemoveListener(HandleSubmit);
-        _selectDetector.RemoveListener(HandleSelect);
-    }
-
-    private void HandleClick()
-    {
-        //ƒtƒF[ƒYI—¹‚ğ’m‚ç‚¹‚é
-        _phaseController.CompleteTradingPhase();
-    }
-
-    private void HandleEnter()
-    {
-        //TODOF¡Œã‚±‚±‚É‹ï‘Ì“I‚ÈƒJ[ƒ\ƒ‹‚ğ‚©‚´‚µ‚½Û‚Ìˆ—‚ğ’Ç‰Á‚·‚é
+        //TODOï¼šä»Šå¾Œã“ã“ã«å…·ä½“çš„ãªã‚«ãƒ¼ã‚½ãƒ«ã‚’ã‹ã–ã—ãŸéš›ã®å‡¦ç†ã‚’è¿½åŠ ã™ã‚‹
         _selectable.Select();
     }
 
-    private void HandleExit()
+    public void OnPointerExit(PointerEventData eventData)
     {
-        //TODOF¡Œã‚±‚±‚É‹ï‘Ì“I‚ÈƒJ[ƒ\ƒ‹‚ğŠO‚µ‚½Û‚Ìˆ—‚ğ’Ç‰Á‚·‚é
+        //TODOï¼šä»Šå¾Œã“ã“ã«å…·ä½“çš„ãªã‚«ãƒ¼ã‚½ãƒ«ã‚’å¤–ã—ãŸéš›ã®å‡¦ç†ã‚’è¿½åŠ ã™ã‚‹
         EventSystem.current.SetSelectedGameObject(null);
     }
 
-    private void HandleSubmit()
+    public void OnPointerClick(PointerEventData eventData)
     {
-        //“¯ˆêˆ—‚Ì‚½‚ßˆÈ‰º‚Ìˆ—‚ğŒÄ‚Ô‚¾‚¯‚É‚µ‚Ü‚·BƒNƒŠƒbƒN‚Ìd—l‚Æ·ˆÙ‚ª”­¶‚µ‚½‚çC³‚µ‚Ä‚­‚¾‚³‚¢B
-        HandleClick();
+        Submit();
     }
 
-    private void HandleSelect()
+    public void OnSubmit(BaseEventData eventData)
     {
-        //TODO:SE1‚ÌÄ¶
+        Submit();
+    }
+
+    private void Submit()
+    {
+        //ãƒ•ã‚§ãƒ¼ã‚ºçµ‚äº†ã‚’çŸ¥ã‚‰ã›ã‚‹
+        _phaseController.CompleteTradingPhase();
+    }
+
+    public void OnSelect(BaseEventData eventData)
+    {
+        //TODO:SE1ã®å†ç”Ÿ
+    }
+
+    public void OnDeselect(BaseEventData eventData)
+    {
     }
 
     public void EnableHighlight()
@@ -81,11 +65,11 @@ public class TradingNextButtonHandler : MonoBehaviour, ISelectableHighlight
     {
         var selectableColors = _selectable.colors;
 
-        //Œ³‚ÌF‚ğ•Û‘¶‚µ‚Ä‚¨‚­
+        //å…ƒã®è‰²ã‚’ä¿å­˜ã—ã¦ãŠã
         _defaultSelectColor = selectableColors.selectedColor;
 
-        //ƒnƒCƒ‰ƒCƒg‚ğÁ‚·
-        //ÀÛ‚ÍƒnƒCƒ‰ƒCƒgF‚ğ’ÊíF‚É•Ï‚¦‚Ä‚é‚¾‚¯
+        //ãƒã‚¤ãƒ©ã‚¤ãƒˆã‚’æ¶ˆã™
+        //å®Ÿéš›ã¯ãƒã‚¤ãƒ©ã‚¤ãƒˆè‰²ã‚’é€šå¸¸è‰²ã«å¤‰ãˆã¦ã‚‹ã ã‘
         selectableColors.selectedColor = selectableColors.normalColor;
         _selectable.colors = selectableColors;
     }

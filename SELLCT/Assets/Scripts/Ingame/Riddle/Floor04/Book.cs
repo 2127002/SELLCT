@@ -3,11 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class Book : MonoBehaviour,IPointerClickHandler, IPointerEnterHandler, IPointerExitHandler
+public class Book : MonoBehaviour, IPointerClickHandler, IPointerEnterHandler, IPointerExitHandler
 {
- [SerializeField] E11_Vivid _e11;
-
+    [SerializeField] E11_Vivid _e11;
     [SerializeField] Canvas _canvas;
+    
     public void OnPointerClick(PointerEventData eventData)
     {
         if (_e11.FindAll != 0) return;

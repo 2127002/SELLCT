@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
 using System.Threading.Tasks;
+using UnityEngine.InputSystem;
 
 public class PhaseController : MonoBehaviour
 {
@@ -14,6 +15,10 @@ public class PhaseController : MonoBehaviour
         Exploration,
         Trading
     }
+
+    //決定などに使うAction
+    [SerializeField] InputActionReference _submitAction = default!;
+    [SerializeField] InputActionReference _clickAction = default!;
 
     Phase _currentPhase = Phase.None;
 
@@ -57,6 +62,7 @@ public class PhaseController : MonoBehaviour
         _currentPhase = Phase.Exploration;
         OnExplorationPhaseStart?.Invoke();
     }
+
     private void StartTradingPhase()
     {
         //すでに売買フェーズなら実行しない。
@@ -80,15 +86,35 @@ public class PhaseController : MonoBehaviour
         //遷移先に遷移
         StartTradingPhase();
     }
+
     public async void CompleteTradingPhase()
     {
         //売買フェーズでないなら実行しない。
         if (_currentPhase != Phase.Trading) return;
 
+        DisableSubmitAction();
+
         //並列で待機
         await UniTask.WhenAll(Array.ConvertAll(OnTradingPhaseComplete.ToArray(), unitask => unitask.Invoke()));
 
+        EnableSubmitAction();
+
         //遷移先に遷移
         StartExplorationPhase();
+    }
+
+    private async void DisableSubmitAction()
+    {
+        //アクションのキャンセルが見つからなくなるため、1フレーム待機する
+        await UniTask.Yield();
+
+        _submitAction.action.Disable();
+        _clickAction.action.Disable();
+    }
+
+    private void EnableSubmitAction()
+    {
+        _submitAction.action.Enable();
+        _clickAction.action.Enable();
     }
 }

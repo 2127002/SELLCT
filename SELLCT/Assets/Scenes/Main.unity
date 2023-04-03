@@ -2047,6 +2047,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bbd928e4e9f1bb848906332b225f4da8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _submitAction: {fileID: 4803109593654672488, guid: 1acd10e19b4601845803d349e0c26cdf,
+    type: 3}
+  _clickAction: {fileID: 24458068589472722, guid: 1acd10e19b4601845803d349e0c26cdf,
+    type: 3}
 --- !u!4 &495064999
 Transform:
   m_ObjectHideFlags: 0
@@ -5019,11 +5023,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0d1628201c784594ea0070666f8ffcc7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _clickDetector: {fileID: 1294856000}
-  _enterDetector: {fileID: 1294855999}
-  _exitDetector: {fileID: 1294855998}
-  _submitDetector: {fileID: 1294855997}
-  _selectDetector: {fileID: 1294855996}
   _selectable: {fileID: 1294856004}
   _phaseController: {fileID: 495064998}
 --- !u!222 &1294856002
