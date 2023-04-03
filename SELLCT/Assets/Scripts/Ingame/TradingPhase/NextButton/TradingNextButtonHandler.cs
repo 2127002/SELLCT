@@ -17,7 +17,7 @@ public class TradingNextButtonHandler : MonoBehaviour, ISelectableHighlight
 
     [SerializeField] PhaseController _phaseController = default!;
 
-    Color _defalutSelectColor = default!;
+    Color _defaultSelectColor = default!;
 
     private void Awake()
     {
@@ -28,7 +28,7 @@ public class TradingNextButtonHandler : MonoBehaviour, ISelectableHighlight
         _submitDetector.AddListener(HandleSubmit);
         _selectDetector.AddListener(HandleSelect);
 
-        _defalutSelectColor = _selectable.colors.selectedColor;
+        _defaultSelectColor = _selectable.colors.selectedColor;
     }
 
     private void OnDestroy()
@@ -73,7 +73,7 @@ public class TradingNextButtonHandler : MonoBehaviour, ISelectableHighlight
     public void EnableHighlight()
     {
         var selectableColors = _selectable.colors;
-        selectableColors.selectedColor = _defalutSelectColor;
+        selectableColors.selectedColor = _defaultSelectColor;
         _selectable.colors = selectableColors;
     }
 
@@ -82,7 +82,7 @@ public class TradingNextButtonHandler : MonoBehaviour, ISelectableHighlight
         var selectableColors = _selectable.colors;
 
         //元の色を保存しておく
-        _defalutSelectColor = selectableColors.selectedColor;
+        _defaultSelectColor = selectableColors.selectedColor;
 
         //ハイライトを消す
         //実際はハイライト色を通常色に変えてるだけ

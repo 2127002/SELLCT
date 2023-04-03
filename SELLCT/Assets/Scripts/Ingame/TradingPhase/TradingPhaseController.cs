@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
+using UnityEngine.UI;
 
 /// <summary>
 /// 売買フェーズの進行に責任を持つクラス
@@ -16,7 +17,7 @@ public class TradingPhaseController : MonoBehaviour
     [SerializeField] PhaseController _phaseController = default!;
     [SerializeField] TimeLimitController _timeLimitController = default!;
     [SerializeField] InputSystemDetector _inputSystemDetector = default!;
-    [SerializeField] CardUIHandler _firstSelectable = default!;
+    [SerializeField] Selectable _firstSelectable = default!;
     [SerializeField] PlayerMonologue _playerMonologue = default!;
     [SerializeField] Canvas _canvas = default!;
 
@@ -32,13 +33,6 @@ public class TradingPhaseController : MonoBehaviour
         _timeLimitController.OnTimeLimit += _phaseController.CompleteTradingPhase;
 
         _inputSystemDetector.OnNavigateAction += OnNavigate;
-    }
-
-    private void Start()
-    {
-        //現在選択中のUIオブジェクトを登録。
-        //選択中オブジェクトの初期化処理がAwakeで行われるためStartに配置しています。
-        _lastSelectedObject = EventSystem.current.currentSelectedGameObject;
     }
 
     private void OnDestroy()
@@ -59,9 +53,12 @@ public class TradingPhaseController : MonoBehaviour
     //売買フェーズ開始時処理
     private void OnPhaseStart()
     {
+        _canvas.gameObject.SetActive(true);
+
         _view.OnPhaseStart();
         EventSystem.current.SetSelectedGameObject(_firstSelectable.gameObject);
-        _canvas.gameObject.SetActive(true);
+        _firstSelectable.Select();
+        _lastSelectedObject = _firstSelectable.gameObject;
     }
 
     //売買フェーズ終了時処理（待機可）

@@ -28,24 +28,30 @@ public class CardUIHandler : MonoBehaviour, IPointerClickHandler, IPointerEnterH
     [SerializeField] TextMeshProUGUI _cardText = default!;
 
     [SerializeField] TraderController _traderController = default!;
+    [SerializeField] PhaseController _phaseController = default!;
 
     [SerializeField] EntityType _entityType;
 
     [SerializeField] Card _buyOrSell = default;
 
-    Color _defalutSelectColor = default!;
+    Color _defaultSelectColor = default!;
+    [SerializeField] Vector2 _defaultSizeDelta = default!;
 
     //選択時画像サイズ補正値
     const float CORRECTION_SIZE = 1.25f;
-    static readonly Vector3 correction = new(CORRECTION_SIZE, CORRECTION_SIZE, CORRECTION_SIZE);
+    static readonly Vector2 correction = new(CORRECTION_SIZE, CORRECTION_SIZE);
 
     public IReadOnlyList<Image> CardImages => _cardImages;
 
     private void Awake()
     {
-        _defalutSelectColor = _selectable.colors.selectedColor;
+        _defaultSelectColor = _selectable.colors.selectedColor;
+        _phaseController.OnTradingPhaseStart.Add(OnGenerate);
+    }
 
-        _selectable.image.rectTransform.localScale = Vector3.one;
+    private void OnDestroy()
+    {
+        _phaseController.OnTradingPhaseStart.Remove(OnGenerate);
     }
 
     private void OnSubmit()
@@ -213,6 +219,7 @@ public class CardUIHandler : MonoBehaviour, IPointerClickHandler, IPointerEnterH
         if (eventData == null) throw new NullReferenceException();
 
         //TODO：今後ここに具体的なカーソルをかざした際の処理を追加する
+        Debug.Log("ENTER");
 
         _selectable.Select();
     }
@@ -221,6 +228,8 @@ public class CardUIHandler : MonoBehaviour, IPointerClickHandler, IPointerEnterH
     public void OnPointerExit(PointerEventData eventData)
     {
         if (eventData == null) throw new NullReferenceException();
+
+        Debug.Log("EXIT");
 
         //TODO：今後ここに具体的なカーソルを外した際の処理を追加する
         EventSystem.current.SetSelectedGameObject(null);
@@ -246,22 +255,31 @@ public class CardUIHandler : MonoBehaviour, IPointerClickHandler, IPointerEnterH
         //TODO:SE1の再生
 
         //拡大率を指定値に変える
-        _selectable.image.rectTransform.localScale = correction;
+        foreach (var item in _cardImages)
+        {
+            Vector2 sizeDelta = item.rectTransform.sizeDelta;
+            sizeDelta.Scale(correction);
+            item.rectTransform.sizeDelta = sizeDelta;
+        }
     }
 
-    [Obsolete("UnityのEventを受け取って実行されるメソッドです。Eventを受け取る以外の使用は想定されていません。", true)]
+    [Obsolete("UnityのEventを受け取って実行されるメソッドです。Eventを受け取る以外の使用は想定されていません。", false)]
     public void OnDeselect(BaseEventData eventData)
     {
         if (eventData == null) throw new NullReferenceException();
 
         //拡大率を初期値に戻す
-        _selectable.image.rectTransform.localScale = Vector3.one;
+        foreach (var item in _cardImages)
+        {
+            item.rectTransform.sizeDelta = _defaultSizeDelta;
+        }
     }
 
     public void EnabledSelectebility()
     {
         _selectable.interactable = true;
     }
+
     public void DisableSelectability()
     {
         _selectable.interactable = false;
@@ -271,7 +289,7 @@ public class CardUIHandler : MonoBehaviour, IPointerClickHandler, IPointerEnterH
     {
         //もとに戻す
         var selectableColors = _selectable.colors;
-        selectableColors.selectedColor = _defalutSelectColor;
+        selectableColors.selectedColor = _defaultSelectColor;
         _selectable.colors = selectableColors;
     }
 
@@ -280,11 +298,22 @@ public class CardUIHandler : MonoBehaviour, IPointerClickHandler, IPointerEnterH
         var selectableColors = _selectable.colors;
 
         //元の色を保存しておく
-        _defalutSelectColor = selectableColors.selectedColor;
+        _defaultSelectColor = selectableColors.selectedColor;
 
         //ハイライトを消す
         //実際はハイライト色を通常色に変えてるだけ
         selectableColors.selectedColor = selectableColors.normalColor;
         _selectable.colors = selectableColors;
+    }
+
+    public void OnGenerate()
+    {
+        if (gameObject == EventSystem.current.currentSelectedGameObject) return;
+
+        //拡大率を初期値に戻す
+        foreach (var item in _cardImages)
+        {
+            item.rectTransform.sizeDelta = _defaultSizeDelta;
+        }
     }
 }

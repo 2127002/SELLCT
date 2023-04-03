@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class CardUIGenerator : MonoBehaviour
 {
@@ -25,12 +26,15 @@ public class CardUIGenerator : MonoBehaviour
 
     private void OnGameStart()
     {
+        int alreadyGenerated = 1;
+
         //1‚Â‚Í‚·‚Å‚ÉƒTƒ“ƒvƒ‹‚Æ‚µ‚Ä¶¬Ï‚İ
-        for (int i = 1; i < _hand.Capacity; i++)
+        for (int i = alreadyGenerated; i < _hand.Capacity; i++)
         {
             var newHandler = Instantiate(_handler, _parent);
+            newHandler.OnGenerate();
 
-            newHandler.name = _handlerName + (i + 1);
+            newHandler.name = _handlerName + (i + alreadyGenerated);
 
             _cardUIInstance.Add(newHandler);
         }
@@ -41,6 +45,7 @@ public class CardUIGenerator : MonoBehaviour
         var newHandler = Instantiate(_handler, _parent);
 
         newHandler.name = _handlerName + (_cardUIInstance.Handlers.Count + 1);
+        newHandler.OnGenerate();
 
         _cardUIInstance.Add(newHandler);
         _cursorController.AddRectTransform(newHandler.GetComponent<RectTransform>());

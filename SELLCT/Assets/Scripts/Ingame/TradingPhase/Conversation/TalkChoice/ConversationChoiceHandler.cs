@@ -11,11 +11,11 @@ public class ConversationChoiceHandler : MonoBehaviour, IPointerEnterHandler, IP
 
     [SerializeField] TextMeshProUGUI _text = default!;
     [SerializeField] Selectable _selectable = default!;
-    Color _defalutSelectColor;
+    Color _defaultSelectColor;
 
     private void Awake()
     {
-        _defalutSelectColor = _selectable.colors.selectedColor;
+        _defaultSelectColor = _selectable.colors.selectedColor;
     }
 
     public void SetTalkChoice(ITalkChoice talkChoice)
@@ -75,7 +75,7 @@ public class ConversationChoiceHandler : MonoBehaviour, IPointerEnterHandler, IP
     public void EnableHighlight()
     {
         var selectableColors = _selectable.colors;
-        selectableColors.selectedColor = _defalutSelectColor;
+        selectableColors.selectedColor = _defaultSelectColor;
         _selectable.colors = selectableColors;
     }
 
@@ -84,7 +84,7 @@ public class ConversationChoiceHandler : MonoBehaviour, IPointerEnterHandler, IP
         var selectableColors = _selectable.colors;
 
         //元の色を保存しておく
-        _defalutSelectColor = selectableColors.selectedColor;
+        _defaultSelectColor = selectableColors.selectedColor;
 
         //ハイライトを消す
         //実際はハイライト色を通常色に変えてるだけ

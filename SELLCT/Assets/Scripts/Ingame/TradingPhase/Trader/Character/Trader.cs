@@ -12,7 +12,7 @@ public abstract class Trader : MonoBehaviour, IConversationMessage
     protected virtual void Awake()
     {
         favorability = traderParameter.InitialFavorability;
-        traderParameter.Name = traderParameter.DefalutName;
+        traderParameter.Name = traderParameter.DefaultName;
     }
 
     public virtual TraderDeck TraderDeck => deck;
