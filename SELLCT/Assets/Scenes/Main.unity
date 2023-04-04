@@ -1234,7 +1234,7 @@ MonoBehaviour:
   _katakana: {fileID: 0}
   _alphabet: {fileID: 0}
   _handMediator: {fileID: 1975269151}
-  _defaultColor: {r: 1, g: 1, b: 1, a: 0}
+  _defaultColor: {r: 1, g: 1, b: 1, a: 1}
   _disabledColor: {r: 0.972549, g: 0.8039216, b: 0.8039216, a: 0.49803922}
   _handCardUIInstance: {fileID: 907251447}
 --- !u!1 &324477192
