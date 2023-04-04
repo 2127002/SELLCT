@@ -168,9 +168,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _parameter:
-    _price: 0
+    _price: 20
     _name: 
-    _rarity: 1
+    _rarity: 10
     _isDisposedOfAfterSell: 0
   _moneyPossessedController: {fileID: 157262628}
   _baseSprite: {fileID: 21300000, guid: 7c9d96f5dd01db848a0017518c30bbb6, type: 3}
@@ -811,9 +811,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _parameter:
-    _price: 28
+    _price: 10
     _name: 
-    _rarity: 1
+    _rarity: 10
     _isDisposedOfAfterSell: 0
   _moneyPossessedController: {fileID: 157262628}
   _baseSprite: {fileID: 21300000, guid: f23cf34a8a0513a40a26325d79ec790f, type: 3}
@@ -1023,7 +1023,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _fadeTime:
     _duration: 1
-    _waitTime: 0
+    _waitTime: 0.5
   _images:
   - {fileID: 1512803445}
   - {fileID: 190979971}
@@ -1099,7 +1099,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a04af4dbbc6a42b4d955ee29fe79d7b0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _timeLimitRate: 50
+  _timeLimitRate: 40
   _phaseController: {fileID: 495064998}
 --- !u!1 &300763814
 GameObject:
@@ -1222,9 +1222,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _parameter:
-    _price: 0
+    _price: 50
     _name: 
-    _rarity: 1
+    _rarity: 10
     _isDisposedOfAfterSell: 0
   _moneyPossessedController: {fileID: 157262628}
   _baseSprite: {fileID: 21300000, guid: 612ada5e59b0b3c4b892e5c5983c55e6, type: 3}
@@ -1803,9 +1803,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _parameter:
-    _price: 0
+    _price: 10
     _name: 
-    _rarity: 1
+    _rarity: 10
     _isDisposedOfAfterSell: 0
   _moneyPossessedController: {fileID: 157262628}
   _baseSprite: {fileID: 21300000, guid: b4c1f141f074b2649be9ad4a6ce9973c, type: 3}
@@ -2236,9 +2236,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _parameter:
-    _price: 0
+    _price: 10
     _name: 
-    _rarity: 1
+    _rarity: 10
     _isDisposedOfAfterSell: 0
   _moneyPossessedController: {fileID: 157262628}
   _baseSprite: {fileID: 21300000, guid: 7b2184d1e1af8204189a936161f8d75f, type: 3}
@@ -2699,9 +2699,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _parameter:
-    _price: 0
+    _price: 20
     _name: 
-    _rarity: 1
+    _rarity: 10
     _isDisposedOfAfterSell: 0
   _moneyPossessedController: {fileID: 157262628}
   _baseSprite: {fileID: 21300000, guid: 3c64f6fe91d4bba4bbe55fc1480b031e, type: 3}
@@ -2771,9 +2771,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _parameter:
-    _price: 0
+    _price: 10
     _name: 
-    _rarity: 1
+    _rarity: 10
     _isDisposedOfAfterSell: 0
   _moneyPossessedController: {fileID: 157262628}
   _baseSprite: {fileID: 21300000, guid: 0fb748c56efc3c74eb343d531f979177, type: 3}
@@ -2830,9 +2830,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _parameter:
-    _price: 0
+    _price: 20
     _name: 
-    _rarity: 1
+    _rarity: 10
     _isDisposedOfAfterSell: 0
   _moneyPossessedController: {fileID: 157262628}
   _baseSprite: {fileID: 21300000, guid: 6bf4acb804a99d64698d420cb7654632, type: 3}
@@ -3176,9 +3176,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _parameter:
-    _price: 0
+    _price: 10
     _name: 
-    _rarity: 1
+    _rarity: 10
     _isDisposedOfAfterSell: 0
   _moneyPossessedController: {fileID: 157262628}
   _baseSprite: {fileID: 21300000, guid: 88964503994b35347b28a1cca19190d9, type: 3}
@@ -3266,63 +3266,63 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _cardCapacity:
   - card: {fileID: 917396756}
-    initcount: 4
+    initcount: 3
   - card: {fileID: 2010756546}
-    initcount: 4
+    initcount: 1
   - card: {fileID: 322592332}
-    initcount: 4
+    initcount: 1
   - card: {fileID: 734919073}
-    initcount: 4
+    initcount: 1
   - card: {fileID: 1797485884}
-    initcount: 4
+    initcount: 1
   - card: {fileID: 1733877178}
-    initcount: 4
+    initcount: 1
   - card: {fileID: 1240537339}
-    initcount: 4
+    initcount: 2
   - card: {fileID: 1050709444}
-    initcount: 4
+    initcount: 1
   - card: {fileID: 1890776591}
-    initcount: 4
+    initcount: 3
   - card: {fileID: 1317302477}
-    initcount: 4
+    initcount: 3
   - card: {fileID: 1801727037}
-    initcount: 4
+    initcount: 3
   - card: {fileID: 2044394406}
-    initcount: 4
+    initcount: 1
   - card: {fileID: 505569846}
-    initcount: 4
+    initcount: 1
   - card: {fileID: 1891691742}
-    initcount: 4
+    initcount: 1
   - card: {fileID: 1803076679}
-    initcount: 4
+    initcount: 1
   - card: {fileID: 1589025320}
-    initcount: 4
+    initcount: 1
   - card: {fileID: 704934656}
-    initcount: 4
+    initcount: 1
   - card: {fileID: 1049933561}
-    initcount: 4
+    initcount: 1
   - card: {fileID: 883828212}
-    initcount: 4
+    initcount: 1
   - card: {fileID: 1175034080}
-    initcount: 4
+    initcount: 1
   - card: {fileID: 449189166}
-    initcount: 4
+    initcount: 3
   - card: {fileID: 941202356}
-    initcount: 4
+    initcount: 2
   - card: {fileID: 1858823707}
-    initcount: 4
+    initcount: 1
   - card: {fileID: 227483399}
-    initcount: 4
+    initcount: 2
   - card: {fileID: 2037373640}
-    initcount: 4
+    initcount: 1
   - card: {fileID: 1274645117}
-    initcount: 4
+    initcount: 1
   - card: {fileID: 26477152}
-    initcount: 4
+    initcount: 1
   - card: {fileID: 682657746}
-    initcount: 4
+    initcount: 1
   - card: {fileID: 1928785346}
-    initcount: 4
+    initcount: 1
 --- !u!1 &907251443
 GameObject:
   m_ObjectHideFlags: 0
@@ -3470,9 +3470,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _parameter:
-    _price: 10
+    _price: 50
     _name: "\u547D"
-    _rarity: 1
+    _rarity: 5
     _isDisposedOfAfterSell: 0
   _moneyPossessedController: {fileID: 157262628}
   _baseSprite: {fileID: 21300000, guid: 1ddbf147d140fc9429280438b7df21b7, type: 3}
@@ -3527,9 +3527,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _parameter:
-    _price: 0
+    _price: 10
     _name: 
-    _rarity: 1
+    _rarity: 10
     _isDisposedOfAfterSell: 0
   _moneyPossessedController: {fileID: 157262628}
   _baseSprite: {fileID: 21300000, guid: 8d19ec7d9c4d26d4c8787ee03443b924, type: 3}
@@ -3828,9 +3828,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _parameter:
-    _price: 21
+    _price: 10
     _name: 
-    _rarity: 1
+    _rarity: 10
     _isDisposedOfAfterSell: 0
   _moneyPossessedController: {fileID: 157262628}
   _baseSprite: {fileID: 21300000, guid: 1edfd10a732d0cd479ca827038ce0bb3, type: 3}
@@ -3887,9 +3887,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _parameter:
-    _price: 9
+    _price: 10
     _name: 
-    _rarity: 1
+    _rarity: 10
     _isDisposedOfAfterSell: 0
   _moneyPossessedController: {fileID: 157262628}
   _baseSprite: {fileID: 21300000, guid: 1171f09a005028c459adfa7ed03bd03e, type: 3}
@@ -3963,11 +3963,9 @@ MonoBehaviour:
     _favoriteCard:
       _favoriteCards: []
       _bonus: 0
-    _priorityCards:
-    - _card: {fileID: 883828212}
-      _priority: 1000
+    _priorityCards: []
     _initialDisplayItemCount: 4
-    _initialDeckCount: 4
+    _initialDeckCount: 10
     _initialFavorability: 0
     _addFavorabilityValue: 24
     _defalutName: "\u6CA1\u843D\u8CB4\u65CF"
@@ -4507,9 +4505,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _parameter:
-    _price: 0
+    _price: 10
     _name: 
-    _rarity: 1
+    _rarity: 10
     _isDisposedOfAfterSell: 0
   _moneyPossessedController: {fileID: 157262628}
   _baseSprite: {fileID: 21300000, guid: a8a5399f5ab864840b7800c4eda12e93, type: 3}
@@ -4738,9 +4736,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _parameter:
-    _price: 7
+    _price: 10
     _name: 
-    _rarity: 1
+    _rarity: 10
     _isDisposedOfAfterSell: 0
   _moneyPossessedController: {fileID: 157262628}
   _baseSprite: {fileID: 21300000, guid: d7765629c16f88f4d90929a19b2e762b, type: 3}
@@ -4871,9 +4869,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _parameter:
-    _price: 0
+    _price: 20
     _name: 
-    _rarity: 1
+    _rarity: 10
     _isDisposedOfAfterSell: 0
   _moneyPossessedController: {fileID: 157262628}
   _baseSprite: {fileID: 21300000, guid: 27ee7f8f35fda344793f4bb72e9c05e2, type: 3}
@@ -5138,9 +5136,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _parameter:
-    _price: 0
+    _price: 10
     _name: 
-    _rarity: 1
+    _rarity: 10
     _isDisposedOfAfterSell: 0
   _moneyPossessedController: {fileID: 157262628}
   _baseSprite: {fileID: 21300000, guid: c49609c35ebe84345b813807e383a176, type: 3}
@@ -5151,7 +5149,7 @@ MonoBehaviour:
   _alphabet: {fileID: 0}
   _handMediator: {fileID: 1975269151}
   _vivid: {fileID: 2100000, guid: f911bf6d76c5c254faef486eeec726b9, type: 2}
-  _vividIncreasePercent: 10
+  _vividIncreasePercent: 50
   _vividDecreasePercent: 50
   _firstVividPercent: 100
 --- !u!1 &1349179047
@@ -6768,9 +6766,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _parameter:
-    _price: 0
+    _price: 10
     _name: 
-    _rarity: 1
+    _rarity: 10
     _isDisposedOfAfterSell: 0
   _moneyPossessedController: {fileID: 157262628}
   _baseSprite: {fileID: 21300000, guid: abbd760ddac690648b550833fa524718, type: 3}
@@ -7129,9 +7127,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _parameter:
-    _price: 0
+    _price: 30
     _name: 
-    _rarity: 1
+    _rarity: 10
     _isDisposedOfAfterSell: 0
   _moneyPossessedController: {fileID: 157262628}
   _baseSprite: {fileID: 21300000, guid: 977fc69f0102a6d4eb4de1553b56b86a, type: 3}
@@ -7283,7 +7281,7 @@ MonoBehaviour:
   - card: {fileID: 1890776591}
     initcount: 2
   - card: {fileID: 1317302477}
-    initcount: 1
+    initcount: 2
   - card: {fileID: 1801727037}
     initcount: 2
   - card: {fileID: 2044394406}
@@ -7293,37 +7291,45 @@ MonoBehaviour:
   - card: {fileID: 1891691742}
     initcount: 1
   - card: {fileID: 1803076679}
-    initcount: 1
+    initcount: 0
   - card: {fileID: 1589025320}
-    initcount: 1
+    initcount: 0
   - card: {fileID: 704934656}
-    initcount: 1
+    initcount: 0
   - card: {fileID: 1049933561}
-    initcount: 1
+    initcount: 0
   - card: {fileID: 883828212}
     initcount: 1
   - card: {fileID: 1175034080}
     initcount: 1
   - card: {fileID: 449189166}
-    initcount: 2
+    initcount: 1
   - card: {fileID: 941202356}
-    initcount: 1
+    initcount: 0
   - card: {fileID: 1858823707}
-    initcount: 1
+    initcount: 0
   - card: {fileID: 227483399}
-    initcount: 1
+    initcount: 0
   - card: {fileID: 2037373640}
     initcount: 1
   - card: {fileID: 1274645117}
-    initcount: 1
+    initcount: 0
   - card: {fileID: 26477152}
-    initcount: 1
+    initcount: 0
   - card: {fileID: 682657746}
-    initcount: 1
+    initcount: 0
   - card: {fileID: 1928785346}
+    initcount: 0
+  _probabilityDeck:
+  - card: {fileID: 1803076679}
     initcount: 1
-  _probabilityDeck: []
-  _drawCount: 0
+  - card: {fileID: 1589025320}
+    initcount: 1
+  - card: {fileID: 1049933561}
+    initcount: 1
+  - card: {fileID: 704934656}
+    initcount: 1
+  _drawCount: 2
   _handMediator: {fileID: 1975269151}
 --- !u!1 &1777718881
 GameObject:
@@ -7401,9 +7407,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _parameter:
-    _price: 0
+    _price: 20
     _name: 
-    _rarity: 1
+    _rarity: 10
     _isDisposedOfAfterSell: 0
   _moneyPossessedController: {fileID: 157262628}
   _baseSprite: {fileID: 21300000, guid: bb3b519ab055b204d8ab03d58dfcdc3a, type: 3}
@@ -7595,9 +7601,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _parameter:
-    _price: 0
+    _price: 10
     _name: 
-    _rarity: 1
+    _rarity: 10
     _isDisposedOfAfterSell: 0
   _moneyPossessedController: {fileID: 157262628}
   _baseSprite: {fileID: 21300000, guid: ca41f9c9f9d64184eb0b5f0e557bcb61, type: 3}
@@ -7608,9 +7614,9 @@ MonoBehaviour:
   _alphabet: {fileID: 0}
   _handMediator: {fileID: 1975269151}
   _eye: {fileID: 2100000, guid: 3ae17b568a4b3c242b3fedbd0f04b7fa, type: 2}
-  _eyeIncreaseValue: 2
-  _eyeDecreaseValue: 0.5
-  _firstEye: 1080
+  _eyeIncreaseValue: 3
+  _eyeDecreaseValue: 0.333
+  _firstEye: 540
 --- !u!1 &1803076676
 GameObject:
   m_ObjectHideFlags: 0
@@ -7669,9 +7675,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _parameter:
-    _price: 0
+    _price: 10
     _name: 
-    _rarity: 1
+    _rarity: 10
     _isDisposedOfAfterSell: 0
   _moneyPossessedController: {fileID: 157262628}
   _baseSprite: {fileID: 21300000, guid: 64e5c6e53d9b73f468fa17032b4baf35, type: 3}
@@ -7804,9 +7810,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _parameter:
-    _price: 5
+    _price: 10
     _name: "\u8AAD\u5FC3\u8853"
-    _rarity: 1
+    _rarity: 10
     _isDisposedOfAfterSell: 0
   _moneyPossessedController: {fileID: 157262628}
   _baseSprite: {fileID: 21300000, guid: e86dc8f91cece554692d538269fc9cfc, type: 3}
@@ -7863,9 +7869,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _parameter:
-    _price: 0
+    _price: 10
     _name: 
-    _rarity: 1
+    _rarity: 10
     _isDisposedOfAfterSell: 0
   _moneyPossessedController: {fileID: 157262628}
   _baseSprite: {fileID: 21300000, guid: f3e5d50902846d740b19b308e7ba0321, type: 3}
@@ -7876,8 +7882,8 @@ MonoBehaviour:
   _alphabet: {fileID: 0}
   _handMediator: {fileID: 1975269151}
   _brightness: {fileID: 2100000, guid: 6fd7c41649721a94fa3addf49255c0e4, type: 2}
-  _brightnessIncreasePercent: 10
-  _brightnessDecreasePercent: 50
+  _brightnessIncreasePercent: 45
+  _brightnessDecreasePercent: 45
   _firstBrightnessPercent: 100
 --- !u!1 &1891691739
 GameObject:
@@ -7937,7 +7943,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _parameter:
-    _price: 0
+    _price: 10
     _name: 
     _rarity: 1
     _isDisposedOfAfterSell: 0
@@ -8359,7 +8365,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _parameter:
-    _price: 0
+    _price: 50
     _name: 
     _rarity: 1
     _isDisposedOfAfterSell: 0
@@ -8518,7 +8524,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2a210d6bd1220594e9d085d4205e8cc9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _handCapacity: 4
+  _handCapacity: 2
 --- !u!224 &1975269154
 RectTransform:
   m_ObjectHideFlags: 0
@@ -8780,9 +8786,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _parameter:
-    _price: 0
-    _name: 
-    _rarity: 1
+    _price: 50
+    _name: "\u8CB7\u3046"
+    _rarity: 10
     _isDisposedOfAfterSell: 0
   _moneyPossessedController: {fileID: 157262628}
   _baseSprite: {fileID: 21300000, guid: 1f2ada7376fe1ff43b083b45745df221, type: 3}
@@ -8839,9 +8845,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _parameter:
-    _price: 0
+    _price: 30
     _name: TRADER NAME
-    _rarity: 1
+    _rarity: 10
     _isDisposedOfAfterSell: 0
   _moneyPossessedController: {fileID: 157262628}
   _baseSprite: {fileID: 21300000, guid: 83b68de71cafb46459f34824bdd5f2ee, type: 3}
@@ -8974,9 +8980,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _parameter:
-    _price: 0
+    _price: 10
     _name: 
-    _rarity: 1
+    _rarity: 10
     _isDisposedOfAfterSell: 0
   _moneyPossessedController: {fileID: 157262628}
   _baseSprite: {fileID: 21300000, guid: 55108b2f1f46c884e852f943dfde33f3, type: 3}
