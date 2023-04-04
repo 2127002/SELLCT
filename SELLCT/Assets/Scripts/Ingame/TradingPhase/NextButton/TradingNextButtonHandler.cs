@@ -14,7 +14,7 @@ public class TradingNextButtonHandler : MonoBehaviour, ISelectableHighlight, IPo
 
     private void Awake()
     {
-        _defalutSelectColor = _selectable.colors.selectedColor;
+        _defaultSelectColor = _selectable.colors.selectedColor;
     }
 
     public void OnPointerEnter(PointerEventData eventData)
