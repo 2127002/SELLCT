@@ -42,7 +42,6 @@ public class E2_Sell : Card
             foreach (var cardImage in cardUIHandler.CardImages)
             {
                 cardImage.color = _defaultColor;
-                Debug.Log("é¿çs");
             }
         }
     }
