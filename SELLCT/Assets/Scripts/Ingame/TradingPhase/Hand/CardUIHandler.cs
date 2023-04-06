@@ -219,8 +219,6 @@ public class CardUIHandler : MonoBehaviour, IPointerClickHandler, IPointerEnterH
         if (eventData == null) throw new NullReferenceException();
 
         //TODO：今後ここに具体的なカーソルをかざした際の処理を追加する
-        Debug.Log("ENTER");
-
         _selectable.Select();
     }
 
@@ -228,8 +226,6 @@ public class CardUIHandler : MonoBehaviour, IPointerClickHandler, IPointerEnterH
     public void OnPointerExit(PointerEventData eventData)
     {
         if (eventData == null) throw new NullReferenceException();
-
-        Debug.Log("EXIT");
 
         //TODO：今後ここに具体的なカーソルを外した際の処理を追加する
         EventSystem.current.SetSelectedGameObject(null);
