@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.Windows;
 
 public class TR1_NormalTrader : Trader
 {
@@ -21,29 +22,41 @@ public class TR1_NormalTrader : Trader
         }
     }
 
-    public override string StartMessage()
+    public override string[] BuyMessage(Card card)
     {
-        return "「奈落における通貨はカラットと呼ばれている」\r\n「あらゆる存在にとって等しく価値のある輝き」\r\n「さて、それは何なんだろうな」";
+        int cardId = card.Id;
+
+        return _buy.datas[cardId].Text;
     }
 
-    public override string EndMessage()
+    public override string[] CardMessage(Card card)
     {
-        return "「毎度あり」\r\n「まぁ、また直ぐに会うことになるだろう」";
+        int cardId = card.Id;
+
+        return _select.datas[cardId].Text;
     }
 
-    public override string CardMessage(Card card)
+    public override string[] EndMessage()
     {
-        return "This Card is a Element of Life. But this message is displayed all Elements";
+        List<ConversationData> end = _end.datas.Where(x => x.Likability.Contains((int)favorability.FavorabilityClassification())).ToList();
+
+        int index = Random.Range(0, end.Count());
+        return end[index].Text;
     }
 
-    public override string BuyMessage(Card card)
+    public override string[] SellMessage(Card card)
     {
-        return "Thanks!";
+        int cardId = card.Id;
+
+        return _sell.datas[cardId].Text;
     }
 
-    public override string SellMessage(Card card)
+    public override string[] StartMessage()
     {
-        return "Oh,This Element looks like good!";
+        List<ConversationData> start = _start.datas.Where(x => x.Likability.Contains((int)favorability.FavorabilityClassification())).ToList();
+
+        int index = Random.Range(0, start.Count());
+        return start[index].Text;
     }
 
     public override void OnPlayerSell(Card selledCard)

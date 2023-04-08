@@ -10,9 +10,10 @@ public class TimeLimitController : MonoBehaviour
     [SerializeField, Min(0)] float _timeLimitRate;
 
     [SerializeField] PhaseController _phaseController = default!;
+    [SerializeField] TimeLimitView _timeLimitView = default!;
 
     TimeLimit _timeLimit;
-
+    int _currentE24Count;
     public event Action OnTimeLimit;
 
     private void Awake()
@@ -23,6 +24,11 @@ public class TimeLimitController : MonoBehaviour
     private void OnDestroy()
     {
         _phaseController.OnTradingPhaseComplete.Remove(OnPhaseComplete);
+    }
+
+    private void Reset()
+    {
+        _phaseController = FindObjectOfType<PhaseController>();
     }
 
     private async UniTask OnPhaseComplete()
@@ -36,7 +42,15 @@ public class TimeLimitController : MonoBehaviour
 
     private void Update()
     {
-        if (_timeLimit != null) _timeLimit.DecreaseTimeDeltaTime();
+        if (_timeLimit != null)
+        {
+            _timeLimit.DecreaseTimeDeltaTime();
+
+            float maxTimeLimit = _currentE24Count * _timeLimitRate;
+
+            _timeLimitView.Rotate(maxTimeLimit);
+            _timeLimitView.Scale(maxTimeLimit);
+        }
     }
 
     private void FixedUpdate()
@@ -56,15 +70,22 @@ public class TimeLimitController : MonoBehaviour
 
     public void Generate(int currentE24Count)
     {
+        _currentE24Count = currentE24Count;
+
         _timeLimit = new(currentE24Count * _timeLimitRate, _timeLimitRate);
     }
 
     public void AddTimeLimit(float value, int currentE24Count)
     {
+        _currentE24Count = currentE24Count;
+
         _timeLimit = _timeLimit.AddTimeLimit(new(value, _timeLimitRate), currentE24Count);
     }
+
     public void ReduceTimeLimit(float value, int currentE24Count)
     {
+        _currentE24Count = currentE24Count;
+
         _timeLimit = _timeLimit.ReduceTimeLimit(new(value, _timeLimitRate), currentE24Count);
     }
 }

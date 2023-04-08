@@ -176,6 +176,7 @@ public class GoodsMediator : DeckMediator
             //インスタンスが一致していたら同じインデックス番号の手札を返す
             if (handler == _cardUIInstance.Handlers[i])
             {
+                if (_hand.Cards.Count <= i) return EEX_null.Instance;
                 return _hand.Cards[i];
             }
         }

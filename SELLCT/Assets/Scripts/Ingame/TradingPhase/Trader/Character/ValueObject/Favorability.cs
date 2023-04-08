@@ -6,12 +6,10 @@ public class Favorability
 {
     public enum Classification
     {
-        Class1,
-        Class2,
-        Class3,
-        Class4,
-        Class5,
-        Class6,
+        Class1 = 1,
+        Class2 = 2,
+        Class3 = 3,
+        Class4 = 4,
 
         Invalid
     }
@@ -33,9 +31,9 @@ public class Favorability
 
         _amount = amount;
         _favourableView = favourableView;
-        
+
         //好感度変動時に好感度表示を調整
-        _favourableView.Set(FavorabilityClassification(_amount));
+        _favourableView.Set(FavorabilityClassification());
     }
 
     /// <summary>
@@ -85,14 +83,12 @@ public class Favorability
         return value;
     }
 
-    private Classification FavorabilityClassification(float amount)
+    public Classification FavorabilityClassification()
     {
-        if (amount == 0) return Classification.Class1;
-        if (amount <= 24f) return Classification.Class2;
-        if (amount <= 49f) return Classification.Class3;
-        if (amount <= 74f) return Classification.Class4;
-        if (amount <= 99f) return Classification.Class5;
-        if (amount == 100f) return Classification.Class6;
+        if (_amount == 0) return Classification.Class1;
+        if (_amount <= 50f) return Classification.Class2;
+        if (_amount <= 99f) return Classification.Class3;
+        if (_amount == 100f) return Classification.Class4;
 
         return Classification.Invalid;
     }

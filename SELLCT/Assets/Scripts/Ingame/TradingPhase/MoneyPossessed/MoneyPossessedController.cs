@@ -6,11 +6,18 @@ using UnityEngine;
 public class MoneyPossessedController : MonoBehaviour
 {
     [SerializeField] int _defaultAmount = 100;
+    [SerializeField] MoneyPossessedView _view = default!;
     Money _money;
+
+    private void Reset()
+    {
+        _view = GetComponent<MoneyPossessedView>();
+    }
 
     private void Awake()
     {
         _money = new(_defaultAmount);
+        _view.ChangeMoneyText(_money);
     }
 
     public void DecreaseMoney(Money money)
@@ -27,7 +34,7 @@ public class MoneyPossessedController : MonoBehaviour
             return;
         }
 
-        Debug.Log(_money.CurrentAmount());
+        _view.ChangeMoneyText(_money);
     }
 
     public void IncreaseMoney(Money money)
@@ -36,6 +43,26 @@ public class MoneyPossessedController : MonoBehaviour
 
         _money = _money.Add(money);
 
-        Debug.Log(_money.CurrentAmount());
+        _view.ChangeMoneyText(_money);
+    }
+
+    public void EnableNumber()
+    {
+        _view.EnableNumber();
+    }    
+    
+    public void DisableNumber()
+    {
+        _view.DisableNumber();
+    }   
+    
+    public void EnableAlphabet()
+    {
+        _view.EnableAlphabet();
+    }    
+    
+    public void DisableAlphabet()
+    {
+        _view.DisableAlphabet();
     }
 }

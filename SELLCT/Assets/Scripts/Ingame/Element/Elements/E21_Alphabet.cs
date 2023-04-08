@@ -34,6 +34,7 @@ public class E21_Alphabet : Card
     {
         StringManager.hasElements[elementIndex] = true;
         _moneyPossessedController.DecreaseMoney(_parameter.GetMoney());
+        _moneyPossessedController.EnableAlphabet();
         _alphabetHandView.Set();
     }
 
@@ -47,6 +48,7 @@ public class E21_Alphabet : Card
         _moneyPossessedController.IncreaseMoney(_parameter.GetMoney());
 
         if (_handMediator.ContainsCard(this)) return;
+        _moneyPossessedController.DisableAlphabet();
         StringManager.hasElements[elementIndex] = false;
         _alphabetHandView.Set();
     }

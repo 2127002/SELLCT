@@ -32,6 +32,7 @@ public class E17_Number : Card
     {
         StringManager.hasElements[elementIndex] = true;
         _moneyPossessedController.DecreaseMoney(_parameter.GetMoney());
+        _moneyPossessedController.EnableNumber();
         _numberHandView.Set();
     }
 
@@ -45,6 +46,7 @@ public class E17_Number : Card
         _moneyPossessedController.IncreaseMoney(_parameter.GetMoney());
 
         if (_handMediator.ContainsCard(this)) return;
+        _moneyPossessedController.DisableNumber();
         StringManager.hasElements[elementIndex] = false;
         _numberHandView.Set();
     }

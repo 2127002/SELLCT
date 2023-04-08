@@ -13,6 +13,8 @@ public class TextBoxController : MonoBehaviour
         _textBoxView.UpdateDisplay();
 
         await _textBoxView.DisplayTextOneByOne();
+
+        await UniTask.Delay(2000);
     }
 
     public void Enable()

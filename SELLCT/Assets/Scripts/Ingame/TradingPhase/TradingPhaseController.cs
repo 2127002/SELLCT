@@ -12,13 +12,11 @@ using UnityEngine.UI;
 public class TradingPhaseController : MonoBehaviour
 {
     [SerializeField] TradingPhaseView _view = default!;
-    [SerializeField] TextBoxController _textBoxController = default!;
-    [SerializeField] TraderController _traderController = default!;
     [SerializeField] PhaseController _phaseController = default!;
     [SerializeField] TimeLimitController _timeLimitController = default!;
     [SerializeField] InputSystemDetector _inputSystemDetector = default!;
     [SerializeField] Selectable _firstSelectable = default!;
-    [SerializeField] PlayerMonologue _playerMonologue = default!;
+    [SerializeField] ConversationController _conversationController = default!;
     [SerializeField] Canvas _canvas = default!;
 
     GameObject _lastSelectedObject = default!;
@@ -64,15 +62,7 @@ public class TradingPhaseController : MonoBehaviour
     //売買フェーズ終了時処理（待機可）
     private async UniTask OnComplete()
     {
-        //プレイヤーの独白に置き換えるか判定する
-        string speaker = _playerMonologue.SwitchToPlayerMonologue ?
-            _playerMonologue.Speaker : _traderController.CurrentTrader.Name;
-
-        string endMessage = _playerMonologue.SwitchToPlayerMonologue ?
-            _playerMonologue.EndMessage() : _traderController.CurrentTrader.EndMessage();
-
-        //テキストの表示
-        await _textBoxController.UpdateText(speaker, endMessage);
+        await _conversationController.OnEnd();
 
         //フェードアウト
         await _view.OnPhaseComplete();

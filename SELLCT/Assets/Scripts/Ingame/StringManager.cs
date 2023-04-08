@@ -74,4 +74,22 @@ public static class StringManager
 
         return new(conformString.ToArray());
     }
+
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <param name="s"></param>
+    /// <returns></returns>
+    /// <exception cref="System.NotImplementedException"></exception>
+    public static string ToInBracketsText(this string s)
+    {
+        string str = "";
+        int firstIndex = s.IndexOf('《');
+        int lastIndex = s.IndexOf('》');
+        if (firstIndex == -1 || lastIndex == -1) throw new System.NotImplementedException("《》のいずれか、あるいは両方が含まれていません。\n"+s);
+        
+        str += s.Substring(firstIndex + 1, lastIndex - firstIndex - 1);
+
+        return str;
+    }
 }

@@ -5,10 +5,9 @@ public class TraderController : MonoBehaviour
 {
     [SerializeField] TraderView _traderView = default!;
     [SerializeField] TraderEncounterController _traderEncounterController = default!;
-    [SerializeField] TextBoxController _textBoxController = default!;
     [SerializeField] PhaseController _phaseController = default!;
-    [SerializeField] PlayerMonologue _playerMonologue = default!;
     [SerializeField] Hand _traderHand = default!;
+    [SerializeField] ConversationController _conversationController = default!;
 
     Trader _currentTrader = default!;
 
@@ -42,15 +41,8 @@ public class TraderController : MonoBehaviour
         //トレーダーによって初期展示数が異なる
         _traderHand.SetDefaultHandCapacity(trader.InitialDisplayItemCount);
 
-        //プレイヤーの独白に置き換えるか判定する
-        bool switchToPlayerMonologue = _playerMonologue.SwitchToPlayerMonologue;
-
-        //出会いのテキストの情報を決定する
-        string speaker = switchToPlayerMonologue ? _playerMonologue.Speaker : trader.Name;
-        string startMessage = switchToPlayerMonologue ? _playerMonologue.StartMessage() : trader.StartMessage();
-
-        //出会いのテキストを表示する
-        _textBoxController.UpdateText(speaker, startMessage).Forget();
+        //トレーダーと出会った時の処理をおこなう。
+        _conversationController.OnStart().Forget();
     }
 
     public Trader CurrentTrader => _currentTrader;

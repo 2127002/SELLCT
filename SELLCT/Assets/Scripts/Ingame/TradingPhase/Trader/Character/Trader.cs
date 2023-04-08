@@ -6,6 +6,12 @@ public abstract class Trader : MonoBehaviour, IConversationMessage
 {
     [SerializeField] protected TraderParameter traderParameter;
     [SerializeField] protected Sprite sprite;
+    [SerializeField] protected ConversationDataBase _start;
+    [SerializeField] protected ConversationDataBase _end;
+    [SerializeField] protected ConversationDataBase _select;
+    [SerializeField] protected ConversationDataBase _buy;
+    [SerializeField] protected ConversationDataBase _sell;
+
     protected Favorability favorability;
     protected readonly TraderDeck deck = new();
 
@@ -31,9 +37,9 @@ public abstract class Trader : MonoBehaviour, IConversationMessage
     public abstract void OnPlayerSell(Card card);
     public abstract void OnPlayerBuy();
 
-    public abstract string StartMessage();
-    public abstract string EndMessage();
-    public abstract string CardMessage(Card card);
-    public abstract string BuyMessage(Card card);
-    public abstract string SellMessage(Card card);
+    public abstract string[] StartMessage();
+    public abstract string[] EndMessage();
+    public abstract string[] CardMessage(Card card);
+    public abstract string[] BuyMessage(Card card);
+    public abstract string[] SellMessage(Card card);
 }
