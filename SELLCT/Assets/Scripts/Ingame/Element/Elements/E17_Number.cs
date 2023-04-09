@@ -6,6 +6,7 @@ public class E17_Number : Card
 {
     [SerializeField] NumberHandView _numberHandView = default!;
     [SerializeField] PhaseController _phaseController = default!;
+    [SerializeField] DeckUIController _deckUIController = default!;
 
     readonly int elementIndex = (int)StringManager.Element.E17;
 
@@ -26,6 +27,9 @@ public class E17_Number : Card
     {
         StringManager.hasElements[elementIndex] = _handMediator.ContainsCard(this);
         _numberHandView.Set();
+
+        if (StringManager.hasElements[elementIndex]) _deckUIController.EnableNumber();
+        else _deckUIController.DisableNumber();
     }
 
     public override void Buy()
@@ -34,6 +38,7 @@ public class E17_Number : Card
         _moneyPossessedController.DecreaseMoney(_parameter.GetMoney());
         _moneyPossessedController.EnableNumber();
         _numberHandView.Set();
+        _deckUIController.EnableNumber();
     }
 
     public override void OnPressedU6Button()
@@ -49,5 +54,6 @@ public class E17_Number : Card
         _moneyPossessedController.DisableNumber();
         StringManager.hasElements[elementIndex] = false;
         _numberHandView.Set();
+        _deckUIController.DisableNumber();
     }
 }

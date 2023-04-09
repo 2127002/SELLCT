@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class TradersInstance : MonoBehaviour
 {
+    [Header("登場させたいトレーダーを選択してください。\n右上の3点リーダからResetを押すことで自動的に全トレーダーがアタッチされます。")]
     [SerializeField] List<Trader> _traders = new();
 
     private void Reset()

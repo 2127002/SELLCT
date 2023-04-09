@@ -8,15 +8,18 @@ public class HandMediator : DeckMediator
     [SerializeField] Hand _hand = default!;
     [SerializeField] CardUIInstance _cardUIInstance = default!;
     [SerializeField] PhaseController _phaseController = default!;
+    [SerializeField] DeckUIController _deckUIController = default!;
 
     //プレイヤーのデッキ
-    readonly PlayerDeck _playerDeck = new();
+    PlayerDeck _playerDeck;
 
     //購入したカードが一時的に入るデッキ
     readonly BuyingCardDeck _buyingCardDeck = new();
 
     private void Awake()
     {
+        _playerDeck = new(_deckUIController);
+
         _phaseController.OnTradingPhaseComplete.Add(OnComplete);
         _phaseController.OnTradingPhaseStart.Add(InitTakeCard);
     }

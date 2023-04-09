@@ -6,16 +6,23 @@ public class TimeLimitView : MonoBehaviour
 {
     [SerializeField] RectTransform _clockHandTransform = default!;
 
-  const  float scaleRate = 0.7f; // スケール変更率
-    Vector3 originalScale = Vector3.one; // 元のスケール
-    float timeElapsed = 0; // 経過時間
+    float _scaleRate = 0.8f; // スケール変更率
+    Vector3 _originalScale = Vector3.one; // 元のスケール
+    float _timeElapsed = 0; // 経過時間
 
     private void Awake()
     {
-        originalScale = _clockHandTransform.localScale;
+        _originalScale = _clockHandTransform.localScale;
     }
 
-    public  void Rotate(float maxTimeLimit)
+    private void OnEnable()
+    {
+        _clockHandTransform.localScale = _originalScale;
+        _clockHandTransform.localRotation = Quaternion.identity;
+        _timeElapsed = 0;
+    }
+
+    public void Rotate(float maxTimeLimit)
     {
         float rotationSpeed = 360f / maxTimeLimit;
 
@@ -25,18 +32,21 @@ public class TimeLimitView : MonoBehaviour
     public void Scale(float maxTimeLimit)
     {
         // 経過時間を加算
-        timeElapsed += Time.deltaTime;
+        _timeElapsed += Time.deltaTime;
 
-        // 1周したら経過時間をリセット
-        if (timeElapsed > maxTimeLimit)
+        // 半周で一旦経過時間をリセットする
+        if (_timeElapsed > maxTimeLimit / 2)
         {
-            timeElapsed = 0.0f;
+            _timeElapsed = 0.0f;
+
+            //行きと帰りでスケールが異なる
+            _scaleRate = 0.7f;
         }
 
         // スケールを変更する
-        float rate = timeElapsed / maxTimeLimit;
+        float rate = _timeElapsed / maxTimeLimit;
         float sinRate = 1f - Mathf.Sin(rate * Mathf.PI * 2.0f);
-        float scale = Mathf.Lerp(originalScale.magnitude * scaleRate, originalScale.magnitude, sinRate);
-        _clockHandTransform.localScale = originalScale.normalized * scale;
+        float scale = Mathf.Lerp(_originalScale.magnitude * _scaleRate, _originalScale.magnitude, sinRate);
+        _clockHandTransform.localScale = _originalScale.normalized * scale;
     }
 }
