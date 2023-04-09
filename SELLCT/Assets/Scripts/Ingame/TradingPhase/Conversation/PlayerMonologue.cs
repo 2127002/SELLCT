@@ -6,6 +6,11 @@ public class PlayerMonologue : MonoBehaviour, IConversationMessage
 {
     [SerializeField] E16_Communication _e16 = default!;
     [SerializeField] E30_Name _e30 = default!;
+    [SerializeField] ConversationDataBase _start;
+    [SerializeField] ConversationDataBase _end;
+    [SerializeField] ConversationDataBase _select;
+    [SerializeField] ConversationDataBase _buy;
+    [SerializeField] ConversationDataBase _sell;
 
     /// <summary>
     /// プレイヤーの独白に置き換えるか
@@ -14,28 +19,38 @@ public class PlayerMonologue : MonoBehaviour, IConversationMessage
 
     public string Speaker => _e30.CardName;
 
-    public string StartMessage()
+    public string[] StartMessage()
     {
-        return "...誰だこいつ。手を差し出しているようだが…？";
+        int index = Random.Range(0, _start.datas.Length);
+
+        return _start.datas[index].Text;
     }
 
-    public string EndMessage()
+    public string[] EndMessage()
     {
-        return "...思ったよりもいいヤツだったな。また会える機会があるかもしれない。";
+        int index = Random.Range(0, _end.datas.Length);
+
+        return _end.datas[index].Text;
     }
 
-    public string CardMessage(Card card)
+    public string[] CardMessage(Card card)
     {
-        throw new System.NotImplementedException();
+        int index = card.Id;
+
+        return _select.datas[index].Text;
     }
 
-    public string BuyMessage(Card card)
+    public string[] BuyMessage(Card card)
     {
-        throw new System.NotImplementedException();
+        int index = card.Id;
+
+        return _buy.datas[index].Text;
     }
 
-    public string SellMessage(Card card)
+    public string[] SellMessage(Card card)
     {
-        throw new System.NotImplementedException();
+        int index = card.Id;
+
+        return _sell.datas[index].Text;
     }
 }

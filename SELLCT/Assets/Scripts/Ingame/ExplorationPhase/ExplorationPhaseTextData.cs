@@ -15,6 +15,11 @@ public class ExplorationPhaseTextData : MonoBehaviour
         _phaseController.OnExplorationPhaseStart += OnExplorationPhaseStart;
     }
 
+    private void OnDestroy()
+    {
+        _phaseController.OnExplorationPhaseStart -= OnExplorationPhaseStart;
+    }
+
     private void OnExplorationPhaseStart()
     {
         _textBoxController.UpdateText(null, startText).Forget();

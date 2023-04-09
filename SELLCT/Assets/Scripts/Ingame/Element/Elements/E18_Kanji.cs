@@ -6,6 +6,8 @@ public class E18_Kanji : Card
 {
     [SerializeField] KanjiHandView _kanjiHandView = default!;
     [SerializeField] PhaseController _phaseController = default!;
+    [SerializeField] TradingNextButtonController _tradingNextButtonController = default!;
+    [SerializeField] DeckUIController _deckUIController = default!;
 
     readonly int elementIndex = (int)StringManager.Element.E18;
 
@@ -22,10 +24,22 @@ public class E18_Kanji : Card
         _phaseController.OnTradingPhaseStart.Remove(OnPhaseStart);
         _phaseController.OnExplorationPhaseStart -= OnPhaseStart;
     }
+
     private void OnPhaseStart()
     {
         StringManager.hasElements[elementIndex] = _handMediator.ContainsCard(this);
         _kanjiHandView.Set();
+
+        if (StringManager.hasElements[elementIndex])
+        {
+            _tradingNextButtonController.OnKanjiEnabled();
+            _deckUIController.EnableKanji();
+        }
+        else
+        {
+            _tradingNextButtonController.OnKanjiDisabled();
+            _deckUIController.DisableKanji();
+        }
     }
 
     public override void Buy()
@@ -33,6 +47,8 @@ public class E18_Kanji : Card
         StringManager.hasElements[elementIndex] = true;
         _moneyPossessedController.DecreaseMoney(_parameter.GetMoney());
         _kanjiHandView.Set();
+        _tradingNextButtonController.OnKanjiEnabled();
+        _deckUIController.EnableKanji();
     }
 
     public override void OnPressedU6Button()
@@ -47,5 +63,7 @@ public class E18_Kanji : Card
         if (_handMediator.ContainsCard(this)) return;
         StringManager.hasElements[elementIndex] = false;
         _kanjiHandView.Set();
+        _tradingNextButtonController.OnKanjiDisabled();
+        _deckUIController.DisableKanji();
     }
 }

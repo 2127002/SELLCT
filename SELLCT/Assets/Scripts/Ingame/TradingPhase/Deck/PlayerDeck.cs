@@ -6,10 +6,17 @@ using UnityEngine;
 public class PlayerDeck : IDeck
 {
     List<Card> _deck = new();
+    DeckUIController _deckUIController = default!;
+
+    public PlayerDeck(DeckUIController deckUIController)
+    {
+        _deckUIController = deckUIController;
+    }
 
     public void Add(Card card)
     {
         _deck.Add(card);
+        _deckUIController.ChangeDeckCount(_deck.Count);
     }
 
     public Card Draw()
@@ -22,9 +29,11 @@ public class PlayerDeck : IDeck
 
         Card card = _deck[index];
         _deck.RemoveAt(index);
+        _deckUIController.ChangeDeckCount(_deck.Count);
 
         return card;
     }
+
     public bool ContainsCard(Card card)
     {
         return _deck.Contains(card);

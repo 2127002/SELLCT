@@ -1,3 +1,4 @@
+using Cysharp.Threading.Tasks;
 using System;
 using System.Collections.Generic;
 using TMPro;
@@ -30,6 +31,8 @@ public class CardUIHandler : MonoBehaviour, IPointerClickHandler, IPointerEnterH
     [SerializeField] TraderController _traderController = default!;
     [SerializeField] PhaseController _phaseController = default!;
 
+    [SerializeField] ConversationController _conversationController = default!;
+
     [SerializeField] EntityType _entityType;
 
     [SerializeField] Card _buyOrSell = default;
@@ -57,6 +60,7 @@ public class CardUIHandler : MonoBehaviour, IPointerClickHandler, IPointerEnterH
     private void OnSubmit()
     {
         Card card = _deckMediator.GetCardAtCardUIHandler(this);
+        if (card.Id < 0) throw new NullReferenceException("選択したカードがNullです。");
 
         //そのカードを手札からなくす
         _deckMediator.RemoveHandCard(card);
@@ -92,6 +96,9 @@ public class CardUIHandler : MonoBehaviour, IPointerClickHandler, IPointerEnterH
 
         //カードの購入時効果を発動する
         purchasedCard.Buy();
+
+        //会話する
+        _conversationController.OnBuy(purchasedCard).Forget();
     }
 
     private void OnSell(Card soldCard)
@@ -111,6 +118,9 @@ public class CardUIHandler : MonoBehaviour, IPointerClickHandler, IPointerEnterH
 
         //カードの売却時効果を発動する
         soldCard.Sell();
+
+        //会話する
+        _conversationController.OnSell(soldCard).Forget();
     }
 
     private void SetNextSelectable()
@@ -257,6 +267,10 @@ public class CardUIHandler : MonoBehaviour, IPointerClickHandler, IPointerEnterH
             sizeDelta.Scale(correction);
             item.rectTransform.sizeDelta = sizeDelta;
         }
+
+        //テキスト更新
+        Card card = _deckMediator.GetCardAtCardUIHandler(this);
+        _conversationController.OnSelect(card).Forget();
     }
 
     [Obsolete("UnityのEventを受け取って実行されるメソッドです。Eventを受け取る以外の使用は想定されていません。", false)]

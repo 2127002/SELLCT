@@ -42,29 +42,41 @@ public class TR2_RuinedNobility : Trader
         }
     }
 
-    public override string BuyMessage(Card card)
+    public override string[] BuyMessage(Card card)
     {
-        throw new System.NotImplementedException();
+        int cardId = card.Id;
+
+       return _buy.datas[cardId].Text;
     }
 
-    public override string CardMessage(Card card)
+    public override string[] CardMessage(Card card)
     {
-        throw new System.NotImplementedException();
+        int cardId = card.Id;
+
+        return _select.datas[cardId].Text;
     }
 
-    public override string EndMessage()
+    public override string[] EndMessage()
     {
-        return "「時は宝石なり」\r\n「誰の言葉かって？」\r\n「俺の言葉だよ」";
+        List<ConversationData> end = _end.datas.Where(x => x.Likability.Contains((int)favorability.FavorabilityClassification())).ToList();
+
+        int index = Random.Range(0, end.Count());
+        return end[index].Text;
     }
 
-    public override string SellMessage(Card card)
+    public override string[] SellMessage(Card card)
     {
-        throw new System.NotImplementedException();
+        int cardId = card.Id;
+
+        return _sell.datas[cardId].Text;
     }
 
-    public override string StartMessage()
+    public override string[] StartMessage()
     {
-        return "「ここは随分と暗いな」\r\n「けれど、暗闇でこそ輝くものに価値はある」\r\n「さて、今日はどんな宝石を持ってきたんだ？」";
+        List<ConversationData> start = _start.datas.Where(x => x.Likability.Contains((int)favorability.FavorabilityClassification())).ToList();
+
+        int index = Random.Range(0, start.Count());
+        return start[index].Text;
     }
 
     public override void OnPlayerSell(Card selledCard)
