@@ -14,6 +14,8 @@ public class E7_Move : Card
     public override void Buy()
     {
         _moneyPossessedController.DecreaseMoney(_parameter.GetMoney());
+
+        OnBuy();
     }
 
     public override void OnPressedU6Button()
@@ -24,10 +26,16 @@ public class E7_Move : Card
     public override void Sell()
     {
         _moneyPossessedController.IncreaseMoney(_parameter.GetMoney());
-        MoveChecker();
+
+        OnSell();
     }
 
-    public void MoveChecker()
+    public void OnBuy()
+    {
+        _u7.enabled = true;
+        _selectable.interactable = true;
+    }
+    public void OnSell()
     {
         if (_handMediator.ContainsCard(this)) return;
         _u7.enabled = false;
