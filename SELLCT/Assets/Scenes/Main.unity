@@ -5855,6 +5855,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _selectable: {fileID: 1294856004}
   _phaseController: {fileID: 495064998}
+  _floor01Answer02: {fileID: 2129735621}
 --- !u!222 &1294856002
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -10204,6 +10205,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2129735620}
   - component: {fileID: 2129735619}
+  - component: {fileID: 2129735621}
   m_Layer: 0
   m_Name: Floor01
   m_TagString: Untagged
@@ -10242,6 +10244,25 @@ Transform:
   m_Father: {fileID: 1125813986}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2129735621
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2129735618}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f41de35086aecca45a929383af54ef09, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _e37: {fileID: 1928785346}
+  _e7: {fileID: 1733877178}
+  defaultSuccessRate: 10
+  successRateIncreasePercentage: 5
+  requiredEventCount: 3
+  _textBoxController: {fileID: 1775029163}
+  _phaseController: {fileID: 495064998}
 --- !u!1 &130072455100872260
 GameObject:
   m_ObjectHideFlags: 0

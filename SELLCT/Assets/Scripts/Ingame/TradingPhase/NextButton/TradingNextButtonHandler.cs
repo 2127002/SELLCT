@@ -9,6 +9,7 @@ public class TradingNextButtonHandler : MonoBehaviour, ISelectableHighlight, IPo
     [SerializeField] Selectable _selectable = default!;
 
     [SerializeField] PhaseController _phaseController = default!;
+    [SerializeField] Floor01Answer02 _floor01Answer02 = default!;
 
     Color _defaultSelectColor = default!;
 
@@ -42,6 +43,8 @@ public class TradingNextButtonHandler : MonoBehaviour, ISelectableHighlight, IPo
     private void Submit()
     {
         //フェーズ終了を知らせる
+        _floor01Answer02.Go();
+
         _phaseController.CompleteTradingPhase();
     }
 

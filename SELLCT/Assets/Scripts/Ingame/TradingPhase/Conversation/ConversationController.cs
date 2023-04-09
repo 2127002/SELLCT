@@ -1,4 +1,5 @@
 using Cysharp.Threading.Tasks;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -36,7 +37,16 @@ public class ConversationController : MonoBehaviour
         //出会いのテキストを表示する
         for (int i = 0; i < startMessage.Length; i++)
         {
-            await _textBoxController.UpdateText(speaker, startMessage[i].ToInBracketsText());
+            try
+            {
+                await _textBoxController.UpdateText(speaker, startMessage[i].ToInBracketsText());
+            }
+            catch (OperationCanceledException)
+            {
+                //キャンセルされた場合は処理を終了する
+                return;
+            }
+
         }
     }
 
@@ -57,7 +67,15 @@ public class ConversationController : MonoBehaviour
         //テキストの表示
         for (int i = 0; i < endMessage.Length; i++)
         {
-            await _textBoxController.UpdateText(speaker, endMessage[i].ToInBracketsText());
+            try
+            {
+                await _textBoxController.UpdateText(speaker, endMessage[i].ToInBracketsText());
+            }
+            catch (OperationCanceledException)
+            {
+                //キャンセルされた場合は処理を終了する
+                return;
+            }
         }
     }
 
@@ -79,7 +97,15 @@ public class ConversationController : MonoBehaviour
 
         for (int i = 0; i < cardMessage.Length; i++)
         {
-            await _textBoxController.UpdateText(speaker, cardMessage[i].ToInBracketsText());
+            try
+            {
+                await _textBoxController.UpdateText(speaker, cardMessage[i].ToInBracketsText());
+            }
+            catch (OperationCanceledException)
+            {
+                //キャンセルされた場合は処理を終了する
+                return;
+            }
         }
     }
 
@@ -101,7 +127,11 @@ public class ConversationController : MonoBehaviour
 
         for (int i = 0; i < message.Length; i++)
         {
-            await _textBoxController.UpdateText(speaker, message[i].ToInBracketsText());
+            try
+            {
+                await _textBoxController.UpdateText(speaker, message[i].ToInBracketsText());
+            }
+            catch (OperationCanceledException) { return; }
         }
     }
 
@@ -123,7 +153,11 @@ public class ConversationController : MonoBehaviour
 
         for (int i = 0; i < message.Length; i++)
         {
-            await _textBoxController.UpdateText(speaker, message[i].ToInBracketsText());
+            try
+            {
+                await _textBoxController.UpdateText(speaker, message[i].ToInBracketsText());
+            }
+            catch (OperationCanceledException) { return; }
         }
     }
 }
