@@ -6,7 +6,7 @@ public class TimeLimitView : MonoBehaviour
 {
     [SerializeField] RectTransform _clockHandTransform = default!;
 
-    float _scaleRate = 0.8f; // スケール変更率
+    float _scaleRate = 0.7f; // スケール変更率
     Vector3 _originalScale = Vector3.one; // 元のスケール
     float _timeElapsed = 0; // 経過時間
 
@@ -26,7 +26,7 @@ public class TimeLimitView : MonoBehaviour
     {
         float rotationSpeed = 360f / maxTimeLimit;
 
-        _clockHandTransform.Rotate(Vector3.forward, rotationSpeed * Time.deltaTime);
+        _clockHandTransform.Rotate(Vector3.forward, -rotationSpeed * Time.deltaTime);
     }
 
     public void Scale(float maxTimeLimit)
@@ -40,7 +40,7 @@ public class TimeLimitView : MonoBehaviour
             _timeElapsed = 0.0f;
 
             //行きと帰りでスケールが異なる
-            _scaleRate = 0.7f;
+            _scaleRate = 0.8f;
         }
 
         // スケールを変更する

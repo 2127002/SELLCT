@@ -46,7 +46,7 @@ public class TextBoxView : MonoBehaviour
             catch (OperationCanceledException)
             {
                 //キャンセルされた場合は処理を終了する
-                return;
+                throw new OperationCanceledException("新たなテキストが代入されました。以前のテキスト処理を終了してください。");
             }
         }
 
