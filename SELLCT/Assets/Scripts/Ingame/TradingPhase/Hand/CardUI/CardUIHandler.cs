@@ -17,16 +17,14 @@ public class CardUIHandler : MonoBehaviour, IPointerClickHandler, IPointerEnterH
         Invalid,
     }
 
+    [SerializeField] CardUIView _cardUIView = default!;
+
     //デッキと手札の管理者。Subはメインの逆のmediator。
     [SerializeField] DeckMediator _deckMediator = default!;
     [SerializeField] DeckMediator _subDeckMediator = default!;
 
     //選択肢
     [SerializeField] Selectable _selectable = default!;
-
-    //カード表示
-    [SerializeField] List<Image> _cardImages = default!;
-    [SerializeField] TextMeshProUGUI _cardText = default!;
 
     [SerializeField] TraderController _traderController = default!;
     [SerializeField] PhaseController _phaseController = default!;
@@ -38,16 +36,20 @@ public class CardUIHandler : MonoBehaviour, IPointerClickHandler, IPointerEnterH
     [SerializeField] EntityType _entityType;
 
     Color _defaultSelectColor = default!;
-    [SerializeField] Vector2 _defaultSizeDelta = default!;
 
     //selectableの有効かを保存
     bool _interactable = true;
 
-    //選択時画像サイズ補正値
-    const float CORRECTION_SIZE = 1.25f;
-    static readonly Vector2 correction = new(CORRECTION_SIZE, CORRECTION_SIZE);
+    public IReadOnlyList<Image> CardImages => _cardUIView.CardImages;
 
-    public IReadOnlyList<Image> CardImages => _cardImages;
+    private void Reset()
+    {
+        _cardUIView = GetComponent<CardUIView>();
+        _moneyPossessedController = FindObjectOfType<MoneyPossessedController>();
+        _traderController = FindObjectOfType<TraderController>();
+        _conversationController = FindObjectOfType<ConversationController>();
+        _selectable = GetComponent<Selectable>();
+    }
 
     private void Awake()
     {
@@ -87,7 +89,6 @@ public class CardUIHandler : MonoBehaviour, IPointerClickHandler, IPointerEnterH
         }
         catch (NegativeMoneyException)
         {
-            //お金が足りない場合なにもしない
             return;
         }
 
@@ -118,10 +119,8 @@ public class CardUIHandler : MonoBehaviour, IPointerClickHandler, IPointerEnterH
     {
         _moneyPossessedController.IncreaseMoney(soldCard.Price);
 
-        //そのカードを手札からなくす
+        //そのカードを手札からなくし、新たにカードを引く
         _deckMediator.RemoveHandCard(soldCard);
-
-        //新たにカードを引く
         _deckMediator.DrawCard();
 
         //商人の手札売却処理
@@ -176,8 +175,8 @@ public class CardUIHandler : MonoBehaviour, IPointerClickHandler, IPointerEnterH
     /// <param name="card">表示したいカード</param>
     public void SetCardSprites(Card card)
     {
-        //一旦すべての表示を消す
-        DisableAllCardUIs();
+        //一度全部UIを消す
+        _cardUIView.DisableAllCardUIs();
 
         //カードがnull相当だった場合、早期リターン
         if (card.Id < 0)
@@ -190,46 +189,39 @@ public class CardUIHandler : MonoBehaviour, IPointerClickHandler, IPointerEnterH
         //選択可能状態を変更する
         _selectable.interactable = _interactable;
 
-        //0番目はBaseなため必ず表示される
-        _cardImages[0].enabled = true;
-        _cardImages[0].sprite = card.CardSprite[0];
-
-        //以降の文字要素は、エレメントの所持状況で表示が切り替わる
-        for (int i = 1; i < _cardImages.Count; i++)
-        {
-            //カードに該当文字が無い場合の対応
-            if (card.CardSprite[i] == null)
-            {
-                _cardImages[i].sprite = null;
-                _cardImages[i].enabled = false;
-                continue;
-            }
-
-            //Spriteをセットし、エレメントの所持状況で表示を切り替える
-            //index番号はbase分がズレている。
-            _cardImages[i].sprite = card.CardSprite[i];
-            _cardImages[i].enabled = StringManager.hasElements[i - 1];
-        }
-
-        //テキストで名前を表示するエレメントか判定
-        bool isPrintText = card.Id == 30;
-
-        //表示する
-        _cardText.enabled = isPrintText;
-        _cardText.text = card.CardName;
+        //UIを変更する
+        _cardUIView.SetCardSprites(card);
     }
 
-    private void DisableAllCardUIs()
+    /// <summary>
+    /// Selectableを有効にする
+    /// </summary>
+    public void EnabledSelectebility()
     {
-        foreach (var image in _cardImages)
-        {
-            image.enabled = false;
-        }
-
-        _cardText.enabled = false;
+        _selectable.interactable = true;
+        _interactable = true;
     }
 
-    [Obsolete("UnityのEventを受け取って実行されるメソッドです。Eventを受け取る以外の使用は想定されていません。", true)]
+    /// <summary>
+    /// Selectableを無効にする
+    /// </summary>
+    public void DisableSelectability()
+    {
+        _selectable.interactable = false;
+        _interactable = false;
+    }
+
+    /// <summary>
+    /// オブジェクト生成時に行う処理
+    /// </summary>
+    public void OnGenerate()
+    {
+        //このオブジェクトが選択中なら実行しない
+        if (gameObject == EventSystem.current.currentSelectedGameObject) return;
+
+        _cardUIView.ResetImagesSizeDelta();
+    }
+
     public void OnPointerClick(PointerEventData eventData)
     {
         if (eventData == null) throw new NullReferenceException();
@@ -244,7 +236,6 @@ public class CardUIHandler : MonoBehaviour, IPointerClickHandler, IPointerEnterH
         OnSubmit();
     }
 
-    [Obsolete("UnityのEventを受け取って実行されるメソッドです。Eventを受け取る以外の使用は想定されていません。", true)]
     public void OnPointerEnter(PointerEventData eventData)
     {
         if (eventData == null) throw new NullReferenceException();
@@ -254,7 +245,6 @@ public class CardUIHandler : MonoBehaviour, IPointerClickHandler, IPointerEnterH
         _selectable.Select();
     }
 
-    [Obsolete("UnityのEventを受け取って実行されるメソッドです。Eventを受け取る以外の使用は想定されていません。", true)]
     public void OnPointerExit(PointerEventData eventData)
     {
         if (eventData == null) throw new NullReferenceException();
@@ -264,11 +254,9 @@ public class CardUIHandler : MonoBehaviour, IPointerClickHandler, IPointerEnterH
         EventSystem.current.SetSelectedGameObject(null);
     }
 
-    [Obsolete("UnityのEventを受け取って実行されるメソッドです。Eventを受け取る以外の使用は想定されていません。", true)]
     public void OnSubmit(BaseEventData eventData)
     {
         if (eventData == null) throw new NullReferenceException();
-
         if (!_selectable.interactable) return;
 
         //同一処理のため以下の処理を呼ぶだけにします。
@@ -276,48 +264,24 @@ public class CardUIHandler : MonoBehaviour, IPointerClickHandler, IPointerEnterH
         OnSubmit();
     }
 
-    [Obsolete("UnityのEventを受け取って実行されるメソッドです。Eventを受け取る以外の使用は想定されていません。", true)]
     public void OnSelect(BaseEventData eventData)
     {
         if (eventData == null) throw new NullReferenceException();
 
         //TODO:SE1の再生
 
-        //拡大率を指定値に変える
-        foreach (var item in _cardImages)
-        {
-            Vector2 sizeDelta = item.rectTransform.sizeDelta;
-            sizeDelta.Scale(correction);
-            item.rectTransform.sizeDelta = sizeDelta;
-        }
+        _cardUIView.SetImagesSizeDelta();
 
         //テキスト更新
         Card card = _deckMediator.GetCardAtCardUIHandler(this);
         _conversationController.OnSelect(card).Forget();
     }
 
-    [Obsolete("UnityのEventを受け取って実行されるメソッドです。Eventを受け取る以外の使用は想定されていません。", false)]
     public void OnDeselect(BaseEventData eventData)
     {
         if (eventData == null) throw new NullReferenceException();
 
-        //拡大率を初期値に戻す
-        foreach (var item in _cardImages)
-        {
-            item.rectTransform.sizeDelta = _defaultSizeDelta;
-        }
-    }
-
-    public void EnabledSelectebility()
-    {
-        _selectable.interactable = true;
-        _interactable = true;
-    }
-
-    public void DisableSelectability()
-    {
-        _selectable.interactable = false;
-        _interactable = false;
+        _cardUIView.ResetImagesSizeDelta();
     }
 
     public void EnableHighlight()
@@ -339,16 +303,5 @@ public class CardUIHandler : MonoBehaviour, IPointerClickHandler, IPointerEnterH
         //実際はハイライト色を通常色に変えてるだけ
         selectableColors.selectedColor = selectableColors.normalColor;
         _selectable.colors = selectableColors;
-    }
-
-    public void OnGenerate()
-    {
-        if (gameObject == EventSystem.current.currentSelectedGameObject) return;
-
-        //拡大率を初期値に戻す
-        foreach (var item in _cardImages)
-        {
-            item.rectTransform.sizeDelta = _defaultSizeDelta;
-        }
     }
 }
