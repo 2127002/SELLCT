@@ -4179,7 +4179,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _parameter:
-    _price: 100
+    _price: 0
     _name: 
     _rarity: 1
     _isDisposedOfAfterSell: 0
@@ -10531,6 +10531,7 @@ GameObject:
   - component: {fileID: 2953681527447150716}
   - component: {fileID: 1226257586872831315}
   - component: {fileID: 8999427033305422426}
+  - component: {fileID: 8999427033305422427}
   - component: {fileID: 7680564825398813893}
   m_Layer: 0
   m_Name: U3_Card1
@@ -10906,6 +10907,7 @@ GameObject:
   - component: {fileID: 5999101841604059456}
   - component: {fileID: 636219140081683729}
   - component: {fileID: 6495868728072664683}
+  - component: {fileID: 6495868728072664684}
   - component: {fileID: 4021303104995609946}
   m_Layer: 0
   m_Name: U1_Card1
@@ -10972,9 +10974,27 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b71e4037a0770cd4490bbbb424987e85, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _cardUIView: {fileID: 6495868728072664684}
   _deckMediator: {fileID: 1975269151}
   _subDeckMediator: {fileID: 1723587017}
   _selectable: {fileID: 4021303104995609946}
+  _traderController: {fileID: 1210986883}
+  _phaseController: {fileID: 495064998}
+  _conversationController: {fileID: 1775029164}
+  _moneyPossessedController: {fileID: 157262628}
+  _entityType: 0
+--- !u!114 &6495868728072664684
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5745975497138096458}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b12d82dbd9433f84ba9706f9e3d46fcd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
   _cardImages:
   - {fileID: 636219140081683729}
   - {fileID: 7430779684233366616}
@@ -10983,11 +11003,6 @@ MonoBehaviour:
   - {fileID: 7358856788846396334}
   - {fileID: 8709485035699750024}
   _cardText: {fileID: 1022315533}
-  _traderController: {fileID: 1210986883}
-  _phaseController: {fileID: 495064998}
-  _conversationController: {fileID: 1775029164}
-  _moneyPossessedController: {fileID: 157262628}
-  _entityType: 0
   _defaultSizeDelta: {x: 225, y: 288}
 --- !u!114 &7358856788846396334
 MonoBehaviour:
@@ -11238,9 +11253,27 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b71e4037a0770cd4490bbbb424987e85, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _cardUIView: {fileID: 8999427033305422427}
   _deckMediator: {fileID: 1723587017}
   _subDeckMediator: {fileID: 1975269151}
   _selectable: {fileID: 7680564825398813893}
+  _traderController: {fileID: 1210986883}
+  _phaseController: {fileID: 495064998}
+  _conversationController: {fileID: 1775029164}
+  _moneyPossessedController: {fileID: 157262628}
+  _entityType: 1
+--- !u!114 &8999427033305422427
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1719357583859925692}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b12d82dbd9433f84ba9706f9e3d46fcd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
   _cardImages:
   - {fileID: 1226257586872831315}
   - {fileID: 797066061168805856}
@@ -11249,11 +11282,6 @@ MonoBehaviour:
   - {fileID: 6430242922663903889}
   - {fileID: 1825944139870105006}
   _cardText: {fileID: 1068639690}
-  _traderController: {fileID: 1210986883}
-  _phaseController: {fileID: 495064998}
-  _conversationController: {fileID: 1775029164}
-  _moneyPossessedController: {fileID: 157262628}
-  _entityType: 1
   _defaultSizeDelta: {x: 225, y: 288}
 --- !u!114 &9069546498969095532
 MonoBehaviour:
