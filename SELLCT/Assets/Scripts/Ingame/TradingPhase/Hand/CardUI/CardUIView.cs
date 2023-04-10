@@ -90,4 +90,20 @@ public class CardUIView : MonoBehaviour
             item.rectTransform.sizeDelta = _defaultSizeDelta;
         }
     }
+
+    public void OnSelectableEnabled(Color normalColor)
+    {
+        foreach (var cardImage in _cardImages)
+        {
+            cardImage.color = normalColor;
+        }
+    }    
+    
+    public void OnSelectableDisabled(Color disabledColor)
+    {
+        foreach (var cardImage in _cardImages)
+        {
+            cardImage.color = disabledColor;
+        }
+    }
 }

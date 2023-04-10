@@ -1495,8 +1495,6 @@ MonoBehaviour:
   _katakana: {fileID: 0}
   _alphabet: {fileID: 0}
   _handMediator: {fileID: 1975269151}
-  _defaultColor: {r: 1, g: 1, b: 1, a: 1}
-  _disabledColor: {r: 0.972549, g: 0.8039216, b: 0.8039216, a: 0.49803922}
   _handCardUIInstance: {fileID: 907251447}
 --- !u!1 &324477192
 GameObject:
@@ -9975,7 +9973,6 @@ MonoBehaviour:
   _katakana: {fileID: 0}
   _alphabet: {fileID: 0}
   _handMediator: {fileID: 1975269151}
-  _disabledColor: {r: 0.972549, g: 0.8039216, b: 0.8039216, a: 0.49803922}
   _goodsCardUIInstance: {fileID: 1960932980}
 --- !u!1 &2037373638
 GameObject:
@@ -10749,7 +10746,7 @@ MonoBehaviour:
     m_HighlightedColor: {r: 1, g: 1, b: 1, a: 1}
     m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
     m_SelectedColor: {r: 1, g: 0, b: 0, a: 1}
-    m_DisabledColor: {r: 1, g: 1, b: 1, a: 1}
+    m_DisabledColor: {r: 1, g: 1, b: 1, a: 0.49803922}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
   m_SpriteState:
@@ -10982,6 +10979,7 @@ MonoBehaviour:
   _phaseController: {fileID: 495064998}
   _conversationController: {fileID: 1775029164}
   _moneyPossessedController: {fileID: 157262628}
+  _buyOrSell: {fileID: 322592332}
   _entityType: 0
 --- !u!114 &6495868728072664684
 MonoBehaviour:
@@ -11125,7 +11123,7 @@ MonoBehaviour:
     m_HighlightedColor: {r: 1, g: 1, b: 1, a: 1}
     m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
     m_SelectedColor: {r: 1, g: 0, b: 0, a: 1}
-    m_DisabledColor: {r: 1, g: 1, b: 1, a: 1}
+    m_DisabledColor: {r: 1, g: 1, b: 1, a: 0.49803922}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
   m_SpriteState:
@@ -11261,6 +11259,7 @@ MonoBehaviour:
   _phaseController: {fileID: 495064998}
   _conversationController: {fileID: 1775029164}
   _moneyPossessedController: {fileID: 157262628}
+  _buyOrSell: {fileID: 2010756546}
   _entityType: 1
 --- !u!114 &8999427033305422427
 MonoBehaviour:

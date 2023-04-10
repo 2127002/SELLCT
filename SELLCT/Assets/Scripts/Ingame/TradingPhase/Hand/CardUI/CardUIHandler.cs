@@ -1,10 +1,22 @@
 using Cysharp.Threading.Tasks;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
+
+/// <summary>
+/// Selectableのinteractableを変更するタイミング
+/// </summary>
+public enum InteractableChange
+{
+    Element,
+    Money,
+
+    Max
+}
 
 public class CardUIHandler : MonoBehaviour, IPointerClickHandler, IPointerEnterHandler, IPointerExitHandler, ISubmitHandler, ISelectHandler, IDeselectHandler, ISelectableHighlight
 {
@@ -33,12 +45,14 @@ public class CardUIHandler : MonoBehaviour, IPointerClickHandler, IPointerEnterH
 
     [SerializeField] MoneyPossessedController _moneyPossessedController = default!;
 
+    [SerializeField] Card _buyOrSell = default!;
+
     [SerializeField] EntityType _entityType;
 
     Color _defaultSelectColor = default!;
 
     //selectableの有効かを保存
-    bool _interactable = true;
+    readonly bool[] _interactables = new bool[(int)InteractableChange.Max];
 
     public IReadOnlyList<Image> CardImages => _cardUIView.CardImages;
 
@@ -55,6 +69,12 @@ public class CardUIHandler : MonoBehaviour, IPointerClickHandler, IPointerEnterH
     {
         _defaultSelectColor = _selectable.colors.selectedColor;
         _phaseController.OnTradingPhaseStart.Add(OnGenerate);
+
+        if (_entityType == EntityType.Player)
+        {
+            //プレイヤーはお金に関係なく売却可能
+            _interactables[(int)InteractableChange.Money] = true;
+        }
     }
 
     private void OnDestroy()
@@ -187,7 +207,8 @@ public class CardUIHandler : MonoBehaviour, IPointerClickHandler, IPointerEnterH
         }
 
         //選択可能状態を変更する
-        _selectable.interactable = _interactable;
+        bool allInteractablesIsOk = !_interactables.Contains(false);
+        _selectable.interactable = allInteractablesIsOk;
 
         //UIを変更する
         _cardUIView.SetCardSprites(card);
@@ -196,19 +217,27 @@ public class CardUIHandler : MonoBehaviour, IPointerClickHandler, IPointerEnterH
     /// <summary>
     /// Selectableを有効にする
     /// </summary>
-    public void EnabledSelectebility()
+    public void EnabledSelectebility(InteractableChange timing)
     {
-        _selectable.interactable = true;
-        _interactable = true;
+        _interactables[(int)timing] = true;
+
+        //選択可能状態を変更する
+        bool allInteractablesIsOk = !_interactables.Contains(false);
+        _selectable.interactable = allInteractablesIsOk;
+
+        if (!allInteractablesIsOk) return;
+        _cardUIView.OnSelectableEnabled(_selectable.colors.normalColor);
     }
 
     /// <summary>
     /// Selectableを無効にする
     /// </summary>
-    public void DisableSelectability()
+    public void DisableSelectability(InteractableChange timing)
     {
         _selectable.interactable = false;
-        _interactable = false;
+        _interactables[(int)timing] = false;
+
+        _cardUIView.OnSelectableDisabled(_selectable.colors.disabledColor);
     }
 
     /// <summary>
@@ -216,6 +245,15 @@ public class CardUIHandler : MonoBehaviour, IPointerClickHandler, IPointerEnterH
     /// </summary>
     public void OnGenerate()
     {
+        if (_buyOrSell.ContainsPlayerDeck)
+        {
+            EnabledSelectebility(InteractableChange.Element);
+        }
+        else
+        {
+            DisableSelectability(InteractableChange.Element);
+        }
+
         //このオブジェクトが選択中なら実行しない
         if (gameObject == EventSystem.current.currentSelectedGameObject) return;
 
@@ -267,6 +305,7 @@ public class CardUIHandler : MonoBehaviour, IPointerClickHandler, IPointerEnterH
     public void OnSelect(BaseEventData eventData)
     {
         if (eventData == null) throw new NullReferenceException();
+        if (!_selectable.interactable) return;
 
         //TODO:SE1の再生
 

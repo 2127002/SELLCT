@@ -36,7 +36,14 @@ public class MoneyPossessedController : MonoBehaviour
         {
             foreach (var handler in _traderCardUIInstance.Handlers)
             {
-                handler.DisableSelectability();
+                handler.DisableSelectability(InteractableChange.Money);
+            }
+        }
+        else
+        {
+            foreach (var handler in _traderCardUIInstance.Handlers)
+            {
+                handler.EnabledSelectebility(InteractableChange.Money);
             }
         }
     }
@@ -64,7 +71,7 @@ public class MoneyPossessedController : MonoBehaviour
         {
             foreach (var handler in _traderCardUIInstance.Handlers)
             {
-                handler.DisableSelectability();
+                handler.DisableSelectability(InteractableChange.Money);
             }
         }
 
@@ -75,16 +82,27 @@ public class MoneyPossessedController : MonoBehaviour
     {
         if (money == null) throw new ArgumentNullException();
 
+        Money prebMoney = _money;
+
         _money = _money.Add(money);
-        if (_money > Money.Zero)
-        {
-            foreach (var handler in _traderCardUIInstance.Handlers)
-            {
-                handler.EnabledSelectebility();
-            }
-        }
+
+        CheckMoney(prebMoney);
 
         _view.ChangeMoneyText(_money);
+    }
+
+    private void CheckMoney(Money prebMoney)
+    {
+        //買う前のお金が既定値以下なら実行
+        if (prebMoney > Money.Zero) return;
+
+        //今回で既定値を超えたら実行
+        if (_money <= Money.Zero) return;
+        
+        foreach (var handler in _traderCardUIInstance.Handlers)
+        {
+            handler.EnabledSelectebility(InteractableChange.Money);
+        }
     }
 
     public void EnableNumber()
