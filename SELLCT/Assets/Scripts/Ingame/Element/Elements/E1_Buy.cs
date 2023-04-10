@@ -14,7 +14,6 @@ public class E1_Buy : Card
 
     public override void Buy()
     {
-        _moneyPossessedController.DecreaseMoney(_parameter.GetMoney());
     }
 
     public override void OnPressedU6Button()
@@ -24,7 +23,6 @@ public class E1_Buy : Card
 
     public override void Sell()
     {
-        _moneyPossessedController.IncreaseMoney(_parameter.GetMoney());
         OnSell();
     }
 

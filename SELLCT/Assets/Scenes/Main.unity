@@ -172,7 +172,6 @@ MonoBehaviour:
     _name: 
     _rarity: 1
     _isDisposedOfAfterSell: 0
-  _moneyPossessedController: {fileID: 157262628}
   _baseSprite: {fileID: 21300000, guid: 7c9d96f5dd01db848a0017518c30bbb6, type: 3}
   _number: {fileID: 0}
   _chineseCharacters: {fileID: 21300000, guid: 5d6245118d4c82541bf7ec208097529f, type: 3}
@@ -612,6 +611,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _defaultAmount: 100
   _view: {fileID: 157262629}
+  _traderCardUIInstance: {fileID: 1960932980}
+  _phaseController: {fileID: 495064998}
 --- !u!114 &157262629
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1062,7 +1063,6 @@ MonoBehaviour:
     _name: 
     _rarity: 1
     _isDisposedOfAfterSell: 0
-  _moneyPossessedController: {fileID: 157262628}
   _baseSprite: {fileID: 21300000, guid: f23cf34a8a0513a40a26325d79ec790f, type: 3}
   _number: {fileID: 0}
   _chineseCharacters: {fileID: 21300000, guid: 78f016094fb24fd4eaa2e113a49d1769, type: 3}
@@ -1488,7 +1488,6 @@ MonoBehaviour:
     _name: 
     _rarity: 1
     _isDisposedOfAfterSell: 0
-  _moneyPossessedController: {fileID: 157262628}
   _baseSprite: {fileID: 21300000, guid: d136f28fcb5ebac4b871dfd015bed99f, type: 3}
   _number: {fileID: 0}
   _chineseCharacters: {fileID: 21300000, guid: f0b01c9135c70604da68ae9bf6ac6b85, type: 3}
@@ -1983,7 +1982,6 @@ MonoBehaviour:
     _name: 
     _rarity: 1
     _isDisposedOfAfterSell: 0
-  _moneyPossessedController: {fileID: 0}
   _baseSprite: {fileID: 0}
   _number: {fileID: 0}
   _chineseCharacters: {fileID: 0}
@@ -2215,7 +2213,6 @@ MonoBehaviour:
     _name: 
     _rarity: 1
     _isDisposedOfAfterSell: 0
-  _moneyPossessedController: {fileID: 157262628}
   _baseSprite: {fileID: 21300000, guid: b4c1f141f074b2649be9ad4a6ce9973c, type: 3}
   _number: {fileID: 0}
   _chineseCharacters: {fileID: 21300000, guid: 93f0b0563107d544db62d6a9cf117bd5, type: 3}
@@ -2687,7 +2684,6 @@ MonoBehaviour:
     _name: 
     _rarity: 1
     _isDisposedOfAfterSell: 0
-  _moneyPossessedController: {fileID: 157262628}
   _baseSprite: {fileID: 21300000, guid: 7b2184d1e1af8204189a936161f8d75f, type: 3}
   _number: {fileID: 0}
   _chineseCharacters: {fileID: 0}
@@ -3362,7 +3358,6 @@ MonoBehaviour:
     _name: 
     _rarity: 1
     _isDisposedOfAfterSell: 0
-  _moneyPossessedController: {fileID: 157262628}
   _baseSprite: {fileID: 21300000, guid: 3c64f6fe91d4bba4bbe55fc1480b031e, type: 3}
   _number: {fileID: 0}
   _chineseCharacters: {fileID: 0}
@@ -3434,7 +3429,6 @@ MonoBehaviour:
     _name: 
     _rarity: 1
     _isDisposedOfAfterSell: 0
-  _moneyPossessedController: {fileID: 157262628}
   _baseSprite: {fileID: 21300000, guid: 0fb748c56efc3c74eb343d531f979177, type: 3}
   _number: {fileID: 0}
   _chineseCharacters: {fileID: 0}
@@ -3493,7 +3487,6 @@ MonoBehaviour:
     _name: 
     _rarity: 1
     _isDisposedOfAfterSell: 0
-  _moneyPossessedController: {fileID: 157262628}
   _baseSprite: {fileID: 21300000, guid: 6bf4acb804a99d64698d420cb7654632, type: 3}
   _number: {fileID: 0}
   _chineseCharacters: {fileID: 21300000, guid: e51e7375c7beb784c950f3653a516e71, type: 3}
@@ -3839,7 +3832,6 @@ MonoBehaviour:
     _name: 
     _rarity: 1
     _isDisposedOfAfterSell: 0
-  _moneyPossessedController: {fileID: 157262628}
   _baseSprite: {fileID: 21300000, guid: 88964503994b35347b28a1cca19190d9, type: 3}
   _number: {fileID: 0}
   _chineseCharacters: {fileID: 0}
@@ -4135,7 +4127,6 @@ MonoBehaviour:
     _name: "\u547D"
     _rarity: 1
     _isDisposedOfAfterSell: 0
-  _moneyPossessedController: {fileID: 157262628}
   _baseSprite: {fileID: 21300000, guid: 1ddbf147d140fc9429280438b7df21b7, type: 3}
   _number: {fileID: 0}
   _chineseCharacters: {fileID: 21300000, guid: a933d0f129d4fb54183cc9cc3062a2b6, type: 3}
@@ -4188,11 +4179,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _parameter:
-    _price: 0
+    _price: 100
     _name: 
     _rarity: 1
     _isDisposedOfAfterSell: 0
-  _moneyPossessedController: {fileID: 157262628}
   _baseSprite: {fileID: 21300000, guid: 8d19ec7d9c4d26d4c8787ee03443b924, type: 3}
   _number: {fileID: 0}
   _chineseCharacters: {fileID: 21300000, guid: 1987ca17e0aa5484b996cc40ebb827d4, type: 3}
@@ -4493,7 +4483,6 @@ MonoBehaviour:
     _name: 
     _rarity: 1
     _isDisposedOfAfterSell: 0
-  _moneyPossessedController: {fileID: 157262628}
   _baseSprite: {fileID: 21300000, guid: 1edfd10a732d0cd479ca827038ce0bb3, type: 3}
   _number: {fileID: 0}
   _chineseCharacters: {fileID: 0}
@@ -4503,6 +4492,7 @@ MonoBehaviour:
   _handMediator: {fileID: 1975269151}
   _alphabetHandView: {fileID: 1049933560}
   _phaseController: {fileID: 495064998}
+  _moneyPossessedController: {fileID: 157262628}
 --- !u!1 &1050709442
 GameObject:
   m_ObjectHideFlags: 0
@@ -4552,7 +4542,6 @@ MonoBehaviour:
     _name: 
     _rarity: 1
     _isDisposedOfAfterSell: 0
-  _moneyPossessedController: {fileID: 157262628}
   _baseSprite: {fileID: 21300000, guid: 1171f09a005028c459adfa7ed03bd03e, type: 3}
   _number: {fileID: 0}
   _chineseCharacters: {fileID: 21300000, guid: 79551c9f2ebef2b4e9d542448ecc9809, type: 3}
@@ -5207,7 +5196,6 @@ MonoBehaviour:
     _name: 
     _rarity: 1
     _isDisposedOfAfterSell: 0
-  _moneyPossessedController: {fileID: 157262628}
   _baseSprite: {fileID: 21300000, guid: a8a5399f5ab864840b7800c4eda12e93, type: 3}
   _number: {fileID: 0}
   _chineseCharacters: {fileID: 21300000, guid: db1f07cca098af942bb17e99f8443b39, type: 3}
@@ -5442,7 +5430,6 @@ MonoBehaviour:
     _name: 
     _rarity: 1
     _isDisposedOfAfterSell: 0
-  _moneyPossessedController: {fileID: 157262628}
   _baseSprite: {fileID: 21300000, guid: d7765629c16f88f4d90929a19b2e762b, type: 3}
   _number: {fileID: 0}
   _chineseCharacters: {fileID: 21300000, guid: 4cb83359d706b924891583a4341225f6, type: 3}
@@ -5575,7 +5562,6 @@ MonoBehaviour:
     _name: 
     _rarity: 1
     _isDisposedOfAfterSell: 0
-  _moneyPossessedController: {fileID: 157262628}
   _baseSprite: {fileID: 21300000, guid: 27ee7f8f35fda344793f4bb72e9c05e2, type: 3}
   _number: {fileID: 0}
   _chineseCharacters: {fileID: 21300000, guid: dff1d774a4f5aef48a1fcbc6ac94d852, type: 3}
@@ -5976,7 +5962,6 @@ MonoBehaviour:
     _name: 
     _rarity: 1
     _isDisposedOfAfterSell: 0
-  _moneyPossessedController: {fileID: 157262628}
   _baseSprite: {fileID: 21300000, guid: c49609c35ebe84345b813807e383a176, type: 3}
   _number: {fileID: 0}
   _chineseCharacters: {fileID: 21300000, guid: 606ebeff8500fc046ba8618cd66f153e, type: 3}
@@ -7682,7 +7667,6 @@ MonoBehaviour:
     _name: 
     _rarity: 1
     _isDisposedOfAfterSell: 0
-  _moneyPossessedController: {fileID: 157262628}
   _baseSprite: {fileID: 21300000, guid: abbd760ddac690648b550833fa524718, type: 3}
   _number: {fileID: 0}
   _chineseCharacters: {fileID: 0}
@@ -8258,7 +8242,6 @@ MonoBehaviour:
     _name: 
     _rarity: 1
     _isDisposedOfAfterSell: 0
-  _moneyPossessedController: {fileID: 157262628}
   _baseSprite: {fileID: 21300000, guid: 977fc69f0102a6d4eb4de1553b56b86a, type: 3}
   _number: {fileID: 0}
   _chineseCharacters: {fileID: 21300000, guid: 48ee9576b15ac784dbf48642438ba7ba, type: 3}
@@ -8605,7 +8588,6 @@ MonoBehaviour:
     _name: 
     _rarity: 1
     _isDisposedOfAfterSell: 0
-  _moneyPossessedController: {fileID: 157262628}
   _baseSprite: {fileID: 21300000, guid: bb3b519ab055b204d8ab03d58dfcdc3a, type: 3}
   _number: {fileID: 0}
   _chineseCharacters: {fileID: 21300000, guid: 4403662c493beb74baee7fef3f54b4c7, type: 3}
@@ -8799,7 +8781,6 @@ MonoBehaviour:
     _name: 
     _rarity: 1
     _isDisposedOfAfterSell: 0
-  _moneyPossessedController: {fileID: 157262628}
   _baseSprite: {fileID: 21300000, guid: ca41f9c9f9d64184eb0b5f0e557bcb61, type: 3}
   _number: {fileID: 0}
   _chineseCharacters: {fileID: 21300000, guid: 78ae9a7d2d07c9042b40bb49de41e9a6, type: 3}
@@ -8873,7 +8854,6 @@ MonoBehaviour:
     _name: 
     _rarity: 1
     _isDisposedOfAfterSell: 0
-  _moneyPossessedController: {fileID: 157262628}
   _baseSprite: {fileID: 21300000, guid: 64e5c6e53d9b73f468fa17032b4baf35, type: 3}
   _number: {fileID: 0}
   _chineseCharacters: {fileID: 21300000, guid: c0e3df88e2e232141a21920acd3d4654, type: 3}
@@ -9010,7 +8990,6 @@ MonoBehaviour:
     _name: "\u8AAD\u5FC3\u8853"
     _rarity: 1
     _isDisposedOfAfterSell: 0
-  _moneyPossessedController: {fileID: 157262628}
   _baseSprite: {fileID: 21300000, guid: e86dc8f91cece554692d538269fc9cfc, type: 3}
   _number: {fileID: 0}
   _chineseCharacters: {fileID: 21300000, guid: 847e0f5524be6d140980081730d72ca2, type: 3}
@@ -9069,7 +9048,6 @@ MonoBehaviour:
     _name: 
     _rarity: 1
     _isDisposedOfAfterSell: 0
-  _moneyPossessedController: {fileID: 157262628}
   _baseSprite: {fileID: 21300000, guid: f3e5d50902846d740b19b308e7ba0321, type: 3}
   _number: {fileID: 0}
   _chineseCharacters: {fileID: 0}
@@ -9143,7 +9121,6 @@ MonoBehaviour:
     _name: 
     _rarity: 1
     _isDisposedOfAfterSell: 0
-  _moneyPossessedController: {fileID: 157262628}
   _baseSprite: {fileID: 21300000, guid: 43d220280f3e18041a13ffe6173e02e6, type: 3}
   _number: {fileID: 21300000, guid: 857bfee269ac0e94bbc1d4a9c9800d7c, type: 3}
   _chineseCharacters: {fileID: 21300000, guid: 44e9f18bdcd0d494aa4ac95fa2ce76a1, type: 3}
@@ -9154,6 +9131,7 @@ MonoBehaviour:
   _numberHandView: {fileID: 1891691741}
   _phaseController: {fileID: 495064998}
   _deckUIController: {fileID: 1775420809}
+  _moneyPossessedController: {fileID: 157262628}
 --- !u!1 &1893043978
 GameObject:
   m_ObjectHideFlags: 0
@@ -9567,7 +9545,6 @@ MonoBehaviour:
     _name: 
     _rarity: 1
     _isDisposedOfAfterSell: 0
-  _moneyPossessedController: {fileID: 157262628}
   _baseSprite: {fileID: 21300000, guid: 16a29d7988cca474f9d34ae0f7a05240, type: 3}
   _number: {fileID: 0}
   _chineseCharacters: {fileID: 21300000, guid: d5f6a3b0d1efa4d469adb9ed243a7104, type: 3}
@@ -9991,7 +9968,6 @@ MonoBehaviour:
     _name: 
     _rarity: 1
     _isDisposedOfAfterSell: 0
-  _moneyPossessedController: {fileID: 157262628}
   _baseSprite: {fileID: 21300000, guid: 1f2ada7376fe1ff43b083b45745df221, type: 3}
   _number: {fileID: 0}
   _chineseCharacters: {fileID: 21300000, guid: b76a134d50f98ee438c726f00b6fb0bf, type: 3}
@@ -10050,7 +10026,6 @@ MonoBehaviour:
     _name: TRADER NAME
     _rarity: 1
     _isDisposedOfAfterSell: 0
-  _moneyPossessedController: {fileID: 157262628}
   _baseSprite: {fileID: 21300000, guid: 83b68de71cafb46459f34824bdd5f2ee, type: 3}
   _number: {fileID: 21300000, guid: ab2046993b2a6094c950c073131f6902, type: 3}
   _chineseCharacters: {fileID: 21300000, guid: ab2046993b2a6094c950c073131f6902, type: 3}
@@ -10185,7 +10160,6 @@ MonoBehaviour:
     _name: 
     _rarity: 1
     _isDisposedOfAfterSell: 0
-  _moneyPossessedController: {fileID: 157262628}
   _baseSprite: {fileID: 21300000, guid: 55108b2f1f46c884e852f943dfde33f3, type: 3}
   _number: {fileID: 0}
   _chineseCharacters: {fileID: 21300000, guid: ef50bb61ad4991f4ca8a67b3891e9756, type: 3}
@@ -11012,8 +10986,8 @@ MonoBehaviour:
   _traderController: {fileID: 1210986883}
   _phaseController: {fileID: 495064998}
   _conversationController: {fileID: 1775029164}
+  _moneyPossessedController: {fileID: 157262628}
   _entityType: 0
-  _buyOrSell: {fileID: 322592332}
   _defaultSizeDelta: {x: 225, y: 288}
 --- !u!114 &7358856788846396334
 MonoBehaviour:
@@ -11278,8 +11252,8 @@ MonoBehaviour:
   _traderController: {fileID: 1210986883}
   _phaseController: {fileID: 495064998}
   _conversationController: {fileID: 1775029164}
+  _moneyPossessedController: {fileID: 157262628}
   _entityType: 1
-  _buyOrSell: {fileID: 2010756546}
   _defaultSizeDelta: {x: 225, y: 288}
 --- !u!114 &9069546498969095532
 MonoBehaviour:

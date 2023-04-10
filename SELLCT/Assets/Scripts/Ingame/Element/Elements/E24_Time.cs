@@ -24,7 +24,6 @@ public class E24_Time : Card
     public override void Buy()
     {
         _timeLimitController.AddTimeLimit(_addValueInSeconds, _handMediator.FindAll(this));
-        _moneyPossessedController.DecreaseMoney(_parameter.GetMoney());
     }
 
     public override void OnPressedU6Button()
@@ -35,7 +34,6 @@ public class E24_Time : Card
     public override void Sell()
     {
         _timeLimitController.ReduceTimeLimit(_reduceValueInSeconds, _handMediator.FindAll(this));
-        _moneyPossessedController.IncreaseMoney(_parameter.GetMoney());
     }
 
     private void OnTradingPhaseStart()

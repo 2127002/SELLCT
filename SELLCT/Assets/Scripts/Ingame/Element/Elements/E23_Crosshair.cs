@@ -10,8 +10,6 @@ public class E23_Crosshair : Card
 
     public override void Buy()
     {
-        _moneyPossessedController.DecreaseMoney(_parameter.GetMoney());
-
         _cursorController.Enable();
     }
 
@@ -22,8 +20,6 @@ public class E23_Crosshair : Card
 
     public override void Sell()
     {
-        _moneyPossessedController.IncreaseMoney(_parameter.GetMoney());
-
         if (_handMediator.ContainsCard(this)) return;
 
         _cursorController.Disable();

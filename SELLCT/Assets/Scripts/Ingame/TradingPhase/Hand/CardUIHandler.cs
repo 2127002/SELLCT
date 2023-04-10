@@ -33,12 +33,15 @@ public class CardUIHandler : MonoBehaviour, IPointerClickHandler, IPointerEnterH
 
     [SerializeField] ConversationController _conversationController = default!;
 
-    [SerializeField] EntityType _entityType;
+    [SerializeField] MoneyPossessedController _moneyPossessedController = default!;
 
-    [SerializeField] Card _buyOrSell = default;
+    [SerializeField] EntityType _entityType;
 
     Color _defaultSelectColor = default!;
     [SerializeField] Vector2 _defaultSizeDelta = default!;
+
+    //selectableの有効かを保存
+    bool _interactable = true;
 
     //選択時画像サイズ補正値
     const float CORRECTION_SIZE = 1.25f;
@@ -60,10 +63,7 @@ public class CardUIHandler : MonoBehaviour, IPointerClickHandler, IPointerEnterH
     private void OnSubmit()
     {
         Card card = _deckMediator.GetCardAtCardUIHandler(this);
-        if (card.Id < 0) throw new NullReferenceException("選択したカードがNullです。");
-
-        //そのカードを手札からなくす
-        _deckMediator.RemoveHandCard(card);
+        if (card.Id < 0) throw new ArgumentNullException("選択したカードがNullです。");
 
         //EntityTypeに適した処理を呼ぶ。
         if (_entityType == EntityType.Player)
@@ -77,13 +77,23 @@ public class CardUIHandler : MonoBehaviour, IPointerClickHandler, IPointerEnterH
             OnBuy(card);
         }
         else throw new NotImplementedException();
-
-        //手札整理
-        _deckMediator.UpdateCardSprites();
     }
 
     private void OnBuy(Card purchasedCard)
     {
+        try
+        {
+            _moneyPossessedController.DecreaseMoney(purchasedCard.Price);
+        }
+        catch (NegativeMoneyException)
+        {
+            //お金が足りない場合なにもしない
+            return;
+        }
+
+        //そのカードを手札からなくす
+        _deckMediator.RemoveHandCard(purchasedCard);
+
         //※手札補充は行わない
         //商人の手札購入処理
         _traderController.CurrentTrader.OnPlayerBuy();
@@ -99,10 +109,18 @@ public class CardUIHandler : MonoBehaviour, IPointerClickHandler, IPointerEnterH
 
         //会話する
         _conversationController.OnBuy(purchasedCard).Forget();
+
+        //手札整理
+        _deckMediator.UpdateCardSprites();
     }
 
     private void OnSell(Card soldCard)
     {
+        _moneyPossessedController.IncreaseMoney(soldCard.Price);
+
+        //そのカードを手札からなくす
+        _deckMediator.RemoveHandCard(soldCard);
+
         //新たにカードを引く
         _deckMediator.DrawCard();
 
@@ -121,6 +139,9 @@ public class CardUIHandler : MonoBehaviour, IPointerClickHandler, IPointerEnterH
 
         //会話する
         _conversationController.OnSell(soldCard).Forget();
+
+        //手札整理
+        _deckMediator.UpdateCardSprites();
     }
 
     private void SetNextSelectable()
@@ -166,8 +187,8 @@ public class CardUIHandler : MonoBehaviour, IPointerClickHandler, IPointerEnterH
             return;
         }
 
-        //E1がデッキに存在する場合選択可能
-        _selectable.interactable = _buyOrSell.ContainsPlayerDeck;
+        //選択可能状態を変更する
+        _selectable.interactable = _interactable;
 
         //0番目はBaseなため必ず表示される
         _cardImages[0].enabled = true;
@@ -227,6 +248,7 @@ public class CardUIHandler : MonoBehaviour, IPointerClickHandler, IPointerEnterH
     public void OnPointerEnter(PointerEventData eventData)
     {
         if (eventData == null) throw new NullReferenceException();
+        if (!_selectable.interactable) return;
 
         //TODO：今後ここに具体的なカーソルをかざした際の処理を追加する
         _selectable.Select();
@@ -236,6 +258,7 @@ public class CardUIHandler : MonoBehaviour, IPointerClickHandler, IPointerEnterH
     public void OnPointerExit(PointerEventData eventData)
     {
         if (eventData == null) throw new NullReferenceException();
+        if (!_selectable.interactable) return;
 
         //TODO：今後ここに具体的なカーソルを外した際の処理を追加する
         EventSystem.current.SetSelectedGameObject(null);
@@ -288,11 +311,13 @@ public class CardUIHandler : MonoBehaviour, IPointerClickHandler, IPointerEnterH
     public void EnabledSelectebility()
     {
         _selectable.interactable = true;
+        _interactable = true;
     }
 
     public void DisableSelectability()
     {
         _selectable.interactable = false;
+        _interactable = false;
     }
 
     public void EnableHighlight()

@@ -9,9 +9,6 @@ public abstract class Card : MonoBehaviour
     [Header("カードのパラメータ一覧です。レベルデザインは主にこの内部の値を変更してください。")]
     [SerializeField] protected CardParameter _parameter = default!;
 
-    [Header("所持金を管理するオブジェクトを選択してください。")]
-    [SerializeField] protected MoneyPossessedController _moneyPossessedController = default!;
-    
     [Header("カードイラストです。該当するイラストがない場合はNoneのままにしてください。")]
     [SerializeField] Sprite _baseSprite = default!;
     [SerializeField] Sprite _number = default!;
@@ -70,6 +67,10 @@ public abstract class Card : MonoBehaviour
     /// プレイヤーのデッキに含まれる枚数
     /// </summary>
     public virtual int FindAll => _handMediator.FindAll(this);
+    /// <summary>
+    /// 金額(購入・売却)
+    /// </summary>
+    public virtual Money Price => _parameter.GetMoney();
 
     /// <summary>
     /// 購入時処理

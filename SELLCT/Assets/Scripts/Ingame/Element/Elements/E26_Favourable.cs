@@ -29,8 +29,6 @@ public class E26_Favourable : Card
     public override void Buy()
     {
         _favourableView.SetActive(true);
-
-        _moneyPossessedController.DecreaseMoney(_parameter.GetMoney());
     }
 
     public override void OnPressedU6Button()
@@ -45,7 +43,5 @@ public class E26_Favourable : Card
         {
             _favourableView.SetActive(false);
         }
-
-        _moneyPossessedController.IncreaseMoney(_parameter.GetMoney());
     }
 }
