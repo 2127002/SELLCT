@@ -6,8 +6,8 @@ using UnityEngine.EventSystems;
 
 public class E7_Move : Card
 {
-    [SerializeField] Selectable _selectable;
-    [SerializeField] Image _u7 = default!;
+    [SerializeField] TradingNextButtonController _tradingNextButtonController = default!;
+    [SerializeField] ExplorationNextButtonController _explorationNextButtonController = default!;
 
     public override int Id => 7;
 
@@ -26,15 +26,17 @@ public class E7_Move : Card
         OnSell();
     }
 
-    public void OnBuy()
+    private void OnBuy()
     {
-        _u7.enabled = true;
-        _selectable.interactable = true;
+        _explorationNextButtonController.Enable();
+        _tradingNextButtonController.Enable();
     }
-    public void OnSell()
+
+    private void OnSell()
     {
         if (_handMediator.ContainsCard(this)) return;
-        _u7.enabled = false;
-        _selectable.interactable = false;
+
+        _explorationNextButtonController.Disable();
+        _tradingNextButtonController.Disable();
     }
 }

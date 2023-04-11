@@ -5,7 +5,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class ExplorationNextButtonHandler : MonoBehaviour,ISelectableHighlight
+public class ExplorationNextButtonHandler : MonoBehaviour, ISelectableHighlight
 {
     //このようにDetectorにわざわざ分けているのは、interfaceのメソッドがpublicになるからです。
     //外部から意図しないタイミングで呼ばれることを避けるため回りくどい手を使っています。
@@ -16,12 +16,22 @@ public class ExplorationNextButtonHandler : MonoBehaviour,ISelectableHighlight
     [SerializeField] SelectDetector _selectDetector = default!;
     [SerializeField] Selectable _selectable = default!;
 
-    [SerializeField] bool _isFirstSelectable;
-
     [SerializeField] PhaseController _phaseController = default!;
     [SerializeField] Floor01Condition _floor01 = default!;
 
     Color _defaultSelectColor = default!;
+
+    private void Reset()
+    {
+        _clickDetector = GetComponent<LeftClickDetector>();
+        _enterDetector = GetComponent<PointerEnterDetector>();
+        _exitDetector = GetComponent<PointerExitDetector>();
+        _submitDetector = GetComponent<SubmitDetector>();
+        _selectDetector = GetComponent<SelectDetector>();
+        _selectable = GetComponent<Selectable>();
+        _phaseController = FindObjectOfType<PhaseController>();
+        _floor01 = FindObjectOfType<Floor01Condition>();
+    }
 
     private void Awake()
     {
@@ -32,7 +42,6 @@ public class ExplorationNextButtonHandler : MonoBehaviour,ISelectableHighlight
         _submitDetector.AddListener(HandleSubmit);
         _selectDetector.AddListener(HandleSelect);
 
-        //わかりやすくするため仮に選択時の色を赤に変更。今後の変更推奨
         _defaultSelectColor = _selectable.colors.selectedColor;
     }
 
