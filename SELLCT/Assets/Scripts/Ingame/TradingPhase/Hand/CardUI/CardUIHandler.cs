@@ -14,6 +14,7 @@ public enum InteractableChange
 {
     Element,
     Money,
+    CurrentCard,
 
     Max
 }
@@ -202,13 +203,13 @@ public class CardUIHandler : MonoBehaviour, IPointerClickHandler, IPointerEnterH
         if (card.Id < 0)
         {
             //選択できない状態にする
-            _selectable.interactable = false;
+            DisableSelectability(InteractableChange.CurrentCard);
+
             return;
         }
 
         //選択可能状態を変更する
-        bool allInteractablesIsOk = !_interactables.Contains(false);
-        _selectable.interactable = allInteractablesIsOk;
+        EnabledSelectebility(InteractableChange.CurrentCard);
 
         //UIを変更する
         _cardUIView.SetCardSprites(card);
