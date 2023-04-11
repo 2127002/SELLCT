@@ -76,6 +76,7 @@ public class MoneyPossessedController : MonoBehaviour
         }
 
         _view.ChangeMoneyText(_money);
+        Debug.Log("Ç®ã‡ÅF" + _money.CurrentAmount());
     }
 
     public void IncreaseMoney(Money money)
@@ -89,6 +90,7 @@ public class MoneyPossessedController : MonoBehaviour
         CheckMoney(prebMoney);
 
         _view.ChangeMoneyText(_money);
+        Debug.Log("Ç®ã‡ÅF" + _money.CurrentAmount());
     }
 
     private void CheckMoney(Money prebMoney)
