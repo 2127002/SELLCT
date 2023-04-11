@@ -22,6 +22,11 @@ public abstract class Card : MonoBehaviour
 
     readonly List<Sprite> result = new();
 
+    protected virtual void Reset()
+    {
+        _parameter = GetComponent<CardParameter>();
+    }
+
     /// <summary>
     /// カードID。EEX_NULLは-1、その他はエレメント番号で管理しています。
     /// </summary>
