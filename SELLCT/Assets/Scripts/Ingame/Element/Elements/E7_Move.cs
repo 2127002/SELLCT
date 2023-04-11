@@ -28,7 +28,7 @@ public class E7_Move : Card
 
     private void OnBuy()
     {
-        _explorationNextButtonController.Enable();
+        _explorationNextButtonController.Enable(ExplorationNextButtonController.PatternType.Element);
         _tradingNextButtonController.Enable();
     }
 
@@ -36,7 +36,7 @@ public class E7_Move : Card
     {
         if (_handMediator.ContainsCard(this)) return;
 
-        _explorationNextButtonController.Disable();
+        _explorationNextButtonController.Disable(ExplorationNextButtonController.PatternType.Element);
         _tradingNextButtonController.Disable();
     }
 }

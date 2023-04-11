@@ -14,6 +14,7 @@ public class ExplorationBackgroundController : MonoBehaviour
     [SerializeField] Sprite _restSprite = default!;
 
     [SerializeField] TextBoxController _textBoxController = default!;
+    [SerializeField] ExplorationNextButtonController _nextButtonController = default!;
 
     //ì‰âÇ´ópÇÃâºíuÇ´Ç≈Ç∑ÅB
     [SerializeField] Floor01Condition _floor01Condition = default!;
@@ -52,8 +53,16 @@ public class ExplorationBackgroundController : MonoBehaviour
 
     public void OnPressedU6Button()
     {
-        if (_isRest) ConvertWakeUp();
-        else ConvertRest();
+        if (_isRest)
+        {
+            _nextButtonController.Enable(ExplorationNextButtonController.PatternType.ExplorationU6);
+            ConvertWakeUp();
+        }
+        else
+        {
+            _nextButtonController.Disable(ExplorationNextButtonController.PatternType.ExplorationU6);
+            ConvertRest();
+        }
     }
 
     public void SetActiveE32Command(bool enabled)
