@@ -4049,7 +4049,7 @@ MonoBehaviour:
   - card: {fileID: 1050709444}
     initcount: 4
   - card: {fileID: 1890776591}
-    initcount: 4
+    initcount: 7
   - card: {fileID: 1317302477}
     initcount: 4
   - card: {fileID: 1801727037}
@@ -8653,7 +8653,7 @@ MonoBehaviour:
   - card: {fileID: 1050709444}
     initcount: 1
   - card: {fileID: 1890776591}
-    initcount: 2
+    initcount: 4
   - card: {fileID: 1317302477}
     initcount: 1
   - card: {fileID: 1801727037}
@@ -9351,9 +9351,14 @@ MonoBehaviour:
   _alphabet: {fileID: 0}
   _handMediator: {fileID: 1975269151}
   _brightness: {fileID: 2100000, guid: 6fd7c41649721a94fa3addf49255c0e4, type: 2}
-  _brightnessIncreasePercent: 10
-  _brightnessDecreasePercent: 50
-  _firstBrightnessPercent: 100
+  _brightnessValue:
+  - 0
+  - 0.5
+  - 5
+  - 20
+  - 100
+  - 150
+  _phaseController: {fileID: 495064998}
 --- !u!114 &1890776592
 MonoBehaviour:
   m_ObjectHideFlags: 0
