@@ -14,7 +14,7 @@ public class TradingPhaseController : MonoBehaviour
     [SerializeField] TradingPhaseView _view = default!;
     [SerializeField] PhaseController _phaseController = default!;
     [SerializeField] TimeLimitController _timeLimitController = default!;
-    [SerializeField] InputSystemDetector _inputSystemDetector = default!;
+    [SerializeField] InputActionReference _navigateAction = default!;
     [SerializeField] Selectable _firstSelectable = default!;
     [SerializeField] ConversationController _conversationController = default!;
     [SerializeField] Canvas _canvas = default!;
@@ -29,8 +29,6 @@ public class TradingPhaseController : MonoBehaviour
 
         //タイムリミットになったらフェーズを完了する
         _timeLimitController.OnTimeLimit += _phaseController.CompleteTradingPhase;
-
-        _inputSystemDetector.OnNavigateAction += OnNavigate;
     }
 
     private void OnDestroy()
@@ -40,7 +38,6 @@ public class TradingPhaseController : MonoBehaviour
         _phaseController.OnTradingPhaseStart.Remove(OnPhaseStart);
 
         _timeLimitController.OnTimeLimit -= _phaseController.CompleteTradingPhase;
-        _inputSystemDetector.OnNavigateAction -= OnNavigate;
     }
 
     private void OnGameStart()
@@ -52,6 +49,8 @@ public class TradingPhaseController : MonoBehaviour
     private void OnPhaseStart()
     {
         _canvas.gameObject.SetActive(true);
+
+        _navigateAction.action.performed += OnNavigate;
 
         _view.OnPhaseStart();
         EventSystem.current.SetSelectedGameObject(_firstSelectable.gameObject);
@@ -68,6 +67,7 @@ public class TradingPhaseController : MonoBehaviour
         await _view.OnPhaseComplete();
 
         _canvas.gameObject.SetActive(false);
+        _navigateAction.action.performed -= OnNavigate;
         //TODO：BGM1のフェードアウト
     }
 
