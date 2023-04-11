@@ -3,8 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[Serializable]
-public class CardParameter
+public class CardParameter : MonoBehaviour
 {
     [Header("w“ü/”„‹p‚Ì‹àŠz")]
     [SerializeField, Min(0)] int _price;
@@ -28,8 +27,8 @@ public class CardParameter
         if (string.IsNullOrEmpty(_name)) return "No Name";
 
         return _name;
-    }    
-    
+    }
+
     public void SetName(string name)
     {
         if (string.IsNullOrEmpty(name))

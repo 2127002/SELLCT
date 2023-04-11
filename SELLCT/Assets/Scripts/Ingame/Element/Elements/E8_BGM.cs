@@ -9,8 +9,6 @@ public class E8_BGM : Card
     public override void Buy()
     {
         //TODO:BGMÇÃçƒê∂
-
-        _moneyPossessedController.DecreaseMoney(_parameter.GetMoney());
     }
 
     public override void OnPressedU6Button()
@@ -21,8 +19,6 @@ public class E8_BGM : Card
     public override void Sell()
     {
         StopBGM();
-
-        _moneyPossessedController.IncreaseMoney(_parameter.GetMoney());
     }
 
     private void StopBGM()

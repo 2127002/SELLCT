@@ -6,17 +6,13 @@ using UnityEngine.EventSystems;
 
 public class E2_Sell : Card
 {
-    [SerializeField] Color _defaultColor = default!;
-    [SerializeField] Color _disabledColor = default!;
     [SerializeField] CardUIInstance _handCardUIInstance = default!;
 
     public override int Id => 2;
 
     public override void Buy()
     {
-        _moneyPossessedController.DecreaseMoney(_parameter.GetMoney());
-
-        OnBuy();
+        EnabledSelectable();
     }
 
     public override void OnPressedU6Button()
@@ -26,36 +22,24 @@ public class E2_Sell : Card
 
     public override void Sell()
     {
-        _moneyPossessedController.IncreaseMoney(_parameter.GetMoney());
-
         if (_handMediator.ContainsCard(this)) return;
 
-        OnSell();
+        DisabledSelectable();
     }
 
-    public void OnBuy()
+    private void EnabledSelectable()
     {
         foreach (var cardUIHandler in _handCardUIInstance.Handlers)
         {
-            cardUIHandler.EnabledSelectebility();
-
-            foreach (var cardImage in cardUIHandler.CardImages)
-            {
-                cardImage.color = _defaultColor;
-            }
+            cardUIHandler.EnabledSelectebility(InteractableChange.Element);
         }
     }
 
-    public void OnSell()
+    private void DisabledSelectable()
     {
         foreach (var cardUIHandler in _handCardUIInstance.Handlers)
         {
-            cardUIHandler.DisableSelectability();
-
-            foreach (var cardImage in cardUIHandler.CardImages)
-            {
-                cardImage.color = _disabledColor;
-            }
+            cardUIHandler.DisableSelectability(InteractableChange.Element);
         }
     }
 }

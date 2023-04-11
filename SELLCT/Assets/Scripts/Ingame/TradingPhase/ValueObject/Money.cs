@@ -1,11 +1,13 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Numerics;
 using UnityEngine;
 
 public class Money
 {
     readonly int _amount;
+    public static readonly Money Zero = new(0);
 
     public Money(int amount)
     {
@@ -33,7 +35,7 @@ public class Money
     /// <exception cref="NegativeMoneyException">Ø‹àó‘Ô‚ÉX‚ÉØ‹à‚µ‚æ‚¤‚Æ‚·‚é‚Æ‹N‚±‚é</exception>
     public Money Subtract(Money value)
     {
-        if (_amount <= 0) throw new NegativeMoneyException();
+        if (_amount <= Zero._amount) throw new NegativeMoneyException();
 
         return new(_amount - value._amount);
     }
@@ -41,6 +43,23 @@ public class Money
     public int CurrentAmount()
     {
         return _amount;
+    }
+
+    public static bool operator <(Money l, Money r)
+    {
+        return l._amount < r._amount;
+    }    
+    public static bool operator >(Money l, Money r)
+    {
+        return l._amount > r._amount;
+    }    
+    public static bool operator <=(Money l, Money r)
+    {
+        return l._amount <= r._amount;
+    }    
+    public static bool operator >=(Money l, Money r)
+    {
+        return l._amount >= r._amount;
     }
 }
 

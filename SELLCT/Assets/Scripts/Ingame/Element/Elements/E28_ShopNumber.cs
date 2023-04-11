@@ -34,8 +34,6 @@ public class E28_ShopNumber : Card
 
     public override void Buy()
     {
-        _moneyPossessedController.DecreaseMoney(_parameter.GetMoney());
-
         _currentPhaseBuyingCount++;
 
         //Šù‚É“o˜^‚µ‚Ä‚¢‚½‚çˆê’U‰ğœ‚·‚é
@@ -53,7 +51,6 @@ public class E28_ShopNumber : Card
 
     public override void Sell()
     {
-        _moneyPossessedController.IncreaseMoney(_parameter.GetMoney());
         _traderHand.AddHandCapacity(-1);
     }
 

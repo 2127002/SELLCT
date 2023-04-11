@@ -12,8 +12,6 @@ public class E0_Life : Card
         //TODO:SE301の再生
         //TODO:画面全体を脈動させるアニメーション
         //TODO:テキストボックスを更新する
-
-        _moneyPossessedController.DecreaseMoney(_parameter.GetMoney());
     }
 
     public override void OnPressedU6Button()
@@ -23,8 +21,6 @@ public class E0_Life : Card
 
     public override void Sell()
     {
-        _moneyPossessedController.IncreaseMoney(_parameter.GetMoney());
-
         GameOverChecker();
     }
 

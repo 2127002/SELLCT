@@ -36,7 +36,6 @@ public class E19_Hiragana : Card
     public override void Buy()
     {
         StringManager.hasElements[elementIndex] = true;
-        _moneyPossessedController.DecreaseMoney(_parameter.GetMoney());
         _hiraganaHandView.Set();
         _tradingNextButtonController.OnHiraganaEnabled();
     }
@@ -48,8 +47,6 @@ public class E19_Hiragana : Card
 
     public override void Sell()
     {
-        _moneyPossessedController.IncreaseMoney(_parameter.GetMoney());
-
         if (_handMediator.ContainsCard(this)) return;
         StringManager.hasElements[elementIndex] = false;
         _hiraganaHandView.Set();

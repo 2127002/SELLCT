@@ -8,7 +8,6 @@ public class E30_Name : Card
 
     public override void Buy()
     {
-        _moneyPossessedController.DecreaseMoney(_parameter.GetMoney());
     }
 
     public override void OnPressedU6Button()
@@ -18,9 +17,6 @@ public class E30_Name : Card
 
     public override void Sell()
     {
-        _moneyPossessedController.IncreaseMoney(_parameter.GetMoney());
-
-        //残りのNameカードがあってもなくてもトレーダーに名前を付ける
         _traderController.CurrentTrader.Name = _parameter.GetName();
     }
 }

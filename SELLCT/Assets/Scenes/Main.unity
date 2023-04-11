@@ -133,6 +133,7 @@ GameObject:
   m_Component:
   - component: {fileID: 26477151}
   - component: {fileID: 26477152}
+  - component: {fileID: 26477153}
   m_Layer: 0
   m_Name: E33_Key
   m_TagString: Untagged
@@ -167,12 +168,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7aedd1f9aa370164aa8fb39b6d5f7c0b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _parameter:
-    _price: 0
-    _name: 
-    _rarity: 1
-    _isDisposedOfAfterSell: 0
-  _moneyPossessedController: {fileID: 157262628}
+  _parameter: {fileID: 26477153}
   _baseSprite: {fileID: 21300000, guid: 7c9d96f5dd01db848a0017518c30bbb6, type: 3}
   _number: {fileID: 0}
   _chineseCharacters: {fileID: 21300000, guid: 5d6245118d4c82541bf7ec208097529f, type: 3}
@@ -180,6 +176,22 @@ MonoBehaviour:
   _katakana: {fileID: 0}
   _alphabet: {fileID: 0}
   _handMediator: {fileID: 1975269151}
+--- !u!114 &26477153
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 26477150}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a7ddc8a1ce1f58949ab7aff714a4f524, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _price: 0
+  _name: 
+  _rarity: 1
+  _isDisposedOfAfterSell: 0
 --- !u!1 &33251107
 GameObject:
   m_ObjectHideFlags: 0
@@ -612,6 +624,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _defaultAmount: 100
   _view: {fileID: 157262629}
+  _traderCardUIInstance: {fileID: 1960932980}
+  _phaseController: {fileID: 495064998}
 --- !u!114 &157262629
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1023,6 +1037,7 @@ GameObject:
   m_Component:
   - component: {fileID: 227483398}
   - component: {fileID: 227483399}
+  - component: {fileID: 227483400}
   m_Layer: 0
   m_Name: E28_ShopNumber
   m_TagString: Untagged
@@ -1057,12 +1072,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1211ccac88005b34aaa554e1aae14d09, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _parameter:
-    _price: 28
-    _name: 
-    _rarity: 1
-    _isDisposedOfAfterSell: 0
-  _moneyPossessedController: {fileID: 157262628}
+  _parameter: {fileID: 227483400}
   _baseSprite: {fileID: 21300000, guid: f23cf34a8a0513a40a26325d79ec790f, type: 3}
   _number: {fileID: 0}
   _chineseCharacters: {fileID: 21300000, guid: 78f016094fb24fd4eaa2e113a49d1769, type: 3}
@@ -1072,6 +1082,22 @@ MonoBehaviour:
   _handMediator: {fileID: 1975269151}
   _traderHand: {fileID: 1723587018}
   _phaseController: {fileID: 495064998}
+--- !u!114 &227483400
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 227483397}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a7ddc8a1ce1f58949ab7aff714a4f524, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _price: 0
+  _name: 
+  _rarity: 1
+  _isDisposedOfAfterSell: 0
 --- !u!1 &233741552
 GameObject:
   m_ObjectHideFlags: 0
@@ -1449,6 +1475,7 @@ GameObject:
   m_Component:
   - component: {fileID: 322592331}
   - component: {fileID: 322592332}
+  - component: {fileID: 322592333}
   m_Layer: 0
   m_Name: E2_Sell
   m_TagString: Untagged
@@ -1483,12 +1510,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 939e746625e6dbf4f804ff25042a1543, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _parameter:
-    _price: 0
-    _name: 
-    _rarity: 1
-    _isDisposedOfAfterSell: 0
-  _moneyPossessedController: {fileID: 157262628}
+  _parameter: {fileID: 322592333}
   _baseSprite: {fileID: 21300000, guid: d136f28fcb5ebac4b871dfd015bed99f, type: 3}
   _number: {fileID: 0}
   _chineseCharacters: {fileID: 21300000, guid: f0b01c9135c70604da68ae9bf6ac6b85, type: 3}
@@ -1496,9 +1518,23 @@ MonoBehaviour:
   _katakana: {fileID: 0}
   _alphabet: {fileID: 0}
   _handMediator: {fileID: 1975269151}
-  _defaultColor: {r: 1, g: 1, b: 1, a: 1}
-  _disabledColor: {r: 0.972549, g: 0.8039216, b: 0.8039216, a: 0.49803922}
   _handCardUIInstance: {fileID: 907251447}
+--- !u!114 &322592333
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 322592330}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a7ddc8a1ce1f58949ab7aff714a4f524, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _price: 0
+  _name: 
+  _rarity: 1
+  _isDisposedOfAfterSell: 0
 --- !u!1 &324477192
 GameObject:
   m_ObjectHideFlags: 0
@@ -1944,6 +1980,7 @@ GameObject:
   m_Component:
   - component: {fileID: 398127971}
   - component: {fileID: 398127972}
+  - component: {fileID: 398127973}
   m_Layer: 0
   m_Name: EEX_null
   m_TagString: Untagged
@@ -1978,12 +2015,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 282a60e7d3fe0b24dba9257cba5eb025, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _parameter:
-    _price: 0
-    _name: 
-    _rarity: 1
-    _isDisposedOfAfterSell: 0
-  _moneyPossessedController: {fileID: 0}
+  _parameter: {fileID: 0}
   _baseSprite: {fileID: 0}
   _number: {fileID: 0}
   _chineseCharacters: {fileID: 0}
@@ -1991,6 +2023,22 @@ MonoBehaviour:
   _katakana: {fileID: 0}
   _alphabet: {fileID: 0}
   _handMediator: {fileID: 0}
+--- !u!114 &398127973
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 398127970}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a7ddc8a1ce1f58949ab7aff714a4f524, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _price: 0
+  _name: 
+  _rarity: 1
+  _isDisposedOfAfterSell: 0
 --- !u!1 &406218261
 GameObject:
   m_ObjectHideFlags: 0
@@ -2176,6 +2224,7 @@ GameObject:
   m_Component:
   - component: {fileID: 449189165}
   - component: {fileID: 449189166}
+  - component: {fileID: 449189167}
   m_Layer: 0
   m_Name: E24_Time
   m_TagString: Untagged
@@ -2210,12 +2259,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dd6ff212822ef844180a6fb6e17dfcb6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _parameter:
-    _price: 0
-    _name: 
-    _rarity: 1
-    _isDisposedOfAfterSell: 0
-  _moneyPossessedController: {fileID: 157262628}
+  _parameter: {fileID: 449189167}
   _baseSprite: {fileID: 21300000, guid: b4c1f141f074b2649be9ad4a6ce9973c, type: 3}
   _number: {fileID: 0}
   _chineseCharacters: {fileID: 21300000, guid: 93f0b0563107d544db62d6a9cf117bd5, type: 3}
@@ -2227,6 +2271,22 @@ MonoBehaviour:
   _timeLimitController: {fileID: 296562001}
   _addValueInSeconds: 10
   _reduceValueInSeconds: 10
+--- !u!114 &449189167
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 449189164}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a7ddc8a1ce1f58949ab7aff714a4f524, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _price: 0
+  _name: 
+  _rarity: 1
+  _isDisposedOfAfterSell: 0
 --- !u!1 &469186485
 GameObject:
   m_ObjectHideFlags: 0
@@ -2629,6 +2689,7 @@ GameObject:
   - component: {fileID: 505569844}
   - component: {fileID: 505569846}
   - component: {fileID: 505569845}
+  - component: {fileID: 505569847}
   m_Layer: 0
   m_Name: E16_Communication
   m_TagString: Untagged
@@ -2682,12 +2743,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 92719c8580cdef1459d1ce8bde189fd6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _parameter:
-    _price: 0
-    _name: 
-    _rarity: 1
-    _isDisposedOfAfterSell: 0
-  _moneyPossessedController: {fileID: 157262628}
+  _parameter: {fileID: 505569847}
   _baseSprite: {fileID: 21300000, guid: 7b2184d1e1af8204189a936161f8d75f, type: 3}
   _number: {fileID: 0}
   _chineseCharacters: {fileID: 0}
@@ -2695,6 +2751,22 @@ MonoBehaviour:
   _katakana: {fileID: 21300000, guid: 9f0a31e0ad3efe54a9738f51503735a8, type: 3}
   _alphabet: {fileID: 0}
   _handMediator: {fileID: 1975269151}
+--- !u!114 &505569847
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 505569843}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a7ddc8a1ce1f58949ab7aff714a4f524, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _price: 0
+  _name: 
+  _rarity: 1
+  _isDisposedOfAfterSell: 0
 --- !u!1 &505840353
 GameObject:
   m_ObjectHideFlags: 0
@@ -3323,6 +3395,7 @@ GameObject:
   m_Component:
   - component: {fileID: 682657745}
   - component: {fileID: 682657746}
+  - component: {fileID: 682657747}
   m_Layer: 0
   m_Name: E34_Knife
   m_TagString: Untagged
@@ -3357,12 +3430,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b3187fceb9599dd43bd96cbc0f5b4193, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _parameter:
-    _price: 0
-    _name: 
-    _rarity: 1
-    _isDisposedOfAfterSell: 0
-  _moneyPossessedController: {fileID: 157262628}
+  _parameter: {fileID: 682657747}
   _baseSprite: {fileID: 21300000, guid: 3c64f6fe91d4bba4bbe55fc1480b031e, type: 3}
   _number: {fileID: 0}
   _chineseCharacters: {fileID: 0}
@@ -3372,6 +3440,22 @@ MonoBehaviour:
   _handMediator: {fileID: 1975269151}
   _phaseController: {fileID: 495064998}
   _E34CommandImage: {fileID: 1527675564}
+--- !u!114 &682657747
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 682657744}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a7ddc8a1ce1f58949ab7aff714a4f524, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _price: 0
+  _name: 
+  _rarity: 1
+  _isDisposedOfAfterSell: 0
 --- !u!1 &704934653
 GameObject:
   m_ObjectHideFlags: 0
@@ -3383,6 +3467,7 @@ GameObject:
   - component: {fileID: 704934654}
   - component: {fileID: 704934656}
   - component: {fileID: 704934655}
+  - component: {fileID: 704934657}
   m_Layer: 0
   m_Name: E20_Katakana
   m_TagString: Untagged
@@ -3429,12 +3514,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 327de3e064546de45a1f95adb29390c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _parameter:
-    _price: 0
-    _name: 
-    _rarity: 1
-    _isDisposedOfAfterSell: 0
-  _moneyPossessedController: {fileID: 157262628}
+  _parameter: {fileID: 704934657}
   _baseSprite: {fileID: 21300000, guid: 0fb748c56efc3c74eb343d531f979177, type: 3}
   _number: {fileID: 0}
   _chineseCharacters: {fileID: 0}
@@ -3444,6 +3524,22 @@ MonoBehaviour:
   _handMediator: {fileID: 1975269151}
   _katakanaHandView: {fileID: 704934655}
   _phaseController: {fileID: 495064998}
+--- !u!114 &704934657
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 704934653}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a7ddc8a1ce1f58949ab7aff714a4f524, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _price: 0
+  _name: 
+  _rarity: 1
+  _isDisposedOfAfterSell: 0
 --- !u!1 &734919071
 GameObject:
   m_ObjectHideFlags: 0
@@ -3454,6 +3550,7 @@ GameObject:
   m_Component:
   - component: {fileID: 734919072}
   - component: {fileID: 734919073}
+  - component: {fileID: 734919074}
   m_Layer: 0
   m_Name: E3_Yes
   m_TagString: Untagged
@@ -3488,12 +3585,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 36f02325d2ffbae4aa333664342087c8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _parameter:
-    _price: 0
-    _name: 
-    _rarity: 1
-    _isDisposedOfAfterSell: 0
-  _moneyPossessedController: {fileID: 157262628}
+  _parameter: {fileID: 734919074}
   _baseSprite: {fileID: 21300000, guid: 6bf4acb804a99d64698d420cb7654632, type: 3}
   _number: {fileID: 0}
   _chineseCharacters: {fileID: 21300000, guid: e51e7375c7beb784c950f3653a516e71, type: 3}
@@ -3502,6 +3594,22 @@ MonoBehaviour:
   _alphabet: {fileID: 21300000, guid: bb6b96147d5029f40af3cec502acfc5b, type: 3}
   _handMediator: {fileID: 1975269151}
   _choicesManager: {fileID: 863064158}
+--- !u!114 &734919074
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 734919071}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a7ddc8a1ce1f58949ab7aff714a4f524, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _price: 0
+  _name: 
+  _rarity: 1
+  _isDisposedOfAfterSell: 0
 --- !u!1 &836645462
 GameObject:
   m_ObjectHideFlags: 0
@@ -3788,6 +3896,7 @@ GameObject:
   - component: {fileID: 883828210}
   - component: {fileID: 883828212}
   - component: {fileID: 883828211}
+  - component: {fileID: 883828213}
   m_Layer: 0
   m_Name: E22_Highlight
   m_TagString: Untagged
@@ -3834,12 +3943,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1a3b0181895558345a7850f7b8f72790, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _parameter:
-    _price: 0
-    _name: 
-    _rarity: 1
-    _isDisposedOfAfterSell: 0
-  _moneyPossessedController: {fileID: 157262628}
+  _parameter: {fileID: 883828213}
   _baseSprite: {fileID: 21300000, guid: 88964503994b35347b28a1cca19190d9, type: 3}
   _number: {fileID: 0}
   _chineseCharacters: {fileID: 0}
@@ -3849,6 +3953,22 @@ MonoBehaviour:
   _handMediator: {fileID: 1975269151}
   _highlightController: {fileID: 883828211}
   _phaseController: {fileID: 495064998}
+--- !u!114 &883828213
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 883828209}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a7ddc8a1ce1f58949ab7aff714a4f524, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _price: 0
+  _name: 
+  _rarity: 1
+  _isDisposedOfAfterSell: 0
 --- !u!1 &902597264
 GameObject:
   m_ObjectHideFlags: 0
@@ -4096,6 +4216,7 @@ GameObject:
   m_Component:
   - component: {fileID: 917396755}
   - component: {fileID: 917396756}
+  - component: {fileID: 917396757}
   m_Layer: 0
   m_Name: E0_Life
   m_TagString: Untagged
@@ -4130,12 +4251,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4aaa154d7dd59be49beb9873107e1de1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _parameter:
-    _price: 10
-    _name: "\u547D"
-    _rarity: 1
-    _isDisposedOfAfterSell: 0
-  _moneyPossessedController: {fileID: 157262628}
+  _parameter: {fileID: 917396757}
   _baseSprite: {fileID: 21300000, guid: 1ddbf147d140fc9429280438b7df21b7, type: 3}
   _number: {fileID: 0}
   _chineseCharacters: {fileID: 21300000, guid: a933d0f129d4fb54183cc9cc3062a2b6, type: 3}
@@ -4143,6 +4259,22 @@ MonoBehaviour:
   _katakana: {fileID: 0}
   _alphabet: {fileID: 0}
   _handMediator: {fileID: 1975269151}
+--- !u!114 &917396757
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 917396754}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a7ddc8a1ce1f58949ab7aff714a4f524, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _price: 0
+  _name: 
+  _rarity: 1
+  _isDisposedOfAfterSell: 0
 --- !u!1 &941202354
 GameObject:
   m_ObjectHideFlags: 0
@@ -4153,6 +4285,7 @@ GameObject:
   m_Component:
   - component: {fileID: 941202355}
   - component: {fileID: 941202356}
+  - component: {fileID: 941202357}
   m_Layer: 0
   m_Name: E25_HandNumber
   m_TagString: Untagged
@@ -4187,12 +4320,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bc21010c5f7f29f41a30bc9a6000204b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _parameter:
-    _price: 0
-    _name: 
-    _rarity: 1
-    _isDisposedOfAfterSell: 0
-  _moneyPossessedController: {fileID: 157262628}
+  _parameter: {fileID: 941202357}
   _baseSprite: {fileID: 21300000, guid: 8d19ec7d9c4d26d4c8787ee03443b924, type: 3}
   _number: {fileID: 0}
   _chineseCharacters: {fileID: 21300000, guid: 1987ca17e0aa5484b996cc40ebb827d4, type: 3}
@@ -4204,6 +4332,22 @@ MonoBehaviour:
   _phaseController: {fileID: 495064998}
   _cardUIInstance: {fileID: 907251447}
   _cardUIGenerator: {fileID: 907251446}
+--- !u!114 &941202357
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 941202354}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a7ddc8a1ce1f58949ab7aff714a4f524, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _price: 0
+  _name: 
+  _rarity: 1
+  _isDisposedOfAfterSell: 0
 --- !u!1 &983947418
 GameObject:
   m_ObjectHideFlags: 0
@@ -4442,6 +4586,7 @@ GameObject:
   - component: {fileID: 1049933559}
   - component: {fileID: 1049933561}
   - component: {fileID: 1049933560}
+  - component: {fileID: 1049933562}
   m_Layer: 0
   m_Name: E21_Alphabet
   m_TagString: Untagged
@@ -4488,12 +4633,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ce490e6b10b65d14e987ca2379b82f66, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _parameter:
-    _price: 21
-    _name: 
-    _rarity: 1
-    _isDisposedOfAfterSell: 0
-  _moneyPossessedController: {fileID: 157262628}
+  _parameter: {fileID: 1049933562}
   _baseSprite: {fileID: 21300000, guid: 1edfd10a732d0cd479ca827038ce0bb3, type: 3}
   _number: {fileID: 0}
   _chineseCharacters: {fileID: 0}
@@ -4503,6 +4643,23 @@ MonoBehaviour:
   _handMediator: {fileID: 1975269151}
   _alphabetHandView: {fileID: 1049933560}
   _phaseController: {fileID: 495064998}
+  _moneyPossessedController: {fileID: 157262628}
+--- !u!114 &1049933562
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1049933558}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a7ddc8a1ce1f58949ab7aff714a4f524, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _price: 0
+  _name: 
+  _rarity: 1
+  _isDisposedOfAfterSell: 0
 --- !u!1 &1050709442
 GameObject:
   m_ObjectHideFlags: 0
@@ -4513,6 +4670,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1050709443}
   - component: {fileID: 1050709444}
+  - component: {fileID: 1050709445}
   m_Layer: 0
   m_Name: E9_SE
   m_TagString: Untagged
@@ -4547,12 +4705,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6d1f9ad816dc80e45b1dd4afda838710, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _parameter:
-    _price: 9
-    _name: 
-    _rarity: 1
-    _isDisposedOfAfterSell: 0
-  _moneyPossessedController: {fileID: 157262628}
+  _parameter: {fileID: 1050709445}
   _baseSprite: {fileID: 21300000, guid: 1171f09a005028c459adfa7ed03bd03e, type: 3}
   _number: {fileID: 0}
   _chineseCharacters: {fileID: 21300000, guid: 79551c9f2ebef2b4e9d542448ecc9809, type: 3}
@@ -4560,6 +4713,22 @@ MonoBehaviour:
   _katakana: {fileID: 0}
   _alphabet: {fileID: 0}
   _handMediator: {fileID: 1975269151}
+--- !u!114 &1050709445
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1050709442}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a7ddc8a1ce1f58949ab7aff714a4f524, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _price: 0
+  _name: 
+  _rarity: 1
+  _isDisposedOfAfterSell: 0
 --- !u!1 &1063490269
 GameObject:
   m_ObjectHideFlags: 0
@@ -5168,6 +5337,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1175034079}
   - component: {fileID: 1175034080}
+  - component: {fileID: 1175034081}
   m_Layer: 0
   m_Name: E23_Crosshair
   m_TagString: Untagged
@@ -5202,12 +5372,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1d49c038c6ecc5745ad10afc96d7e49d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _parameter:
-    _price: 0
-    _name: 
-    _rarity: 1
-    _isDisposedOfAfterSell: 0
-  _moneyPossessedController: {fileID: 157262628}
+  _parameter: {fileID: 1175034081}
   _baseSprite: {fileID: 21300000, guid: a8a5399f5ab864840b7800c4eda12e93, type: 3}
   _number: {fileID: 0}
   _chineseCharacters: {fileID: 21300000, guid: db1f07cca098af942bb17e99f8443b39, type: 3}
@@ -5216,6 +5381,22 @@ MonoBehaviour:
   _alphabet: {fileID: 0}
   _handMediator: {fileID: 1975269151}
   _cursorController: {fileID: 406218264}
+--- !u!114 &1175034081
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1175034078}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a7ddc8a1ce1f58949ab7aff714a4f524, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _price: 0
+  _name: 
+  _rarity: 1
+  _isDisposedOfAfterSell: 0
 --- !u!1 &1182455715
 GameObject:
   m_ObjectHideFlags: 0
@@ -5403,6 +5584,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1240537338}
   - component: {fileID: 1240537339}
+  - component: {fileID: 1240537340}
   m_Layer: 0
   m_Name: E8_BGM
   m_TagString: Untagged
@@ -5437,12 +5619,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a0d7880d8177554458db01896e99e579, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _parameter:
-    _price: 7
-    _name: 
-    _rarity: 1
-    _isDisposedOfAfterSell: 0
-  _moneyPossessedController: {fileID: 157262628}
+  _parameter: {fileID: 1240537340}
   _baseSprite: {fileID: 21300000, guid: d7765629c16f88f4d90929a19b2e762b, type: 3}
   _number: {fileID: 0}
   _chineseCharacters: {fileID: 21300000, guid: 4cb83359d706b924891583a4341225f6, type: 3}
@@ -5450,6 +5627,22 @@ MonoBehaviour:
   _katakana: {fileID: 0}
   _alphabet: {fileID: 0}
   _handMediator: {fileID: 1975269151}
+--- !u!114 &1240537340
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1240537337}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a7ddc8a1ce1f58949ab7aff714a4f524, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _price: 0
+  _name: 
+  _rarity: 1
+  _isDisposedOfAfterSell: 0
 --- !u!1 &1258542179
 GameObject:
   m_ObjectHideFlags: 0
@@ -5536,6 +5729,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1274645116}
   - component: {fileID: 1274645117}
+  - component: {fileID: 1274645118}
   m_Layer: 0
   m_Name: E32_Rest
   m_TagString: Untagged
@@ -5570,12 +5764,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 23336eec736018d4986646b55e5b7c32, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _parameter:
-    _price: 0
-    _name: 
-    _rarity: 1
-    _isDisposedOfAfterSell: 0
-  _moneyPossessedController: {fileID: 157262628}
+  _parameter: {fileID: 1274645118}
   _baseSprite: {fileID: 21300000, guid: 27ee7f8f35fda344793f4bb72e9c05e2, type: 3}
   _number: {fileID: 0}
   _chineseCharacters: {fileID: 21300000, guid: dff1d774a4f5aef48a1fcbc6ac94d852, type: 3}
@@ -5590,6 +5779,22 @@ MonoBehaviour:
   _backgroundView: {fileID: 1925054384}
   _textBoxController: {fileID: 1775029163}
   _floor01Condition: {fileID: 2129735619}
+--- !u!114 &1274645118
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1274645115}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a7ddc8a1ce1f58949ab7aff714a4f524, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _price: 0
+  _name: 
+  _rarity: 1
+  _isDisposedOfAfterSell: 0
 --- !u!1 &1290921786
 GameObject:
   m_ObjectHideFlags: 0
@@ -5937,6 +6142,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1317302476}
   - component: {fileID: 1317302477}
+  - component: {fileID: 1317302478}
   m_Layer: 0
   m_Name: E11_Vivid
   m_TagString: Untagged
@@ -5971,12 +6177,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f74aae9fea5712245ac4bc46d77ed709, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _parameter:
-    _price: 0
-    _name: 
-    _rarity: 1
-    _isDisposedOfAfterSell: 0
-  _moneyPossessedController: {fileID: 157262628}
+  _parameter: {fileID: 1317302478}
   _baseSprite: {fileID: 21300000, guid: c49609c35ebe84345b813807e383a176, type: 3}
   _number: {fileID: 0}
   _chineseCharacters: {fileID: 21300000, guid: 606ebeff8500fc046ba8618cd66f153e, type: 3}
@@ -5988,6 +6189,22 @@ MonoBehaviour:
   _vividIncreasePercent: 10
   _vividDecreasePercent: 50
   _firstVividPercent: 100
+--- !u!114 &1317302478
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1317302475}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a7ddc8a1ce1f58949ab7aff714a4f524, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _price: 0
+  _name: 
+  _rarity: 1
+  _isDisposedOfAfterSell: 0
 --- !u!1 &1349179047
 GameObject:
   m_ObjectHideFlags: 0
@@ -7631,6 +7848,7 @@ GameObject:
   - component: {fileID: 1589025318}
   - component: {fileID: 1589025320}
   - component: {fileID: 1589025319}
+  - component: {fileID: 1589025321}
   m_Layer: 0
   m_Name: E19_Hiragana
   m_TagString: Untagged
@@ -7677,12 +7895,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a20dc70a71e710b4bb3975029e67fc29, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _parameter:
-    _price: 0
-    _name: 
-    _rarity: 1
-    _isDisposedOfAfterSell: 0
-  _moneyPossessedController: {fileID: 157262628}
+  _parameter: {fileID: 1589025321}
   _baseSprite: {fileID: 21300000, guid: abbd760ddac690648b550833fa524718, type: 3}
   _number: {fileID: 0}
   _chineseCharacters: {fileID: 0}
@@ -7693,6 +7906,22 @@ MonoBehaviour:
   _hiraganaHandView: {fileID: 1589025319}
   _phaseController: {fileID: 495064998}
   _tradingNextButtonController: {fileID: 392387364}
+--- !u!114 &1589025321
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1589025317}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a7ddc8a1ce1f58949ab7aff714a4f524, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _price: 0
+  _name: 
+  _rarity: 1
+  _isDisposedOfAfterSell: 0
 --- !u!1 &1608374995
 GameObject:
   m_ObjectHideFlags: 0
@@ -8219,6 +8448,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1733877177}
   - component: {fileID: 1733877178}
+  - component: {fileID: 1733877179}
   m_Layer: 0
   m_Name: E7_Move
   m_TagString: Untagged
@@ -8253,12 +8483,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 010dbcf0c10e44142a519491a79015fe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _parameter:
-    _price: 0
-    _name: 
-    _rarity: 1
-    _isDisposedOfAfterSell: 0
-  _moneyPossessedController: {fileID: 157262628}
+  _parameter: {fileID: 1733877179}
   _baseSprite: {fileID: 21300000, guid: 977fc69f0102a6d4eb4de1553b56b86a, type: 3}
   _number: {fileID: 0}
   _chineseCharacters: {fileID: 21300000, guid: 48ee9576b15ac784dbf48642438ba7ba, type: 3}
@@ -8268,6 +8493,22 @@ MonoBehaviour:
   _handMediator: {fileID: 1975269151}
   _selectable: {fileID: 1294856004}
   _u7: {fileID: 1294855995}
+--- !u!114 &1733877179
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1733877176}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a7ddc8a1ce1f58949ab7aff714a4f524, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _price: 0
+  _name: 
+  _rarity: 1
+  _isDisposedOfAfterSell: 0
 --- !u!1 &1775029160
 GameObject:
   m_ObjectHideFlags: 0
@@ -8566,6 +8807,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1797485883}
   - component: {fileID: 1797485884}
+  - component: {fileID: 1797485885}
   m_Layer: 0
   m_Name: E4_No
   m_TagString: Untagged
@@ -8600,12 +8842,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 51911d5c2e65de9449df3e0fde845921, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _parameter:
-    _price: 0
-    _name: 
-    _rarity: 1
-    _isDisposedOfAfterSell: 0
-  _moneyPossessedController: {fileID: 157262628}
+  _parameter: {fileID: 1797485885}
   _baseSprite: {fileID: 21300000, guid: bb3b519ab055b204d8ab03d58dfcdc3a, type: 3}
   _number: {fileID: 0}
   _chineseCharacters: {fileID: 21300000, guid: 4403662c493beb74baee7fef3f54b4c7, type: 3}
@@ -8614,6 +8851,22 @@ MonoBehaviour:
   _alphabet: {fileID: 21300000, guid: c284ea3936cefd74abb54c88e6e08f6d, type: 3}
   _handMediator: {fileID: 1975269151}
   _choicesManager: {fileID: 863064158}
+--- !u!114 &1797485885
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1797485882}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a7ddc8a1ce1f58949ab7aff714a4f524, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _price: 0
+  _name: 
+  _rarity: 1
+  _isDisposedOfAfterSell: 0
 --- !u!1 &1800241645
 GameObject:
   m_ObjectHideFlags: 0
@@ -8760,6 +9013,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1801727036}
   - component: {fileID: 1801727037}
+  - component: {fileID: 1801727038}
   m_Layer: 0
   m_Name: E12_Eye
   m_TagString: Untagged
@@ -8794,12 +9048,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 076e80d8142445d439cb86f1931c10ed, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _parameter:
-    _price: 0
-    _name: 
-    _rarity: 1
-    _isDisposedOfAfterSell: 0
-  _moneyPossessedController: {fileID: 157262628}
+  _parameter: {fileID: 1801727038}
   _baseSprite: {fileID: 21300000, guid: ca41f9c9f9d64184eb0b5f0e557bcb61, type: 3}
   _number: {fileID: 0}
   _chineseCharacters: {fileID: 21300000, guid: 78ae9a7d2d07c9042b40bb49de41e9a6, type: 3}
@@ -8811,6 +9060,22 @@ MonoBehaviour:
   _eyeIncreaseValue: 2
   _eyeDecreaseValue: 0.5
   _firstEye: 1080
+--- !u!114 &1801727038
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1801727035}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a7ddc8a1ce1f58949ab7aff714a4f524, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _price: 0
+  _name: 
+  _rarity: 1
+  _isDisposedOfAfterSell: 0
 --- !u!1 &1803076676
 GameObject:
   m_ObjectHideFlags: 0
@@ -8822,6 +9087,7 @@ GameObject:
   - component: {fileID: 1803076677}
   - component: {fileID: 1803076679}
   - component: {fileID: 1803076678}
+  - component: {fileID: 1803076680}
   m_Layer: 0
   m_Name: E18_Kanji
   m_TagString: Untagged
@@ -8868,12 +9134,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c0050991e2313f042bf3a68723adafbe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _parameter:
-    _price: 0
-    _name: 
-    _rarity: 1
-    _isDisposedOfAfterSell: 0
-  _moneyPossessedController: {fileID: 157262628}
+  _parameter: {fileID: 1803076680}
   _baseSprite: {fileID: 21300000, guid: 64e5c6e53d9b73f468fa17032b4baf35, type: 3}
   _number: {fileID: 0}
   _chineseCharacters: {fileID: 21300000, guid: c0e3df88e2e232141a21920acd3d4654, type: 3}
@@ -8885,6 +9146,22 @@ MonoBehaviour:
   _phaseController: {fileID: 495064998}
   _tradingNextButtonController: {fileID: 392387364}
   _deckUIController: {fileID: 1775420809}
+--- !u!114 &1803076680
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1803076676}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a7ddc8a1ce1f58949ab7aff714a4f524, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _price: 0
+  _name: 
+  _rarity: 1
+  _isDisposedOfAfterSell: 0
 --- !u!1 &1854591484
 GameObject:
   m_ObjectHideFlags: 0
@@ -8971,6 +9248,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1858823706}
   - component: {fileID: 1858823707}
+  - component: {fileID: 1858823708}
   m_Layer: 0
   m_Name: E26_Favourable
   m_TagString: Untagged
@@ -9005,12 +9283,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5d705ce53ca3b39418b80efcb75b504a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _parameter:
-    _price: 5
-    _name: "\u8AAD\u5FC3\u8853"
-    _rarity: 1
-    _isDisposedOfAfterSell: 0
-  _moneyPossessedController: {fileID: 157262628}
+  _parameter: {fileID: 1858823708}
   _baseSprite: {fileID: 21300000, guid: e86dc8f91cece554692d538269fc9cfc, type: 3}
   _number: {fileID: 0}
   _chineseCharacters: {fileID: 21300000, guid: 847e0f5524be6d140980081730d72ca2, type: 3}
@@ -9020,6 +9293,22 @@ MonoBehaviour:
   _handMediator: {fileID: 1975269151}
   _favourableView: {fileID: 1982680978}
   _phaseController: {fileID: 495064998}
+--- !u!114 &1858823708
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1858823705}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a7ddc8a1ce1f58949ab7aff714a4f524, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _price: 0
+  _name: 
+  _rarity: 1
+  _isDisposedOfAfterSell: 0
 --- !u!1 &1890776589
 GameObject:
   m_ObjectHideFlags: 0
@@ -9030,6 +9319,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1890776590}
   - component: {fileID: 1890776591}
+  - component: {fileID: 1890776592}
   m_Layer: 0
   m_Name: E10_Light
   m_TagString: Untagged
@@ -9064,12 +9354,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ba1d1113d7d81ce478e747c218fe7edb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _parameter:
-    _price: 0
-    _name: 
-    _rarity: 1
-    _isDisposedOfAfterSell: 0
-  _moneyPossessedController: {fileID: 157262628}
+  _parameter: {fileID: 1890776592}
   _baseSprite: {fileID: 21300000, guid: f3e5d50902846d740b19b308e7ba0321, type: 3}
   _number: {fileID: 0}
   _chineseCharacters: {fileID: 0}
@@ -9081,6 +9366,22 @@ MonoBehaviour:
   _brightnessIncreasePercent: 10
   _brightnessDecreasePercent: 50
   _firstBrightnessPercent: 100
+--- !u!114 &1890776592
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1890776589}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a7ddc8a1ce1f58949ab7aff714a4f524, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _price: 0
+  _name: 
+  _rarity: 1
+  _isDisposedOfAfterSell: 0
 --- !u!1 &1891691739
 GameObject:
   m_ObjectHideFlags: 0
@@ -9092,6 +9393,7 @@ GameObject:
   - component: {fileID: 1891691740}
   - component: {fileID: 1891691742}
   - component: {fileID: 1891691741}
+  - component: {fileID: 1891691743}
   m_Layer: 0
   m_Name: E17_Number
   m_TagString: Untagged
@@ -9138,12 +9440,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ae6817942a0e9da40a0e85356ffb75ef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _parameter:
-    _price: 0
-    _name: 
-    _rarity: 1
-    _isDisposedOfAfterSell: 0
-  _moneyPossessedController: {fileID: 157262628}
+  _parameter: {fileID: 1891691743}
   _baseSprite: {fileID: 21300000, guid: 43d220280f3e18041a13ffe6173e02e6, type: 3}
   _number: {fileID: 21300000, guid: 857bfee269ac0e94bbc1d4a9c9800d7c, type: 3}
   _chineseCharacters: {fileID: 21300000, guid: 44e9f18bdcd0d494aa4ac95fa2ce76a1, type: 3}
@@ -9154,6 +9451,23 @@ MonoBehaviour:
   _numberHandView: {fileID: 1891691741}
   _phaseController: {fileID: 495064998}
   _deckUIController: {fileID: 1775420809}
+  _moneyPossessedController: {fileID: 157262628}
+--- !u!114 &1891691743
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1891691739}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a7ddc8a1ce1f58949ab7aff714a4f524, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _price: 0
+  _name: 
+  _rarity: 1
+  _isDisposedOfAfterSell: 0
 --- !u!1 &1893043978
 GameObject:
   m_ObjectHideFlags: 0
@@ -9528,6 +9842,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1928785345}
   - component: {fileID: 1928785346}
+  - component: {fileID: 1928785347}
   m_Layer: 0
   m_Name: E37_Lack
   m_TagString: Untagged
@@ -9562,12 +9877,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 47392c054627a5d4187cf111133a9eea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _parameter:
-    _price: 0
-    _name: 
-    _rarity: 1
-    _isDisposedOfAfterSell: 0
-  _moneyPossessedController: {fileID: 157262628}
+  _parameter: {fileID: 1928785347}
   _baseSprite: {fileID: 21300000, guid: 16a29d7988cca474f9d34ae0f7a05240, type: 3}
   _number: {fileID: 0}
   _chineseCharacters: {fileID: 21300000, guid: d5f6a3b0d1efa4d469adb9ed243a7104, type: 3}
@@ -9575,6 +9885,22 @@ MonoBehaviour:
   _katakana: {fileID: 0}
   _alphabet: {fileID: 0}
   _handMediator: {fileID: 1975269151}
+--- !u!114 &1928785347
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1928785344}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a7ddc8a1ce1f58949ab7aff714a4f524, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _price: 0
+  _name: 
+  _rarity: 1
+  _isDisposedOfAfterSell: 0
 --- !u!1 &1960932977
 GameObject:
   m_ObjectHideFlags: 0
@@ -9952,6 +10278,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2010756545}
   - component: {fileID: 2010756546}
+  - component: {fileID: 2010756547}
   m_Layer: 0
   m_Name: E1_Buy
   m_TagString: Untagged
@@ -9986,12 +10313,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 54de2d9684dab8f419914e5f85fadf7b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _parameter:
-    _price: 0
-    _name: 
-    _rarity: 1
-    _isDisposedOfAfterSell: 0
-  _moneyPossessedController: {fileID: 157262628}
+  _parameter: {fileID: 2010756547}
   _baseSprite: {fileID: 21300000, guid: 1f2ada7376fe1ff43b083b45745df221, type: 3}
   _number: {fileID: 0}
   _chineseCharacters: {fileID: 21300000, guid: b76a134d50f98ee438c726f00b6fb0bf, type: 3}
@@ -9999,8 +10321,23 @@ MonoBehaviour:
   _katakana: {fileID: 0}
   _alphabet: {fileID: 0}
   _handMediator: {fileID: 1975269151}
-  _disabledColor: {r: 0.972549, g: 0.8039216, b: 0.8039216, a: 0.49803922}
   _goodsCardUIInstance: {fileID: 1960932980}
+--- !u!114 &2010756547
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2010756544}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a7ddc8a1ce1f58949ab7aff714a4f524, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _price: 0
+  _name: 
+  _rarity: 1
+  _isDisposedOfAfterSell: 0
 --- !u!1 &2037373638
 GameObject:
   m_ObjectHideFlags: 0
@@ -10011,6 +10348,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2037373639}
   - component: {fileID: 2037373640}
+  - component: {fileID: 2037373641}
   m_Layer: 0
   m_Name: E30_Name
   m_TagString: Untagged
@@ -10045,12 +10383,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e4a3b7b2f6649c54e88ac5015da40744, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _parameter:
-    _price: 0
-    _name: TRADER NAME
-    _rarity: 1
-    _isDisposedOfAfterSell: 0
-  _moneyPossessedController: {fileID: 157262628}
+  _parameter: {fileID: 2037373641}
   _baseSprite: {fileID: 21300000, guid: 83b68de71cafb46459f34824bdd5f2ee, type: 3}
   _number: {fileID: 21300000, guid: ab2046993b2a6094c950c073131f6902, type: 3}
   _chineseCharacters: {fileID: 21300000, guid: ab2046993b2a6094c950c073131f6902, type: 3}
@@ -10059,6 +10392,22 @@ MonoBehaviour:
   _alphabet: {fileID: 21300000, guid: ab2046993b2a6094c950c073131f6902, type: 3}
   _handMediator: {fileID: 1975269151}
   _traderController: {fileID: 1210986883}
+--- !u!114 &2037373641
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2037373638}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a7ddc8a1ce1f58949ab7aff714a4f524, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _price: 0
+  _name: 
+  _rarity: 1
+  _isDisposedOfAfterSell: 0
 --- !u!1 &2040257783
 GameObject:
   m_ObjectHideFlags: 0
@@ -10146,6 +10495,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2044394405}
   - component: {fileID: 2044394406}
+  - component: {fileID: 2044394407}
   m_Layer: 0
   m_Name: E14_TextBox
   m_TagString: Untagged
@@ -10180,12 +10530,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8b92a8d6d2473a24c87610ba80dd559d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _parameter:
-    _price: 0
-    _name: 
-    _rarity: 1
-    _isDisposedOfAfterSell: 0
-  _moneyPossessedController: {fileID: 157262628}
+  _parameter: {fileID: 2044394407}
   _baseSprite: {fileID: 21300000, guid: 55108b2f1f46c884e852f943dfde33f3, type: 3}
   _number: {fileID: 0}
   _chineseCharacters: {fileID: 21300000, guid: ef50bb61ad4991f4ca8a67b3891e9756, type: 3}
@@ -10195,6 +10540,22 @@ MonoBehaviour:
   _handMediator: {fileID: 1975269151}
   _textBoxController: {fileID: 1775029163}
   _phaseController: {fileID: 495064998}
+--- !u!114 &2044394407
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2044394404}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a7ddc8a1ce1f58949ab7aff714a4f524, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _price: 0
+  _name: 
+  _rarity: 1
+  _isDisposedOfAfterSell: 0
 --- !u!1 &2129735618
 GameObject:
   m_ObjectHideFlags: 0
@@ -10557,6 +10918,7 @@ GameObject:
   - component: {fileID: 2953681527447150716}
   - component: {fileID: 1226257586872831315}
   - component: {fileID: 8999427033305422426}
+  - component: {fileID: 8999427033305422427}
   - component: {fileID: 7680564825398813893}
   m_Layer: 0
   m_Name: U3_Card1
@@ -10774,7 +11136,7 @@ MonoBehaviour:
     m_HighlightedColor: {r: 1, g: 1, b: 1, a: 1}
     m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
     m_SelectedColor: {r: 1, g: 0, b: 0, a: 1}
-    m_DisabledColor: {r: 1, g: 1, b: 1, a: 1}
+    m_DisabledColor: {r: 1, g: 1, b: 1, a: 0.49803922}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
   m_SpriteState:
@@ -10932,6 +11294,7 @@ GameObject:
   - component: {fileID: 5999101841604059456}
   - component: {fileID: 636219140081683729}
   - component: {fileID: 6495868728072664683}
+  - component: {fileID: 6495868728072664684}
   - component: {fileID: 4021303104995609946}
   m_Layer: 0
   m_Name: U1_Card1
@@ -10998,9 +11361,28 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b71e4037a0770cd4490bbbb424987e85, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _cardUIView: {fileID: 6495868728072664684}
   _deckMediator: {fileID: 1975269151}
   _subDeckMediator: {fileID: 1723587017}
   _selectable: {fileID: 4021303104995609946}
+  _traderController: {fileID: 1210986883}
+  _phaseController: {fileID: 495064998}
+  _conversationController: {fileID: 1775029164}
+  _moneyPossessedController: {fileID: 157262628}
+  _buyOrSell: {fileID: 322592332}
+  _entityType: 0
+--- !u!114 &6495868728072664684
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5745975497138096458}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b12d82dbd9433f84ba9706f9e3d46fcd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
   _cardImages:
   - {fileID: 636219140081683729}
   - {fileID: 7430779684233366616}
@@ -11009,11 +11391,6 @@ MonoBehaviour:
   - {fileID: 7358856788846396334}
   - {fileID: 8709485035699750024}
   _cardText: {fileID: 1022315533}
-  _traderController: {fileID: 1210986883}
-  _phaseController: {fileID: 495064998}
-  _conversationController: {fileID: 1775029164}
-  _entityType: 0
-  _buyOrSell: {fileID: 322592332}
   _defaultSizeDelta: {x: 225, y: 288}
 --- !u!114 &7358856788846396334
 MonoBehaviour:
@@ -11136,7 +11513,7 @@ MonoBehaviour:
     m_HighlightedColor: {r: 1, g: 1, b: 1, a: 1}
     m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
     m_SelectedColor: {r: 1, g: 0, b: 0, a: 1}
-    m_DisabledColor: {r: 1, g: 1, b: 1, a: 1}
+    m_DisabledColor: {r: 1, g: 1, b: 1, a: 0.49803922}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
   m_SpriteState:
@@ -11264,9 +11641,28 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b71e4037a0770cd4490bbbb424987e85, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _cardUIView: {fileID: 8999427033305422427}
   _deckMediator: {fileID: 1723587017}
   _subDeckMediator: {fileID: 1975269151}
   _selectable: {fileID: 7680564825398813893}
+  _traderController: {fileID: 1210986883}
+  _phaseController: {fileID: 495064998}
+  _conversationController: {fileID: 1775029164}
+  _moneyPossessedController: {fileID: 157262628}
+  _buyOrSell: {fileID: 2010756546}
+  _entityType: 1
+--- !u!114 &8999427033305422427
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1719357583859925692}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b12d82dbd9433f84ba9706f9e3d46fcd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
   _cardImages:
   - {fileID: 1226257586872831315}
   - {fileID: 797066061168805856}
@@ -11275,11 +11671,6 @@ MonoBehaviour:
   - {fileID: 6430242922663903889}
   - {fileID: 1825944139870105006}
   _cardText: {fileID: 1068639690}
-  _traderController: {fileID: 1210986883}
-  _phaseController: {fileID: 495064998}
-  _conversationController: {fileID: 1775029164}
-  _entityType: 1
-  _buyOrSell: {fileID: 2010756546}
   _defaultSizeDelta: {x: 225, y: 288}
 --- !u!114 &9069546498969095532
 MonoBehaviour:

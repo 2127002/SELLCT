@@ -32,8 +32,6 @@ public class E10_Light : Card
 
     public override void Buy()
     {
-        _moneyPossessedController.DecreaseMoney(_parameter.GetMoney());
-
         IncreaseBrightnessValue();
     }
 
@@ -44,8 +42,6 @@ public class E10_Light : Card
 
     public override void Sell()
     {
-        _moneyPossessedController.IncreaseMoney(_parameter.GetMoney());
-
         DesreaseBrightnessValue();
     }
 

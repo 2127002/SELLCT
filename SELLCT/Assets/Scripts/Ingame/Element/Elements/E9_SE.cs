@@ -9,8 +9,6 @@ public class E9_SE : Card
     public override void Buy()
     {
         //TODO:SEÇÃçƒê∂
-
-        _moneyPossessedController.DecreaseMoney(_parameter.GetMoney());
     }
 
     public override void OnPressedU6Button()
@@ -21,8 +19,6 @@ public class E9_SE : Card
     public override void Sell()
     {
         StopSE();
-
-        _moneyPossessedController.IncreaseMoney(_parameter.GetMoney());
     }
 
     private void StopSE()

@@ -13,8 +13,6 @@ public class E7_Move : Card
 
     public override void Buy()
     {
-        _moneyPossessedController.DecreaseMoney(_parameter.GetMoney());
-
         OnBuy();
     }
 
@@ -25,8 +23,6 @@ public class E7_Move : Card
 
     public override void Sell()
     {
-        _moneyPossessedController.IncreaseMoney(_parameter.GetMoney());
-
         OnSell();
     }
 

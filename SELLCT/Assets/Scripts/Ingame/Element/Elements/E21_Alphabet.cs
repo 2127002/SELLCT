@@ -7,6 +7,7 @@ public class E21_Alphabet : Card
 {
     [SerializeField] AlphabetHandView _alphabetHandView = default!;
     [SerializeField] PhaseController _phaseController = default!;
+    [SerializeField] MoneyPossessedController _moneyPossessedController = default!;
 
     readonly int elementIndex = (int)StringManager.Element.E21;
 
@@ -33,7 +34,6 @@ public class E21_Alphabet : Card
     public override void Buy()
     {
         StringManager.hasElements[elementIndex] = true;
-        _moneyPossessedController.DecreaseMoney(_parameter.GetMoney());
         _moneyPossessedController.EnableAlphabet();
         _alphabetHandView.Set();
     }
@@ -45,8 +45,6 @@ public class E21_Alphabet : Card
 
     public override void Sell()
     {
-        _moneyPossessedController.IncreaseMoney(_parameter.GetMoney());
-
         if (_handMediator.ContainsCard(this)) return;
         _moneyPossessedController.DisableAlphabet();
         StringManager.hasElements[elementIndex] = false;

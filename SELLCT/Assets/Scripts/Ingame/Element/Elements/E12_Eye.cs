@@ -31,8 +31,6 @@ public class E12_Eye : Card
 
     public override void Buy()
     {
-        _moneyPossessedController.DecreaseMoney(_parameter.GetMoney());
-
         IncreaseEyeValue();
     }
 
@@ -43,8 +41,6 @@ public class E12_Eye : Card
 
     public override void Sell()
     {
-        _moneyPossessedController.IncreaseMoney(_parameter.GetMoney());
-
         DesreaseEyeValue();
     }
 
