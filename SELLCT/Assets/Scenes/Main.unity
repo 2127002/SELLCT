@@ -9899,6 +9899,7 @@ MonoBehaviour:
   _wakeUpSprite: {fileID: 0}
   _restSprite: {fileID: 0}
   _textBoxController: {fileID: 1775029163}
+  _nextButtonController: {fileID: 1682848855}
   _floor01Condition: {fileID: 2129735619}
 --- !u!1 &1927199732
 GameObject:
