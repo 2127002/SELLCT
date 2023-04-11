@@ -22,25 +22,7 @@ public class ExplorationPhaseController : MonoBehaviour
         _phaseController.OnExplorationPhaseComplete += OnPhaseComplete;
     }
 
-    private void OnEnable()
-    {
-        _navigateAction.action.Enable();
-        _navigateAction.action.performed += OnNavigate;
-    }
-
-    private void OnDisable()
-    {
-        _navigateAction.action.Disable();
-        _navigateAction.action.performed -= OnNavigate;
-    }
-
     private void OnGameStart()
-    {
-        //キャンバスのenabledを変更するだけではSelectableが反応してしまうためGameObjectのActiveを変更します。
-        _canvas.gameObject.SetActive(false);
-    }
-
-    private void OnPhaseComplete()
     {
         //キャンバスのenabledを変更するだけではSelectableが反応してしまうためGameObjectのActiveを変更します。
         _canvas.gameObject.SetActive(false);
@@ -51,10 +33,20 @@ public class ExplorationPhaseController : MonoBehaviour
         //キャンバスのenabledを変更するだけではSelectableが反応してしまうためGameObjectのActiveを変更します。
         _canvas.gameObject.SetActive(true);
 
+        _navigateAction.action.performed += OnNavigate;
+
         //初期のSelect設定
         EventSystem.current.SetSelectedGameObject(_firstSelectable.gameObject);
-        _lastSelectedObject = EventSystem.current.currentSelectedGameObject;
+        _lastSelectedObject = _firstSelectable.gameObject;
         //TODO:BGM2の再生
+    }
+
+    private void OnPhaseComplete()
+    {
+        //キャンバスのenabledを変更するだけではSelectableが反応してしまうためGameObjectのActiveを変更します。
+        _canvas.gameObject.SetActive(false);
+
+        _navigateAction.action.performed -= OnNavigate;
     }
 
     private void OnNavigate(InputAction.CallbackContext context)

@@ -1275,7 +1275,8 @@ MonoBehaviour:
   _view: {fileID: 251747935}
   _phaseController: {fileID: 495064998}
   _timeLimitController: {fileID: 296562001}
-  _inputSystemDetector: {fileID: 391254979}
+  _navigateAction: {fileID: -7213562877630171189, guid: 1acd10e19b4601845803d349e0c26cdf,
+    type: 3}
   _firstSelectable: {fileID: 7680564825398813893}
   _conversationController: {fileID: 1775029164}
   _canvas: {fileID: 233741556}
@@ -1758,7 +1759,6 @@ GameObject:
   m_Component:
   - component: {fileID: 391254981}
   - component: {fileID: 391254980}
-  - component: {fileID: 391254979}
   m_Layer: 0
   m_Name: PlayerInput
   m_TagString: Untagged
@@ -1766,18 +1766,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &391254979
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 391254978}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 550a30e439a3ad24f88056b6af67e1ad, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &391254980
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1818,7 +1806,7 @@ MonoBehaviour:
     m_ActionName: Player/Fire[/Mouse/leftButton]
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 391254979}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: InputSystemDetector, Assembly-CSharp
         m_MethodName: OnNavigate
         m_Mode: 0
