@@ -68,8 +68,12 @@ public class Floor01Answer02 : MonoBehaviour
         try
         {
             //クリア
-            await _textBoxController.UpdateText(null, "...!!\n運良く先に続く道を発見した。");
-            await _textBoxController.UpdateText(null, "...進んでみるか。");
+            await _textBoxController.UpdateText(null, "……！！");
+            await _textBoxController.UpdateText(null, "視界の先に光が見える");
+            await _textBoxController.UpdateText(null, "石造りの階段を駆け上がると……灰色のレンガで囲まれた空間に出てきた");
+            await _textBoxController.UpdateText(null, "まだまだ先は続いているらしい");
+            await _textBoxController.UpdateText(null, "長い洞窟を抜けた感慨に耽りながら、気を引き締める");
+            await _textBoxController.UpdateText(null, "必ず、この奈落から脱出するために");
         }
         catch (OperationCanceledException)
         {
@@ -86,7 +90,8 @@ public class Floor01Answer02 : MonoBehaviour
     {
         try
         {
-            await _textBoxController.UpdateText(null, "...なんだろう、この壁。何ががありそうな予感がする");
+            await _textBoxController.UpdateText(null, "……見覚えのない景色だ");
+            await _textBoxController.UpdateText(null, "どうやら少しは先に進めているらしい");
         }
         catch (OperationCanceledException)
         {
