@@ -7,6 +7,7 @@ public class E19_Hiragana : Card
     [SerializeField] HiraganaHandView _hiraganaHandView = default!;
     [SerializeField] PhaseController _phaseController = default!;
     [SerializeField] TradingNextButtonController _tradingNextButtonController = default!;
+    [SerializeField] ExplorationNextButtonController _explorationNextButtonController = default!;
 
     readonly int elementIndex = (int)StringManager.Element.E19;
 
@@ -29,8 +30,16 @@ public class E19_Hiragana : Card
         StringManager.hasElements[elementIndex] = _handMediator.ContainsCard(this);
         _hiraganaHandView.Set();
 
-        if (StringManager.hasElements[elementIndex]) _tradingNextButtonController.OnHiraganaEnabled();
-        else _tradingNextButtonController.OnHiraganaDisabled();
+        if (StringManager.hasElements[elementIndex])
+        {
+            _tradingNextButtonController.OnHiraganaEnabled();
+            _explorationNextButtonController.OnHiraganaEnabled();
+        }
+        else
+        {
+            _tradingNextButtonController.OnHiraganaDisabled();
+            _explorationNextButtonController.OnHiraganaDisabled();
+        }
     }
 
     public override void Buy()
@@ -38,6 +47,7 @@ public class E19_Hiragana : Card
         StringManager.hasElements[elementIndex] = true;
         _hiraganaHandView.Set();
         _tradingNextButtonController.OnHiraganaEnabled();
+        _explorationNextButtonController.OnHiraganaEnabled();
     }
 
     public override void OnPressedU6Button()
@@ -51,5 +61,6 @@ public class E19_Hiragana : Card
         StringManager.hasElements[elementIndex] = false;
         _hiraganaHandView.Set();
         _tradingNextButtonController.OnHiraganaDisabled();
+        _explorationNextButtonController.OnHiraganaDisabled();
     }
 }

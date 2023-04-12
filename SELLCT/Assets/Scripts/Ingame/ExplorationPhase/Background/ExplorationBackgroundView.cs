@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public class ExplorationBackgroundView : MonoBehaviour
 {
+    [Header("”wŒi‚Ì‰æ‘œ")]
     [SerializeField] Image _image;
     [SerializeField] Sprite _normalSprite;
     [SerializeField] Sprite _restSprite;

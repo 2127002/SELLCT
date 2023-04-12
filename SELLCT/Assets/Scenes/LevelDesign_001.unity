@@ -5760,13 +5760,8 @@ MonoBehaviour:
   _katakana: {fileID: 0}
   _alphabet: {fileID: 0}
   _handMediator: {fileID: 1975269151}
+  _explorationBackgroundController: {fileID: 1925054385}
   _phaseController: {fileID: 495064998}
-  _E32CommandImage: {fileID: 1547492924}
-  _restSprite: {fileID: 0}
-  _wakeUpSprite: {fileID: 0}
-  _backgroundView: {fileID: 1925054384}
-  _textBoxController: {fileID: 1775029163}
-  _floor01Condition: {fileID: 2129735619}
 --- !u!114 &1274645118
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9351,9 +9346,8 @@ MonoBehaviour:
   _alphabet: {fileID: 0}
   _handMediator: {fileID: 1975269151}
   _brightness: {fileID: 2100000, guid: 6fd7c41649721a94fa3addf49255c0e4, type: 2}
-  _brightnessIncreasePercent: 45
-  _brightnessDecreasePercent: 45
-  _firstBrightnessPercent: 100
+  _brightnessValue: []
+  _phaseController: {fileID: 0}
 --- !u!114 &1890776592
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9642,6 +9636,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1925054383}
   - component: {fileID: 1925054384}
+  - component: {fileID: 1925054385}
   m_Layer: 0
   m_Name: U12_Background
   m_TagString: Untagged
@@ -9686,6 +9681,24 @@ MonoBehaviour:
   _image: {fileID: 1094509368}
   _normalSprite: {fileID: 0}
   _restSprite: {fileID: 0}
+--- !u!114 &1925054385
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1925054382}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ab600362a8f71c74f939e388acb76fa5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _explorationBackgroundView: {fileID: 1925054384}
+  _E32CommandImage: {fileID: 1547492924}
+  _wakeUpSprite: {fileID: 0}
+  _restSprite: {fileID: 0}
+  _textBoxController: {fileID: 1775029163}
+  _floor01Condition: {fileID: 2129735619}
 --- !u!1 &1927199732
 GameObject:
   m_ObjectHideFlags: 0
