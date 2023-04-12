@@ -6615,7 +6615,6 @@ MonoBehaviour:
   _submitDetector: {fileID: 1424207574}
   _selectDetector: {fileID: 1424207573}
   _selectable: {fileID: 1424207578}
-  _isFirstSelectable: 0
   _phaseController: {fileID: 495064998}
   _floor01: {fileID: 2129735619}
 --- !u!114 &1424207573
@@ -7889,6 +7888,7 @@ MonoBehaviour:
   _hiraganaHandView: {fileID: 1589025319}
   _phaseController: {fileID: 495064998}
   _tradingNextButtonController: {fileID: 392387364}
+  _explorationNextButtonController: {fileID: 0}
 --- !u!114 &1589025321
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8474,8 +8474,8 @@ MonoBehaviour:
   _katakana: {fileID: 0}
   _alphabet: {fileID: 0}
   _handMediator: {fileID: 1975269151}
-  _selectable: {fileID: 1294856004}
-  _u7: {fileID: 1294855995}
+  _tradingNextButtonController: {fileID: 0}
+  _explorationNextButtonController: {fileID: 0}
 --- !u!114 &1733877179
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9128,6 +9128,7 @@ MonoBehaviour:
   _kanjiHandView: {fileID: 1803076678}
   _phaseController: {fileID: 495064998}
   _tradingNextButtonController: {fileID: 392387364}
+  _explorationNextButtonController: {fileID: 0}
   _deckUIController: {fileID: 1775420809}
 --- !u!114 &1803076680
 MonoBehaviour:
@@ -9346,8 +9347,12 @@ MonoBehaviour:
   _alphabet: {fileID: 0}
   _handMediator: {fileID: 1975269151}
   _brightness: {fileID: 2100000, guid: 6fd7c41649721a94fa3addf49255c0e4, type: 2}
-  _brightnessValue: []
-  _phaseController: {fileID: 0}
+  _brightnessValue:
+  - 1
+  - 10
+  - 50
+  - 100
+  _phaseController: {fileID: 495064998}
 --- !u!114 &1890776592
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9698,6 +9703,7 @@ MonoBehaviour:
   _wakeUpSprite: {fileID: 0}
   _restSprite: {fileID: 0}
   _textBoxController: {fileID: 1775029163}
+  _nextButtonController: {fileID: 0}
   _floor01Condition: {fileID: 2129735619}
 --- !u!1 &1927199732
 GameObject:
