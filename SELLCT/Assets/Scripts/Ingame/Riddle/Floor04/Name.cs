@@ -4,15 +4,13 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class Name : MonoBehaviour, IPointerClickHandler, IPointerEnterHandler, IPointerExitHandler
+public class Name : MonoBehaviour, IPointerDownHandler, IPointerUpHandler, IPointerEnterHandler, IPointerExitHandler
 {
     [SerializeField] TextBoxController _textBoxController;
 
-    public async void OnPointerClick(PointerEventData eventData)
+    public void OnPointerDown(PointerEventData eventData)
     {
-        await _textBoxController.UpdateText(null, "見つけた。己を示す一冊の本を。");
-        await _textBoxController.UpdateText(null, "...そうか、初めから答えはそこにあったんだな。");
-        await _textBoxController.UpdateText(null, "Fin....                                 でいいよな？");
+        throw new System.NotImplementedException();
     }
 
     public void OnPointerEnter(PointerEventData eventData)
@@ -21,5 +19,12 @@ public class Name : MonoBehaviour, IPointerClickHandler, IPointerEnterHandler, I
 
     public void OnPointerExit(PointerEventData eventData)
     {
+    }
+
+    public async void OnPointerUp(PointerEventData eventData)
+    {
+        await _textBoxController.UpdateText(null, "見つけた。己を示す一冊の本を。");
+        await _textBoxController.UpdateText(null, "...そうか、初めから答えはそこにあったんだな。");
+        await _textBoxController.UpdateText(null, "Fin....                                 でいいよな？");
     }
 }

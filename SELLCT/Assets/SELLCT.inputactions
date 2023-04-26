@@ -306,12 +306,21 @@
                     "initialStateCheck": true
                 },
                 {
-                    "name": "Click",
+                    "name": "PointerUp",
                     "type": "PassThrough",
                     "id": "faf7b3c4-4055-4576-9a0a-e2424e3d295c",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "Press(behavior=1)",
+                    "initialStateCheck": true
+                },
+                {
+                    "name": "PointerDown",
+                    "type": "PassThrough",
+                    "id": "f7c82773-2062-4768-b14c-f5e08ec9c4fd",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "Press",
                     "initialStateCheck": true
                 },
                 {
@@ -489,7 +498,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": ";Keyboard&Mouse",
-                    "action": "Click",
+                    "action": "PointerUp",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -500,7 +509,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": ";Keyboard&Mouse",
-                    "action": "Click",
+                    "action": "PointerUp",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -511,7 +520,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "Touch",
-                    "action": "Click",
+                    "action": "PointerUp",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -522,7 +531,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "XR",
-                    "action": "Click",
+                    "action": "PointerUp",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -677,6 +686,50 @@
                     "processors": "ScaleVector2(x=0.05,y=0.05)",
                     "groups": "Keyboard&Mouse;Touch",
                     "action": "Move",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "96f2921e-d65f-4cb5-ba39-350ce74d2e69",
+                    "path": "<Mouse>/leftButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard&Mouse",
+                    "action": "PointerDown",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "09e0d8dd-6fb6-4b71-8ff2-b39b65528bd6",
+                    "path": "<Pen>/tip",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard&Mouse",
+                    "action": "PointerDown",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "3d70a2af-84b5-457b-b5e7-91ab1aa86e37",
+                    "path": "<Touchscreen>/touch*/press",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Touch",
+                    "action": "PointerDown",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "f2f77d21-4a59-4fec-a949-8eb56128e6e2",
+                    "path": "<XRController>/trigger",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "XR",
+                    "action": "PointerDown",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
