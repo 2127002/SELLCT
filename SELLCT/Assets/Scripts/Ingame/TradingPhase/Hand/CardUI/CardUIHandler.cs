@@ -19,7 +19,7 @@ public enum InteractableChange
     Max
 }
 
-public class CardUIHandler : MonoBehaviour, IPointerClickHandler, IPointerEnterHandler, IPointerExitHandler, ISubmitHandler, ISelectHandler, IDeselectHandler, ISelectableHighlight
+public class CardUIHandler : MonoBehaviour, IPointerDownHandler,IPointerUpHandler, IPointerEnterHandler, IPointerExitHandler, ISubmitHandler, ISelectHandler, IDeselectHandler, ISelectableHighlight
 {
     enum EntityType
     {
@@ -261,20 +261,6 @@ public class CardUIHandler : MonoBehaviour, IPointerClickHandler, IPointerEnterH
         _cardUIView.ResetImagesSizeDelta();
     }
 
-    public void OnPointerClick(PointerEventData eventData)
-    {
-        if (eventData == null) throw new NullReferenceException();
-
-        if (!_selectable.interactable) return;
-
-        //左クリック以外行わない
-        if (eventData.button != PointerEventData.InputButton.Left) return;
-
-        //同一処理のため以下の処理を呼ぶだけにします。
-        //Submit時の仕様と差異が発生したら修正してください。
-        OnSubmit();
-    }
-
     public void OnPointerEnter(PointerEventData eventData)
     {
         if (eventData == null) throw new NullReferenceException();
@@ -343,5 +329,26 @@ public class CardUIHandler : MonoBehaviour, IPointerClickHandler, IPointerEnterH
         //実際はハイライト色を通常色に変えてるだけ
         selectableColors.selectedColor = selectableColors.normalColor;
         _selectable.colors = selectableColors;
+    }
+
+    public void OnPointerDown(PointerEventData eventData)
+    {
+        if (eventData == null) throw new NullReferenceException();
+
+
+    }
+
+    public void OnPointerUp(PointerEventData eventData)
+    {
+        if (eventData == null) throw new NullReferenceException();
+
+        if (!_selectable.interactable) return;
+
+        //左クリック以外行わない
+        if (eventData.button != PointerEventData.InputButton.Left) return;
+
+        //同一処理のため以下の処理を呼ぶだけにします。
+        //Submit時の仕様と差異が発生したら修正してください。
+        OnSubmit();
     }
 }

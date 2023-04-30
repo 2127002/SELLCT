@@ -3,12 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class Book : MonoBehaviour, IPointerClickHandler, IPointerEnterHandler, IPointerExitHandler
+public class Book : MonoBehaviour, IPointerUpHandler, IPointerDownHandler, IPointerEnterHandler, IPointerExitHandler
 {
     [SerializeField] E11_Vivid _e11;
     [SerializeField] Canvas _canvas;
-    
-    public void OnPointerClick(PointerEventData eventData)
+
+    public void OnPointerUp(PointerEventData eventData)
     {
         if (_e11.FindAll != 0) return;
         Debug.Log("Ž©•ª‚Ì–{‚ðŒ©‚Â‚¯‚½");
@@ -21,5 +21,10 @@ public class Book : MonoBehaviour, IPointerClickHandler, IPointerEnterHandler, I
 
     public void OnPointerExit(PointerEventData eventData)
     {
+    }
+
+    public void OnPointerDown(PointerEventData eventData)
+    {
+        throw new System.NotImplementedException();
     }
 }

@@ -12,7 +12,8 @@ public class CursorController : MonoBehaviour
     [SerializeField] CursorView _cursorView = default!;
 
     [SerializeField] InputActionReference _moveAction = default!;
-    [SerializeField] InputActionReference _clickAction = default!;
+    [SerializeField] InputActionReference _pointerUpAction = default!;
+    [SerializeField] InputActionReference _pointerDownAction = default!;
     [SerializeField] float _cursorSpeed = default!;
     [SerializeField] RectTransform _cursorTransform = default!;
     [SerializeField] PhaseController _phaseController = default!;
@@ -25,6 +26,8 @@ public class CursorController : MonoBehaviour
 
     RectTransform _currentSelectedRectTransform = default!;
 
+    DragAndDropController _dragAndDropController = default!;
+
     const float MAXWIDTH = 1920f;
     const float MAXHEIGHT = 1080f;
 
@@ -32,6 +35,8 @@ public class CursorController : MonoBehaviour
     {
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
+
+        _dragAndDropController = new(_cursorTransform);
 
         _phaseController.OnExplorationPhaseStart += Init;
         _phaseController.OnTradingPhaseStart.Add(Init);
@@ -42,8 +47,9 @@ public class CursorController : MonoBehaviour
         _moveAction.action.Enable();
         _moveAction.action.performed += OnCursorMove;
         _moveAction.action.canceled += OnCursorMove;
-        _clickAction.action.Enable();
-        _clickAction.action.performed += OnClick;
+        _pointerUpAction.action.Enable();
+        _pointerUpAction.action.performed += OnPointerUp;
+        _pointerDownAction.action.performed += OnPointerDown;
     }
 
     private void OnDisable()
@@ -51,8 +57,9 @@ public class CursorController : MonoBehaviour
         _moveAction.action.Disable();
         _moveAction.action.performed -= OnCursorMove;
         _moveAction.action.canceled += OnCursorMove;
-        _clickAction.action.Disable();
-        _clickAction.action.performed -= OnClick;
+        _pointerUpAction.action.Disable();
+        _pointerUpAction.action.performed -= OnPointerUp;
+        _pointerDownAction.action.performed -= OnPointerDown;
     }
 
     private void OnDestroy()
@@ -93,6 +100,24 @@ public class CursorController : MonoBehaviour
         //静止中は実行しない
         if (_prebPos == _cursorPos) return;
         _prebPos = _cursorPos;
+
+        //D&D中ならここで抜ける
+        if (_dragAndDropController.IsDragging)
+        {
+            //選択されているオブジェクトがなければ以降は行わない
+            if (_currentSelectedRectTransform == null)
+            {
+                EventSystem.current.SetSelectedGameObject(null);
+                return;
+            }
+
+            //選択が外れたことをオブジェクトに通知する
+            ExecuteEvents.Execute(_currentSelectedRectTransform.gameObject, new PointerEventData(EventSystem.current), ExecuteEvents.pointerExitHandler);
+            _currentSelectedRectTransform = null;
+            return;
+        }
+
+        _dragAndDropController.OnCursorMoving();
 
         //クロスヘアの下にある選択できるRectTransformを取得
         RectTransform selected = GetRectTransformAtCrosshair();
@@ -146,11 +171,28 @@ public class CursorController : MonoBehaviour
         _moveAxis = context.ReadValue<Vector2>();
     }
 
-    private void OnClick(InputAction.CallbackContext context)
+    private void OnPointerUp(InputAction.CallbackContext context)
+    {
+        //D&D中ならドロップして抜ける
+        if (_dragAndDropController.IsDragging)
+        {
+            _dragAndDropController.Drop();
+            return;
+        }
+
+        _dragAndDropController.OnPointerUp();
+
+        if (_currentSelectedRectTransform == null) return;
+
+        ExecuteEvents.Execute(_currentSelectedRectTransform.gameObject, new PointerEventData(EventSystem.current), ExecuteEvents.pointerUpHandler);
+    }
+
+    private void OnPointerDown(InputAction.CallbackContext obj)
     {
         if (_currentSelectedRectTransform == null) return;
 
-        ExecuteEvents.Execute(_currentSelectedRectTransform.gameObject, new PointerEventData(EventSystem.current), ExecuteEvents.pointerClickHandler);
+        _dragAndDropController.OnPointerDown(_currentSelectedRectTransform);
+        ExecuteEvents.Execute(_currentSelectedRectTransform.gameObject, new PointerEventData(EventSystem.current), ExecuteEvents.pointerDownHandler);
     }
 
     public void Enable()

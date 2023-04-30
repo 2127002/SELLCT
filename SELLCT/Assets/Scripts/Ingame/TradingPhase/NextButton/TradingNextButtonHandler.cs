@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class TradingNextButtonHandler : MonoBehaviour, ISelectableHighlight, IPointerEnterHandler, IPointerExitHandler,IPointerClickHandler,ISubmitHandler,ISelectHandler,IDeselectHandler
+public class TradingNextButtonHandler : MonoBehaviour, ISelectableHighlight, IPointerEnterHandler, IPointerExitHandler, IPointerDownHandler, IPointerUpHandler, ISubmitHandler, ISelectHandler, IDeselectHandler
 {
     [SerializeField] Selectable _selectable = default!;
 
@@ -28,11 +28,6 @@ public class TradingNextButtonHandler : MonoBehaviour, ISelectableHighlight, IPo
     {
         //TODO：今後ここに具体的なカーソルを外した際の処理を追加する
         EventSystem.current.SetSelectedGameObject(null);
-    }
-
-    public void OnPointerClick(PointerEventData eventData)
-    {
-        Submit();
     }
 
     public void OnSubmit(BaseEventData eventData)
@@ -75,5 +70,15 @@ public class TradingNextButtonHandler : MonoBehaviour, ISelectableHighlight, IPo
         //実際はハイライト色を通常色に変えてるだけ
         selectableColors.selectedColor = selectableColors.normalColor;
         _selectable.colors = selectableColors;
+    }
+
+    public void OnPointerDown(PointerEventData eventData)
+    {
+        throw new System.NotImplementedException();
+    }
+
+    public void OnPointerUp(PointerEventData eventData)
+    {
+        Submit();
     }
 }

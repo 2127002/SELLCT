@@ -5,7 +5,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class ConversationChoiceHandler : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, ISubmitHandler, IPointerClickHandler, ISelectableHighlight
+public class ConversationChoiceHandler : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, ISubmitHandler, IPointerDownHandler, IPointerUpHandler, ISelectableHighlight
 {
     ITalkChoice _talkChoice = default!;
 
@@ -62,11 +62,6 @@ public class ConversationChoiceHandler : MonoBehaviour, IPointerEnterHandler, IP
         Submit();
     }
 
-    public void OnPointerClick(PointerEventData eventData)
-    {
-        Submit();
-    }
-
     private void Submit()
     {
         _talkChoice.Select();
@@ -90,5 +85,15 @@ public class ConversationChoiceHandler : MonoBehaviour, IPointerEnterHandler, IP
         //実際はハイライト色を通常色に変えてるだけ
         selectableColors.selectedColor = selectableColors.normalColor;
         _selectable.colors = selectableColors;
+    }
+
+    public void OnPointerDown(PointerEventData eventData)
+    {
+        throw new System.NotImplementedException();
+    }
+
+    public void OnPointerUp(PointerEventData eventData)
+    {
+        Submit();
     }
 }

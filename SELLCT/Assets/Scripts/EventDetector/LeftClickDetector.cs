@@ -2,7 +2,7 @@ using System;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class LeftClickDetector : MonoBehaviour, IPointerClickHandler
+public class LeftClickDetector : MonoBehaviour, IPointerUpHandler, IPointerDownHandler
 {
     Action onClick;
 
@@ -16,11 +16,16 @@ public class LeftClickDetector : MonoBehaviour, IPointerClickHandler
         onClick -= action;
     }
 
-    public void OnPointerClick(PointerEventData eventData)
+    public void OnPointerUp(PointerEventData eventData)
     {
         //左クリック以外行わない
         if (eventData.button != PointerEventData.InputButton.Left) return;
 
         onClick?.Invoke();
+    }
+
+    public void OnPointerDown(PointerEventData eventData)
+    {
+        throw new NotImplementedException();
     }
 }
