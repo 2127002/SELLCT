@@ -101,6 +101,24 @@ public class CursorController : MonoBehaviour
         if (_prebPos == _cursorPos) return;
         _prebPos = _cursorPos;
 
+        //D&D中ならここで抜ける
+        if (_dragAndDropController.IsDragging)
+        {
+            //選択されているオブジェクトがなければ以降は行わない
+            if (_currentSelectedRectTransform == null)
+            {
+                EventSystem.current.SetSelectedGameObject(null);
+                return;
+            }
+
+            //選択が外れたことをオブジェクトに通知する
+            ExecuteEvents.Execute(_currentSelectedRectTransform.gameObject, new PointerEventData(EventSystem.current), ExecuteEvents.pointerExitHandler);
+            _currentSelectedRectTransform = null;
+            return;
+        }
+
+        _dragAndDropController.OnCursorMoving();
+
         //クロスヘアの下にある選択できるRectTransformを取得
         RectTransform selected = GetRectTransformAtCrosshair();
 
@@ -155,9 +173,17 @@ public class CursorController : MonoBehaviour
 
     private void OnPointerUp(InputAction.CallbackContext context)
     {
+        //D&D中ならドロップして抜ける
+        if (_dragAndDropController.IsDragging)
+        {
+            _dragAndDropController.Drop();
+            return;
+        }
+
+        _dragAndDropController.OnPointerUp();
+
         if (_currentSelectedRectTransform == null) return;
-        
-        _dragAndDropController.Drop(_currentSelectedRectTransform);
+
         ExecuteEvents.Execute(_currentSelectedRectTransform.gameObject, new PointerEventData(EventSystem.current), ExecuteEvents.pointerUpHandler);
     }
 
@@ -165,8 +191,8 @@ public class CursorController : MonoBehaviour
     {
         if (_currentSelectedRectTransform == null) return;
 
-        ExecuteEvents.Execute(_currentSelectedRectTransform.gameObject, new PointerEventData(EventSystem.current), ExecuteEvents.pointerDownHandler);
         _dragAndDropController.OnPointerDown(_currentSelectedRectTransform);
+        ExecuteEvents.Execute(_currentSelectedRectTransform.gameObject, new PointerEventData(EventSystem.current), ExecuteEvents.pointerDownHandler);
     }
 
     public void Enable()
