@@ -4011,7 +4011,6 @@ Transform:
   - {fileID: 1175034079}
   - {fileID: 449189165}
   - {fileID: 941202355}
-  - {fileID: 1858823706}
   - {fileID: 227483398}
   - {fileID: 2037373639}
   - {fileID: 1274645116}
@@ -4077,8 +4076,6 @@ MonoBehaviour:
   - card: {fileID: 449189166}
     initcount: 4
   - card: {fileID: 941202356}
-    initcount: 4
-  - card: {fileID: 1858823707}
     initcount: 4
   - card: {fileID: 227483399}
     initcount: 4
@@ -8568,8 +8565,6 @@ MonoBehaviour:
     initcount: 2
   - card: {fileID: 941202356}
     initcount: 1
-  - card: {fileID: 1858823707}
-    initcount: 1
   - card: {fileID: 227483399}
     initcount: 1
   - card: {fileID: 2037373640}
@@ -9115,77 +9110,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1854591484}
   m_CullTransparentMesh: 1
---- !u!1 &1858823705
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1858823706}
-  - component: {fileID: 1858823707}
-  - component: {fileID: 1858823708}
-  m_Layer: 0
-  m_Name: E26_Favourable
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1858823706
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1858823705}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 902597265}
-  m_RootOrder: -1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1858823707
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1858823705}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5d705ce53ca3b39418b80efcb75b504a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _parameter: {fileID: 1858823708}
-  _baseSprite: {fileID: 21300000, guid: e86dc8f91cece554692d538269fc9cfc, type: 3}
-  _number: {fileID: 0}
-  _chineseCharacters: {fileID: 21300000, guid: 847e0f5524be6d140980081730d72ca2, type: 3}
-  _hiragana: {fileID: 0}
-  _katakana: {fileID: 0}
-  _alphabet: {fileID: 0}
-  _handMediator: {fileID: 1975269151}
-  _favourableView: {fileID: 1982680978}
-  _phaseController: {fileID: 495064998}
---- !u!114 &1858823708
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1858823705}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a7ddc8a1ce1f58949ab7aff714a4f524, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _price: 0
-  _name: 
-  _rarity: 1
-  _isDisposedOfAfterSell: 0
 --- !u!1 &1890776589
 GameObject:
   m_ObjectHideFlags: 0
