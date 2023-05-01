@@ -8,7 +8,6 @@ using UnityEngine;
 public class ConversationController : MonoBehaviour
 {
     [SerializeField] TraderController _traderController = default!;
-    [SerializeField] PlayerMonologue _playerMonologue = default!;
     [SerializeField] TextBoxController _textBoxController = default!;
 
     const string DEFAULT = "default";
@@ -16,23 +15,13 @@ public class ConversationController : MonoBehaviour
     private void Reset()
     {
         _traderController = FindFirstObjectByType<TraderController>();
-        _playerMonologue = FindFirstObjectByType<PlayerMonologue>();
         _textBoxController = FindFirstObjectByType<TextBoxController>();
     }
 
     public async UniTask OnStart()
     {
-        //プレイヤーの独白に置き換えるか判定する
-        bool switchToPlayerMonologue = _playerMonologue.SwitchToPlayerMonologue;
-
-        string speaker = switchToPlayerMonologue ? _playerMonologue.Speaker : _traderController.CurrentTrader.Name;
-        string[] startMessage = switchToPlayerMonologue ? _playerMonologue.StartMessage() : _traderController.CurrentTrader.StartMessage();
-
-        //default指定だったら書き換えるDefaultの文章に書き換える
-        if (startMessage[0] == DEFAULT)
-        {
-            startMessage = _playerMonologue.StartMessage();
-        }
+        string speaker = _traderController.CurrentTrader.Name;
+        string[] startMessage = _traderController.CurrentTrader.StartMessage();
 
         //出会いのテキストを表示する
         for (int i = 0; i < startMessage.Length; i++)
@@ -46,23 +35,13 @@ public class ConversationController : MonoBehaviour
                 //キャンセルされた場合は処理を終了する
                 return;
             }
-
         }
     }
 
     public async UniTask OnEnd()
     {
-        //プレイヤーの独白に置き換えるか判定する
-        bool switchToPlayerMonologue = _playerMonologue.SwitchToPlayerMonologue;
-
-        string speaker = switchToPlayerMonologue ? _playerMonologue.Speaker : _traderController.CurrentTrader.Name;
-        string[] endMessage = switchToPlayerMonologue ? _playerMonologue.EndMessage() : _traderController.CurrentTrader.EndMessage();
-
-        //default指定だったら書き換えるDefaultの文章に書き換える
-        if (endMessage[0] == DEFAULT)
-        {
-            endMessage = _playerMonologue.EndMessage();
-        }
+        string speaker = _traderController.CurrentTrader.Name;
+        string[] endMessage = _traderController.CurrentTrader.EndMessage();
 
         //テキストの表示
         for (int i = 0; i < endMessage.Length; i++)
@@ -83,17 +62,8 @@ public class ConversationController : MonoBehaviour
     {
         if (card.Id < 0) return;
 
-        //プレイヤーの独白に置き換えるか判定する
-        bool switchToPlayerMonologue = _playerMonologue.SwitchToPlayerMonologue;
-
-        string speaker = switchToPlayerMonologue ? _playerMonologue.Speaker : _traderController.CurrentTrader.Name;
-        string[] cardMessage = switchToPlayerMonologue ? _playerMonologue.CardMessage(card) : _traderController.CurrentTrader.CardMessage(card);
-
-        //default指定だったら書き換えるDefaultの文章に書き換える
-        if (cardMessage[0] == DEFAULT)
-        {
-            cardMessage = _playerMonologue.CardMessage(card);
-        }
+        string speaker = _traderController.CurrentTrader.Name;
+        string[] cardMessage = _traderController.CurrentTrader.CardMessage(card);
 
         for (int i = 0; i < cardMessage.Length; i++)
         {
@@ -113,17 +83,8 @@ public class ConversationController : MonoBehaviour
     {
         if (card.Id < 0) return;
 
-        //プレイヤーの独白に置き換えるか判定する
-        bool switchToPlayerMonologue = _playerMonologue.SwitchToPlayerMonologue;
-
-        string speaker = switchToPlayerMonologue ? _playerMonologue.Speaker : _traderController.CurrentTrader.Name;
-        string[] message = switchToPlayerMonologue ? _playerMonologue.BuyMessage(card) : _traderController.CurrentTrader.BuyMessage(card);
-
-        //default指定だったら書き換えるDefaultの文章に書き換える
-        if (message[0] == DEFAULT)
-        {
-            message = _playerMonologue.BuyMessage(card);
-        }
+        string speaker = _traderController.CurrentTrader.Name;
+        string[] message = _traderController.CurrentTrader.BuyMessage(card);
 
         for (int i = 0; i < message.Length; i++)
         {
@@ -139,17 +100,8 @@ public class ConversationController : MonoBehaviour
     {
         if (card.Id < 0) return;
 
-        //プレイヤーの独白に置き換えるか判定する
-        bool switchToPlayerMonologue = _playerMonologue.SwitchToPlayerMonologue;
-
-        string speaker = switchToPlayerMonologue ? _playerMonologue.Speaker : _traderController.CurrentTrader.Name;
-        string[] message = switchToPlayerMonologue ? _playerMonologue.SellMessage(card) : _traderController.CurrentTrader.SellMessage(card);
-
-        //default指定だったら書き換えるDefaultの文章に書き換える
-        if (message[0] == DEFAULT)
-        {
-            message = _playerMonologue.SellMessage(card);
-        }
+        string speaker = _traderController.CurrentTrader.Name;
+        string[] message = _traderController.CurrentTrader.SellMessage(card);
 
         for (int i = 0; i < message.Length; i++)
         {
