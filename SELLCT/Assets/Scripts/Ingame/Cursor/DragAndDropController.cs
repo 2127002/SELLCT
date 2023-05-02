@@ -5,6 +5,9 @@ using UnityEngine.UI;
 
 public class DragAndDropController
 {
+    //ドラッグアンドドロップの有効無効を示す。
+    bool Interactable { get; set; }
+
     //カーソルのTransform
     RectTransform _cursorRectTransform = default!;
 
@@ -24,6 +27,7 @@ public class DragAndDropController
 
     public void OnPointerDown(RectTransform rectTransformToMove)
     {
+        if (!Interactable) return;
         if (rectTransformToMove == null) throw new System.ArgumentNullException("動かしたいTransformがnullです");
 
         //D&D前の情報を保存
@@ -34,6 +38,8 @@ public class DragAndDropController
 
     public void OnCursorMoving()
     {
+        if (!Interactable) return;
+
         if (_isDragging) return;
         if (_rectTransformToMove == null) return;
 
@@ -45,11 +51,15 @@ public class DragAndDropController
 
     public void OnPointerUp()
     {
+        if (!Interactable) return;
+
         _rectTransformToMove = null;
     }
 
     public void Drop()
     {
+        if (!Interactable) return;
+
         if (!_isDragging) return;
 
         //TODO：落とした先の座標になにかあれば処理して抜ける
