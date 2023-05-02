@@ -19,7 +19,7 @@ public enum InteractableChange
     Max
 }
 
-public class CardUIHandler : MonoBehaviour, IPointerDownHandler,IPointerUpHandler, IPointerEnterHandler, IPointerExitHandler, ISubmitHandler, ISelectHandler, IDeselectHandler, ISelectableHighlight
+public class CardUIHandler : MonoBehaviour, IPointerDownHandler, IPointerUpHandler, IPointerEnterHandler, IPointerExitHandler, ISubmitHandler, ISelectHandler, IDeselectHandler, ISelectableHighlight
 {
     enum EntityType
     {
@@ -49,6 +49,8 @@ public class CardUIHandler : MonoBehaviour, IPointerDownHandler,IPointerUpHandle
     [SerializeField] Card _buyOrSell = default!;
 
     [SerializeField] EntityType _entityType;
+
+    [SerializeField] ScrollController _scrollController = default!;
 
     Color _defaultSelectColor = default!;
 
@@ -289,14 +291,34 @@ public class CardUIHandler : MonoBehaviour, IPointerDownHandler,IPointerUpHandle
         OnSubmit();
     }
 
-    public void OnSelect(BaseEventData eventData)
+    public async void OnSelect(BaseEventData eventData)
     {
         if (eventData == null) throw new NullReferenceException();
         if (!_selectable.interactable) return;
 
         //TODO:SE1の再生
 
-        _cardUIView.SetImagesSizeDelta();
+        //画面外か判定する。オブジェクトのy座標で判定（好ましくない）
+        ScrollController.Direction dir;
+
+        //再帰的に実行することで確実に画面内に納める
+        while (true)
+        {
+            dir = ScrollController.Direction.Invalid;
+
+            if (transform.position.y > 500f) dir = ScrollController.Direction.Up;
+            else if (transform.position.y < -500f) dir = ScrollController.Direction.Down;
+
+            if (dir == ScrollController.Direction.Invalid) break;
+
+            //画面外ならスクロールする
+            await _scrollController.StartAnimation(dir);
+            
+            //1フレーム待機してからもう一度試す
+            await UniTask.Yield();
+        }
+
+        _cardUIView.OnSelect();
 
         //テキスト更新
         Card card = _deckMediator.GetCardAtCardUIHandler(this);

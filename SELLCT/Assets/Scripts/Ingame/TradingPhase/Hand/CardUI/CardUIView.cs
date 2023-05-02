@@ -70,7 +70,7 @@ public class CardUIView : MonoBehaviour
         _cardText.enabled = false;
     }
 
-    public void SetImagesSizeDelta()
+    public void OnSelect()
     {
         //Šg‘å—¦‚ðŽw’è’l‚É•Ï‚¦‚é
         foreach (var item in _cardImages)
