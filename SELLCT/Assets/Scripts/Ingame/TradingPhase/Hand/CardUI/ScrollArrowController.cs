@@ -1,3 +1,4 @@
+using Cysharp.Threading.Tasks;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -22,6 +23,8 @@ public class ScrollArrowController : MonoBehaviour, IPointerDownHandler, IPointe
     const float CARDHEIGHT = 348f;
     static readonly List<Vector3> offset = new() { new Vector3(0, -CARDHEIGHT, 0), new Vector3(0, CARDHEIGHT, 0) };
 
+    const float Duration = 0.1f;
+
     public void OnDeselect(BaseEventData eventData)
     {
     }
@@ -32,6 +35,9 @@ public class ScrollArrowController : MonoBehaviour, IPointerDownHandler, IPointe
 
     public void OnPointerEnter(PointerEventData eventData)
     {
+        StartAnimation();
+
+
         EventSystem.current.SetSelectedGameObject(gameObject);
     }
 
@@ -60,6 +66,21 @@ public class ScrollArrowController : MonoBehaviour, IPointerDownHandler, IPointe
     {
         Debug.Log("Submit");
 
-        _cardsParent.localPosition += offset[(int)_direction];
+        StartAnimation();
+    }
+
+    private async void StartAnimation()
+    {
+        float time = 0f;
+        Vector3 prebPos = _cardsParent.localPosition;
+
+        while (time < Duration)
+        {
+            await UniTask.Yield();
+            float progress = TM.Easing.Management.EasingManager.EaseProgress(TM.Easing.EaseType.InOutSine, time, Duration, 0f, 0f);
+            _cardsParent.localPosition = prebPos + offset[(int)_direction] * progress;
+
+            time += Time.deltaTime;
+        }
     }
 }
