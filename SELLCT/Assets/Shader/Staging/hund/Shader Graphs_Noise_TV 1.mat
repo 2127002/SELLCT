@@ -7,8 +7,8 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Shader Graphs_Noise_TV
-  m_Shader: {fileID: -6465566751694194690, guid: 31a4f289fac0a1744a37aa6e7e4f77b9,
+  m_Name: Shader Graphs_Noise_TV 1
+  m_Shader: {fileID: -6465566751694194690, guid: 06d3003f16026b944b836cea408dde03,
     type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
@@ -38,7 +38,10 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _NoiseScale: -10.08
-    - _NoiseSpd: 3
+    - _Float: 1
+    - _NoiseScale: 8.872658
+    - _NoiseSpd: 5
+    - _Ratio: -0.00014530709
+    - _Rotate: 0.5
     m_Colors: []
   m_BuildTextureStacks: []
