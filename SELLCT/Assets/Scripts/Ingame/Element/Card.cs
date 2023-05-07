@@ -31,8 +31,6 @@ public abstract class Card : MonoBehaviour
     /// カードID。EEX_NULLは-1、その他はエレメント番号で管理しています。
     /// </summary>
     public abstract int Id { get; }
-    public int Count { get; set; } = 1;
-
     /// <summary>
     /// カードの名前
     /// </summary>

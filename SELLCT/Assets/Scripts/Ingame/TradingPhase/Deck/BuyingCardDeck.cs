@@ -9,6 +9,7 @@ public class BuyingCardDeck : IDeck
 
     public void Add(Card card)
     {
+        //相手側のカウントだったのをリセットする
         _cards.Add(card);
     }
 
@@ -29,15 +30,8 @@ public class BuyingCardDeck : IDeck
 
     public int FindAll(Card card)
     {
-        var list = _cards.FindAll(c => c.Equals(card));
+        var list = _cards.FindAll(c => c.Id.Equals(card.Id));
 
-        int count = 0;
-
-        foreach (var item in list)
-        {
-            count += item.Count;
-        }
-
-        return count;
+        return list.Count;
     }
 }

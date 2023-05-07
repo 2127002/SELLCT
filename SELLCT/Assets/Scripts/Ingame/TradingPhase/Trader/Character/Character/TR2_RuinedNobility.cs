@@ -38,6 +38,7 @@ public class TR2_RuinedNobility : Trader
             }
 
             if (card.Id < 0) break;
+            CardCount[card.Id]++;
             deck.Add(card);
         }
     }

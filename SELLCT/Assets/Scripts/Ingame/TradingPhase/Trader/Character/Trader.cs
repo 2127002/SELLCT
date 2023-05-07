@@ -14,6 +14,7 @@ public abstract class Trader : MonoBehaviour, IConversationMessage
 
     protected Favorability favorability;
     protected readonly TraderDeck deck = new();
+    public int[] CardCount { get; } = new int[64];
 
     protected virtual void Awake()
     {

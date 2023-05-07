@@ -29,7 +29,7 @@ public class CardUIView : MonoBehaviour
     /// カードに応じて表示を切り替える
     /// </summary>
     /// <param name="card">表示したいカード</param>
-    public void SetCardSprites(Card card)
+    public void SetCardSprites(Card card, int cardCount)
     {
         //0番目はBaseなため必ず表示される
         _cardImages[0].enabled = true;
@@ -57,11 +57,11 @@ public class CardUIView : MonoBehaviour
 
         //表示する
         _cardText.enabled = isPrintText;
-        _cardText.text = card.CardName;
+        _cardText.text = card.CardName.ToDisplayString();
 
         _countImage.enabled = true;
         _countText.enabled = true;
-        _countText.text = card.Count.ToString().ToDisplayString();
+        _countText.text = cardCount.ToString().ToDisplayString();
     }
 
     public void DisableAllCardUIs()

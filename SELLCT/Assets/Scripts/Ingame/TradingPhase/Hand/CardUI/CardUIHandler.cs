@@ -220,7 +220,7 @@ public class CardUIHandler : MonoBehaviour, IPointerDownHandler, IPointerUpHandl
         EnabledSelectebility(InteractableChange.CurrentCard);
 
         //UIを変更する
-        _cardUIView.SetCardSprites(card);
+        _cardUIView.SetCardSprites(card, _deckMediator.CardCount[card.Id]);
     }
 
     /// <summary>

@@ -38,9 +38,9 @@ public class TR7_Beast : Trader
             }
 
             if (card.Id < 0) break;
+            CardCount[card.Id]++;
             deck.Add(card);
         }
-
     }
 
     public override string[] BuyMessage(Card card)

@@ -32,7 +32,7 @@ public class ExplorationNextButtonHandler : MonoBehaviour, ISelectableHighlight,
         EventSystem.current.SetSelectedGameObject(null);
 
         _phaseController.CompleteExplorationPhase();
-        _floor01.OnNextButtonPressed();
+        //_floor01.OnNextButtonPressed();
     }
 
     public void EnableHighlight()

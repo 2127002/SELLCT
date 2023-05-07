@@ -15,6 +15,8 @@ public class GoodsMediator : DeckMediator
     //プレイヤーが売却したカードが一時的に入るデッキ
     readonly BuyingCardDeck _buyingCardDeck = new();
 
+    public override int[] CardCount => _traderController.CurrentTrader.CardCount;
+
     private void Awake()
     {
         _phaseController.OnTradingPhaseComplete.Add(OnComplete);
@@ -95,12 +97,22 @@ public class GoodsMediator : DeckMediator
         Card card;
         if (_lack.ContainsPlayerDeck)
         {
-            card = _traderController.CurrentTrader.TraderDeck.LackDraw();
+            card = _traderController.CurrentTrader.TraderDeck.LuckDraw();
         }
         else
         {
             card = _traderController.CurrentTrader.TraderDeck.Draw();
         }
+
+        if (card.Id < 0)
+        {
+            //null相当だった場合以降のカード情報を消したいためすべてのカードにアクセスする
+            UpdateCardSprites();
+            return;
+        }
+
+        //すでに手札にあるなら加えない
+        if (_hand.ContainsCard(card)) return;
 
         //ドローするときにCardUIがなければ作り出す
         int capacityDifference = _hand.Capacity - _cardUIInstance.Handlers.Count;
@@ -119,11 +131,20 @@ public class GoodsMediator : DeckMediator
 
     public override bool RemoveHandCard(Card card)
     {
+        //所持カード枚数を減らす
+        CardCount[card.Id]--;
+        if (CardCount[card.Id] > 0)
+        {
+            return false;
+        }
+
         return _hand.Remove(card);
     }
 
     public override void AddPlayerDeck(Card card)
     {
+        CardCount[card.Id]++;
+
         _traderController.CurrentTrader.TraderDeck.Add(card);
     }
 
@@ -156,17 +177,18 @@ public class GoodsMediator : DeckMediator
 
     public override void AddBuyingDeck(Card card)
     {
+        CardCount[card.Id]++;
         _buyingCardDeck.Add(card);
     }
 
     public override bool ContainsCard(Card card)
     {
-        return _traderController.CurrentTrader.TraderDeck.ContainsCard(card) || _hand.ContainsCard(card) || _buyingCardDeck.ContainsCard(card);
+        return CardCount[card.Id] > 0;
     }
 
     public override int FindAll(Card card)
     {
-        return _traderController.CurrentTrader.TraderDeck.FindAll(card) + _hand.FindAll(card) + _buyingCardDeck.FindAll(card);
+        return CardCount[card.Id];
     }
 
     public override Card GetCardAtCardUIHandler(CardUIHandler handler)
