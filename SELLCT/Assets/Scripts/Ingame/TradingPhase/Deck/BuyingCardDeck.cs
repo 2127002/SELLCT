@@ -31,6 +31,13 @@ public class BuyingCardDeck : IDeck
     {
         var list = _cards.FindAll(c => c.Equals(card));
 
-        return list.Count;
+        int count = 0;
+
+        foreach (var item in list)
+        {
+            count += item.Count;
+        }
+
+        return count;
     }
 }

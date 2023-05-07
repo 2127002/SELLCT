@@ -70,6 +70,9 @@ public class CardUIHandler : MonoBehaviour, IPointerDownHandler, IPointerUpHandl
 
     private void Awake()
     {
+        //開始時はUIを表示させないようにする。セットするタイミングで表示を切り替える。
+        _cardUIView.DisableAllCardUIs();
+
         _defaultSelectColor = _selectable.colors.selectedColor;
         _phaseController.OnTradingPhaseStart.Add(OnGenerate);
 
@@ -89,7 +92,7 @@ public class CardUIHandler : MonoBehaviour, IPointerDownHandler, IPointerUpHandl
     {
         Card card = _deckMediator.GetCardAtCardUIHandler(this);
         if (card.Id < 0) throw new ArgumentNullException("選択したカードがNullです。");
-
+        Debug.Log(card);
         //EntityTypeに適した処理を呼ぶ。
         if (_entityType == EntityType.Player)
         {
@@ -142,9 +145,12 @@ public class CardUIHandler : MonoBehaviour, IPointerDownHandler, IPointerUpHandl
     {
         _moneyPossessedController.IncreaseMoney(soldCard.Price);
 
-        //そのカードを手札からなくし、新たにカードを引く
-        _deckMediator.RemoveHandCard(soldCard);
-        _deckMediator.DrawCard();
+        //そのカードを手札からなくす
+        if (_deckMediator.RemoveHandCard(soldCard))
+        {
+            //成功したらカードを引く
+            _deckMediator.DrawCard();
+        }
 
         //商人の手札売却処理
         _traderController.CurrentTrader.OnPlayerSell(soldCard);
@@ -260,7 +266,7 @@ public class CardUIHandler : MonoBehaviour, IPointerDownHandler, IPointerUpHandl
         //このオブジェクトが選択中なら実行しない
         if (gameObject == EventSystem.current.currentSelectedGameObject) return;
 
-        _cardUIView.ResetImagesSizeDelta();
+        _cardUIView.ResetImagesSize();
     }
 
     public void OnPointerEnter(PointerEventData eventData)
@@ -298,6 +304,12 @@ public class CardUIHandler : MonoBehaviour, IPointerDownHandler, IPointerUpHandl
 
         //TODO:SE1の再生
 
+        _cardUIView.OnSelect();
+
+        //テキスト更新
+        Card card = _deckMediator.GetCardAtCardUIHandler(this);
+        _conversationController.OnSelect(card).Forget();
+
         //画面外か判定する。オブジェクトのy座標で判定（好ましくない）
         ScrollController.Direction dir;
 
@@ -313,23 +325,17 @@ public class CardUIHandler : MonoBehaviour, IPointerDownHandler, IPointerUpHandl
 
             //画面外ならスクロールする
             await _scrollController.StartAnimation(dir);
-            
+
             //1フレーム待機してからもう一度試す
             await UniTask.Yield();
         }
-
-        _cardUIView.OnSelect();
-
-        //テキスト更新
-        Card card = _deckMediator.GetCardAtCardUIHandler(this);
-        _conversationController.OnSelect(card).Forget();
     }
 
     public void OnDeselect(BaseEventData eventData)
     {
         if (eventData == null) throw new NullReferenceException();
 
-        _cardUIView.ResetImagesSizeDelta();
+        _cardUIView.ResetImagesSize();
     }
 
     public void EnableHighlight()
