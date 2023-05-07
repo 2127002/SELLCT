@@ -5,8 +5,8 @@ using UnityEngine;
 
 public class PlayerDeck : IDeck
 {
-    List<Card> _deck = new();
-    DeckUIController _deckUIController = default!;
+    readonly List<Card> _deck = new();
+    readonly DeckUIController _deckUIController = default!;
 
     public PlayerDeck(DeckUIController deckUIController)
     {
@@ -42,15 +42,8 @@ public class PlayerDeck : IDeck
 
     public int FindAll(Card card)
     {
-        var list = _deck.FindAll(c => c.Equals(card));
+        var list = _deck.FindAll(c => c.Id.Equals(card.Id));
 
-        int count = 0;
-
-        foreach (var item in list)
-        {
-            count += item.Count;
-        }
-
-        return count;
+        return list.Count;
     }
 }

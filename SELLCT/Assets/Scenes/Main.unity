@@ -4446,8 +4446,10 @@ MonoBehaviour:
     _favoriteCard:
       _favoriteCards: []
       _bonus: 0
-    _priorityCards: []
-    _initialDisplayItemCount: 4
+    _priorityCards:
+    - _card: {fileID: 449189166}
+      _priority: 984
+    _initialDisplayItemCount: 34
     _initialDeckCount: 4
     _initialFavorability: 0
     _addFavorabilityValue: 24
@@ -6394,7 +6396,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1586490154
 Transform:
   m_ObjectHideFlags: 0
@@ -9701,7 +9703,6 @@ MonoBehaviour:
   _countImage: {fileID: 1975869016}
   _cardText: {fileID: 1022315533}
   _countText: {fileID: 637532931}
-  _defaultSizeDelta: {x: 225, y: 288}
 --- !u!114 &7358856788846396334
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9984,7 +9985,6 @@ MonoBehaviour:
   _countImage: {fileID: 2001908710}
   _cardText: {fileID: 1068639690}
   _countText: {fileID: 213783552}
-  _defaultSizeDelta: {x: 225, y: 288}
 --- !u!114 &9069546498969095532
 MonoBehaviour:
   m_ObjectHideFlags: 0

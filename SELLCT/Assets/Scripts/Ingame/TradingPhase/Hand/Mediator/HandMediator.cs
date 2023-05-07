@@ -13,6 +13,8 @@ public class HandMediator : DeckMediator
     //プレイヤーのデッキ
     PlayerDeck _playerDeck;
 
+    public override int[] CardCount => base.CardCount;
+
     //購入したカードが一時的に入るデッキ
     readonly BuyingCardDeck _buyingCardDeck = new();
 
@@ -102,6 +104,9 @@ public class HandMediator : DeckMediator
 
         Card card = _playerDeck.Draw();
 
+        //すでに手札にあるなら加えない
+        if (_hand.ContainsCard(card)) return;
+
         //手札に追加
         _hand.Add(card);
 
@@ -111,27 +116,40 @@ public class HandMediator : DeckMediator
 
     public override bool RemoveHandCard(Card card)
     {
+        //所持カード枚数を減らす
+        CardCount[card.Id]--;
+        if (CardCount[card.Id] > 0)
+        {
+            return false;
+        }
+
         return _hand.Remove(card);
     }
 
     public override void AddPlayerDeck(Card card)
     {
+        //所持カード枚数を増やす
+        CardCount[card.Id]++;
+
         _playerDeck.Add(card);
     }
 
     public override void AddBuyingDeck(Card card)
     {
+        //所持カード枚数を増やす
+        CardCount[card.Id]++;
+
         _buyingCardDeck.Add(card);
     }
 
     public override bool ContainsCard(Card card)
     {
-        return _playerDeck.ContainsCard(card) || _hand.ContainsCard(card) || _buyingCardDeck.ContainsCard(card);
+        return CardCount[card.Id] > 0;
     }
 
     public override int FindAll(Card card)
     {
-        return _playerDeck.FindAll(card) + _hand.FindAll(card) + _buyingCardDeck.FindAll(card);
+        return CardCount[card.Id];
     }
 
     public override Card GetCardAtCardUIHandler(CardUIHandler handler)

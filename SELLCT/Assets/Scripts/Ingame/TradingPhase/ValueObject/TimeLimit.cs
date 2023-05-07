@@ -9,7 +9,7 @@ public class TimeLimit
     float _valueInSeconds;
 
     //Å‘å§ŒÀŠÔ‚ÌŒvZ‚Ég—p
-    float _timeLimitRate;
+    readonly float _timeLimitRate;
 
     public TimeLimit(float valueInSeconds, float timeLimitRate)
     {

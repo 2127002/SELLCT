@@ -4,6 +4,8 @@ using UnityEngine;
 
 public abstract class DeckMediator : MonoBehaviour
 {
+    public virtual int[] CardCount { get; } = new int[64];
+
     public abstract void DrawCard();
     public abstract bool RemoveHandCard(Card card);
     public abstract void AddPlayerDeck(Card card);
