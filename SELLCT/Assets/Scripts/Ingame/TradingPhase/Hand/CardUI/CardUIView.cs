@@ -10,6 +10,7 @@ public class CardUIView : MonoBehaviour
     //カード表示
     [SerializeField] List<Image> _cardImages = default!;
     [SerializeField] TextMeshProUGUI _cardText = default!;
+    [SerializeField] TextMeshProUGUI _countText = default!;
     [SerializeField] Vector2 _defaultSizeDelta = default!;
 
     //選択時画像サイズ補正値
@@ -58,6 +59,8 @@ public class CardUIView : MonoBehaviour
         //表示する
         _cardText.enabled = isPrintText;
         _cardText.text = card.CardName;
+
+        _countText.text = card.Count.ToString().ToDisplayString();
     }
 
     public void DisableAllCardUIs()

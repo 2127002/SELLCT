@@ -18,6 +18,14 @@ public class Hand : MonoBehaviour
     {
         if (_cards.Count >= Capacity) throw new HandCapacityExceededException();
 
+        foreach (var c in _cards)
+        {
+            if (c.Id != card.Id) continue;
+
+            c.Count++;
+            return;
+        }
+
         _cards.Add(card);
     }
 
@@ -29,7 +37,12 @@ public class Hand : MonoBehaviour
             return;
         }
 
-        _cards.Remove(card);
+        card.Count--;
+
+        if (card.Count <= 0)
+        {
+            _cards.Remove(card);
+        }
     }
 
     public int CalcDrawableCount()
@@ -46,7 +59,14 @@ public class Hand : MonoBehaviour
     {
         var list = _cards.FindAll(c => c.Equals(card));
 
-        return list.Count;
+        int count = 0;
+
+        foreach (var item in list)
+        {
+            count += item.Count;
+        }
+
+        return count;
     }
 
     public void AddHandCapacity(int amount)

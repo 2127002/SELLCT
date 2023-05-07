@@ -89,7 +89,7 @@ public class CardUIHandler : MonoBehaviour, IPointerDownHandler, IPointerUpHandl
     {
         Card card = _deckMediator.GetCardAtCardUIHandler(this);
         if (card.Id < 0) throw new ArgumentNullException("選択したカードがNullです。");
-
+        Debug.Log(card);
         //EntityTypeに適した処理を呼ぶ。
         if (_entityType == EntityType.Player)
         {
@@ -313,7 +313,7 @@ public class CardUIHandler : MonoBehaviour, IPointerDownHandler, IPointerUpHandl
 
             //画面外ならスクロールする
             await _scrollController.StartAnimation(dir);
-            
+
             //1フレーム待機してからもう一度試す
             await UniTask.Yield();
         }
