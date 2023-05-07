@@ -9698,6 +9698,7 @@ MonoBehaviour:
   - {fileID: 2686606119986807544}
   - {fileID: 7358856788846396334}
   - {fileID: 8709485035699750024}
+  _countImage: {fileID: 1975869016}
   _cardText: {fileID: 1022315533}
   _countText: {fileID: 637532931}
   _defaultSizeDelta: {x: 225, y: 288}
@@ -9980,6 +9981,7 @@ MonoBehaviour:
   - {fileID: 9069546498969095532}
   - {fileID: 6430242922663903889}
   - {fileID: 1825944139870105006}
+  _countImage: {fileID: 2001908710}
   _cardText: {fileID: 1068639690}
   _countText: {fileID: 213783552}
   _defaultSizeDelta: {x: 225, y: 288}

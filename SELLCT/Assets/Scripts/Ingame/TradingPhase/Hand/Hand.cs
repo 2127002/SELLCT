@@ -29,20 +29,26 @@ public class Hand : MonoBehaviour
         _cards.Add(card);
     }
 
-    public void Remove(Card card)
+    public bool Remove(Card card)
     {
         if (!_cards.Contains(card))
         {
             Debug.LogError("手札に存在しないカードが選択されました。仕様を確認してください。\n" + card);
-            return;
+            return false;
         }
 
+        //カードの所持枚数を減らす。
+        //一行にまとめられますが、可読性優先であえてまとめていません。
         card.Count--;
 
+        //所持数が0になったらカードを捨てる
         if (card.Count <= 0)
         {
             _cards.Remove(card);
+            return true;
         }
+
+        return false;
     }
 
     public int CalcDrawableCount()

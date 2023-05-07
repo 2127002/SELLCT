@@ -98,7 +98,7 @@ public class HandMediator : DeckMediator
 
     public override void DrawCard()
     {
-        if (_hand.CalcDrawableCount() == 0) return;
+        if (_hand.CalcDrawableCount() <= 0) return;
 
         Card card = _playerDeck.Draw();
 
@@ -109,9 +109,9 @@ public class HandMediator : DeckMediator
         _cardUIInstance.Handlers[_hand.Cards.Count - 1].SetCardSprites(card);
     }
 
-    public override void RemoveHandCard(Card card)
+    public override bool RemoveHandCard(Card card)
     {
-        _hand.Remove(card);
+        return _hand.Remove(card);
     }
 
     public override void AddPlayerDeck(Card card)

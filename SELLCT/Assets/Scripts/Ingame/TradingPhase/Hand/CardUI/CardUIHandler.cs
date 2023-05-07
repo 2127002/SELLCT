@@ -70,6 +70,9 @@ public class CardUIHandler : MonoBehaviour, IPointerDownHandler, IPointerUpHandl
 
     private void Awake()
     {
+        //開始時はUIを表示させないようにする。セットするタイミングで表示を切り替える。
+        _cardUIView.DisableAllCardUIs();
+
         _defaultSelectColor = _selectable.colors.selectedColor;
         _phaseController.OnTradingPhaseStart.Add(OnGenerate);
 
@@ -142,9 +145,12 @@ public class CardUIHandler : MonoBehaviour, IPointerDownHandler, IPointerUpHandl
     {
         _moneyPossessedController.IncreaseMoney(soldCard.Price);
 
-        //そのカードを手札からなくし、新たにカードを引く
-        _deckMediator.RemoveHandCard(soldCard);
-        _deckMediator.DrawCard();
+        //そのカードを手札からなくす
+        if (_deckMediator.RemoveHandCard(soldCard))
+        {
+            //成功したらカードを引く
+            _deckMediator.DrawCard();
+        }
 
         //商人の手札売却処理
         _traderController.CurrentTrader.OnPlayerSell(soldCard);
@@ -260,7 +266,7 @@ public class CardUIHandler : MonoBehaviour, IPointerDownHandler, IPointerUpHandl
         //このオブジェクトが選択中なら実行しない
         if (gameObject == EventSystem.current.currentSelectedGameObject) return;
 
-        _cardUIView.ResetImagesSizeDelta();
+        _cardUIView.ResetImagesSize();
     }
 
     public void OnPointerEnter(PointerEventData eventData)
@@ -329,7 +335,7 @@ public class CardUIHandler : MonoBehaviour, IPointerDownHandler, IPointerUpHandl
     {
         if (eventData == null) throw new NullReferenceException();
 
-        _cardUIView.ResetImagesSizeDelta();
+        _cardUIView.ResetImagesSize();
     }
 
     public void EnableHighlight()
