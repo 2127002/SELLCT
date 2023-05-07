@@ -18,18 +18,37 @@ public class Hand : MonoBehaviour
     {
         if (_cards.Count >= Capacity) throw new HandCapacityExceededException();
 
+        foreach (var c in _cards)
+        {
+            if (c.Id != card.Id) continue;
+
+            c.Count++;
+            return;
+        }
+
         _cards.Add(card);
     }
 
-    public void Remove(Card card)
+    public bool Remove(Card card)
     {
         if (!_cards.Contains(card))
         {
             Debug.LogError("手札に存在しないカードが選択されました。仕様を確認してください。\n" + card);
-            return;
+            return false;
         }
 
-        _cards.Remove(card);
+        //カードの所持枚数を減らす。
+        //一行にまとめられますが、可読性優先であえてまとめていません。
+        card.Count--;
+
+        //所持数が0になったらカードを捨てる
+        if (card.Count <= 0)
+        {
+            _cards.Remove(card);
+            return true;
+        }
+
+        return false;
     }
 
     public int CalcDrawableCount()
@@ -46,7 +65,14 @@ public class Hand : MonoBehaviour
     {
         var list = _cards.FindAll(c => c.Equals(card));
 
-        return list.Count;
+        int count = 0;
+
+        foreach (var item in list)
+        {
+            count += item.Count;
+        }
+
+        return count;
     }
 
     public void AddHandCapacity(int amount)

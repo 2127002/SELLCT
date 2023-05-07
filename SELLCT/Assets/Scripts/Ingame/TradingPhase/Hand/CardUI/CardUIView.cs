@@ -9,12 +9,13 @@ public class CardUIView : MonoBehaviour
 {
     //カード表示
     [SerializeField] List<Image> _cardImages = default!;
+    [SerializeField] Image _countImage = default!;
     [SerializeField] TextMeshProUGUI _cardText = default!;
-    [SerializeField] Vector2 _defaultSizeDelta = default!;
+    [SerializeField] TextMeshProUGUI _countText = default!;
 
     //選択時画像サイズ補正値
     const float CORRECTION_SIZE = 1.25f;
-    static readonly Vector2 correction = new(CORRECTION_SIZE, CORRECTION_SIZE);
+    static readonly Vector3 correction = new(CORRECTION_SIZE, CORRECTION_SIZE, CORRECTION_SIZE);
 
     public IReadOnlyList<Image> CardImages => _cardImages;
 
@@ -22,7 +23,6 @@ public class CardUIView : MonoBehaviour
     {
         _cardImages = GetComponentsInChildren<Image>().ToList();
         _cardText = GetComponentInChildren<TextMeshProUGUI>();
-        _defaultSizeDelta = GetComponent<RectTransform>().sizeDelta;
     }
 
     /// <summary>
@@ -58,6 +58,10 @@ public class CardUIView : MonoBehaviour
         //表示する
         _cardText.enabled = isPrintText;
         _cardText.text = card.CardName;
+
+        _countImage.enabled = true;
+        _countText.enabled = true;
+        _countText.text = card.Count.ToString().ToDisplayString();
     }
 
     public void DisableAllCardUIs()
@@ -68,26 +72,21 @@ public class CardUIView : MonoBehaviour
         }
 
         _cardText.enabled = false;
+
+        _countImage.enabled = false;
+        _countText.enabled = false;
     }
 
     public void OnSelect()
     {
         //拡大率を指定値に変える
-        foreach (var item in _cardImages)
-        {
-            Vector2 sizeDelta = item.rectTransform.sizeDelta;
-            sizeDelta.Scale(correction);
-            item.rectTransform.sizeDelta = sizeDelta;
-        }
+        transform.localScale = correction;
     }
 
-    public void ResetImagesSizeDelta()
+    public void ResetImagesSize()
     {
         //拡大率を初期値に戻す
-        foreach (var item in _cardImages)
-        {
-            item.rectTransform.sizeDelta = _defaultSizeDelta;
-        }
+        transform.localScale = Vector3.one;
     }
 
     public void OnSelectableEnabled(Color normalColor)
@@ -96,8 +95,8 @@ public class CardUIView : MonoBehaviour
         {
             cardImage.color = normalColor;
         }
-    }    
-    
+    }
+
     public void OnSelectableDisabled(Color disabledColor)
     {
         foreach (var cardImage in _cardImages)

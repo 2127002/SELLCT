@@ -25,7 +25,8 @@ public class PlayerDeck : IDeck
 
         //ランダムに返す処理をしています。
         //意図的にドローしたい際はこの辺に処理を追加してください。
-        int index = UnityEngine.Random.Range(0, _deck.Count);
+        //int index = UnityEngine.Random.Range(0, _deck.Count);
+        int index = 0;
 
         Card card = _deck[index];
         _deck.RemoveAt(index);
@@ -43,6 +44,13 @@ public class PlayerDeck : IDeck
     {
         var list = _deck.FindAll(c => c.Equals(card));
 
-        return list.Count;
+        int count = 0;
+
+        foreach (var item in list)
+        {
+            count += item.Count;
+        }
+
+        return count;
     }
 }
