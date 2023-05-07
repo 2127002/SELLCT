@@ -177,7 +177,6 @@ public class GoodsMediator : DeckMediator
 
     public override void AddBuyingDeck(Card card)
     {
-        CardCount[card.Id]++;
         _buyingCardDeck.Add(card);
     }
 

@@ -79,6 +79,21 @@ public class HandMediator : DeckMediator
         }
     }
 
+    private void AddHand(Card card)
+    {
+        //すでに手札にあるなら加えない
+        if (_hand.ContainsCard(card)) return;
+
+        //null相当なら追加しない
+        if (card.Id < 0) return;
+
+        //手札に追加
+        _hand.Add(card);
+
+        //UIをセットする
+        _cardUIInstance.Handlers[_hand.Cards.Count - 1].SetCardSprites(card);
+    }
+
     public override void UpdateCardSprites()
     {
         int handCapacity = _hand.Capacity;
@@ -104,24 +119,16 @@ public class HandMediator : DeckMediator
 
         Card card = _playerDeck.Draw();
 
-        //すでに手札にあるなら加えない
-        if (_hand.ContainsCard(card)) return;
-
-        //手札に追加
-        _hand.Add(card);
-
-        //UIをセットする
-        _cardUIInstance.Handlers[_hand.Cards.Count - 1].SetCardSprites(card);
+        AddHand(card);
     }
 
     public override bool RemoveHandCard(Card card)
     {
         //所持カード枚数を減らす
         CardCount[card.Id]--;
-        if (CardCount[card.Id] > 0)
-        {
-            return false;
-        }
+
+        //カードが1枚以上あるならRemoveしない。簡素化は可能ですが可読性優先で1行にはまとめません。
+        if (CardCount[card.Id] > 0) return false;
 
         return _hand.Remove(card);
     }
@@ -139,7 +146,11 @@ public class HandMediator : DeckMediator
         //所持カード枚数を増やす
         CardCount[card.Id]++;
 
-        _buyingCardDeck.Add(card);
+        //手札に追加する
+        AddHand(card);
+        
+        //カードの情報を更新する
+        UpdateCardSprites();
     }
 
     public override bool ContainsCard(Card card)
