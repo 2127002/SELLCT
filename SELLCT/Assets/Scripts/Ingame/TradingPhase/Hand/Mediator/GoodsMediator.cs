@@ -117,9 +117,9 @@ public class GoodsMediator : DeckMediator
         _cardUIInstance.Handlers[_hand.Cards.Count - 1].SetCardSprites(card);
     }
 
-    public override bool RemoveHandCard(Card card)
+    public override void RemoveHandCard(Card card)
     {
-        return _hand.Remove(card);
+        _hand.Remove(card);
     }
 
     public override void AddPlayerDeck(Card card)

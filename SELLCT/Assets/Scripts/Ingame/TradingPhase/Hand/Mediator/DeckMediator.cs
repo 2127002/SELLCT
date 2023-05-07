@@ -5,7 +5,7 @@ using UnityEngine;
 public abstract class DeckMediator : MonoBehaviour
 {
     public abstract void DrawCard();
-    public abstract bool RemoveHandCard(Card card);
+    public abstract void RemoveHandCard(Card card);
     public abstract void AddPlayerDeck(Card card);
     public abstract void UpdateCardSprites();
     public abstract void AddBuyingDeck(Card card);
