@@ -12,7 +12,6 @@ public class CardUIView : MonoBehaviour
     [SerializeField] Image _countImage = default!;
     [SerializeField] TextMeshProUGUI _cardText = default!;
     [SerializeField] TextMeshProUGUI _countText = default!;
-    [SerializeField] Vector2 _defaultSizeDelta = default!;
 
     //選択時画像サイズ補正値
     const float CORRECTION_SIZE = 1.25f;
@@ -24,7 +23,6 @@ public class CardUIView : MonoBehaviour
     {
         _cardImages = GetComponentsInChildren<Image>().ToList();
         _cardText = GetComponentInChildren<TextMeshProUGUI>();
-        _defaultSizeDelta = GetComponent<RectTransform>().sizeDelta;
     }
 
     /// <summary>

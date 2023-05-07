@@ -304,6 +304,12 @@ public class CardUIHandler : MonoBehaviour, IPointerDownHandler, IPointerUpHandl
 
         //TODO:SE1の再生
 
+        _cardUIView.OnSelect();
+
+        //テキスト更新
+        Card card = _deckMediator.GetCardAtCardUIHandler(this);
+        _conversationController.OnSelect(card).Forget();
+
         //画面外か判定する。オブジェクトのy座標で判定（好ましくない）
         ScrollController.Direction dir;
 
@@ -323,12 +329,6 @@ public class CardUIHandler : MonoBehaviour, IPointerDownHandler, IPointerUpHandl
             //1フレーム待機してからもう一度試す
             await UniTask.Yield();
         }
-
-        _cardUIView.OnSelect();
-
-        //テキスト更新
-        Card card = _deckMediator.GetCardAtCardUIHandler(this);
-        _conversationController.OnSelect(card).Forget();
     }
 
     public void OnDeselect(BaseEventData eventData)
