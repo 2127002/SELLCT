@@ -44,7 +44,7 @@ public class TraderDeck : IDeck
     /// E37‚ğŠ‚µ‚Ä‚¢‚½Û‚Ìƒhƒ[
     /// </summary>
     /// <returns></returns>
-    public Card LackDraw()
+    public Card LuckDraw()
     {
         int index = Random.Range(0, _cards.Count);
 

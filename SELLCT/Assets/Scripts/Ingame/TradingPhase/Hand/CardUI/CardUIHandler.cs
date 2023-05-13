@@ -19,7 +19,7 @@ public enum InteractableChange
     Max
 }
 
-public class CardUIHandler : MonoBehaviour, IPointerDownHandler,IPointerUpHandler, IPointerEnterHandler, IPointerExitHandler, ISubmitHandler, ISelectHandler, IDeselectHandler, ISelectableHighlight
+public class CardUIHandler : MonoBehaviour, IPointerDownHandler, IPointerUpHandler, IPointerEnterHandler, IPointerExitHandler, ISubmitHandler, ISelectHandler, IDeselectHandler, ISelectableHighlight
 {
     enum EntityType
     {
@@ -50,6 +50,8 @@ public class CardUIHandler : MonoBehaviour, IPointerDownHandler,IPointerUpHandle
 
     [SerializeField] EntityType _entityType;
 
+    [SerializeField] ScrollController _scrollController = default!;
+
     Color _defaultSelectColor = default!;
 
     //selectableの有効かを保存
@@ -68,6 +70,9 @@ public class CardUIHandler : MonoBehaviour, IPointerDownHandler,IPointerUpHandle
 
     private void Awake()
     {
+        //開始時はUIを表示させないようにする。セットするタイミングで表示を切り替える。
+        _cardUIView.DisableAllCardUIs();
+
         _defaultSelectColor = _selectable.colors.selectedColor;
         _phaseController.OnTradingPhaseStart.Add(OnGenerate);
 
@@ -87,7 +92,7 @@ public class CardUIHandler : MonoBehaviour, IPointerDownHandler,IPointerUpHandle
     {
         Card card = _deckMediator.GetCardAtCardUIHandler(this);
         if (card.Id < 0) throw new ArgumentNullException("選択したカードがNullです。");
-
+        Debug.Log(card);
         //EntityTypeに適した処理を呼ぶ。
         if (_entityType == EntityType.Player)
         {
@@ -140,9 +145,12 @@ public class CardUIHandler : MonoBehaviour, IPointerDownHandler,IPointerUpHandle
     {
         _moneyPossessedController.IncreaseMoney(soldCard.Price);
 
-        //そのカードを手札からなくし、新たにカードを引く
-        _deckMediator.RemoveHandCard(soldCard);
-        _deckMediator.DrawCard();
+        //そのカードを手札からなくす
+        if (_deckMediator.RemoveHandCard(soldCard))
+        {
+            //成功したらカードを引く
+            _deckMediator.DrawCard();
+        }
 
         //商人の手札売却処理
         _traderController.CurrentTrader.OnPlayerSell(soldCard);
@@ -212,7 +220,7 @@ public class CardUIHandler : MonoBehaviour, IPointerDownHandler,IPointerUpHandle
         EnabledSelectebility(InteractableChange.CurrentCard);
 
         //UIを変更する
-        _cardUIView.SetCardSprites(card);
+        _cardUIView.SetCardSprites(card, _deckMediator.CardCount[card.Id]);
     }
 
     /// <summary>
@@ -258,7 +266,7 @@ public class CardUIHandler : MonoBehaviour, IPointerDownHandler,IPointerUpHandle
         //このオブジェクトが選択中なら実行しない
         if (gameObject == EventSystem.current.currentSelectedGameObject) return;
 
-        _cardUIView.ResetImagesSizeDelta();
+        _cardUIView.ResetImagesSize();
     }
 
     public void OnPointerEnter(PointerEventData eventData)
@@ -289,25 +297,45 @@ public class CardUIHandler : MonoBehaviour, IPointerDownHandler,IPointerUpHandle
         OnSubmit();
     }
 
-    public void OnSelect(BaseEventData eventData)
+    public async void OnSelect(BaseEventData eventData)
     {
         if (eventData == null) throw new NullReferenceException();
         if (!_selectable.interactable) return;
 
         //TODO:SE1の再生
 
-        _cardUIView.SetImagesSizeDelta();
+        _cardUIView.OnSelect();
 
         //テキスト更新
         Card card = _deckMediator.GetCardAtCardUIHandler(this);
         _conversationController.OnSelect(card).Forget();
+
+        //画面外か判定する。オブジェクトのy座標で判定（好ましくない）
+        ScrollController.Direction dir;
+
+        //再帰的に実行することで確実に画面内に納める
+        while (true)
+        {
+            dir = ScrollController.Direction.Invalid;
+
+            if (transform.position.y > 500f) dir = ScrollController.Direction.Up;
+            else if (transform.position.y < -500f) dir = ScrollController.Direction.Down;
+
+            if (dir == ScrollController.Direction.Invalid) break;
+
+            //画面外ならスクロールする
+            await _scrollController.StartAnimation(dir);
+
+            //1フレーム待機してからもう一度試す
+            await UniTask.Yield();
+        }
     }
 
     public void OnDeselect(BaseEventData eventData)
     {
         if (eventData == null) throw new NullReferenceException();
 
-        _cardUIView.ResetImagesSizeDelta();
+        _cardUIView.ResetImagesSize();
     }
 
     public void EnableHighlight()

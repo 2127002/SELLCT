@@ -40,8 +40,9 @@ public class PhaseController : MonoBehaviour
             OnGameStart[i]?.Invoke();
         }
 
-        //初期フェーズは探索フェーズ
-        StartExplorationPhase();
+        //初期フェーズ
+        //StartExplorationPhase();
+        StartTradingPhase();
     }
 
     private void OnDestroy()

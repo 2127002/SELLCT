@@ -6,8 +6,6 @@ public class E18_Kanji : Card
 {
     [SerializeField] KanjiHandView _kanjiHandView = default!;
     [SerializeField] PhaseController _phaseController = default!;
-    [SerializeField] TradingNextButtonController _tradingNextButtonController = default!;
-    [SerializeField] ExplorationNextButtonController _explorationNextButtonController = default!;
     [SerializeField] DeckUIController _deckUIController = default!;
 
     readonly int elementIndex = (int)StringManager.Element.E18;
@@ -33,14 +31,10 @@ public class E18_Kanji : Card
 
         if (StringManager.hasElements[elementIndex])
         {
-            _tradingNextButtonController.OnKanjiEnabled();
-            _explorationNextButtonController.OnKanjiEnabled();
             _deckUIController.EnableKanji();
         }
         else
         {
-            _tradingNextButtonController.OnKanjiDisabled();
-            _explorationNextButtonController.OnKanjiDisabled();
             _deckUIController.DisableKanji();
         }
     }
@@ -49,8 +43,6 @@ public class E18_Kanji : Card
     {
         StringManager.hasElements[elementIndex] = true;
         _kanjiHandView.Set();
-        _tradingNextButtonController.OnKanjiEnabled();
-        _explorationNextButtonController.OnKanjiEnabled();
         _deckUIController.EnableKanji();
     }
 
@@ -64,8 +56,6 @@ public class E18_Kanji : Card
         if (_handMediator.ContainsCard(this)) return;
         StringManager.hasElements[elementIndex] = false;
         _kanjiHandView.Set();
-        _tradingNextButtonController.OnKanjiDisabled();
-        _explorationNextButtonController.OnKanjiDisabled();
         _deckUIController.DisableKanji();
     }
 }

@@ -13,6 +13,8 @@ public class HandMediator : DeckMediator
     //プレイヤーのデッキ
     PlayerDeck _playerDeck;
 
+    public override int[] CardCount => base.CardCount;
+
     //購入したカードが一時的に入るデッキ
     readonly BuyingCardDeck _buyingCardDeck = new();
 
@@ -77,6 +79,21 @@ public class HandMediator : DeckMediator
         }
     }
 
+    private void AddHand(Card card)
+    {
+        //すでに手札にあるなら加えない
+        if (_hand.ContainsCard(card)) return;
+
+        //null相当なら追加しない
+        if (card.Id < 0) return;
+
+        //手札に追加
+        _hand.Add(card);
+
+        //UIをセットする
+        _cardUIInstance.Handlers[_hand.Cards.Count - 1].SetCardSprites(card);
+    }
+
     public override void UpdateCardSprites()
     {
         int handCapacity = _hand.Capacity;
@@ -98,40 +115,52 @@ public class HandMediator : DeckMediator
 
     public override void DrawCard()
     {
-        if (_hand.CalcDrawableCount() == 0) return;
+        if (_hand.CalcDrawableCount() <= 0) return;
 
         Card card = _playerDeck.Draw();
 
-        //手札に追加
-        _hand.Add(card);
-
-        //UIをセットする
-        _cardUIInstance.Handlers[_hand.Cards.Count - 1].SetCardSprites(card);
+        AddHand(card);
     }
 
-    public override void RemoveHandCard(Card card)
+    public override bool RemoveHandCard(Card card)
     {
-        _hand.Remove(card);
+        //所持カード枚数を減らす
+        CardCount[card.Id]--;
+
+        //カードが1枚以上あるならRemoveしない。簡素化は可能ですが可読性優先で1行にはまとめません。
+        if (CardCount[card.Id] > 0) return false;
+
+        return _hand.Remove(card);
     }
 
     public override void AddPlayerDeck(Card card)
     {
+        //所持カード枚数を増やす
+        CardCount[card.Id]++;
+
         _playerDeck.Add(card);
     }
 
     public override void AddBuyingDeck(Card card)
     {
-        _buyingCardDeck.Add(card);
+        //所持カード枚数を増やす
+        CardCount[card.Id]++;
+
+        //手札に追加する
+        AddHand(card);
+        
+        //カードの情報を更新する
+        UpdateCardSprites();
     }
 
     public override bool ContainsCard(Card card)
     {
-        return _playerDeck.ContainsCard(card) || _hand.ContainsCard(card) || _buyingCardDeck.ContainsCard(card);
+        return CardCount[card.Id] > 0;
     }
 
     public override int FindAll(Card card)
     {
-        return _playerDeck.FindAll(card) + _hand.FindAll(card) + _buyingCardDeck.FindAll(card);
+        return CardCount[card.Id];
     }
 
     public override Card GetCardAtCardUIHandler(CardUIHandler handler)

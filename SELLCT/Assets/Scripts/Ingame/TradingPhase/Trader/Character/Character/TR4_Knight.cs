@@ -38,6 +38,7 @@ public class TR4_Knight : Trader
             }
 
             if (card.Id < 0) break;
+            CardCount[card.Id]++;
             deck.Add(card);
         }
 

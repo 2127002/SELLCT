@@ -4,12 +4,14 @@ using UnityEngine;
 
 public class Hand : MonoBehaviour
 {
-    [SerializeField, Min(0)] int _handCapacity;
+    [Header("手札の限度枚数です。\n-1にすると無限になります。")]
+    [SerializeField, Min(-1)] int _handCapacity;
 
     readonly List<Card> _cards = new();
     int _addHandCapacityValue = 0;
 
-    public int Capacity => _handCapacity + _addHandCapacityValue;
+    //無限と言えど高々カード枚数は30枚程度。増えたらここの値を増やしてください。
+    public int Capacity => (_handCapacity == -1 ? 30 : _handCapacity) + _addHandCapacityValue;
     public IReadOnlyList<Card> Cards => _cards;
 
     public void Add(Card card)
@@ -19,15 +21,9 @@ public class Hand : MonoBehaviour
         _cards.Add(card);
     }
 
-    public void Remove(Card card)
+    public bool Remove(Card card)
     {
-        if (!_cards.Contains(card))
-        {
-            Debug.LogError("手札に存在しないカードが選択されました。仕様を確認してください。\n" + card);
-            return;
-        }
-
-        _cards.Remove(card);
+        return _cards.Remove(card);
     }
 
     public int CalcDrawableCount()
@@ -42,7 +38,7 @@ public class Hand : MonoBehaviour
 
     public int FindAll(Card card)
     {
-        var list = _cards.FindAll(c => c.Equals(card));
+        var list = _cards.FindAll(c => c.Id.Equals(card.Id));
 
         return list.Count;
     }
