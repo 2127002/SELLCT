@@ -1242,7 +1242,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &296562000
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3586,7 +3586,6 @@ Transform:
   - {fileID: 704934654}
   - {fileID: 1049933559}
   - {fileID: 883828210}
-  - {fileID: 1175034079}
   - {fileID: 449189165}
   - {fileID: 2037373639}
   - {fileID: 26477151}
@@ -3637,8 +3636,6 @@ MonoBehaviour:
   - card: {fileID: 1049933561}
     initcount: 4
   - card: {fileID: 883828212}
-    initcount: 4
-  - card: {fileID: 1175034080}
     initcount: 4
   - card: {fileID: 449189166}
     initcount: 4
@@ -4918,76 +4915,6 @@ MonoBehaviour:
     _waitTime: 0
   _images:
   - {fileID: 1135015310}
---- !u!1 &1175034078
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1175034079}
-  - component: {fileID: 1175034080}
-  - component: {fileID: 1175034081}
-  m_Layer: 0
-  m_Name: E23_Crosshair
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1175034079
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1175034078}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 902597265}
-  m_RootOrder: -1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1175034080
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1175034078}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1d49c038c6ecc5745ad10afc96d7e49d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _parameter: {fileID: 1175034081}
-  _baseSprite: {fileID: 21300000, guid: a8a5399f5ab864840b7800c4eda12e93, type: 3}
-  _number: {fileID: 0}
-  _chineseCharacters: {fileID: 21300000, guid: db1f07cca098af942bb17e99f8443b39, type: 3}
-  _hiragana: {fileID: 0}
-  _katakana: {fileID: 0}
-  _alphabet: {fileID: 0}
-  _handMediator: {fileID: 1975269151}
-  _cursorController: {fileID: 406218264}
---- !u!114 &1175034081
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1175034078}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a7ddc8a1ce1f58949ab7aff714a4f524, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _price: 0
-  _name: 
-  _rarity: 1
-  _isDisposedOfAfterSell: 0
 --- !u!1 &1182455715
 GameObject:
   m_ObjectHideFlags: 0
@@ -7451,8 +7378,6 @@ MonoBehaviour:
   - card: {fileID: 1049933561}
     initcount: 1
   - card: {fileID: 883828212}
-    initcount: 1
-  - card: {fileID: 1175034080}
     initcount: 1
   - card: {fileID: 449189166}
     initcount: 2
