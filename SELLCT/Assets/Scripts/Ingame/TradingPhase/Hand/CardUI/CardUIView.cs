@@ -13,9 +13,13 @@ public class CardUIView : MonoBehaviour
     [SerializeField] TextMeshProUGUI _cardText = default!;
     [SerializeField] TextMeshProUGUI _countText = default!;
 
+    [SerializeField] Image _selectedImage = default!;
+
     //選択時画像サイズ補正値
     const float CORRECTION_SIZE = 1.25f;
     static readonly Vector3 correction = new(CORRECTION_SIZE, CORRECTION_SIZE, CORRECTION_SIZE);
+
+    bool _enabledHighLight = true;
 
     public IReadOnlyList<Image> CardImages => _cardImages;
 
@@ -75,18 +79,32 @@ public class CardUIView : MonoBehaviour
 
         _countImage.enabled = false;
         _countText.enabled = false;
+        _selectedImage.enabled = false;
     }
 
     public void OnSelect()
     {
+        if (_enabledHighLight) _selectedImage.enabled = true;
+
         //拡大率を指定値に変える
         transform.localScale = correction;
     }
 
     public void ResetImagesSize()
     {
-        //拡大率を初期値に戻す
+        if (_enabledHighLight) _selectedImage.enabled = false;
+
         transform.localScale = Vector3.one;
+    }
+
+    public void EnableHighlight()
+    {
+        _enabledHighLight = true;
+    }
+
+    public void DisableHighlight()
+    {
+        _enabledHighLight = false;
     }
 
     public void OnSelectableEnabled(Color normalColor)

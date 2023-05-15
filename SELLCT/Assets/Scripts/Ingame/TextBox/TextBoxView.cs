@@ -16,7 +16,6 @@ public class TextBoxView : MonoBehaviour
     [SerializeField] TextMeshProUGUI _messageText = default!;
 
     //U13
-    [SerializeField] Image _speakerImage = default!;
     [SerializeField] TextMeshProUGUI _speakerText = default!;
 
     CancellationTokenSource _cancellationTokenSource = default!;
@@ -71,21 +70,18 @@ public class TextBoxView : MonoBehaviour
         bool spekerImageEnabled = !string.IsNullOrEmpty(_speakerText.text) && _imageEnabled;
 
         //ImageÇæÇØÇ≈TextÇÕE14Ç…ÇÊÇ¡Çƒç∂âEÇ≥ÇÍÇ»Ç¢
-        _speakerImage.enabled = spekerImageEnabled;
         _messageImage.enabled = _imageEnabled;
     }
 
     public void Enable()
     {
         _messageImage.enabled = true;
-        _speakerImage.enabled = true;
         _imageEnabled = true;
     }    
     
     public void Disable()
     {
         _messageImage.enabled = false;
-        _speakerImage.enabled = false;
         _imageEnabled = false;
     }
 }

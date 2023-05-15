@@ -52,8 +52,6 @@ public class CardUIHandler : MonoBehaviour, IPointerDownHandler, IPointerUpHandl
 
     [SerializeField] ScrollController _scrollController = default!;
 
-    Color _defaultSelectColor = default!;
-
     //selectableの有効かを保存
     readonly bool[] _interactables = new bool[(int)InteractableChange.Max];
 
@@ -73,7 +71,6 @@ public class CardUIHandler : MonoBehaviour, IPointerDownHandler, IPointerUpHandl
         //開始時はUIを表示させないようにする。セットするタイミングで表示を切り替える。
         _cardUIView.DisableAllCardUIs();
 
-        _defaultSelectColor = _selectable.colors.selectedColor;
         _phaseController.OnTradingPhaseStart.Add(OnGenerate);
 
         if (_entityType == EntityType.Player)
@@ -340,23 +337,12 @@ public class CardUIHandler : MonoBehaviour, IPointerDownHandler, IPointerUpHandl
 
     public void EnableHighlight()
     {
-        //もとに戻す
-        var selectableColors = _selectable.colors;
-        selectableColors.selectedColor = _defaultSelectColor;
-        _selectable.colors = selectableColors;
+        _cardUIView.EnableHighlight();
     }
 
     public void DisableHighlight()
     {
-        var selectableColors = _selectable.colors;
-
-        //元の色を保存しておく
-        _defaultSelectColor = selectableColors.selectedColor;
-
-        //ハイライトを消す
-        //実際はハイライト色を通常色に変えてるだけ
-        selectableColors.selectedColor = selectableColors.normalColor;
-        _selectable.colors = selectableColors;
+        _cardUIView.DisableHighlight();
     }
 
     public void OnPointerDown(PointerEventData eventData)
