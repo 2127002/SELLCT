@@ -127,9 +127,6 @@ public class CardUIHandler : MonoBehaviour, IPointerDownHandler, IPointerUpHandl
         //プレイヤー購入山札に追加する
         _subDeckMediator.AddBuyingDeck(purchasedCard);
 
-        //Selectableの位置を切り替える
-        SetNextSelectable();
-
         //カードの購入時効果を発動する
         purchasedCard.Buy();
 
@@ -138,6 +135,9 @@ public class CardUIHandler : MonoBehaviour, IPointerDownHandler, IPointerUpHandl
 
         //手札整理
         _deckMediator.UpdateCardSprites();
+
+        //Selectableの位置を切り替える
+        SetNextSelectable();
     }
 
     private void OnSell(Card soldCard)
@@ -169,24 +169,34 @@ public class CardUIHandler : MonoBehaviour, IPointerDownHandler, IPointerUpHandl
 
         //手札整理
         _deckMediator.UpdateCardSprites();
+
+        //Selectableの位置を切り替える
+        SetNextSelectable();
     }
 
     private void SetNextSelectable()
     {
-        Selectable next = _selectable.FindSelectableOnLeft();
+        if (_selectable.interactable)
+        {
+            _cardUIView.OnSelect();
+            EventSystem.current.SetSelectedGameObject(_selectable.gameObject);
+            return;
+        }
+
+        Selectable next = _selectable.FindSelectableOnUp();
 
         //??演算子はUnityオブジェクトに対して非推奨らしいのでネストさせます
         if (next == null)
         {
-            next = _selectable.FindSelectableOnRight();
+            next = _selectable.FindSelectableOnDown();
 
             if (next == null)
             {
-                next = _selectable.FindSelectableOnUp();
+                next = _selectable.FindSelectableOnLeft();
 
                 if (next == null)
                 {
-                    next = _selectable.FindSelectableOnDown();
+                    next = _selectable.FindSelectableOnRight();
 
                     //ここまでやってnullだったら終わり
                     if (next == null) return;
