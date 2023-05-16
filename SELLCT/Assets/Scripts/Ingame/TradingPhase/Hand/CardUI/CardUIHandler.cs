@@ -50,7 +50,9 @@ public class CardUIHandler : MonoBehaviour, IPointerDownHandler, IPointerUpHandl
 
     [SerializeField] EntityType _entityType;
 
-    [SerializeField] ScrollController _scrollController = default!;
+    [SerializeField] CardScrollController _cardScrollController = default!;
+    [SerializeField] CardScrollController _cardScrollControllerOnRag = default!;
+    [SerializeField] RagScrollController _ragScrollController = default!;
 
     //selectableの有効かを保存
     readonly bool[] _interactables = new bool[(int)InteractableChange.Max];
@@ -308,20 +310,24 @@ public class CardUIHandler : MonoBehaviour, IPointerDownHandler, IPointerUpHandl
         _conversationController.OnSelect(card).Forget();
 
         //画面外か判定する。オブジェクトのy座標で判定（好ましくない）
-        ScrollController.Direction dir;
+        CardScrollController.Direction dir;
 
         //再帰的に実行することで確実に画面内に納める
         while (true)
         {
-            dir = ScrollController.Direction.Invalid;
+            dir = CardScrollController.Direction.Invalid;
 
-            if (transform.position.y > 500f) dir = ScrollController.Direction.Up;
-            else if (transform.position.y < -500f) dir = ScrollController.Direction.Down;
+            if (transform.position.y > 350f) dir = CardScrollController.Direction.Up;
+            else if (transform.position.y < -150f) dir = CardScrollController.Direction.Down;
 
-            if (dir == ScrollController.Direction.Invalid) break;
+            if (dir == CardScrollController.Direction.Invalid) break;
 
             //画面外ならスクロールする
-            await _scrollController.StartAnimation(dir);
+            await UniTask.WhenAll(
+                _cardScrollController.StartAnimation(dir),
+                _cardScrollControllerOnRag.StartAnimation(dir),
+                _ragScrollController.StartAnimation(dir, 0.1f)
+            );
 
             //1フレーム待機してからもう一度試す
             await UniTask.Yield();

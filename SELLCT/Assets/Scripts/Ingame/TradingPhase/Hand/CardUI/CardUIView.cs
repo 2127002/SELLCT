@@ -1,3 +1,4 @@
+using Cysharp.Threading.Tasks;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,15 +10,10 @@ public class CardUIView : MonoBehaviour
 {
     //カード表示
     [SerializeField] List<Image> _cardImages = default!;
-    [SerializeField] Image _countImage = default!;
     [SerializeField] TextMeshProUGUI _cardText = default!;
     [SerializeField] TextMeshProUGUI _countText = default!;
 
     [SerializeField] Image _selectedImage = default!;
-
-    //選択時画像サイズ補正値
-    const float CORRECTION_SIZE = 1.25f;
-    static readonly Vector3 correction = new(CORRECTION_SIZE, CORRECTION_SIZE, CORRECTION_SIZE);
 
     bool _enabledHighLight = true;
 
@@ -63,9 +59,15 @@ public class CardUIView : MonoBehaviour
         _cardText.enabled = isPrintText;
         _cardText.text = card.CardName.ToDisplayString();
 
-        _countImage.enabled = true;
+        //カード数が1以下なら特に表示しない
+        if (cardCount <= 1)
+        {
+            _countText.enabled = false;
+            return;
+        }
+
         _countText.enabled = true;
-        _countText.text = cardCount.ToString().ToDisplayString();
+        _countText.text = "×" + cardCount.ToString().ToDisplayString();
     }
 
     public void DisableAllCardUIs()
@@ -77,7 +79,6 @@ public class CardUIView : MonoBehaviour
 
         _cardText.enabled = false;
 
-        _countImage.enabled = false;
         _countText.enabled = false;
         _selectedImage.enabled = false;
     }
@@ -86,15 +87,31 @@ public class CardUIView : MonoBehaviour
     {
         if (_enabledHighLight) _selectedImage.enabled = true;
 
-        //拡大率を指定値に変える
-        transform.localScale = correction;
+        HighlightImageAnimation();
+    }
+
+    private async void HighlightImageAnimation()
+    {
+        float time = 0;
+
+        //アニメーション終了までの秒数
+        const float duration = 0.1f;
+
+        var token = this.GetCancellationTokenOnDestroy();
+
+        while (time < duration)
+        {
+            await UniTask.Yield(token);
+
+            time += Time.deltaTime;
+            time = Mathf.Min(time, duration);
+            _selectedImage.rectTransform.localScale = Vector3.one * TM.Easing.Management.EasingManager.EaseProgress(TM.Easing.EaseType.OutBack, time, duration, 1f, 1f);
+        }
     }
 
     public void ResetImagesSize()
     {
         if (_enabledHighLight) _selectedImage.enabled = false;
-
-        transform.localScale = Vector3.one;
     }
 
     public void EnableHighlight()
