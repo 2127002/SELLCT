@@ -7,8 +7,8 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Shader Graphs_Noise_TV 1
-  m_Shader: {fileID: -6465566751694194690, guid: 06d3003f16026b944b836cea408dde03,
+  m_Name: Shader Graphs_RotateScreen
+  m_Shader: {fileID: -6465566751694194690, guid: da5e3a3480dc097418837d64274ce980,
     type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
@@ -38,10 +38,7 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _Float: 1
-    - _NoiseScale: 9.574531
-    - _NoiseSpd: 5
-    - _Ratio: 0.1603401
-    - _Rotate: 2
+    - _Rotate: 0
+    - _ScreenRotate: 90
     m_Colors: []
   m_BuildTextureStacks: []
