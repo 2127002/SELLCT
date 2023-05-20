@@ -4,9 +4,10 @@ using UnityEngine;
 
 public class StagingHund : MonoBehaviour
 {
-    [SerializeField] Material mat;
+    [SerializeField] Material mat_noi;
     [SerializeField] Material mat_br;
     [SerializeField] Material mat_pi;
+    [SerializeField] Material mat_scRot;
     [Header("画面効果がかかる速度")]
     [SerializeField] float raitoSpd;
     [Header("画面効果の回転速度")]
@@ -21,13 +22,14 @@ public class StagingHund : MonoBehaviour
     float rotate = 0f;
     float noizeScale = 1f;
     float ratio = 1f;
-
+    float scrennRotate = 90f;
 
     private void Start()
     {
-        mat.SetFloat("_Rotate", rotate);
-        mat.SetFloat("_NoiseScale", noizeScale);
-        mat.SetFloat("_Ratio", ratio);
+        mat_noi.SetFloat("_Rotate", rotate);
+        mat_noi.SetFloat("_NoiseScale", noizeScale);
+        mat_noi.SetFloat("_Ratio", ratio);
+        mat_scRot.SetFloat("_ScreenRotate", 0);
     }
 
     public void SignalScriptTest()
@@ -38,7 +40,7 @@ public class StagingHund : MonoBehaviour
     public void ChangeRotate()
     {
         rotate = rotateSpd;
-        mat.SetFloat("_Rotate", rotate);
+        mat_noi.SetFloat("_Rotate", rotate);
         Debug.Log("Rotateの値を変更しました");
 
     }
@@ -46,20 +48,26 @@ public class StagingHund : MonoBehaviour
     {
         StartCoroutine("IChangeNoizeScale");
         Debug.Log("NoizeScaleの値を変更しました");
-    }    
-    
+    }
+
     public void ChangeRatiosub()
     {
         StartCoroutine("IChangeRatiosub");
         Debug.Log("Ratioの値を変更しました");
-    } 
-    
+    }
+
+    public void ChangeScreenRotate()
+    {
+        mat_scRot.SetFloat("_ScreenRotate", scrennRotate);
+        Debug.Log("ScreenRotateの値を変更しました");
+    }
+
     public void ChangeRatioplus()
     {
         StartCoroutine("IChangeRatioplus");
         Debug.Log("Ratioの値を変更しました");
     }
-    
+
     public void ChangeBrigthness()
     {
         mat_br.SetFloat("_Brighness", br);
@@ -74,11 +82,11 @@ public class StagingHund : MonoBehaviour
 
     IEnumerator IChangeRatiosub()
     {
-        while(true)
+        while (true)
         {
             if (ratio <= 0f) yield break;
             ratio -= raitoSpd * Time.deltaTime;
-            mat.SetFloat("_Ratio", ratio);
+            mat_noi.SetFloat("_Ratio", ratio);
             yield return null;
         }
     }
@@ -91,11 +99,11 @@ public class StagingHund : MonoBehaviour
             if (ratio >= 1)
             {
                 ratio = 1;
-                mat.SetFloat("_Ratio", ratio);
+                mat_noi.SetFloat("_Ratio", ratio);
                 yield break;
             }
             ratio += raitoSpd * Time.deltaTime;
-            mat.SetFloat("_Ratio", ratio);
+            mat_noi.SetFloat("_Ratio", ratio);
             yield return null;
         }
     }
@@ -105,7 +113,7 @@ public class StagingHund : MonoBehaviour
         while (true)
         {
             noizeScale = Mathf.PingPong(Time.time * NoizeScaleRate, MaxNoizeScale) + 1f;
-            mat.SetFloat("_NoiseScale", noizeScale);
+            mat_noi.SetFloat("_NoiseScale", noizeScale);
             yield return null;
         }
     }
