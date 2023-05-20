@@ -18,7 +18,7 @@ public class E12_Eye : Card
 
     float _currentEyeValue = 1.0f;
     const float MAX_VALUE = 2160f;
-    const float MIN_VALUE = 1;
+    const float MIN_VALUE = 1f;
 
     public override int Id => 12;
 
