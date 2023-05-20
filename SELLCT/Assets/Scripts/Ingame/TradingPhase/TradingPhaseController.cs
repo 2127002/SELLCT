@@ -46,13 +46,17 @@ public class TradingPhaseController : MonoBehaviour
     }
 
     //売買フェーズ開始時処理
-    private void OnPhaseStart()
+    private async void OnPhaseStart()
     {
         _canvas.gameObject.SetActive(true);
 
         _navigateAction.action.performed += OnNavigate;
 
         _view.OnPhaseStart();
+
+        //1フレーム待機してからセレクトする
+        await UniTask.Yield();
+
         EventSystem.current.SetSelectedGameObject(_firstSelectable.gameObject);
         _firstSelectable.Select();
         _lastSelectedObject = _firstSelectable.gameObject;

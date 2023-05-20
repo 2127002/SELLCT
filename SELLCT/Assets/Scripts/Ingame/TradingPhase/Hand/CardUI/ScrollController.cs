@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class ScrollController : MonoBehaviour
+public class CardScrollController : MonoBehaviour
 {
     public enum Direction
     {
