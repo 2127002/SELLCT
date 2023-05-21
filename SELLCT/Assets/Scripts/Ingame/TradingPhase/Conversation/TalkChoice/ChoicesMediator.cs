@@ -10,7 +10,7 @@ public class ChoicesMediator : MonoBehaviour
 
     private async void Start()
     {
-       await UniTask.Yield();
+        await UniTask.Yield();
         List<int> choices = new List<int>();
         choices.Add(0);
         choices.Add(1);

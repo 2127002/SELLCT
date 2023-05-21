@@ -76,22 +76,7 @@ public class E10_Light : Card
 
         private void OnGUI()
         {
-            if (_light != null)
-            {
-                if (GUILayout.Button("Reset"))
-                {
-                    _light._brightness.SetFloat("_Brightness", 1f);
-                    _brightnessValue = 100f;
-                }
-                GUILayout.Space(10);
-                if (GUILayout.Button("Set Brightness"))
-                {
-                    _light._brightness.SetFloat("_Brightness", _brightnessValue / 100f);
-                }
-
-                _brightnessValue = EditorGUILayout.Slider("Brightness Value", _brightnessValue, 0f, 150f);
-            }
-            else
+            if (_light == null)
             {
                 EditorGUILayout.HelpBox("E10_Light object not found in scene.", MessageType.Warning);
                 if (GUILayout.Button("Reload"))
@@ -100,7 +85,21 @@ public class E10_Light : Card
                     E10_Light light = FindObjectOfType<E10_Light>();
                     window.SetLight(light);
                 }
+                return;
             }
+
+            if (GUILayout.Button("Reset"))
+            {
+                _light._brightness.SetFloat("_Brightness", 1f);
+                _brightnessValue = 100f;
+            }
+            GUILayout.Space(10);
+            if (GUILayout.Button("Set Brightness"))
+            {
+                _light._brightness.SetFloat("_Brightness", _brightnessValue / 100f);
+            }
+
+            _brightnessValue = EditorGUILayout.Slider("Brightness Value", _brightnessValue, 0f, 150f);
         }
     }
 #endif

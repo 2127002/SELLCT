@@ -53,7 +53,7 @@ public class CardUIView : MonoBehaviour
         }
 
         //テキストで名前を表示するエレメントか判定
-        bool isPrintText = card.Id == 30;
+        bool isPrintText = card.Id == E30_Name.Id();// Magic number禁止（特に複数個所にある場合）
 
         //表示する
         _cardText.enabled = isPrintText;
@@ -92,7 +92,7 @@ public class CardUIView : MonoBehaviour
 
     private async void HighlightImageAnimation()
     {
-        float time = 0;
+        float time = 0f;
 
         //アニメーション終了までの秒数
         const float duration = 0.1f;

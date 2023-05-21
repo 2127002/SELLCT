@@ -31,6 +31,12 @@ public abstract class Card : MonoBehaviour
     /// カードID。EEX_NULLは-1、その他はエレメント番号で管理しています。
     /// </summary>
     public abstract int Id { get; }
+
+    /// <summary>
+    /// カードIDをクラス名から取得できるようにする。「public static new Id() => ID番号; 」で上書きして下さい
+    /// </summary>
+    public static int Id() => -1;
+
     /// <summary>
     /// カードの名前
     /// </summary>

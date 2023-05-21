@@ -16,9 +16,9 @@ public class EyeController : MonoBehaviour
     [SerializeField, Range(0.0001f, 1f)] float _eyeDecreaseValue;
 
     [Header("初期の解像度を設定します。\nまた、初期のエレメント所持数に関係なくこの値になります。")]
-    [SerializeField, Range(0, 2160f)] float _firstEye = 1080f;
+    [SerializeField, Range(0f, 2160f)] float _firstEye = 1080f;
 
-    float _currentEyeValue = 1.0f;
+    float _currentEyeValue = 1f;
     const float MAX_VALUE = 2160f;
     const float MIN_VALUE = 1;
 
