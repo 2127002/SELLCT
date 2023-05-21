@@ -5265,6 +5265,7 @@ MonoBehaviour:
     - {fileID: 11400000, guid: 490dee590f7b96949a7bbb30c99ab2ec, type: 2}
     - {fileID: 11400000, guid: 83be70efca418c340bcccb91d739dc4e, type: 2}
     - {fileID: 11400000, guid: bd545196654c8d5438b920c0953dd277, type: 2}
+    - {fileID: 11400000, guid: b4d01b5e451a46e41b29a0174d9ab839, type: 2}
     m_Events:
     - m_PersistentCalls:
         m_Calls:
@@ -5363,6 +5364,20 @@ MonoBehaviour:
         - m_Target: {fileID: 0}
           m_TargetAssemblyTypeName: SoundTest, Assembly-CSharp
           m_MethodName: PlaySoundEffect
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+    - m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1801727039}
+          m_TargetAssemblyTypeName: EyeController, Assembly-CSharp
+          m_MethodName: DeactiveImage
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
@@ -8776,6 +8791,7 @@ MonoBehaviour:
   _eyeIncreaseValue: 3
   _eyeDecreaseValue: 0.3
   _firstEye: 1080
+  stagingImage: {fileID: 0}
 --- !u!1 &1335342180
 GameObject:
   m_ObjectHideFlags: 0
@@ -9406,6 +9422,7 @@ MonoBehaviour:
     - {fileID: 11400000, guid: 490dee590f7b96949a7bbb30c99ab2ec, type: 2}
     - {fileID: 11400000, guid: 83be70efca418c340bcccb91d739dc4e, type: 2}
     - {fileID: 11400000, guid: bd545196654c8d5438b920c0953dd277, type: 2}
+    - {fileID: 11400000, guid: b4d01b5e451a46e41b29a0174d9ab839, type: 2}
     m_Events:
     - m_PersistentCalls:
         m_Calls:
@@ -9492,6 +9509,20 @@ MonoBehaviour:
         - m_Target: {fileID: 0}
           m_TargetAssemblyTypeName: SoundTest, Assembly-CSharp
           m_MethodName: PlaySoundEffect
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+    - m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1801727039}
+          m_TargetAssemblyTypeName: EyeController, Assembly-CSharp
+          m_MethodName: DeactiveImage
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
@@ -11779,6 +11810,7 @@ MonoBehaviour:
   _eyeIncreaseValue: 3
   _eyeDecreaseValue: 0.3
   _firstEye: 1080
+  stagingImage: {fileID: 20121144}
 --- !u!1 &1802691248
 GameObject:
   m_ObjectHideFlags: 0

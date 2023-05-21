@@ -2,10 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.Playables;
 using UnityEngine.Timeline;
+using UnityEngine.UI;
 #if UNITY_EDITOR
 using UnityEditor;
 #endif
 using UnityEngine;
+
 
 public class EyeController : MonoBehaviour
 {
@@ -17,6 +19,8 @@ public class EyeController : MonoBehaviour
 
     [Header("初期の解像度を設定します。\nまた、初期のエレメント所持数に関係なくこの値になります。")]
     [SerializeField, Range(0, 2160f)] float _firstEye = 1080f;
+    [Header("演出用のImageを設定します")]
+    [SerializeField] GameObject stagingImage;
 
     float _currentEyeValue = 1.0f;
     const float MAX_VALUE = 2160f;
@@ -43,11 +47,15 @@ public class EyeController : MonoBehaviour
         SetEye();
     }
 
+    public void DeactiveImage()
+    {
+        stagingImage.SetActive(false);
+    }
+
     private void SetEye()
     {
         _eye.SetFloat("_Resolution", _currentEyeValue);
     }
-
 
 #if UNITY_EDITOR
     class EyeResetWindow : EditorWindow
