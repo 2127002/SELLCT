@@ -2209,6 +2209,10 @@ MonoBehaviour:
       m_Calls: []
     m_ActionId: 443248a5-8ce2-43e3-8d97-fe532ae57385
     m_ActionName: UI/Move[/Keyboard/w,/Keyboard/s,/Keyboard/a,/Keyboard/d,/Mouse/delta]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: f7c82773-2062-4768-b14c-f5e08ec9c4fd
+    m_ActionName: UI/PointerDown[/Mouse/leftButton]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: UI
@@ -3980,6 +3984,200 @@ MonoBehaviour:
   _name: 
   _rarity: 1
   _isDisposedOfAfterSell: 0
+--- !u!1 &819707300
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 819707301}
+  - component: {fileID: 819707303}
+  - component: {fileID: 819707302}
+  m_Layer: 0
+  m_Name: BuyTimeLine
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &819707301
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 819707300}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 14.473287, y: 241.25203, z: -156.5207}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1335342181}
+  m_RootOrder: -1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &819707302
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 819707300}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e52de21a22b6dd44c9cc19f810c65059, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Events:
+    m_Signals:
+    - {fileID: 11400000, guid: 60f1c2eab0e2e1b42bbd5f4ca1a25024, type: 2}
+    - {fileID: 11400000, guid: bbff33f3c16b2ff4f8eb4e1492fe4f14, type: 2}
+    - {fileID: 11400000, guid: 490dee590f7b96949a7bbb30c99ab2ec, type: 2}
+    - {fileID: 11400000, guid: 83be70efca418c340bcccb91d739dc4e, type: 2}
+    - {fileID: 11400000, guid: bd545196654c8d5438b920c0953dd277, type: 2}
+    m_Events:
+    - m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1815804849}
+          m_TargetAssemblyTypeName: StagingHund, Assembly-CSharp
+          m_MethodName: ChangeRotate
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+        - m_Target: {fileID: 1815804849}
+          m_TargetAssemblyTypeName: StagingHund, Assembly-CSharp
+          m_MethodName: ChangeRatio
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+    - m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1815804849}
+          m_TargetAssemblyTypeName: StagingHund, Assembly-CSharp
+          m_MethodName: ChangeNoizeScale
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+        - m_Target: {fileID: 1815804849}
+          m_TargetAssemblyTypeName: StagingHund, Assembly-CSharp
+          m_MethodName: ChangeRatiosub
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+    - m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1801727039}
+          m_TargetAssemblyTypeName: EyeController, Assembly-CSharp
+          m_MethodName: IncreaseEyeValue
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+    - m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1815804849}
+          m_TargetAssemblyTypeName: StagingHund, Assembly-CSharp
+          m_MethodName: ChangeRatioplus
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+    - m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1815804849}
+          m_TargetAssemblyTypeName: StagingHund, Assembly-CSharp
+          m_MethodName: ChangeScreenRotate
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+        - m_Target: {fileID: 0}
+          m_TargetAssemblyTypeName: SoundTest, Assembly-CSharp
+          m_MethodName: PlaySoundEffect
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+--- !u!320 &819707303
+PlayableDirector:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 819707300}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_PlayableAsset: {fileID: 11400000, guid: 949137b2f45e99c4694867289ee86e64, type: 2}
+  m_InitialState: 0
+  m_WrapMode: 2
+  m_DirectorUpdateMode: 1
+  m_InitialTime: 0
+  m_SceneBindings:
+  - key: {fileID: 7814987574923742721, guid: 944ed24498df9c641963d594756869d8, type: 2}
+    value: {fileID: 301555734}
+  - key: {fileID: 5076939855650474775, guid: 944ed24498df9c641963d594756869d8, type: 2}
+    value: {fileID: 301555736}
+  - key: {fileID: 7814987574923742721, guid: 664cfba6a59cd9449a62eebb1cb3032c, type: 2}
+    value: {fileID: 301555734}
+  - key: {fileID: 5076939855650474775, guid: 664cfba6a59cd9449a62eebb1cb3032c, type: 2}
+    value: {fileID: 301555736}
+  - key: {fileID: 2210665569087840864, guid: 664cfba6a59cd9449a62eebb1cb3032c, type: 2}
+    value: {fileID: 311098481}
+  - key: {fileID: 2830573598062538675, guid: 664cfba6a59cd9449a62eebb1cb3032c, type: 2}
+    value: {fileID: 185674434}
+  - key: {fileID: 8465762117555445505, guid: 664cfba6a59cd9449a62eebb1cb3032c, type: 2}
+    value: {fileID: 1219091646}
+  - key: {fileID: 7814987574923742721, guid: 949137b2f45e99c4694867289ee86e64, type: 2}
+    value: {fileID: 301555734}
+  - key: {fileID: 5076939855650474775, guid: 949137b2f45e99c4694867289ee86e64, type: 2}
+    value: {fileID: 301555736}
+  m_ExposedReferences:
+    m_References: []
 --- !u!1 &836645462
 GameObject:
   m_ObjectHideFlags: 0
@@ -6966,6 +7164,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1435320219}
+  - {fileID: 819707301}
   - {fileID: 185674433}
   - {fileID: 311098480}
   - {fileID: 1219091645}
@@ -7581,18 +7780,6 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
-        - m_Target: {fileID: 1815804849}
-          m_TargetAssemblyTypeName: StagingHund, Assembly-CSharp
-          m_MethodName: ChangeRatio
-          m_Mode: 1
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
     - m_PersistentCalls:
         m_Calls:
         - m_Target: {fileID: 1815804849}
@@ -7621,9 +7808,9 @@ MonoBehaviour:
           m_CallState: 2
     - m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 1815804849}
-          m_TargetAssemblyTypeName: StagingHund, Assembly-CSharp
-          m_MethodName: ChangeResolution
+        - m_Target: {fileID: 1801727039}
+          m_TargetAssemblyTypeName: EyeController, Assembly-CSharp
+          m_MethodName: DesreaseEyeValue
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
@@ -7682,7 +7869,7 @@ PlayableDirector:
   m_GameObject: {fileID: 1435320218}
   m_Enabled: 1
   serializedVersion: 3
-  m_PlayableAsset: {fileID: 11400000, guid: 664cfba6a59cd9449a62eebb1cb3032c, type: 2}
+  m_PlayableAsset: {fileID: 11400000, guid: 944ed24498df9c641963d594756869d8, type: 2}
   m_InitialState: 0
   m_WrapMode: 2
   m_DirectorUpdateMode: 1
@@ -9609,6 +9796,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1801727036}
   - component: {fileID: 1801727037}
+  - component: {fileID: 1801727039}
   - component: {fileID: 1801727038}
   m_Layer: 0
   m_Name: E12_Eye
@@ -9670,6 +9858,22 @@ MonoBehaviour:
   _name: 
   _rarity: 1
   _isDisposedOfAfterSell: 0
+--- !u!114 &1801727039
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1801727035}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5799dcd3132046642920365f2a44f447, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _eye: {fileID: 2100000, guid: 3ae17b568a4b3c242b3fedbd0f04b7fa, type: 2}
+  _eyeIncreaseValue: 3
+  _eyeDecreaseValue: 0.3
+  _firstEye: 1080
 --- !u!1 &1803076676
 GameObject:
   m_ObjectHideFlags: 0
