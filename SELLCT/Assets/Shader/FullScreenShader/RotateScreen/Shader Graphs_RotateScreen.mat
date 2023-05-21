@@ -39,6 +39,6 @@ Material:
     m_Ints: []
     m_Floats:
     - _Rotate: 0
-    - _ScreenRotate: 90
+    - _ScreenRotate: 0
     m_Colors: []
   m_BuildTextureStacks: []
