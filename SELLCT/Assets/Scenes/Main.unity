@@ -216,7 +216,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &20121145
 RectTransform:
   m_ObjectHideFlags: 0
@@ -5405,6 +5405,8 @@ PlayableDirector:
     value: {fileID: 301555734}
   - key: {fileID: 5076939855650474775, guid: 949137b2f45e99c4694867289ee86e64, type: 2}
     value: {fileID: 301555736}
+  - key: {fileID: 2770056988915124299, guid: 949137b2f45e99c4694867289ee86e64, type: 2}
+    value: {fileID: 20121144}
   m_ExposedReferences:
     m_References: []
 --- !u!1 &825460871
@@ -9528,6 +9530,8 @@ PlayableDirector:
     value: {fileID: 185674434}
   - key: {fileID: 8465762117555445505, guid: 664cfba6a59cd9449a62eebb1cb3032c, type: 2}
     value: {fileID: 1219091646}
+  - key: {fileID: -675331143727209379, guid: 944ed24498df9c641963d594756869d8, type: 2}
+    value: {fileID: 20121144}
   m_ExposedReferences:
     m_References: []
 --- !u!1 &1468077270
@@ -13228,7 +13232,7 @@ GameObject:
   - component: {fileID: 1945478897}
   - component: {fileID: 1945478896}
   m_Layer: 0
-  m_Name: ExplorationPhaseCanvas (1)
+  m_Name: StagingCanvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
