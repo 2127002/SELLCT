@@ -1,11 +1,26 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+public readonly struct ConversationMessage
+{
+    public readonly string[] message;
+    public readonly int[] face;
+
+    public ConversationMessage(string[] message, int[] face)
+    {
+        if (message.Length != face.Length) throw new NotImplementedException("メッセージと表情差分の個数が異なります。設定を見直してください。" + message);
+
+        this.message = message;
+        this.face = face;
+    }
+}
+
 public abstract class Trader : MonoBehaviour, IConversationMessage
 {
     [SerializeField] protected TraderParameter traderParameter;
-    [SerializeField] protected Sprite sprite;
+    [SerializeField] protected Sprite[] sprites;
     [SerializeField] protected ConversationDataBase _start;
     [SerializeField] protected ConversationDataBase _end;
     [SerializeField] protected ConversationDataBase _select;
@@ -33,14 +48,14 @@ public abstract class Trader : MonoBehaviour, IConversationMessage
         }
     }
     public virtual int InitialDisplayItemCount => traderParameter.InitialDisplayItemCount;
-    public virtual Sprite TraderSprite => sprite;
+    public virtual Sprite[] TraderSprites => sprites;
     public abstract void CreateDeck(CardPool pool);
     public abstract void OnPlayerSell(Card card);
     public abstract void OnPlayerBuy();
 
-    public abstract string[] StartMessage();
-    public abstract string[] EndMessage();
-    public abstract string[] CardMessage(Card card);
-    public abstract string[] BuyMessage(Card card);
-    public abstract string[] SellMessage(Card card);
+    public abstract ConversationMessage StartMessage();
+    public abstract ConversationMessage EndMessage();
+    public abstract ConversationMessage CardMessage(Card card);
+    public abstract ConversationMessage BuyMessage(Card card);
+    public abstract ConversationMessage SellMessage(Card card);
 }

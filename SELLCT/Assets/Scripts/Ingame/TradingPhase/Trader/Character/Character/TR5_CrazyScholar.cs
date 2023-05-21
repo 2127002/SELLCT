@@ -41,44 +41,60 @@ public class TR5_CrazyScholar : Trader
             CardCount[card.Id]++;
             deck.Add(card);
         }
-
     }
 
-    public override string[] BuyMessage(Card card)
+    public override ConversationMessage BuyMessage(Card card)
     {
         int cardId = card.Id;
 
-        return _buy.datas[cardId].Text;
+        string[] texts = _buy.datas[cardId].Text;
+        int[] face = _buy.datas[cardId].Face;
+
+        return new(texts, face);
     }
 
-    public override string[] CardMessage(Card card)
+    public override ConversationMessage CardMessage(Card card)
     {
         int cardId = card.Id;
 
-        return _select.datas[cardId].Text;
+        string[] texts = _select.datas[cardId].Text;
+        int[] face = _select.datas[cardId].Face;
+
+        return new(texts, face);
     }
 
-    public override string[] EndMessage()
+    public override ConversationMessage EndMessage()
     {
         List<ConversationData> end = _end.datas.Where(x => x.Likability.Contains((int)favorability.FavorabilityClassification())).ToList();
 
         int index = Random.Range(0, end.Count());
-        return end[index].Text;
+
+        string[] texts = end[index].Text;
+        int[] face = end[index].Face;
+
+        return new(texts, face);
     }
 
-    public override string[] SellMessage(Card card)
+    public override ConversationMessage SellMessage(Card card)
     {
         int cardId = card.Id;
 
-        return _sell.datas[cardId].Text;
+        string[] texts = _sell.datas[cardId].Text;
+        int[] face = _sell.datas[cardId].Face;
+
+        return new(texts, face);
     }
 
-    public override string[] StartMessage()
+    public override ConversationMessage StartMessage()
     {
         List<ConversationData> start = _start.datas.Where(x => x.Likability.Contains((int)favorability.FavorabilityClassification())).ToList();
 
         int index = Random.Range(0, start.Count());
-        return start[index].Text;
+
+        string[] texts = start[index].Text;
+        int[] face = start[index].Face;
+
+        return new(texts, face);
     }
 
     public override void OnPlayerSell(Card selledCard)
@@ -100,6 +116,5 @@ public class TR5_CrazyScholar : Trader
         //”ƒ‚¢ˆ—‚Í‚¨‹C‚É“ü‚èƒGƒŒƒƒ“ƒg‚ÍŠÖŒW‚È‚¢
         favorability = favorability.Add(traderParameter.AddFavorabilityValue);
     }
-
 }
 

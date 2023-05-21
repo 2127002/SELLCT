@@ -13,38 +13,53 @@ public class PlayerMonologue : MonoBehaviour, IConversationMessage
 
     public string Speaker => _e30.CardName;
 
-    public string[] StartMessage()
+    public ConversationMessage StartMessage()
     {
         int index = Random.Range(0, _start.datas.Length);
 
-        return _start.datas[index].Text;
+        string[] texts = _select.datas[index].Text;
+        int[] face = _select.datas[index].Face;
+
+        return new(texts, face);
     }
 
-    public string[] EndMessage()
+    public ConversationMessage EndMessage()
     {
         int index = Random.Range(0, _end.datas.Length);
 
-        return _end.datas[index].Text;
+        string[] texts = _end.datas[index].Text;
+        int[] face = _end.datas[index].Face;
+
+        return new(texts, face);
     }
 
-    public string[] CardMessage(Card card)
+    public ConversationMessage CardMessage(Card card)
     {
         int index = card.Id;
 
-        return _select.datas[index].Text;
+        string[] texts = _select.datas[index].Text;
+        int[] face = _select.datas[index].Face;
+
+        return new(texts, face);
     }
 
-    public string[] BuyMessage(Card card)
+    public ConversationMessage BuyMessage(Card card)
     {
         int index = card.Id;
 
-        return _buy.datas[index].Text;
+        string[] texts = _buy.datas[index].Text;
+        int[] face = _buy.datas[index].Face;
+
+        return new(texts, face);
     }
 
-    public string[] SellMessage(Card card)
+    public ConversationMessage SellMessage(Card card)
     {
         int index = card.Id;
 
-        return _sell.datas[index].Text;
+        string[] texts = _sell.datas[index].Text;
+        int[] face = _sell.datas[index].Face;
+
+        return new(texts, face);
     }
 }

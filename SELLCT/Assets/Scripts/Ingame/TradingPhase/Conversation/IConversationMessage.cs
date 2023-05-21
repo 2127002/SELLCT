@@ -4,9 +4,9 @@ using UnityEngine;
 
 public interface IConversationMessage
 {
-    string[] StartMessage();
-    string[] EndMessage();
-    string[] CardMessage(Card card);
-    string[] BuyMessage(Card card);
-    string[] SellMessage(Card card);
+    ConversationMessage StartMessage();
+    ConversationMessage EndMessage();
+    ConversationMessage CardMessage(Card card);
+    ConversationMessage BuyMessage(Card card);
+    ConversationMessage SellMessage(Card card);
 }
