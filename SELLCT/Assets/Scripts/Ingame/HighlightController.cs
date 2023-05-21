@@ -14,6 +14,7 @@ public class HighlightController : MonoBehaviour
 
         foreach (var item in selectableHighlights)
         {
+            if (item == null) continue;
             item.EnableHighlight();
         }
     }
@@ -26,6 +27,8 @@ public class HighlightController : MonoBehaviour
 
         foreach (var item in selectableHighlights)
         {
+            if (item == null) continue;
+
             item.DisableHighlight();
         }
     }
