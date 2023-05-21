@@ -11742,7 +11742,7 @@ MonoBehaviour:
   _alphabet: {fileID: 0}
   _handMediator: {fileID: 1975269151}
   directorOnSell: {fileID: 1435320221}
-  directorOnBuy: {fileID: 1435320221}
+  directorOnBuy: {fileID: 819707303}
 --- !u!114 &1801727038
 MonoBehaviour:
   m_ObjectHideFlags: 0
