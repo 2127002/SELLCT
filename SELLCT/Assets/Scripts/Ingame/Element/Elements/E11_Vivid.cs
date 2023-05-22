@@ -9,16 +9,16 @@ public class E11_Vivid : Card
 {
     [SerializeField] Material _vivid = default!;
     [Header("Defaultの彩度を100%として、以下の値で上昇します。\n例：値が10の場合 100%→110%")]
-    [SerializeField, Range(0, 150f)] float _vividIncreasePercent;
+    [SerializeField, Range(0f, 150f)] float _vividIncreasePercent;
     [Header("Defaultの彩度を100%として、以下の値で減少します。\n例：値が4.5の場合 55%→50.5%")]
-    [SerializeField, Range(0, 150f)] float _vividDecreasePercent;
+    [SerializeField, Range(0f, 150f)] float _vividDecreasePercent;
 
     [Header("初期の彩度を設定します。Defaultの彩度は100%です。\nまた、初期のエレメント所持数に関係なくこの値になります。")]
-    [SerializeField, Range(0, 150f)] float _firstVividPercent = 100f;
+    [SerializeField, Range(0f, 150f)] float _firstVividPercent = 100f;
 
     float _currentVividValue = 1.0f;
     const float MAX_VALUE = 1.5f;
-    const float MIN_VALUE = 0;
+    const float MIN_VALUE = 0f;
 
     public override int Id => 11;
 
@@ -85,29 +85,28 @@ public class E11_Vivid : Card
 
         private void OnGUI()
         {
-            if (_vivid != null)
-            {
-                if (GUILayout.Button("Reset"))
-                {
-                    _vivid._vivid.SetFloat("_Saturation", 1f);
-                    _vividValue = 100f;
-                }
-                GUILayout.Space(10);
-                if (GUILayout.Button("Set Vivid"))
-                {
-                    _vivid._vivid.SetFloat("_Saturation", _vividValue / 100f);
-                }
-
-                _vividValue = EditorGUILayout.Slider("Vivid Value", _vividValue, 0f, 150f);
-            }
-            else
+            if (_vivid == null)
             {
                 EditorGUILayout.HelpBox("E11_Vivid object not found in scene.", MessageType.Warning);
                 if (GUILayout.Button("Reload"))
                 {
                     ShowWindow();
                 }
+                return;
             }
+
+            if (GUILayout.Button("Reset"))
+            {
+                _vivid._vivid.SetFloat("_Saturation", 1f);
+                _vividValue = 100f;
+            }
+            GUILayout.Space(10);
+            if (GUILayout.Button("Set Vivid"))
+            {
+                _vivid._vivid.SetFloat("_Saturation", _vividValue / 100f);
+            }
+
+            _vividValue = EditorGUILayout.Slider("Vivid Value", _vividValue, 0f, 150f);
         }
     }
 #endif

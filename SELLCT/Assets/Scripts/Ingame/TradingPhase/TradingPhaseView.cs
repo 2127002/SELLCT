@@ -9,8 +9,8 @@ using UnityEngine;
 [RequireComponent(typeof(FadeInView),typeof(FadeOutView))]
 public class TradingPhaseView : MonoBehaviour
 {
-    [SerializeField] FadeInView _fadeinView;
-    [SerializeField] FadeOutView _fadeoutView;
+    [SerializeField] FadeInView _fadeinView = default!;
+    [SerializeField] FadeOutView _fadeoutView = default!;
 
     public void OnPhaseStart()
     {
@@ -19,6 +19,6 @@ public class TradingPhaseView : MonoBehaviour
 
     public async UniTask OnPhaseComplete()
     {
-       await _fadeoutView.StartFade();
+        await _fadeoutView.StartFade();
     }
 }

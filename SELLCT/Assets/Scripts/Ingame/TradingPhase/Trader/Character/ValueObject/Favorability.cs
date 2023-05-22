@@ -16,8 +16,8 @@ public class Favorability
 
     FavourableView _favourableView;
 
-    const float MAX_AMOUNT = 100;
-    const float MIN_AMOUNT = 0;
+    const float MAX_AMOUNT = 100f;
+    const float MIN_AMOUNT = 0f;
 
     readonly float _amount;
 
@@ -47,7 +47,7 @@ public class Favorability
 
         float newAmount = _amount + amount._amount;
 
-        if (newAmount > MAX_AMOUNT) newAmount = MAX_AMOUNT;
+        newAmount = Mathf.Min(newAmount, MAX_AMOUNT);
 
         return new(newAmount, _favourableView);
     }
@@ -63,7 +63,7 @@ public class Favorability
 
         float newAmount = _amount - amount._amount;
 
-        if (newAmount < MIN_AMOUNT) newAmount = MIN_AMOUNT;
+        newAmount = Mathf.Max(newAmount, MIN_AMOUNT);
 
         return new(newAmount, _favourableView);
     }
@@ -85,11 +85,10 @@ public class Favorability
 
     public Classification FavorabilityClassification()
     {
-        if (_amount == 0) return Classification.Class1;
-        if (_amount <= 50f) return Classification.Class2;
-        if (_amount <= 99f) return Classification.Class3;
-        if (_amount == 100f) return Classification.Class4;
-
-        return Classification.Invalid;
+        const float MARGIN = 0.000001f;
+        if (_amount <= MARGIN) return Classification.Class1;
+        else if (_amount <= 50f) return Classification.Class2;
+        else if (_amount <= 99f) return Classification.Class3;
+        return Classification.Class4;
     }
 }

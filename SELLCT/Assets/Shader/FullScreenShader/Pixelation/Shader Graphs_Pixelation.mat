@@ -38,6 +38,6 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _Resolution: 97.200005
+    - _Resolution: 324
     m_Colors: []
   m_BuildTextureStacks: []

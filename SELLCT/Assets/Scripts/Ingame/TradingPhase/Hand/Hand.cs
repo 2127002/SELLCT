@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class Hand : MonoBehaviour
 {
+    //手札の最大カード枚数は高々30枚程度
+    const int HAND_MAX = 30;
+
     [Header("手札の限度枚数です。\n-1にすると無限になります。")]
     [SerializeField, Min(-1)] int _handCapacity;
 
@@ -11,7 +14,7 @@ public class Hand : MonoBehaviour
     int _addHandCapacityValue = 0;
 
     //無限と言えど高々カード枚数は30枚程度。増えたらここの値を増やしてください。
-    public int Capacity => (_handCapacity == -1 ? 30 : _handCapacity) + _addHandCapacityValue;
+    public int Capacity => (_handCapacity == -1 ? HAND_MAX : _handCapacity) + _addHandCapacityValue;
     public IReadOnlyList<Card> Cards => _cards;
 
     public void Add(Card card)
