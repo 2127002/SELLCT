@@ -80,10 +80,10 @@ public class CursorController : MonoBehaviour
         _cursorTransform.anchoredPosition += _cursorSpeed * Time.deltaTime * _moveAxis;
 
         //カーソルが画面外に出ないように調整
-        const float RANGE_X = MAXWIDTH / 2f - _cursorView.CursorSizeDelta.x / 2f;
-        float posX = Mathf.Clamp(_cursorTransform.anchoredPosition.x, -RANGE_X, RANGE_X);
-        const float RANGE_Y = MAXHEIGHT / 2f - _cursorView.CursorSizeDelta.y / 2f;
-        float posY = Mathf.Clamp(_cursorTransform.anchoredPosition.y, -RANGE_Y, RANGE_Y);
+        float rangeX = MAXWIDTH / 2f - _cursorView.CursorSizeDelta.x / 2f;
+        float posX = Mathf.Clamp(_cursorTransform.anchoredPosition.x, -rangeX, rangeX);
+        float rangeY = MAXHEIGHT / 2f - _cursorView.CursorSizeDelta.y / 2f;
+        float posY = Mathf.Clamp(_cursorTransform.anchoredPosition.y, -rangeY, rangeY);
         _cursorPos.Set(posX, posY);
 
         _cursorTransform.anchoredPosition = _cursorPos;

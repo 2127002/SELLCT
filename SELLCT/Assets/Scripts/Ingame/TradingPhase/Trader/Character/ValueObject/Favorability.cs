@@ -47,7 +47,7 @@ public class Favorability
 
         float newAmount = _amount + amount._amount;
 
-        newAmount = MathF.Min(newAmount, MAX_AMOUNT);
+        newAmount = Mathf.Min(newAmount, MAX_AMOUNT);
 
         return new(newAmount, _favourableView);
     }
@@ -63,7 +63,7 @@ public class Favorability
 
         float newAmount = _amount - amount._amount;
 
-        newAmount = MathF.Max(newAmount, MIN_AMOUNT);
+        newAmount = Mathf.Max(newAmount, MIN_AMOUNT);
 
         return new(newAmount, _favourableView);
     }

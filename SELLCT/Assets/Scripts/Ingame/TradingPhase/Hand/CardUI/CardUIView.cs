@@ -53,7 +53,7 @@ public class CardUIView : MonoBehaviour
         }
 
         //テキストで名前を表示するエレメントか判定
-        bool isPrintText = card is E30_Name;// Magic number禁止（特に複数個所にある場合）
+        bool isPrintText = card is E30_Name;
 
         //表示する
         _cardText.enabled = isPrintText;
