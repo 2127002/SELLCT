@@ -8,7 +8,7 @@ using UnityEngine.UI;
 
 public class CardUIView : MonoBehaviour
 {
-    //ƒJ[ƒh•\¦
+    //ã‚«ãƒ¼ãƒ‰è¡¨ç¤º
     [SerializeField] List<Image> _cardImages = default!;
     [SerializeField] TextMeshProUGUI _cardText = default!;
     [SerializeField] TextMeshProUGUI _countText = default!;
@@ -26,19 +26,19 @@ public class CardUIView : MonoBehaviour
     }
 
     /// <summary>
-    /// ƒJ[ƒh‚É‰‚¶‚Ä•\¦‚ğØ‚è‘Ö‚¦‚é
+    /// ã‚«ãƒ¼ãƒ‰ã«å¿œã˜ã¦è¡¨ç¤ºã‚’åˆ‡ã‚Šæ›¿ãˆã‚‹
     /// </summary>
-    /// <param name="card">•\¦‚µ‚½‚¢ƒJ[ƒh</param>
+    /// <param name="card">è¡¨ç¤ºã—ãŸã„ã‚«ãƒ¼ãƒ‰</param>
     public void SetCardSprites(Card card, int cardCount)
     {
-        //0”Ô–Ú‚ÍBase‚È‚½‚ß•K‚¸•\¦‚³‚ê‚é
+        //0ç•ªç›®ã¯BaseãªãŸã‚å¿…ãšè¡¨ç¤ºã•ã‚Œã‚‹
         _cardImages[0].enabled = true;
         _cardImages[0].sprite = card.CardSprite[0];
 
-        //ˆÈ~‚Ì•¶š—v‘f‚ÍAƒGƒŒƒƒ“ƒg‚ÌŠó‹µ‚Å•\¦‚ªØ‚è‘Ö‚í‚é
+        //ä»¥é™ã®æ–‡å­—è¦ç´ ã¯ã€ã‚¨ãƒ¬ãƒ¡ãƒ³ãƒˆã®æ‰€æŒçŠ¶æ³ã§è¡¨ç¤ºãŒåˆ‡ã‚Šæ›¿ã‚ã‚‹
         for (int i = 1; i < _cardImages.Count; i++)
         {
-            //ƒJ[ƒh‚ÉŠY“–•¶š‚ª–³‚¢ê‡‚Ì‘Î‰
+            //ã‚«ãƒ¼ãƒ‰ã«è©²å½“æ–‡å­—ãŒç„¡ã„å ´åˆã®å¯¾å¿œ
             if (card.CardSprite[i] == null)
             {
                 _cardImages[i].sprite = null;
@@ -46,20 +46,20 @@ public class CardUIView : MonoBehaviour
                 continue;
             }
 
-            //Sprite‚ğƒZƒbƒg‚µAƒGƒŒƒƒ“ƒg‚ÌŠó‹µ‚Å•\¦‚ğØ‚è‘Ö‚¦‚é
-            //index”Ô†‚Íbase•ª‚ªƒYƒŒ‚Ä‚¢‚éB
+            //Spriteã‚’ã‚»ãƒƒãƒˆã—ã€ã‚¨ãƒ¬ãƒ¡ãƒ³ãƒˆã®æ‰€æŒçŠ¶æ³ã§è¡¨ç¤ºã‚’åˆ‡ã‚Šæ›¿ãˆã‚‹
+            //indexç•ªå·ã¯baseåˆ†ãŒã‚ºãƒ¬ã¦ã„ã‚‹ã€‚
             _cardImages[i].sprite = card.CardSprite[i];
             _cardImages[i].enabled = StringManager.hasElements[i - 1];
         }
 
-        //ƒeƒLƒXƒg‚Å–¼‘O‚ğ•\¦‚·‚éƒGƒŒƒƒ“ƒg‚©”»’è
-        bool isPrintText = card.Id == E30_Name.Id();// Magic number‹Ö~i“Á‚É•¡”ŒÂŠ‚É‚ ‚éê‡j
+        //ãƒ†ã‚­ã‚¹ãƒˆã§åå‰ã‚’è¡¨ç¤ºã™ã‚‹ã‚¨ãƒ¬ãƒ¡ãƒ³ãƒˆã‹åˆ¤å®š
+        bool isPrintText = card is E30_Name;// Magic numberç¦æ­¢ï¼ˆç‰¹ã«è¤‡æ•°å€‹æ‰€ã«ã‚ã‚‹å ´åˆï¼‰
 
-        //•\¦‚·‚é
+        //è¡¨ç¤ºã™ã‚‹
         _cardText.enabled = isPrintText;
         _cardText.text = card.CardName.ToDisplayString();
 
-        //ƒJ[ƒh”‚ª1ˆÈ‰º‚È‚ç“Á‚É•\¦‚µ‚È‚¢
+        //ã‚«ãƒ¼ãƒ‰æ•°ãŒ1ä»¥ä¸‹ãªã‚‰ç‰¹ã«è¡¨ç¤ºã—ãªã„
         if (cardCount <= 1)
         {
             _countText.enabled = false;
@@ -67,7 +67,7 @@ public class CardUIView : MonoBehaviour
         }
 
         _countText.enabled = true;
-        _countText.text = "~" + cardCount.ToString().ToDisplayString();
+        _countText.text = "Ã—" + cardCount.ToString().ToDisplayString();
     }
 
     public void DisableAllCardUIs()
@@ -94,7 +94,7 @@ public class CardUIView : MonoBehaviour
     {
         float time = 0f;
 
-        //ƒAƒjƒ[ƒVƒ‡ƒ“I—¹‚Ü‚Å‚Ì•b”
+        //ã‚¢ãƒ‹ãƒ¡ãƒ¼ã‚·ãƒ§ãƒ³çµ‚äº†ã¾ã§ã®ç§’æ•°
         const float duration = 0.1f;
 
         var token = this.GetCancellationTokenOnDestroy();
