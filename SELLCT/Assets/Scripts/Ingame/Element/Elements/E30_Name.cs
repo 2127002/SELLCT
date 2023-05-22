@@ -4,9 +4,7 @@ public class E30_Name : Card
 {
     [SerializeField] TraderController _traderController = default!;
 
-    public override int Id => Id();
-
-    public static new Id() => 30;
+    public override int Id => 30;
 
     public override void Buy()
     {
