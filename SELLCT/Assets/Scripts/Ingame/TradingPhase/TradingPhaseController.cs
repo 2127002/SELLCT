@@ -17,6 +17,7 @@ public class TradingPhaseController : MonoBehaviour
     [SerializeField] InputActionReference _navigateAction = default!;
     [SerializeField] Selectable _firstSelectable = default!;
     [SerializeField] ConversationController _conversationController = default!;
+    [SerializeField] RugController _rugController = default!;
     [SerializeField] Canvas _canvas = default!;
 
     GameObject _lastSelectedObject = default!;
@@ -46,26 +47,21 @@ public class TradingPhaseController : MonoBehaviour
     }
 
     //売買フェーズ開始時処理
-    private async void OnPhaseStart()
+    private void OnPhaseStart()
     {
         _canvas.gameObject.SetActive(true);
 
         _navigateAction.action.performed += OnNavigate;
 
         _view.OnPhaseStart();
-
-        //1フレーム待機してからセレクトする
-        await UniTask.Yield();
-
-        EventSystem.current.SetSelectedGameObject(_firstSelectable.gameObject);
-        _firstSelectable.Select();
-        _lastSelectedObject = _firstSelectable.gameObject;
     }
 
     //売買フェーズ終了時処理（待機可）
     private async UniTask OnComplete()
     {
         await _conversationController.OnEnd();
+
+        await _rugController.PlayEndAnimation();
 
         //フェードアウト
         await _view.OnPhaseComplete();
@@ -85,5 +81,23 @@ public class TradingPhaseController : MonoBehaviour
 
         //未選択時のみ実行
         EventSystem.current.SetSelectedGameObject(_lastSelectedObject);
+    }
+
+    public async void OnSetTrader()
+    {
+        //スタート時の会話を行う
+        await _conversationController.OnStart();
+
+        SetFirstSelectedGameObject();
+
+        //会話終了後ラグを引く
+        await _rugController.PlayStartAnimation();
+    }
+
+    private void SetFirstSelectedGameObject()
+    {
+        EventSystem.current.SetSelectedGameObject(_firstSelectable.gameObject);
+        _firstSelectable.Select();
+        _lastSelectedObject = _firstSelectable.gameObject;
     }
 }

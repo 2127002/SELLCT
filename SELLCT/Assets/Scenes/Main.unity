@@ -1858,6 +1858,7 @@ MonoBehaviour:
     type: 3}
   _firstSelectable: {fileID: 7680564825398813893}
   _conversationController: {fileID: 1775029164}
+  _rugController: {fileID: 1802691250}
   _canvas: {fileID: 233741556}
 --- !u!114 &251747937
 MonoBehaviour:
@@ -2037,7 +2038,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &296562000
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2073,7 +2074,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a04af4dbbc6a42b4d955ee29fe79d7b0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _timeLimitRate: 50
+  _timeLimitRate: 10
   _phaseController: {fileID: 495064998}
   _timeLimitView: {fileID: 296562002}
 --- !u!114 &296562002
@@ -6826,7 +6827,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &926281328
 RectTransform:
   m_ObjectHideFlags: 0
@@ -8309,7 +8310,7 @@ MonoBehaviour:
         m_Calls:
         - m_Target: {fileID: 1802691250}
           m_TargetAssemblyTypeName: RugController, Assembly-CSharp
-          m_MethodName: OnAnimationComplete
+          m_MethodName: OnEndAnimationComplete
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
@@ -8793,7 +8794,7 @@ MonoBehaviour:
   _traderEncounterController: {fileID: 1210986885}
   _phaseController: {fileID: 495064998}
   _traderHand: {fileID: 1723587018}
-  _conversationController: {fileID: 1775029164}
+  _tradingPhaseController: {fileID: 251747936}
 --- !u!224 &1210986884
 RectTransform:
   m_ObjectHideFlags: 0
@@ -13186,7 +13187,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _normalRugCanvas: {fileID: 848687172}
   _animationRugCanvas: {fileID: 883483181}
-  _directorRugScroll: {fileID: 1937195365}
+  _animationRugStart: {fileID: 576347461}
+  _animationRugEnd: {fileID: 926281327}
+  _directorRugScrollOnStart: {fileID: 1937195365}
+  _directorRugScrollOnEnd: {fileID: 1128149045}
 --- !u!1 &1803076676
 GameObject:
   m_ObjectHideFlags: 0
@@ -14639,7 +14643,7 @@ MonoBehaviour:
         m_Calls:
         - m_Target: {fileID: 1802691250}
           m_TargetAssemblyTypeName: RugController, Assembly-CSharp
-          m_MethodName: OnAnimationComplete
+          m_MethodName: OnStartAnimationComplete
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
