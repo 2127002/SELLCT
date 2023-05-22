@@ -11,8 +11,9 @@ public class E10_Light : Card
     [SerializeField] Material _brightness = default!;
     [Header("所持明度枚数によったプロパティの値\n例：所持枚数が4枚の場合 Listのエレメント番号「4」の値を100(%)")]
     [SerializeField, Min(0)] List<float> _brightnessValue = default!;
-
     [SerializeField] PhaseController _phaseController = default!;
+
+    [SerializeField] End_4 end_4;
 
     float _currentBrightnessValue = 1.0f;
 
@@ -41,8 +42,15 @@ public class E10_Light : Card
     public override void Sell()
     {
         SetBrightnessValue();
+        GameOverChecker();
     }
+    private void GameOverChecker()
+    {
+        //売った際にEyeが1枚もないならゲームオーバー
+        if (_handMediator.ContainsCard(this)) return;
 
+        end_4.End_4Transition();
+    }
     private void SetBrightnessValue()
     {
         _currentBrightnessValue = _brightnessValue[FindAll] / 100f;
