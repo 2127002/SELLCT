@@ -2,14 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-//interface‚Æ‚µ‚ÄÀ‘•‚µ‚½‚¢‚Å‚·‚ªA‚»‚¤‚·‚é‚ÆƒCƒ“ƒXƒyƒNƒ^[‚ÅŠÇ—‚Å‚«‚È‚¢‚½‚ß
-//“¯‚¶Œø‰Ê‚ğ‚Â’ŠÛƒNƒ‰ƒX‚É‚µ‚Ü‚·B
+//interfaceã¨ã—ã¦å®Ÿè£…ã—ãŸã„ã§ã™ãŒã€ãã†ã™ã‚‹ã¨ã‚¤ãƒ³ã‚¹ãƒšã‚¯ã‚¿ãƒ¼ã§ç®¡ç†ã§ããªã„ãŸã‚
+//åŒã˜åŠ¹æœã‚’æŒã¤æŠ½è±¡ã‚¯ãƒ©ã‚¹ã«ã—ã¾ã™ã€‚
 public abstract class Card : MonoBehaviour
 {
-    [Header("ƒJ[ƒh‚Ìƒpƒ‰ƒ[ƒ^ˆê——‚Å‚·BƒŒƒxƒ‹ƒfƒUƒCƒ“‚Íå‚É‚±‚Ì“à•”‚Ì’l‚ğ•ÏX‚µ‚Ä‚­‚¾‚³‚¢B")]
+    [Header("ã‚«ãƒ¼ãƒ‰ã®ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿ä¸€è¦§ã§ã™ã€‚ãƒ¬ãƒ™ãƒ«ãƒ‡ã‚¶ã‚¤ãƒ³ã¯ä¸»ã«ã“ã®å†…éƒ¨ã®å€¤ã‚’å¤‰æ›´ã—ã¦ãã ã•ã„ã€‚")]
     [SerializeField] protected CardParameter _parameter = default!;
 
-    [Header("ƒJ[ƒhƒCƒ‰ƒXƒg‚Å‚·BŠY“–‚·‚éƒCƒ‰ƒXƒg‚ª‚È‚¢ê‡‚ÍNone‚Ì‚Ü‚Ü‚É‚µ‚Ä‚­‚¾‚³‚¢B")]
+    [Header("ã‚«ãƒ¼ãƒ‰ã‚¤ãƒ©ã‚¹ãƒˆã§ã™ã€‚è©²å½“ã™ã‚‹ã‚¤ãƒ©ã‚¹ãƒˆãŒãªã„å ´åˆã¯Noneã®ã¾ã¾ã«ã—ã¦ãã ã•ã„ã€‚")]
     [SerializeField] Sprite _baseSprite = default!;
     [SerializeField] Sprite _number = default!;
     [SerializeField] Sprite _chineseCharacters = default!;
@@ -17,7 +17,7 @@ public abstract class Card : MonoBehaviour
     [SerializeField] Sprite _katakana = default!;
     [SerializeField] Sprite _alphabet = default!;
 
-    [Header("ƒvƒŒƒCƒ„[‚ÌèDŠÇ—‚·‚éƒIƒuƒWƒFƒNƒg‚ğ‘I‘ğ‚µ‚Ä‚­‚¾‚³‚¢B")]
+    [Header("ãƒ—ãƒ¬ã‚¤ãƒ¤ãƒ¼ã®æ‰‹æœ­ç®¡ç†ã™ã‚‹ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’é¸æŠã—ã¦ãã ã•ã„ã€‚")]
     [SerializeField] protected HandMediator _handMediator = default!;
 
     readonly List<Sprite> result = new();
@@ -28,27 +28,21 @@ public abstract class Card : MonoBehaviour
     }
 
     /// <summary>
-    /// ƒJ[ƒhIDBEEX_NULL‚Í-1A‚»‚Ì‘¼‚ÍƒGƒŒƒƒ“ƒg”Ô†‚ÅŠÇ—‚µ‚Ä‚¢‚Ü‚·B
+    /// ã‚«ãƒ¼ãƒ‰IDã€‚EEX_NULLã¯-1ã€ãã®ä»–ã¯ã‚¨ãƒ¬ãƒ¡ãƒ³ãƒˆç•ªå·ã§ç®¡ç†ã—ã¦ã„ã¾ã™ã€‚
     /// </summary>
     public abstract int Id { get; }
-
     /// <summary>
-    /// ƒJ[ƒhID‚ğƒNƒ‰ƒX–¼‚©‚çæ“¾‚Å‚«‚é‚æ‚¤‚É‚·‚éBupublic static new Id() => ID”Ô†; v‚Åã‘‚«‚µ‚Ä‰º‚³‚¢
-    /// </summary>
-    public static int Id() => -1;
-
-    /// <summary>
-    /// ƒJ[ƒh‚Ì–¼‘O
+    /// ã‚«ãƒ¼ãƒ‰ã®åå‰
     /// </summary>
     public virtual string CardName => _parameter.GetName();
     /// <summary>
-    /// ƒJ[ƒh‚ÌƒCƒ‰ƒXƒg‚ªŠi”[‚³‚ê‚Ä‚¢‚éB‡”Ô‚ÍAbase‚ğæ“ª‚Éc‚è‚ÍƒGƒŒƒƒ“ƒg”Ô†‡
+    /// ã‚«ãƒ¼ãƒ‰ã®ã‚¤ãƒ©ã‚¹ãƒˆãŒæ ¼ç´ã•ã‚Œã¦ã„ã‚‹ã€‚é †ç•ªã¯ã€baseã‚’å…ˆé ­ã«æ®‹ã‚Šã¯ã‚¨ãƒ¬ãƒ¡ãƒ³ãƒˆç•ªå·é †
     /// </summary>
     public virtual IReadOnlyList<Sprite> CardSprite
     {
         get
         {
-            //‰Šú‰»
+            //åˆæœŸåŒ–
             if (result.Count == 0)
             {
                 result.Add(_baseSprite);
@@ -63,36 +57,36 @@ public abstract class Card : MonoBehaviour
         }
     }
     /// <summary>
-    /// ”„‹pŒã‚ÉÁ–Å‚·‚é‚©‚Ç‚¤‚©
+    /// å£²å´å¾Œã«æ¶ˆæ»…ã™ã‚‹ã‹ã©ã†ã‹
     /// </summary>
     public virtual bool IsDisposedOfAfterSell => _parameter.IsDisposedOfAfterSell();
     /// <summary>
-    /// ƒJ[ƒh‚ÌƒŒƒAƒŠƒeƒB
+    /// ã‚«ãƒ¼ãƒ‰ã®ãƒ¬ã‚¢ãƒªãƒ†ã‚£
     /// </summary>
     public virtual int Rarity => _parameter.Rarity();
     /// <summary>
-    /// ƒvƒŒƒCƒ„[‚ÌƒfƒbƒL‚ÉŠÜ‚Ü‚ê‚é‚©‚Ç‚¤‚©
+    /// ãƒ—ãƒ¬ã‚¤ãƒ¤ãƒ¼ã®ãƒ‡ãƒƒã‚­ã«å«ã¾ã‚Œã‚‹ã‹ã©ã†ã‹
     /// </summary>
     public virtual bool ContainsPlayerDeck => _handMediator.ContainsCard(this);
     /// <summary>
-    /// ƒvƒŒƒCƒ„[‚ÌƒfƒbƒL‚ÉŠÜ‚Ü‚ê‚é–‡”
+    /// ãƒ—ãƒ¬ã‚¤ãƒ¤ãƒ¼ã®ãƒ‡ãƒƒã‚­ã«å«ã¾ã‚Œã‚‹æšæ•°
     /// </summary>
     public virtual int FindAll => _handMediator.FindAll(this);
     /// <summary>
-    /// ‹àŠz(w“üE”„‹p)
+    /// é‡‘é¡(è³¼å…¥ãƒ»å£²å´)
     /// </summary>
     public virtual Money Price => _parameter.GetMoney();
 
     /// <summary>
-    /// w“üˆ—
+    /// è³¼å…¥æ™‚å‡¦ç†
     /// </summary>
     public abstract void Buy();
     /// <summary>
-    /// ”„‹pˆ—
+    /// å£²å´æ™‚å‡¦ç†
     /// </summary>
     public abstract void Sell();
     /// <summary>
-    /// ’TõƒtƒF[ƒY‚É‚¨‚¯‚éU6ƒ{ƒ^ƒ“‰Ÿ‰º‚ÌŒø‰Ê
+    /// æ¢ç´¢ãƒ•ã‚§ãƒ¼ã‚ºã«ãŠã‘ã‚‹U6ãƒœã‚¿ãƒ³æŠ¼ä¸‹æ™‚ã®åŠ¹æœ
     /// </summary>
     public abstract void OnPressedU6Button();
 }
