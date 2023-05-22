@@ -3,13 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+// ***HandView はStringManager.Elementの値以外は同じなので、一つのクラスにまとめた方が良いでしょう
 public class AlphabetHandView : MonoBehaviour
 {
-    readonly List<Image> _alphabetImages = new();
+    readonly List<Image> _images = new();
 
     public void Set()
     {
-        foreach (var item in _alphabetImages)
+        foreach (var item in _images)
         {
             if (item.sprite == null) continue;
 
@@ -17,13 +18,13 @@ public class AlphabetHandView : MonoBehaviour
         }
     }
 
-    public void Add(Image alphabetImage)
+    public void Add(Image image)
     {
-        _alphabetImages.Add(alphabetImage);
+        _images.Add(image);
     }
 
     public void Remove(Image image)
     {
-        _alphabetImages.Remove(image);
+        _images.Remove(image);
     }
 }

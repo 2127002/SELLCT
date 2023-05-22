@@ -9,9 +9,9 @@ public class Floor01Answer02 : MonoBehaviour
     [SerializeField] E37_Lack _e37;
     [SerializeField] E7_Move _e7;
     [Header("初期成功確率［単位：％］")]
-    [SerializeField, Range(0, 100f)] float defaultSuccessRate = 10f;
+    [SerializeField, Range(0f, 100f)] float defaultSuccessRate = 10f;
     [Header("成功確率の増える値［単位：％］")]
-    [SerializeField, Range(0, 100f)] float successRateIncreasePercentage = 5f;
+    [SerializeField, Range(0f, 100f)] float successRateIncreasePercentage = 5f;
     [Header("成功までの必要イベント数")]
     [SerializeField, Min(0)] int requiredEventCount = 3;
     [SerializeField] TextBoxController _textBoxController;
@@ -42,7 +42,7 @@ public class Floor01Answer02 : MonoBehaviour
         if (!HasElements()) return;
 
         //成功確率15%なら、0～14.9999...なら成功
-        float rate = UnityEngine.Random.Range(0, 100f);
+        float rate = UnityEngine.Random.Range(0f, 100f);
 
         //失敗
         if (rate >= successRate)

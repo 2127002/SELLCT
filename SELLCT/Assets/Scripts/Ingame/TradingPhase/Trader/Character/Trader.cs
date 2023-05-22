@@ -4,7 +4,7 @@ using UnityEngine;
 
 public abstract class Trader : MonoBehaviour, IConversationMessage
 {
-    [SerializeField] protected TraderParameter traderParameter;
+    [SerializeField] protected TraderParameter traderParameter = default!;
     [SerializeField] protected Sprite sprite;
     [SerializeField] protected ConversationDataBase _start;
     [SerializeField] protected ConversationDataBase _end;
