@@ -20,7 +20,7 @@ public class CardScrollController : MonoBehaviour
 
     //288+60
     const float CARDHEIGHT = 348f;
-    static readonly List<Vector3> offset = new() { new Vector3(0, -CARDHEIGHT, 0), new Vector3(0, CARDHEIGHT, 0) };
+    static readonly List<Vector3> offset = new() { new Vector3(0f, -CARDHEIGHT, 0f), new Vector3(0f, CARDHEIGHT, 0f) };
 
     bool _isAnimation = false;
 

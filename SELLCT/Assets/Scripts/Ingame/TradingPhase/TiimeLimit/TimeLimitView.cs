@@ -8,7 +8,7 @@ public class TimeLimitView : MonoBehaviour
 
     float _scaleRate = 0.7f; // スケール変更率
     Vector3 _originalScale = Vector3.one; // 元のスケール
-    float _timeElapsed = 0; // 経過時間
+    float _timeElapsed = 0f; // 経過時間
 
     private void Awake()
     {
@@ -19,7 +19,7 @@ public class TimeLimitView : MonoBehaviour
     {
         _clockHandTransform.localScale = _originalScale;
         _clockHandTransform.localRotation = Quaternion.identity;
-        _timeElapsed = 0;
+        _timeElapsed = 0f;
     }
 
     public void Rotate(float maxTimeLimit)
@@ -35,9 +35,9 @@ public class TimeLimitView : MonoBehaviour
         _timeElapsed += Time.deltaTime;
 
         // 半周で一旦経過時間をリセットする
-        if (_timeElapsed > maxTimeLimit / 2)
+        if (_timeElapsed > maxTimeLimit / 2f)
         {
-            _timeElapsed = 0.0f;
+            _timeElapsed = 0f;
 
             //行きと帰りでスケールが異なる
             _scaleRate = 0.8f;
@@ -45,7 +45,7 @@ public class TimeLimitView : MonoBehaviour
 
         // スケールを変更する
         float rate = _timeElapsed / maxTimeLimit;
-        float sinRate = 1f - Mathf.Sin(rate * Mathf.PI * 2.0f);
+        float sinRate = 1f - Mathf.Sin(rate * Mathf.PI * 2f);
         float scale = Mathf.Lerp(_originalScale.magnitude * _scaleRate, _originalScale.magnitude, sinRate);
         _clockHandTransform.localScale = _originalScale.normalized * scale;
     }

@@ -28,7 +28,7 @@ class FadeOutView : MonoBehaviour
         await UniTask.Delay((int)(_fadeTime.WaitTime * 1000f), false, PlayerLoopTiming.FixedUpdate, cancellationToken);
         Init();
 
-        float progress = -1;
+        float progress = -1f;
 
         while (progress != MAX_ALPHA)
         {

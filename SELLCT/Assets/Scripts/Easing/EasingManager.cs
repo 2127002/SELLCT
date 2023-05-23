@@ -25,7 +25,7 @@ namespace TM.Easing.Management
         public static float EaseProgress(EaseType easeType, float time, float duration, float overshootOrAmplitude, float period)
         {
             //終了時間が0秒以下なら進行度をMaxにする
-            if (duration <= 0) return 1f;
+            if (duration <= 0f) return 1f;
             
             float x = (time / duration);
 
@@ -64,12 +64,12 @@ namespace TM.Easing.Management
                 case EaseType.InOutQuint:
                     return x < 0.5f ? 16f * x * x * x * x * x : 1f - Mathf.Pow(-2f * x + 2f, 5f) / 2f;
                 case EaseType.InExpo:
-                    return x == 0f ? 0f : Mathf.Pow(2f, 10f * x - 10f);
+                    return x <= 0f ? 0f : Mathf.Pow(2f, 10f * x - 10f);
                 case EaseType.OutExpo:
-                    return x == 1f ? 1f : 1f - Mathf.Pow(2f, -10f * x);
+                    return 1f <= x ? 1f : 1f - Mathf.Pow(2f, -10f * x);
                 case EaseType.InOutExpo:
-                    return x == 0f ? 0f : 
-                        x == 1f ? 1f : 
+                    return x <= 0f ? 0f : 
+                        1f <= x ? 1f : 
                         x < 0.5f ? Mathf.Pow(2f, 20f * x - 10f) / 2f : (2f - Mathf.Pow(2f, -20f * x + 10f)) / 2f;
                 case EaseType.InCirc:
                     return 1f - Mathf.Sqrt(1f - Mathf.Pow(x, 2f));
@@ -92,17 +92,17 @@ namespace TM.Easing.Management
 
                 case EaseType.InElastic:
                     {
-                        if (time == 0f)
+                        if (time <= 0f)
                         {
                             return 0f;
                         }
 
-                        if ((time /= duration) == 1f)
+                        if ((time /= duration) >= 1f)
                         {
                             return 1f;
                         }
 
-                        if (period == 0f)
+                        if (period <= 0f)
                         {
                             period = duration * 0.3f;
                         }
@@ -122,17 +122,17 @@ namespace TM.Easing.Management
                     }
                 case EaseType.OutElastic:
                     {
-                        if (time == 0f)
+                        if (time <= 0f)
                         {
                             return 0f;
                         }
 
-                        if ((time /= duration) == 1f)
+                        if ((time /= duration) >= 1f)
                         {
                             return 1f;
                         }
 
-                        if (period == 0f)
+                        if (period <= 0f)
                         {
                             period = duration * 0.3f;
                         }
@@ -152,17 +152,17 @@ namespace TM.Easing.Management
                     }
                 case EaseType.InOutElastic:
                     {
-                        if (time == 0f)
+                        if (time <= 0f)
                         {
                             return 0f;
                         }
 
-                        if ((time /= duration * 0.5f) == 2f)
+                        if ((time /= duration * 0.5f) >= 2f)
                         {
                             return 1f;
                         }
 
-                        if (period == 0f)
+                        if (period <= 0f)
                         {
                             period = duration * 0.450000018f;
                         }
@@ -212,15 +212,15 @@ namespace TM.Easing.Management
                 const float d1 = 2.75f;
                 float x = time / duration;
 
-                if (x < 1 / d1)
+                if (x < 1f / d1)
                 {
                     return n1 * x * x;
                 }
-                else if (x < 2 / d1)
+                else if (x < 2f / d1)
                 {
                     return n1 * (x -= 1.5f / d1) * x + 0.75f;
                 }
-                else if (x < 2.5 / d1)
+                else if (x < 2.5f / d1)
                 {
                     return n1 * (x -= 2.25f / d1) * x + 0.9375f;
                 }

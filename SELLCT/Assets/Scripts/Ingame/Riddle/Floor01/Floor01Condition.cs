@@ -37,6 +37,6 @@ public class Floor01Condition : MonoBehaviour
 
     public bool OnRest()
     {
-       return _answer01.Rest();
+        return _answer01.Rest();
     }
 }

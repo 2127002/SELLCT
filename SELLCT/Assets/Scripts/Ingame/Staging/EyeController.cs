@@ -12,23 +12,23 @@ using UnityEngine;
 public class EyeController : MonoBehaviour
 {
     [SerializeField] Material _eye = default!;
-    [Header("Default‚Ì‰ğ‘œ“x‚ğ1”{‚Æ‚µ‚ÄAˆÈ‰º‚Ì’l‚Åã¸‚µ‚Ü‚·B\n—áF’l‚ª2‚Ìê‡ 0.5¨1")]
+    [Header("Defaultã®è§£åƒåº¦ã‚’1å€ã¨ã—ã¦ã€ä»¥ä¸‹ã®å€¤ã§ä¸Šæ˜‡ã—ã¾ã™ã€‚\nä¾‹ï¼šå€¤ãŒ2ã®å ´åˆ 0.5â†’1")]
     [SerializeField, Range(1f, 2160f)] float _eyeIncreaseValue;
-    [Header("Default‚Ì‰ğ‘œ“x‚ğ1”{‚Æ‚µ‚ÄAˆÈ‰º‚Ì’l‚ÅŒ¸­‚µ‚Ü‚·B\n—áF’l‚ª0.7‚Ìê‡ 1¨0.7")]
+    [Header("Defaultã®è§£åƒåº¦ã‚’1å€ã¨ã—ã¦ã€ä»¥ä¸‹ã®å€¤ã§æ¸›å°‘ã—ã¾ã™ã€‚\nä¾‹ï¼šå€¤ãŒ0.7ã®å ´åˆ 1â†’0.7")]
     [SerializeField, Range(0.0001f, 1f)] float _eyeDecreaseValue;
 
-    [Header("‰Šú‚Ì‰ğ‘œ“x‚ğİ’è‚µ‚Ü‚·B\n‚Ü‚½A‰Šú‚ÌƒGƒŒƒƒ“ƒgŠ”‚ÉŠÖŒW‚È‚­‚±‚Ì’l‚É‚È‚è‚Ü‚·B")]
-    [SerializeField, Range(0, 2160f)] float _firstEye = 1080f;
-    [Header("‰‰o—p‚ÌImage‚ğİ’è‚µ‚Ü‚·")]
+    [Header("åˆæœŸã®è§£åƒåº¦ã‚’è¨­å®šã—ã¾ã™ã€‚\nã¾ãŸã€åˆæœŸã®ã‚¨ãƒ¬ãƒ¡ãƒ³ãƒˆæ‰€æŒæ•°ã«é–¢ä¿‚ãªãã“ã®å€¤ã«ãªã‚Šã¾ã™ã€‚")]
+    [SerializeField, Range(0f, 2160f)] float _firstEye = 1080f;
+    [Header("æ¼”å‡ºç”¨ã®Imageã‚’è¨­å®šã—ã¾ã™")]
     [SerializeField] GameObject stagingImage;
 
-    float _currentEyeValue = 1.0f;
+    float _currentEyeValue = 1f;
     const float MAX_VALUE = 2160f;
     const float MIN_VALUE = 1;
 
     private void Awake()
     {
-        //Å‰‚ÌŠ–‡”‚ÆŠÖŒW‚È‚­İ’è‚³‚ê‚éBƒtƒF[ƒY‚ÆŠÖŒW‚È‚­İ’è‚·‚é‚½‚ßA–â‘è‚ª¶‚¶‚½‚ç•ÏX„§
+        //æœ€åˆã®æ‰€æŒæšæ•°ã¨é–¢ä¿‚ãªãè¨­å®šã•ã‚Œã‚‹ã€‚ãƒ•ã‚§ãƒ¼ã‚ºã¨é–¢ä¿‚ãªãè¨­å®šã™ã‚‹ãŸã‚ã€å•é¡ŒãŒç”Ÿã˜ãŸã‚‰å¤‰æ›´æ¨å¥¨
         _currentEyeValue = _firstEye;
         SetEye();
     }

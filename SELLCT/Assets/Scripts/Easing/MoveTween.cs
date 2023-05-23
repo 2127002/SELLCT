@@ -35,7 +35,7 @@ namespace TM.Easing
                     _time += Time.deltaTime;
                     if (_time >= core.GetDuration()) _time = core.GetDuration();
                     var moveDis = (core.GetEndValue() - objPos);
-                    core.GetGetter().GetGetter().transform.position= objPos + (moveDis * EasingManager.EaseProgress(core.GetEase(), _time, core.GetDuration(), 0, 0));
+                    core.GetGetter().GetGetter().transform.position= objPos + (moveDis * EasingManager.EaseProgress(core.GetEase(), _time, core.GetDuration(), 0f, 0f));
                     yield return null;
                 }
                 core.SetLoopCount(core.GetLoopCount() - 1);
@@ -48,10 +48,10 @@ namespace TM.Easing
                         break;
                     case LoopType.Restart:
                         core.GetSetter().SetSetter(core.GetStartValue());
-                        _time = 0;
+                        _time = 0f;
                         break;
                     case LoopType.Increment:
-                        _time = 0;
+                        _time = 0f;
                         break;
                 }
             }
@@ -69,7 +69,7 @@ namespace TM.Easing
                     _time += Time.deltaTime;
                     if (_time >= core.GetDuration()) _time = core.GetDuration();
                     var moveDis = (core.GetEndValue() - objPos);
-                    core.GetGetter().GetGetter().transform.position = objPos + (moveDis * EasingManager.EaseProgress(core.GetEase(), _time, core.GetDuration(), 0, 0));
+                    core.GetGetter().GetGetter().transform.position = objPos + (moveDis * EasingManager.EaseProgress(core.GetEase(), _time, core.GetDuration(), 0f, 0f));
                     yield return null;
                 }
                 core.SetLoopCount(core.GetLoopCount() - 1);
@@ -103,7 +103,7 @@ namespace TM.Easing
         //            _time += Time.deltaTime;
         //            if (_time >= core.GetDuration()) _time = core.GetDuration();
         //            var moveDis = (core.GetEndValue() - objPos);
-        //            core.GetGetter().GetGetter().transform.rotation =Quaternion.Euler(objPos + (moveDis * EasingManager.EaseProgress(core.GetEase(), _time, core.GetDuration(), 0, 0)));
+        //            core.GetGetter().GetGetter().transform.rotation =Quaternion.Euler(objPos + (moveDis * EasingManager.EaseProgress(core.GetEase(), _time, core.GetDuration(), 0f, 0f)));
         //            yield return null;
         //        }
         //        core.SetLoopCount(core.GetLoopCount() - 1);
@@ -112,14 +112,14 @@ namespace TM.Easing
         //            case LoopType.Yoyo:
         //                objPos = core.GetEndValue();
         //                core.SetEndValue(core.GetLoopCount() % 2 != 0 ? firstEndVal : core.GetStartValue());
-        //                _time = 0;
+        //                _time = 0f;
         //                break;
         //            case LoopType.Restart:
         //                core.GetSetter().SetSetter(core.GetStartValue());
-        //                _time = 0;
+        //                _time = 0f;
         //                break;
         //            case LoopType.Increment:
-        //                _time = 0;
+        //                _time = 0f;
         //                break;
         //        }
         //    }
@@ -139,7 +139,7 @@ namespace TM.Easing
                     var moveDis = (core.GetEndValue() - objPos);
                     switch (xyz) {
                         case 0:
-                            core.GetSetter().SetSetter(objPos + (moveDis * EasingManager.EaseProgress(core.GetEase(), _time, core.GetDuration(), 0, 0)));
+                            core.GetSetter().SetSetter(objPos + (moveDis * EasingManager.EaseProgress(core.GetEase(), _time, core.GetDuration(), 0f, 0f)));
                             break;
                     }
                     yield return null;
@@ -150,14 +150,14 @@ namespace TM.Easing
                     case LoopType.Yoyo:
                         objPos = core.GetEndValue();
                         core.SetEndValue(core.GetLoopCount() % 2 != 0 ? firstEndVal : core.GetStartValue());
-                        _time = 0;
+                        _time = 0f;
                         break;
                     case LoopType.Restart:
                         core.GetSetter().SetSetter(core.GetStartValue());
-                        _time = 0;
+                        _time = 0f;
                         break;
                     case LoopType.Increment:
-                        _time = 0;
+                        _time = 0f;
                         break;
                 }
             }
