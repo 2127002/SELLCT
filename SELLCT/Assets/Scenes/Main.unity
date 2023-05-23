@@ -6811,7 +6811,7 @@ MonoBehaviour:
   _katakana: {fileID: 0}
   _alphabet: {fileID: 0}
   _handMediator: {fileID: 1975269151}
-  end_1: {fileID: 0}
+  end_5: {fileID: 0}
 --- !u!114 &917396757
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8632,6 +8632,9 @@ MonoBehaviour:
   _select: {fileID: 11400000, guid: 4ef3e47c9277c554180ea22ef400f051, type: 2}
   _buy: {fileID: 11400000, guid: d19b80a53d9291741937f2123749af5e, type: 2}
   _sell: {fileID: 11400000, guid: 34fde8c6200fc7044a58146fe7da677d, type: 2}
+  _offset:
+    scaleRatio: {x: 1.54, y: 1.54}
+    offsetPos: {x: -33.25, y: -216.4, z: 0}
 --- !u!1 &1192169971
 GameObject:
   m_ObjectHideFlags: 0
