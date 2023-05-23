@@ -24,9 +24,9 @@ public class ConversationController : MonoBehaviour
         //出会いのテキストを表示する
         for (int i = 0; i < startMessage.message.Length; i++)
         {
-            Sprite sprite = _traderController.CurrentTrader.TraderSprites[startMessage.face[i]];
+            //1-indexedを0-indexedに変換する
+            Sprite sprite = _traderController.CurrentTrader.TraderSprites[startMessage.face[i] - 1];
             string message = startMessage.message[i].ToInBracketsText();
-
             _traderController.SetTraderSprite(sprite);
             try
             {
@@ -35,9 +35,6 @@ public class ConversationController : MonoBehaviour
             catch (OperationCanceledException)
             {
                 //キャンセルされた場合は表情をデフォルトに戻して処理を終了する
-                Sprite normalSprite = _traderController.CurrentTrader.TraderSprites[0];
-
-                _traderController.SetTraderSprite(normalSprite);
                 return;
             }
         }
@@ -50,8 +47,9 @@ public class ConversationController : MonoBehaviour
 
         //出会いのテキストを表示する
         for (int i = 0; i < endMessage.message.Length; i++)
-        {
-            Sprite sprite = _traderController.CurrentTrader.TraderSprites[endMessage.face[i]];
+        {            
+            //1-indexedを0-indexedに変換する
+            Sprite sprite = _traderController.CurrentTrader.TraderSprites[endMessage.face[i] - 1];
             string message = endMessage.message[i].ToInBracketsText();
 
             _traderController.SetTraderSprite(sprite);
@@ -61,10 +59,6 @@ public class ConversationController : MonoBehaviour
             }
             catch (OperationCanceledException)
             {
-                //キャンセルされた場合は表情をデフォルトに戻して処理を終了する
-                Sprite normalSprite = _traderController.CurrentTrader.TraderSprites[0];
-
-                _traderController.SetTraderSprite(normalSprite);
                 return;
             }
         }
@@ -80,7 +74,8 @@ public class ConversationController : MonoBehaviour
         //出会いのテキストを表示する
         for (int i = 0; i < cardMessage.message.Length; i++)
         {
-            Sprite sprite = _traderController.CurrentTrader.TraderSprites[cardMessage.face[i]];
+            //1-indexedを0-indexedに変換する
+            Sprite sprite = _traderController.CurrentTrader.TraderSprites[cardMessage.face[i] - 1];
             string message = cardMessage.message[i].ToInBracketsText();
 
             _traderController.SetTraderSprite(sprite);
@@ -90,10 +85,6 @@ public class ConversationController : MonoBehaviour
             }
             catch (OperationCanceledException)
             {
-                //キャンセルされた場合は表情をデフォルトに戻して処理を終了する
-                Sprite normalSprite = _traderController.CurrentTrader.TraderSprites[0];
-
-                _traderController.SetTraderSprite(normalSprite);
                 return;
             }
         }
@@ -109,7 +100,8 @@ public class ConversationController : MonoBehaviour
         //出会いのテキストを表示する
         for (int i = 0; i < buyMessage.message.Length; i++)
         {
-            Sprite sprite = _traderController.CurrentTrader.TraderSprites[buyMessage.face[i]];
+            //1-indexedを0-indexedに変換する
+            Sprite sprite = _traderController.CurrentTrader.TraderSprites[buyMessage.face[i] - 1];
             string message = buyMessage.message[i].ToInBracketsText();
 
             _traderController.SetTraderSprite(sprite);
@@ -119,10 +111,6 @@ public class ConversationController : MonoBehaviour
             }
             catch (OperationCanceledException)
             {
-                //キャンセルされた場合は表情をデフォルトに戻して処理を終了する
-                Sprite normalSprite = _traderController.CurrentTrader.TraderSprites[0];
-
-                _traderController.SetTraderSprite(normalSprite);
                 return;
             }
         }
@@ -138,7 +126,8 @@ public class ConversationController : MonoBehaviour
         //出会いのテキストを表示する
         for (int i = 0; i < sellMessage.message.Length; i++)
         {
-            Sprite sprite = _traderController.CurrentTrader.TraderSprites[sellMessage.face[i]];
+            //1-indexedを0-indexedに変換する
+            Sprite sprite = _traderController.CurrentTrader.TraderSprites[sellMessage.face[i] - 1];
             string message = sellMessage.message[i].ToInBracketsText();
 
             _traderController.SetTraderSprite(sprite);
@@ -148,10 +137,6 @@ public class ConversationController : MonoBehaviour
             }
             catch (OperationCanceledException)
             {
-                //キャンセルされた場合は表情をデフォルトに戻して処理を終了する
-                Sprite normalSprite = _traderController.CurrentTrader.TraderSprites[0];
-
-                _traderController.SetTraderSprite(normalSprite);
                 return;
             }
         }

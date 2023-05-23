@@ -10,11 +10,25 @@ public readonly struct ConversationMessage
 
     public ConversationMessage(string[] message, int[] face)
     {
-        if (message.Length != face.Length) throw new NotImplementedException("���b�Z�[�W�ƕ\����̌����قȂ�܂��B�ݒ���������Ă��������B" + message);
+        if (message.Length != face.Length) throw new NotImplementedException("メッセージと立ち絵の指定個数が異なります。設定を見直してください" + message);
 
         this.message = message;
         this.face = face;
     }
+}
+
+[Serializable]
+public struct TraderOffset
+{
+    /// <summary>
+    /// デフォルト画像の大きさからの拡大比率
+    /// </summary>
+    [SerializeField] Vector2 scaleRatio;
+
+    [SerializeField] Vector3 offsetPos;
+
+    public Vector2 ScaleRatio => scaleRatio;
+    public Vector3 OffsetPos => offsetPos;
 }
 
 public abstract class Trader : MonoBehaviour, IConversationMessage
@@ -26,6 +40,7 @@ public abstract class Trader : MonoBehaviour, IConversationMessage
     [SerializeField] protected ConversationDataBase _select;
     [SerializeField] protected ConversationDataBase _buy;
     [SerializeField] protected ConversationDataBase _sell;
+    [SerializeField] private TraderOffset _offset;
 
     protected Favorability favorability;
     protected readonly TraderDeck deck = new();
@@ -37,6 +52,7 @@ public abstract class Trader : MonoBehaviour, IConversationMessage
         traderParameter.Name = traderParameter.DefaultName;
     }
 
+    public virtual TraderOffset Offset => _offset;
     public virtual TraderDeck TraderDeck => deck;
     public virtual string Name
     {

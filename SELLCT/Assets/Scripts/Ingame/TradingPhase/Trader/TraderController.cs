@@ -37,6 +37,9 @@ public class TraderController : MonoBehaviour
         //トレーダーによって初期展示数が異なる
         _traderHand.SetDefaultHandCapacity(trader.InitialDisplayItemCount);
 
+        //オフセットを反映する
+        _traderView.SetOffset(trader.Offset);
+
         //トレーダーと出会った時の処理をおこなう。
         _conversationController.OnStart().Forget();
     }
