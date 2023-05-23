@@ -24,8 +24,6 @@ public class TraderController : MonoBehaviour
 
     private void OnTradingPhaseStart()
     {
-        _traderView.OnPhaseStart();
-
         //次のトレーダーを選択
         Trader next = _traderEncounterController.Selection();
         SetTrader(next);

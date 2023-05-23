@@ -6,7 +6,6 @@ using UnityEngine.UI;
 
 public class TraderView : MonoBehaviour
 {
-    [SerializeField] FadeInView _fadeinView = default!;
     [SerializeField] Image _traderImage = default!;
 
     Vector2 _defaultSizeDelta;
@@ -16,11 +15,6 @@ public class TraderView : MonoBehaviour
     {
         _defaultSizeDelta = _traderImage.rectTransform.sizeDelta;
         _defaultPos = _traderImage.rectTransform.position;
-    }
-
-    public void OnPhaseStart()
-    {
-        _fadeinView.StartFade().Forget();
     }
 
     public void SetSprite(Sprite sprite)

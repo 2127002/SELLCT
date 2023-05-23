@@ -38,6 +38,6 @@ public class E24_Time : Card
 
     private void OnTradingPhaseStart()
     {
-        _timeLimitController.Generate(_handMediator.FindAll(this));
+        _timeLimitController.SetE24Count(_handMediator.FindAll(this));
     }
 }
