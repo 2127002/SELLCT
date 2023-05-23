@@ -475,12 +475,15 @@ MonoBehaviour:
     _addFavorabilityValue: 0
     _defaultName: "\u30DE\u30C3\u30C1\u58F2\u308A\u306E\u5C11\u5973"
     _favourableView: {fileID: 1982680978}
-  sprite: {fileID: 0}
+  sprites: []
   _start: {fileID: 0}
   _end: {fileID: 0}
   _select: {fileID: 0}
   _buy: {fileID: 0}
   _sell: {fileID: 0}
+  _offset:
+    scaleRatio: {x: 0, y: 0}
+    offsetPos: {x: 0, y: 0, z: 0}
 --- !u!1 &50789293
 GameObject:
   m_ObjectHideFlags: 0
@@ -1329,13 +1332,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 475a8465828ec5740bab642a44943340, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 7f718aa37648c464188c8ca8a81be03a, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1363,16 +1366,16 @@ RectTransform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 1210986884}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -240}
-  m_SizeDelta: {x: 600, y: 780}
-  m_Pivot: {x: 0.5, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 600, y: 1000}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &196305913
 GameObject:
   m_ObjectHideFlags: 0
@@ -2833,12 +2836,21 @@ MonoBehaviour:
     _addFavorabilityValue: 0
     _defaultName: "\u3046\u3055\u304E"
     _favourableView: {fileID: 1982680978}
-  sprite: {fileID: 0}
+  sprites:
+  - {fileID: 21300000, guid: 0706bf4574cac0d46b8369357a92b5ff, type: 3}
+  - {fileID: 21300000, guid: 8325b5917ecb74d42b38dbd66b81cb46, type: 3}
+  - {fileID: 21300000, guid: cc179deda076d2c4da39d232f3974880, type: 3}
+  - {fileID: 21300000, guid: 30e4462e188fa524cae9d56a8618a568, type: 3}
+  - {fileID: 21300000, guid: 7ea7c01c6cfebf245a2e85a0f4f6e05e, type: 3}
+  - {fileID: 21300000, guid: 95c7104071c64234eaa871d9d99482d0, type: 3}
   _start: {fileID: 0}
   _end: {fileID: 0}
   _select: {fileID: 0}
   _buy: {fileID: 0}
   _sell: {fileID: 0}
+  _offset:
+    scaleRatio: {x: 1.33, y: 1.33}
+    offsetPos: {x: 12.2, y: -35.41, z: 0}
 --- !u!1 &382037747
 GameObject:
   m_ObjectHideFlags: 0
@@ -4228,12 +4240,15 @@ MonoBehaviour:
     _addFavorabilityValue: 0
     _defaultName: "\u30A4\u30AB\u308C\u305F\u5B66\u8005"
     _favourableView: {fileID: 1982680978}
-  sprite: {fileID: 0}
+  sprites: []
   _start: {fileID: 0}
   _end: {fileID: 0}
   _select: {fileID: 0}
   _buy: {fileID: 0}
   _sell: {fileID: 0}
+  _offset:
+    scaleRatio: {x: 0, y: 0}
+    offsetPos: {x: 0, y: 0, z: 0}
 --- !u!1 &500785465
 GameObject:
   m_ObjectHideFlags: 0
@@ -7841,12 +7856,21 @@ MonoBehaviour:
     _addFavorabilityValue: 0
     _defaultName: "\u30CA\u30A4\u30C8"
     _favourableView: {fileID: 1982680978}
-  sprite: {fileID: 0}
+  sprites:
+  - {fileID: 21300000, guid: 7f718aa37648c464188c8ca8a81be03a, type: 3}
+  - {fileID: 21300000, guid: 6ed17d1ee8e56d74e90cfe4cfa64b1da, type: 3}
+  - {fileID: 21300000, guid: 3ef16e7b56d3e7249a2423e6a2b0ba7e, type: 3}
+  - {fileID: 21300000, guid: e0fe53ede3a71c54d876381af183c7a3, type: 3}
+  - {fileID: 21300000, guid: 912219c8ad313184abada3c7bb253a92, type: 3}
+  - {fileID: 21300000, guid: bebfde77a4224bb4cbc1342448b0cbb7, type: 3}
   _start: {fileID: 0}
   _end: {fileID: 0}
   _select: {fileID: 0}
   _buy: {fileID: 0}
   _sell: {fileID: 0}
+  _offset:
+    scaleRatio: {x: 1.455, y: 1.455}
+    offsetPos: {x: -14.84, y: -118, z: 0}
 --- !u!1 &1064430991
 GameObject:
   m_ObjectHideFlags: 0
@@ -7889,12 +7913,21 @@ MonoBehaviour:
     _addFavorabilityValue: 24
     _defaultName: "\u6CA1\u843D\u8CB4\u65CF"
     _favourableView: {fileID: 1982680978}
-  sprite: {fileID: 21300000, guid: 85496f8751f64a046bff42f2093494c8, type: 3}
+  sprites:
+  - {fileID: 21300000, guid: 7f718aa37648c464188c8ca8a81be03a, type: 3}
+  - {fileID: 21300000, guid: 6ed17d1ee8e56d74e90cfe4cfa64b1da, type: 3}
+  - {fileID: 21300000, guid: 3ef16e7b56d3e7249a2423e6a2b0ba7e, type: 3}
+  - {fileID: 21300000, guid: e0fe53ede3a71c54d876381af183c7a3, type: 3}
+  - {fileID: 21300000, guid: 912219c8ad313184abada3c7bb253a92, type: 3}
+  - {fileID: 21300000, guid: bebfde77a4224bb4cbc1342448b0cbb7, type: 3}
   _start: {fileID: 11400000, guid: aeb85583738038440bcc4ecd338fc8a5, type: 2}
   _end: {fileID: 11400000, guid: c301a1f880a70014bab621d7cb554dc0, type: 2}
   _select: {fileID: 11400000, guid: 834db42ae6b43994296d39f3df374a30, type: 2}
   _buy: {fileID: 11400000, guid: b7c245d8a2f9b904897077a14d3c2c77, type: 2}
   _sell: {fileID: 11400000, guid: d4c56e9a360b2c74db9aa17793625b04, type: 2}
+  _offset:
+    scaleRatio: {x: 1.455, y: 1.455}
+    offsetPos: {x: -14.84, y: -118, z: 0}
 --- !u!4 &1064430993
 Transform:
   m_ObjectHideFlags: 0
@@ -8587,7 +8620,13 @@ MonoBehaviour:
     _addFavorabilityValue: 24
     _defaultName: "\u30C8\u30EC\u30FC\u30C0\u30FC"
     _favourableView: {fileID: 1982680978}
-  sprite: {fileID: 21300000, guid: e7075ad462b138a468506007a43c0a42, type: 3}
+  sprites:
+  - {fileID: 21300000, guid: 1d352b87a892cb84b81fb99bbccb758f, type: 3}
+  - {fileID: 21300000, guid: 20276fb86a5b3d247b9c33b174aca5cf, type: 3}
+  - {fileID: 21300000, guid: 4dd3f48503ce4da428f6359fdd54a3c9, type: 3}
+  - {fileID: 21300000, guid: 27e645422b458ce4694462cebb7a3667, type: 3}
+  - {fileID: 21300000, guid: 0f5dbff7a6217ee4b9f68643dc25172a, type: 3}
+  - {fileID: 21300000, guid: 37ce6b2ce57677f41b477849d6133805, type: 3}
   _start: {fileID: 11400000, guid: e474af38e1cf032459999eee279db1a9, type: 2}
   _end: {fileID: 11400000, guid: c5ce08fe54835794f82b09c31ac88998, type: 2}
   _select: {fileID: 11400000, guid: 4ef3e47c9277c554180ea22ef400f051, type: 2}
@@ -13040,12 +13079,15 @@ MonoBehaviour:
     _addFavorabilityValue: 0
     _defaultName: "\u30B4\u30FC\u30B9\u30C8"
     _favourableView: {fileID: 1982680978}
-  sprite: {fileID: 0}
+  sprites: []
   _start: {fileID: 0}
   _end: {fileID: 0}
   _select: {fileID: 0}
   _buy: {fileID: 0}
   _sell: {fileID: 0}
+  _offset:
+    scaleRatio: {x: 0, y: 0}
+    offsetPos: {x: 0, y: 0, z: 0}
 --- !u!1 &1801727035
 GameObject:
   m_ObjectHideFlags: 0
@@ -13102,6 +13144,7 @@ MonoBehaviour:
   _handMediator: {fileID: 1975269151}
   directorOnSell: {fileID: 1435320221}
   directorOnBuy: {fileID: 819707303}
+  end_3: {fileID: 0}
 --- !u!114 &1801727038
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13620,6 +13663,7 @@ MonoBehaviour:
   - 100
   - 150
   _phaseController: {fileID: 495064998}
+  end_4: {fileID: 0}
 --- !u!114 &1890776592
 MonoBehaviour:
   m_ObjectHideFlags: 0

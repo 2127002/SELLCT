@@ -9,4 +9,5 @@ public class ConversationData
     public int ID;
     public int[] Likability;
     public string[] Text;
+    public int[] Face;
 }

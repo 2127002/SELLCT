@@ -38,12 +38,16 @@ public class TraderController : MonoBehaviour
     {
         _currentTrader = trader;
 
-        //Spriteをトレーダーごとに変更する
-        //仮に表情差分が追加されることになったらこの処理では負いきれません。
-        _traderView.SetSprite(trader.TraderSprite);
-
         //トレーダーによって初期展示数が異なる
         _traderHand.SetDefaultHandCapacity(trader.InitialDisplayItemCount);
+
+        //オフセットを反映する
+        _traderView.SetOffset(trader.Offset);
+    }
+
+    public void SetTraderSprite(Sprite sprite)
+    {
+        _traderView.SetSprite(sprite);
     }
 
     public Trader CurrentTrader => _currentTrader;

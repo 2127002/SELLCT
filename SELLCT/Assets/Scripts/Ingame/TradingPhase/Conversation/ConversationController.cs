@@ -10,8 +10,6 @@ public class ConversationController : MonoBehaviour
     [SerializeField] TraderController _traderController = default!;
     [SerializeField] TextBoxController _textBoxController = default!;
 
-    const string DEFAULT = "default";
-
     private void Reset()
     {
         _traderController = FindFirstObjectByType<TraderController>();
@@ -21,18 +19,22 @@ public class ConversationController : MonoBehaviour
     public async UniTask OnStart()
     {
         string speaker = _traderController.CurrentTrader.Name;
-        string[] startMessage = _traderController.CurrentTrader.StartMessage();
+        var startMessage = _traderController.CurrentTrader.StartMessage();
 
         //出会いのテキストを表示する
-        for (int i = 0; i < startMessage.Length; i++)
+        for (int i = 0; i < startMessage.message.Length; i++)
         {
+            //1-indexedを0-indexedに変換する
+            Sprite sprite = _traderController.CurrentTrader.TraderSprites[startMessage.face[i] - 1];
+            string message = startMessage.message[i].ToInBracketsText();
+            _traderController.SetTraderSprite(sprite);
             try
             {
-                await _textBoxController.UpdateText(speaker, startMessage[i].ToInBracketsText());
+                await _textBoxController.UpdateText(speaker, message);
             }
             catch (OperationCanceledException)
             {
-                //キャンセルされた場合は処理を終了する
+                //キャンセルされた場合は表情をデフォルトに戻して処理を終了する
                 return;
             }
         }
@@ -41,18 +43,22 @@ public class ConversationController : MonoBehaviour
     public async UniTask OnEnd()
     {
         string speaker = _traderController.CurrentTrader.Name;
-        string[] endMessage = _traderController.CurrentTrader.EndMessage();
+        var endMessage = _traderController.CurrentTrader.EndMessage();
 
-        //テキストの表示
-        for (int i = 0; i < endMessage.Length; i++)
-        {
+        //出会いのテキストを表示する
+        for (int i = 0; i < endMessage.message.Length; i++)
+        {            
+            //1-indexedを0-indexedに変換する
+            Sprite sprite = _traderController.CurrentTrader.TraderSprites[endMessage.face[i] - 1];
+            string message = endMessage.message[i].ToInBracketsText();
+
+            _traderController.SetTraderSprite(sprite);
             try
             {
-                await _textBoxController.UpdateText(speaker, endMessage[i].ToInBracketsText());
+                await _textBoxController.UpdateText(speaker, message);
             }
             catch (OperationCanceledException)
             {
-                //キャンセルされた場合は処理を終了する
                 return;
             }
         }
@@ -63,17 +69,22 @@ public class ConversationController : MonoBehaviour
         if (card.Id < 0) return;
 
         string speaker = _traderController.CurrentTrader.Name;
-        string[] cardMessage = _traderController.CurrentTrader.CardMessage(card);
+        var cardMessage = _traderController.CurrentTrader.CardMessage(card);
 
-        for (int i = 0; i < cardMessage.Length; i++)
+        //出会いのテキストを表示する
+        for (int i = 0; i < cardMessage.message.Length; i++)
         {
+            //1-indexedを0-indexedに変換する
+            Sprite sprite = _traderController.CurrentTrader.TraderSprites[cardMessage.face[i] - 1];
+            string message = cardMessage.message[i].ToInBracketsText();
+
+            _traderController.SetTraderSprite(sprite);
             try
             {
-                await _textBoxController.UpdateText(speaker, cardMessage[i].ToInBracketsText());
+                await _textBoxController.UpdateText(speaker, message);
             }
             catch (OperationCanceledException)
             {
-                //キャンセルされた場合は処理を終了する
                 return;
             }
         }
@@ -84,15 +95,24 @@ public class ConversationController : MonoBehaviour
         if (card.Id < 0) return;
 
         string speaker = _traderController.CurrentTrader.Name;
-        string[] message = _traderController.CurrentTrader.BuyMessage(card);
+        var buyMessage = _traderController.CurrentTrader.BuyMessage(card);
 
-        for (int i = 0; i < message.Length; i++)
+        //出会いのテキストを表示する
+        for (int i = 0; i < buyMessage.message.Length; i++)
         {
+            //1-indexedを0-indexedに変換する
+            Sprite sprite = _traderController.CurrentTrader.TraderSprites[buyMessage.face[i] - 1];
+            string message = buyMessage.message[i].ToInBracketsText();
+
+            _traderController.SetTraderSprite(sprite);
             try
             {
-                await _textBoxController.UpdateText(speaker, message[i].ToInBracketsText());
+                await _textBoxController.UpdateText(speaker, message);
             }
-            catch (OperationCanceledException) { return; }
+            catch (OperationCanceledException)
+            {
+                return;
+            }
         }
     }
 
@@ -101,15 +121,24 @@ public class ConversationController : MonoBehaviour
         if (card.Id < 0) return;
 
         string speaker = _traderController.CurrentTrader.Name;
-        string[] message = _traderController.CurrentTrader.SellMessage(card);
+        var sellMessage = _traderController.CurrentTrader.SellMessage(card);
 
-        for (int i = 0; i < message.Length; i++)
+        //出会いのテキストを表示する
+        for (int i = 0; i < sellMessage.message.Length; i++)
         {
+            //1-indexedを0-indexedに変換する
+            Sprite sprite = _traderController.CurrentTrader.TraderSprites[sellMessage.face[i] - 1];
+            string message = sellMessage.message[i].ToInBracketsText();
+
+            _traderController.SetTraderSprite(sprite);
             try
             {
-                await _textBoxController.UpdateText(speaker, message[i].ToInBracketsText());
+                await _textBoxController.UpdateText(speaker, message);
             }
-            catch (OperationCanceledException) { return; }
+            catch (OperationCanceledException)
+            {
+                return;
+            }
         }
     }
 }
