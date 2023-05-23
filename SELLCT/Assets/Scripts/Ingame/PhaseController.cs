@@ -13,7 +13,8 @@ public class PhaseController : MonoBehaviour
     {
         None,
         Exploration,
-        Trading
+        Trading,
+        PhaseEnd,
     }
 
     //Œˆ’è‚È‚Ç‚Ég‚¤Action
@@ -84,6 +85,8 @@ public class PhaseController : MonoBehaviour
 
         OnExplorationPhaseComplete?.Invoke();
 
+        _currentPhase = Phase.PhaseEnd;
+
         //‘JˆÚæ‚É‘JˆÚ
         StartTradingPhase();
     }
@@ -100,8 +103,10 @@ public class PhaseController : MonoBehaviour
 
         EnableSubmitAction();
 
+        _currentPhase = Phase.PhaseEnd;
+
         //‘JˆÚæ‚É‘JˆÚ
-        StartExplorationPhase();
+        StartTradingPhase();
     }
 
     private async void DisableSubmitAction()

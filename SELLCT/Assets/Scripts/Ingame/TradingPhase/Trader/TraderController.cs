@@ -1,5 +1,6 @@
 using Cysharp.Threading.Tasks;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class TraderController : MonoBehaviour
 {
@@ -7,7 +8,7 @@ public class TraderController : MonoBehaviour
     [SerializeField] TraderEncounterController _traderEncounterController = default!;
     [SerializeField] PhaseController _phaseController = default!;
     [SerializeField] Hand _traderHand = default!;
-    [SerializeField] ConversationController _conversationController = default!;
+    [SerializeField] TradingPhaseController _tradingPhaseController = default!;
 
     Trader _currentTrader = default!;
 
@@ -28,6 +29,9 @@ public class TraderController : MonoBehaviour
         //次のトレーダーを選択
         Trader next = _traderEncounterController.Selection();
         SetTrader(next);
+
+        //トレーダーのセット直後に実行
+        _tradingPhaseController.OnSetTrader();
     }
 
     private void SetTrader(Trader trader)
@@ -39,9 +43,6 @@ public class TraderController : MonoBehaviour
 
         //オフセットを反映する
         _traderView.SetOffset(trader.Offset);
-
-        //トレーダーと出会った時の処理をおこなう。
-        _conversationController.OnStart().Forget();
     }
 
     public void SetTraderSprite(Sprite sprite)
