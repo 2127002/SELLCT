@@ -10,6 +10,7 @@ public class E12_Eye : Card
     [SerializeField] PlayableDirector directorOnSell;
     [Header("解像度の買った際演出タイムラインをいれてください。売る時の演出の処理を行います。")]
     [SerializeField] PlayableDirector directorOnBuy;
+    [SerializeField] End_3 end_3;
     private TimelineAsset _timelineOnBuy;
     private TimelineAsset _timelineOnSell;
 
@@ -34,8 +35,15 @@ public class E12_Eye : Card
     public override void Sell()
     {
         OnPlayTimeLine(directorOnSell,_timelineOnSell);
+        GameOverChecker();
     }
+    private void GameOverChecker()
+    {
+        //売った際にEyeが1枚もないならゲームオーバー
+        if (_handMediator.ContainsCard(this)) return;
 
+        end_3.End_3Transition();
+    }
     private void OnPlayTimeLine(PlayableDirector director,TimelineAsset timeline)
     {
         director.Play(timeline);

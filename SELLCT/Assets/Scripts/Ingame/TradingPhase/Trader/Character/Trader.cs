@@ -10,7 +10,7 @@ public readonly struct ConversationMessage
 
     public ConversationMessage(string[] message, int[] face)
     {
-        if (message.Length != face.Length) throw new NotImplementedException("ƒƒbƒZ[ƒW‚Æ•\î·•ª‚ÌŒÂ”‚ªˆÙ‚È‚è‚Ü‚·Bİ’è‚ğŒ©’¼‚µ‚Ä‚­‚¾‚³‚¢B" + message);
+        if (message.Length != face.Length) throw new NotImplementedException("ï¿½ï¿½ï¿½bï¿½Zï¿½[ï¿½Wï¿½Æ•\ï¿½î·ï¿½ï¿½ï¿½ÌŒÂï¿½ï¿½ï¿½ï¿½Ù‚È‚ï¿½Ü‚ï¿½ï¿½Bï¿½İ’ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä‚ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½B" + message);
 
         this.message = message;
         this.face = face;
@@ -19,7 +19,7 @@ public readonly struct ConversationMessage
 
 public abstract class Trader : MonoBehaviour, IConversationMessage
 {
-    [SerializeField] protected TraderParameter traderParameter;
+    [SerializeField] protected TraderParameter traderParameter = default!;
     [SerializeField] protected Sprite[] sprites;
     [SerializeField] protected ConversationDataBase _start;
     [SerializeField] protected ConversationDataBase _end;

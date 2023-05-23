@@ -5,7 +5,7 @@ using UnityEngine;
 public class IngameController : MonoBehaviour
 {
     [SerializeField] IngameView _view = default!;
-    [SerializeField] PhaseController _phaseController;
+    [SerializeField] PhaseController _phaseController = default!;
 
     private void Awake()
     {

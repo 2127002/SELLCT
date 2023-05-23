@@ -5,6 +5,7 @@ using UnityEngine.EventSystems;
 
 public class E0_Life : Card
 {
+    [SerializeField] End_1 end_1;
     public override int Id => 0;
 
     public override void Buy()
@@ -30,6 +31,6 @@ public class E0_Life : Card
         if (_handMediator.ContainsCard(this)) return;
 
         Debug.LogWarning(StringManager.ToDisplayString("命がなくなりました！シーン3に遷移する処理は未実装なため続行されます。"));
-        //TODO:シーン3に遷移
+        end_1.End_1Transition();
     }
 }

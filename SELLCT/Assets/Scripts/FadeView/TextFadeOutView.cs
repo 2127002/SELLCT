@@ -10,7 +10,7 @@ public class TextFadeOutView : MonoBehaviour
     [SerializeField] List<TextMeshProUGUI> _texts;
 
     const float MAX_ALPHA = 1f;
-    const float MIN_ALPHA = 0;
+    const float MIN_ALPHA = 0f;
 
     private void Init()
     {
@@ -26,8 +26,8 @@ public class TextFadeOutView : MonoBehaviour
 
         await UniTask.Delay((int)(_fadeTime.WaitTime * 1000f), false, PlayerLoopTiming.Update, cancellationToken);
         Init();
-        float progress = -1;
-        while (progress != MAX_ALPHA)
+        float progress = -1f;
+        while (progress < MAX_ALPHA)
         {
             await UniTask.Yield(cancellationToken);
 
