@@ -11,9 +11,12 @@ public class TimeLimit
     //最大制限時間の計算に使用
     readonly float _timeLimitRate;
 
+    //制限時間の最小は当たり前だが0、変更は非推奨。
+    const float MIN = 0f;
+
     public TimeLimit(float valueInSeconds, float timeLimitRate)
     {
-        if (valueInSeconds < 0) throw new ArgumentException("制限時間は負の数にはなりません。値を見直してください。", nameof(valueInSeconds));
+        if (valueInSeconds < MIN) throw new ArgumentException("制限時間は負の数にはなりません。値を見直してください。", nameof(valueInSeconds));
 
         _valueInSeconds = valueInSeconds;
         _timeLimitRate = timeLimitRate;
@@ -41,7 +44,7 @@ public class TimeLimit
     /// <returns>減少後のインスタンス</returns>
     public TimeLimit ReduceTimeLimit(TimeLimit reduceValue, int currentE24Count)
     {
-        float newTimeLimit = MathF.Max(_valueInSeconds - reduceValue._valueInSeconds, 0);
+        float newTimeLimit = Mathf.Max(_valueInSeconds - reduceValue._valueInSeconds, MIN);
 
         //最大制限時間を超過していたら最大制限時間にする
         newTimeLimit = Mathf.Min(newTimeLimit, currentE24Count * _timeLimitRate);
@@ -58,7 +61,7 @@ public class TimeLimit
     {
         _valueInSeconds -= Time.deltaTime;
 
-        if (_valueInSeconds < 0) _valueInSeconds = 0;
+        if (_valueInSeconds < MIN) _valueInSeconds = MIN;
     }
 
     /// <summary>
@@ -67,6 +70,6 @@ public class TimeLimit
     /// <returns>到達した：true </returns>
     public bool IsTimeLimitReached()
     {
-        return _valueInSeconds <= 0;
+        return _valueInSeconds <= MIN;
     }
 }

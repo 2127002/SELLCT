@@ -19,6 +19,7 @@ public class TradingPhaseController : MonoBehaviour
     [SerializeField] ConversationController _conversationController = default!;
     [SerializeField] RugController _rugController = default!;
     [SerializeField] Canvas _canvas = default!;
+    [SerializeField] InputActionReference _any = default!;
 
     GameObject _lastSelectedObject = default!;
 
@@ -88,10 +89,21 @@ public class TradingPhaseController : MonoBehaviour
         //スタート時の会話を行う
         await _conversationController.OnStart();
 
+        var token = this.GetCancellationTokenOnDestroy();
+
+        //キー入力待機
+        while (_any.action.phase != InputActionPhase.Performed)
+        {
+            await UniTask.Yield(token);
+        }
+
         SetFirstSelectedGameObject();
 
         //会話終了後ラグを引く
         await _rugController.PlayStartAnimation();
+
+        //制限時間の開始
+        _timeLimitController.Play();
     }
 
     private void SetFirstSelectedGameObject()

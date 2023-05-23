@@ -6,6 +6,13 @@ using UnityEngine;
 
 public class TimeLimitController : MonoBehaviour
 {
+    enum State
+    {
+        Playing,
+        Paused,
+        Stopped,
+    }
+
     [Header("最大値と初期値（E24の所持数*この値）の計算に使用します。")]
     [SerializeField, Min(0)] float _timeLimitRate;
 
@@ -14,6 +21,9 @@ public class TimeLimitController : MonoBehaviour
 
     TimeLimit _timeLimit;
     int _currentE24Count;
+
+    State _state = State.Stopped;
+
     public event Action OnTimeLimit;
 
     private void Awake()
@@ -35,27 +45,34 @@ public class TimeLimitController : MonoBehaviour
     {
         var token = this.GetCancellationTokenOnDestroy();
 
-        _timeLimit = null;
+        Stop();
 
         await UniTask.Yield(token);
     }
 
     private void Update()
     {
-        if (_timeLimit != null)
-        {
-            _timeLimit.DecreaseTimeDeltaTime();
-
-            float maxTimeLimit = _currentE24Count * _timeLimitRate;
-
-            _timeLimitView.Rotate(maxTimeLimit);
-            _timeLimitView.Scale(maxTimeLimit);
-        }
+        ReduseTimeLimit();
     }
 
     private void FixedUpdate()
     {
         if (_timeLimit != null) TimeLimitChecker();
+    }
+
+    private void ReduseTimeLimit()
+    {
+        //先にステート確認をする
+        if (_state != State.Playing) return;
+        if (_timeLimit == null) throw new ArgumentNullException("制限時間が生成されていません。");
+
+        _timeLimit.DecreaseTimeDeltaTime();
+
+        float maxTimeLimit = _currentE24Count * _timeLimitRate;
+
+        //時計を進める
+        _timeLimitView.Rotate(maxTimeLimit);
+        _timeLimitView.Scale(maxTimeLimit);
     }
 
     private void TimeLimitChecker()
@@ -65,14 +82,13 @@ public class TimeLimitController : MonoBehaviour
         Debug.Log("制限時間です");
 
         OnTimeLimit?.Invoke();
-        _timeLimit = null;
+
+        Stop();
     }
 
-    public void Generate(int currentE24Count)
+    public void SetE24Count(int currentE24Count)
     {
         _currentE24Count = currentE24Count;
-
-        _timeLimit = new(currentE24Count * _timeLimitRate, _timeLimitRate);
     }
 
     public void AddTimeLimit(float value, int currentE24Count)
@@ -87,5 +103,54 @@ public class TimeLimitController : MonoBehaviour
         _currentE24Count = currentE24Count;
 
         _timeLimit = _timeLimit.ReduceTimeLimit(new(value, _timeLimitRate), currentE24Count);
+    }
+
+
+    /// <summary>
+    /// はじめから制限時間を開始する。
+    /// </summary>
+    /// <param name="forced">一時停止中でも再生するか</param>
+    public void Play(bool forced = false)
+    {
+        //強制実行でなく
+        if (!forced)
+        {
+            //ポーズ中なら再開しない
+            if (_state == State.Paused) return;
+        }
+
+        _state = State.Playing;
+        _timeLimit = new(_currentE24Count * _timeLimitRate, _timeLimitRate);
+    }
+
+    /// <summary>
+    /// 制限時間の減少を再開する。
+    /// </summary>
+    public void Resume()
+    {
+        if (_state != State.Paused)
+        {
+            Debug.LogWarning("ポーズ中以外は再開コマンドを実行することは出来ません");
+            return;
+        }
+
+        _state = State.Playing;
+    }
+
+    /// <summary>
+    /// 制限時間を一時停止する。再開する際はResume()を呼んでください。
+    /// </summary>
+    public void Phase()
+    {
+        _state = State.Paused;
+    }
+
+    /// <summary>
+    /// 制限時間を完全に止める。終了処理は行われないことに注意してください。
+    /// </summary>
+    public void Stop()
+    {
+        _state = State.Stopped;
+        _timeLimit = null;
     }
 }
