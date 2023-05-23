@@ -11,7 +11,6 @@ using UnityEngine.UI;
 /// </summary>
 public class TradingPhaseController : MonoBehaviour
 {
-    [SerializeField] TradingPhaseView _view = default!;
     [SerializeField] PhaseController _phaseController = default!;
     [SerializeField] TimeLimitController _timeLimitController = default!;
     [SerializeField] InputActionReference _navigateAction = default!;
@@ -53,19 +52,17 @@ public class TradingPhaseController : MonoBehaviour
         _canvas.gameObject.SetActive(true);
 
         _navigateAction.action.performed += OnNavigate;
-
-        _view.OnPhaseStart();
     }
 
     //売買フェーズ終了時処理（待機可）
     private async UniTask OnComplete()
     {
+        EventSystem.current.SetSelectedGameObject(null);
+        _lastSelectedObject = null;
+
         await _conversationController.OnEnd();
 
         await _rugController.PlayEndAnimation();
-
-        //フェードアウト
-        await _view.OnPhaseComplete();
 
         _canvas.gameObject.SetActive(false);
         _navigateAction.action.performed -= OnNavigate;
@@ -86,30 +83,38 @@ public class TradingPhaseController : MonoBehaviour
 
     public async void OnSetTrader()
     {
+        InputSystemManager.Instance.ActionDisable();
+
+        SetFirstSelectedGameObject();
+
         //スタート時の会話を行う
         await _conversationController.OnStart();
 
         var token = this.GetCancellationTokenOnDestroy();
 
+        EventSystem.current.SetSelectedGameObject(null);
+        _lastSelectedObject = null;
+
+        InputSystemManager.Instance.ActionEnable();
+
         //キー入力待機
-        while (_any.action.phase != InputActionPhase.Performed)
+        while (!_any.action.WasPressedThisFrame())
         {
             await UniTask.Yield(token);
         }
-
-        SetFirstSelectedGameObject();
 
         //会話終了後ラグを引く
         await _rugController.PlayStartAnimation();
 
         //制限時間の開始
         _timeLimitController.Play();
+
+        SetFirstSelectedGameObject();
     }
 
     private void SetFirstSelectedGameObject()
     {
         EventSystem.current.SetSelectedGameObject(_firstSelectable.gameObject);
-        _firstSelectable.Select();
         _lastSelectedObject = _firstSelectable.gameObject;
     }
 }

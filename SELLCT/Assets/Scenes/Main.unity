@@ -1801,10 +1801,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 251747933}
-  - component: {fileID: 251747938}
-  - component: {fileID: 251747937}
   - component: {fileID: 251747936}
-  - component: {fileID: 251747935}
   m_Layer: 0
   m_Name: TradingPhase
   m_TagString: Untagged
@@ -1828,20 +1825,6 @@ Transform:
   m_Father: {fileID: 495064999}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &251747935
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 251747932}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 017c103314364ab41919682a09bbd031, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _fadeinView: {fileID: 251747938}
-  _fadeoutView: {fileID: 251747937}
 --- !u!114 &251747936
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1854,7 +1837,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 55d14094f0e2b134bab61edc11b59f07, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _view: {fileID: 251747935}
   _phaseController: {fileID: 495064998}
   _timeLimitController: {fileID: 296562001}
   _navigateAction: {fileID: -7213562877630171189, guid: 1acd10e19b4601845803d349e0c26cdf,
@@ -1864,45 +1846,6 @@ MonoBehaviour:
   _rugController: {fileID: 1802691250}
   _canvas: {fileID: 233741556}
   _any: {fileID: -283051177713121263, guid: 1acd10e19b4601845803d349e0c26cdf, type: 3}
---- !u!114 &251747937
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 251747932}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 333b9647253a6194eb6a1053cbd13d5c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _fadeTime:
-    _duration: 1
-    _waitTime: 0
-  _images:
-  - {fileID: 1512803445}
-  - {fileID: 190979971}
-  - {fileID: 1258542180}
---- !u!114 &251747938
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 251747932}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 58665a5767db47648ae9c978d9dc16b4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _fadeTime:
-    _duration: 1
-    _waitTime: 0
-  _images:
-  - {fileID: 170438024}
-  - {fileID: 1258542180}
-  - {fileID: 1608374996}
-  - {fileID: 300763816}
 --- !u!1 &255862495
 GameObject:
   m_ObjectHideFlags: 0
@@ -8789,7 +8732,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1210986884}
-  - component: {fileID: 1210986887}
   - component: {fileID: 1210986886}
   - component: {fileID: 1210986883}
   - component: {fileID: 1210986885}
@@ -8877,25 +8819,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c15589b1e9f99fe42958e8839e1380a5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _fadeinView: {fileID: 1210986887}
   _traderImage: {fileID: 190979971}
---- !u!114 &1210986887
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1210986881}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 58665a5767db47648ae9c978d9dc16b4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _fadeTime:
-    _duration: 2
-    _waitTime: 0
-  _images:
-  - {fileID: 190979971}
 --- !u!1 &1219091644
 GameObject:
   m_ObjectHideFlags: 0
