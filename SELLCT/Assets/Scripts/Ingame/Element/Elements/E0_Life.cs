@@ -2,10 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.Playables;
+using UnityEngine.Timeline;
 
 public class E0_Life : Card
 {
+    [Header("End5「心臓とまる」をアタッチしてください")]
     [SerializeField] End_5 end_5;
+
     public override int Id => 0;
 
     public override void Buy()
@@ -29,7 +33,6 @@ public class E0_Life : Card
     {
         //売った際に命が1枚もないならゲームオーバー
         if (_handMediator.ContainsCard(this)) return;
-
         Debug.LogWarning(StringManager.ToDisplayString("命がなくなりました！シーン3に遷移する処理は未実装なため続行されます。"));
         end_5.End_5Transition();
     }
