@@ -10,7 +10,7 @@ public readonly struct ConversationMessage
 
     public ConversationMessage(string[] message, int[] face)
     {
-        if (message.Length != face.Length) throw new NotImplementedException("メッセージと立ち絵の指定個数が異なります。設定を見直してください" + message);
+        if (message.Length != face.Length) throw new NotImplementedException("メッセージと立ち絵の指定個数が異なります。設定を見直してください" + message[0]);
 
         this.message = message;
         this.face = face;
