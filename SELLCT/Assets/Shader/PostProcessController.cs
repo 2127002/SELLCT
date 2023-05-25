@@ -13,29 +13,24 @@ public class PostProcessController : MonoBehaviour
     [SerializeField]
     private Animator _vinetteAnim;
 
-    private bool _isStartVignette = true;
+    private bool _isStartVignette = false;
     private Vignette _vignette;
 
-    void Start()
+    private void Awake()
     {
         postFXvolume.profile.TryGet(out _vignette);
         if (_vignette == null) return;
-        
     }
 
     void Update()
     {
+        if (!_isStartVignette) return;
         _vignette.intensity.value = intensity;
-        ////ポストエフェクト追加
-        //if (Input.GetKeyDown(KeyCode.X))
-        //{
-        //    ChromaticAberration w = m_Volume.profile.Add<ChromaticAberration>(true);
-        //    w.intensity.value = 100;//追加して値を変更
-        //}
     }
 
-    void OnVignette()
+    public void OnVignette()
     {
+        _isStartVignette = true;
         _vinetteAnim.SetBool("IsVignette",_isStartVignette );
     }
     
