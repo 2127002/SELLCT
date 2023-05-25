@@ -11,13 +11,14 @@ using UnityEngine.UI;
 /// </summary>
 public class TradingPhaseController : MonoBehaviour
 {
-    [SerializeField] TradingPhaseView _view = default!;
     [SerializeField] PhaseController _phaseController = default!;
     [SerializeField] TimeLimitController _timeLimitController = default!;
     [SerializeField] InputActionReference _navigateAction = default!;
     [SerializeField] Selectable _firstSelectable = default!;
     [SerializeField] ConversationController _conversationController = default!;
+    [SerializeField] RugController _rugController = default!;
     [SerializeField] Canvas _canvas = default!;
+    [SerializeField] InputActionReference _any = default!;
 
     GameObject _lastSelectedObject = default!;
 
@@ -46,29 +47,22 @@ public class TradingPhaseController : MonoBehaviour
     }
 
     //売買フェーズ開始時処理
-    private async void OnPhaseStart()
+    private void OnPhaseStart()
     {
         _canvas.gameObject.SetActive(true);
 
         _navigateAction.action.performed += OnNavigate;
-
-        _view.OnPhaseStart();
-
-        //1フレーム待機してからセレクトする
-        await UniTask.Yield();
-
-        EventSystem.current.SetSelectedGameObject(_firstSelectable.gameObject);
-        _firstSelectable.Select();
-        _lastSelectedObject = _firstSelectable.gameObject;
     }
 
     //売買フェーズ終了時処理（待機可）
     private async UniTask OnComplete()
     {
+        EventSystem.current.SetSelectedGameObject(null);
+        _lastSelectedObject = null;
+
         await _conversationController.OnEnd();
 
-        //フェードアウト
-        await _view.OnPhaseComplete();
+        await _rugController.PlayEndAnimation();
 
         _canvas.gameObject.SetActive(false);
         _navigateAction.action.performed -= OnNavigate;
@@ -85,5 +79,42 @@ public class TradingPhaseController : MonoBehaviour
 
         //未選択時のみ実行
         EventSystem.current.SetSelectedGameObject(_lastSelectedObject);
+    }
+
+    public async void OnSetTrader()
+    {
+        InputSystemManager.Instance.ActionDisable();
+
+        SetFirstSelectedGameObject();
+
+        //スタート時の会話を行う
+        await _conversationController.OnStart();
+
+        var token = this.GetCancellationTokenOnDestroy();
+
+        EventSystem.current.SetSelectedGameObject(null);
+        _lastSelectedObject = null;
+
+        InputSystemManager.Instance.ActionEnable();
+
+        //キー入力待機
+        while (!_any.action.WasPressedThisFrame())
+        {
+            await UniTask.Yield(token);
+        }
+
+        //会話終了後ラグを引く
+        await _rugController.PlayStartAnimation();
+
+        //制限時間の開始
+        _timeLimitController.Play();
+
+        SetFirstSelectedGameObject();
+    }
+
+    private void SetFirstSelectedGameObject()
+    {
+        EventSystem.current.SetSelectedGameObject(_firstSelectable.gameObject);
+        _lastSelectedObject = _firstSelectable.gameObject;
     }
 }
