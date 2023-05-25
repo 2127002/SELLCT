@@ -14,6 +14,8 @@ public class CardUIView : MonoBehaviour
     [SerializeField] TextMeshProUGUI _countText = default!;
 
     [SerializeField] Image _selectedImage = default!;
+    [SerializeField] Image _selectedImageKanji = default!;
+    [SerializeField] Image _selectedImageHiragana = default!;
 
     bool _enabledHighLight = true;
 
@@ -85,12 +87,18 @@ public class CardUIView : MonoBehaviour
 
     public void OnSelect()
     {
-        if (_enabledHighLight) _selectedImage.enabled = true;
+        if (!_enabledHighLight) return;
 
-        HighlightImageAnimation();
+        //有効化
+        _selectedImage.enabled = true;
+        _selectedImageKanji.enabled = StringManager.hasElements[(int)StringManager.Element.E18];
+        _selectedImageHiragana.enabled = StringManager.hasElements[(int)StringManager.Element.E19];
+
+        //アニメーションの再生
+        PlayHighlightImageAnimation();
     }
 
-    private async void HighlightImageAnimation()
+    private async void PlayHighlightImageAnimation()
     {
         float time = 0f;
 
@@ -111,7 +119,11 @@ public class CardUIView : MonoBehaviour
 
     public void ResetImagesSize()
     {
-        if (_enabledHighLight) _selectedImage.enabled = false;
+        if (!_enabledHighLight) return;
+        
+        _selectedImage.enabled = false;
+        _selectedImageKanji.enabled = false;
+        _selectedImageHiragana.enabled = false;
     }
 
     public void EnableHighlight()
