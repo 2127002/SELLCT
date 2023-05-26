@@ -31,6 +31,8 @@ public class E11_Vivid : Card
 
     public override void Buy()
     {
+        base.Buy();
+
         IncreaseVividValue();
     }
 
@@ -41,6 +43,8 @@ public class E11_Vivid : Card
 
     public override void Sell()
     {
+        base.Sell();
+
         DesreaseVividValue();
     }
 

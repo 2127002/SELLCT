@@ -19,6 +19,8 @@ public class E3_Yes : Card
 
     public override void Buy()
     {
+        base.Buy();
+
         _choicesManager.Enable(_yesChoice.Id);
     }
 
@@ -29,6 +31,8 @@ public class E3_Yes : Card
 
     public override void Sell()
     {
+        base.Sell();
+
         if (_handMediator.ContainsCard(this)) return;
 
         _choicesManager.Disable(_yesChoice.Id);

@@ -8,6 +8,8 @@ public class E8_BGM : Card
 
     public override void Buy()
     {
+        base.Buy();
+
         //TODO:BGMÇÃçƒê∂
     }
 
@@ -23,6 +25,8 @@ public class E8_BGM : Card
 
     private void StopBGM()
     {
+        base.Sell();
+
         if (_handMediator.ContainsCard(this)) return;
 
         //TODO:BGMÇÃí‚é~

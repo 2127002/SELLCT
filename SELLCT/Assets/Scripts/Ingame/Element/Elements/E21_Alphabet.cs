@@ -33,6 +33,8 @@ public class E21_Alphabet : Card
 
     public override void Buy()
     {
+        base.Buy();
+
         StringManager.hasElements[elementIndex] = true;
         _moneyPossessedController.EnableAlphabet();
         _alphabetHandView.Set();
@@ -45,6 +47,8 @@ public class E21_Alphabet : Card
 
     public override void Sell()
     {
+        base.Sell();
+
         if (_handMediator.ContainsCard(this)) return;
         _moneyPossessedController.DisableAlphabet();
         StringManager.hasElements[elementIndex] = false;

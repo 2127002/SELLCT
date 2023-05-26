@@ -8,6 +8,8 @@ public class E30_Name : Card
 
     public override void Buy()
     {
+        base.Buy();
+
     }
 
     public override void OnPressedU6Button()
@@ -17,6 +19,8 @@ public class E30_Name : Card
 
     public override void Sell()
     {
+        base.Sell();
+
         _traderController.CurrentTrader.Name = _parameter.GetName();
     }
 }

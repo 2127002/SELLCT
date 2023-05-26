@@ -10,6 +10,8 @@ public class E7_Move : Card
 
     public override void Buy()
     {
+        base.Buy();
+
     }
 
     public override void OnPressedU6Button()
@@ -19,5 +21,7 @@ public class E7_Move : Card
 
     public override void Sell()
     {
+        base.Sell();
+
     }
 }

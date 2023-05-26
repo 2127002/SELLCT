@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Playables;
 
 //interfaceとして実装したいですが、そうするとインスペクターで管理できないため
 //同じ効果を持つ抽象クラスにします。
@@ -21,6 +22,12 @@ public abstract class Card : MonoBehaviour
     [SerializeField] protected HandMediator _handMediator = default!;
 
     readonly List<Sprite> result = new();
+
+    [Header("購入時演出タイムライン")]
+    [SerializeField] PlayableDirector _playableDirectorOnBuy = default!;
+
+    [Header("売却時演出タイムライン")]
+    [SerializeField] PlayableDirector _playableDirectorOnSell = default!;
 
     protected virtual void Reset()
     {
@@ -80,11 +87,20 @@ public abstract class Card : MonoBehaviour
     /// <summary>
     /// 購入時処理
     /// </summary>
-    public abstract void Buy();
+    public virtual void Buy()
+    {
+        if (_playableDirectorOnSell == null) return;
+        _playableDirectorOnBuy.Play();
+    }
+
     /// <summary>
     /// 売却時処理
     /// </summary>
-    public abstract void Sell();
+    public virtual void Sell()
+    {
+        if (_playableDirectorOnSell == null) return;
+        _playableDirectorOnSell.Play();
+    }
     /// <summary>
     /// 探索フェーズにおけるU6ボタン押下時の効果
     /// </summary>
