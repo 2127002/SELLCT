@@ -10,6 +10,8 @@ public class E23_Crosshair : Card
 
     public override void Buy()
     {
+        base.Buy();
+
         _cursorController.Enable();
     }
 
@@ -20,6 +22,8 @@ public class E23_Crosshair : Card
 
     public override void Sell()
     {
+        base.Sell();
+
         if (_handMediator.ContainsCard(this)) return;
 
         _cursorController.Disable();

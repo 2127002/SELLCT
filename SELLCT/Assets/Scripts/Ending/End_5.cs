@@ -1,3 +1,4 @@
+using Cysharp.Threading.Tasks;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -9,21 +10,15 @@ public class End_5 : MonoBehaviour
     [SerializeField] EndingController _endingController;
     [SerializeField] PlayableDirector directorOnEnd5;
 
-    private TimelineAsset _timelineOnEnd5;
-
-    private void Awake()
+    public async void End_5Transition()
     {
-        _timelineOnEnd5 = directorOnEnd5.playableAsset as TimelineAsset;
-    }
+        directorOnEnd5.Play();
 
-    public void End_5Transition()
-    {
-        //TODO:ââèoí«â¡
-        OnPlayTimeLine(directorOnEnd5, _timelineOnEnd5);
+        var token = this.GetCancellationTokenOnDestroy();
+
+        int duration = (int)((directorOnEnd5.duration - 1.1d) * 1000d);
+        await UniTask.Delay(duration, false, PlayerLoopTiming.Update, token);
+
         _endingController.StartEndingScene(EndingController.EndingScene.End5);
-    }
-    private void OnPlayTimeLine(PlayableDirector director, TimelineAsset timeline)
-    {
-        director.Play(timeline);
     }
 }

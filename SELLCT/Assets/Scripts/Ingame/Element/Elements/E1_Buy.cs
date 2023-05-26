@@ -9,6 +9,8 @@ public class E1_Buy : Card
 
     public override void Buy()
     {
+        base.Buy();
+
     }
 
     public override void OnPressedU6Button()
@@ -18,6 +20,8 @@ public class E1_Buy : Card
 
     public override void Sell()
     {
+        base.Sell();
+
         if (_handMediator.ContainsCard(this)) return;
 
         DisabledSelectable();

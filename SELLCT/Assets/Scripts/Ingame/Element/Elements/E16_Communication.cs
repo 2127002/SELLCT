@@ -8,6 +8,8 @@ public class E16_Communication : Card
 
     public override void Buy()
     {
+        base.Buy();
+
     }
 
     public override void OnPressedU6Button()
@@ -17,5 +19,7 @@ public class E16_Communication : Card
 
     public override void Sell()
     {
+        base.Sell();
+
     }
 }

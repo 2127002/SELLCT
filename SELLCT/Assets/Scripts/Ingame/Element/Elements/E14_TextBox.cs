@@ -29,6 +29,8 @@ public class E14_TextBox : Card
 
     public override void Buy()
     {
+        base.Buy();
+
         _textBoxController.Enable();
     }
 
@@ -39,6 +41,8 @@ public class E14_TextBox : Card
 
     public override void Sell()
     {
+        base.Sell();
+
         if (_handMediator.ContainsCard(this)) return;
 
         _textBoxController.Disable();

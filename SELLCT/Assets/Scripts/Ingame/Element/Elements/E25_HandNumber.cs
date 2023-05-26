@@ -35,6 +35,8 @@ public class E25_HandNumber : Card
 
     public override void Buy()
     {
+        base.Buy();
+
         _playerHand.AddHandCapacity(1);
 
         //Handlerを作ってからカードを引く
@@ -49,6 +51,8 @@ public class E25_HandNumber : Card
 
     public override void Sell()
     {
+        base.Sell();
+
         _playerHand.AddHandCapacity(-1);
 
         //先に引いたカードをデッキに戻す

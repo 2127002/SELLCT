@@ -12,6 +12,8 @@ public class E2_Sell : Card
 
     public override void Buy()
     {
+        base.Buy();
+
         EnabledSelectable();
     }
 
@@ -22,6 +24,8 @@ public class E2_Sell : Card
 
     public override void Sell()
     {
+        base.Sell();
+
         if (_handMediator.ContainsCard(this)) return;
 
         DisabledSelectable();

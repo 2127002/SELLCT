@@ -34,6 +34,8 @@ public class E28_ShopNumber : Card
 
     public override void Buy()
     {
+        base.Buy();
+
         _currentPhaseBuyingCount++;
 
         //Šù‚É“o˜^‚µ‚Ä‚¢‚½‚çˆê’U‰ğœ‚·‚é
@@ -51,6 +53,8 @@ public class E28_ShopNumber : Card
 
     public override void Sell()
     {
+        base.Sell();
+
         _traderHand.AddHandCapacity(-1);
     }
 
