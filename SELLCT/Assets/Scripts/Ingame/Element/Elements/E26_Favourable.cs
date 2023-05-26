@@ -28,6 +28,8 @@ public class E26_Favourable : Card
 
     public override void Buy()
     {
+        base.Buy();
+
         _favourableView.SetActive(true);
     }
 
@@ -38,6 +40,8 @@ public class E26_Favourable : Card
 
     public override void Sell()
     {
+        base.Sell();
+
         //このエレメントが何も無いなら下記を実行
         if (!_handMediator.ContainsCard(this))
         {

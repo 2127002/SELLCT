@@ -27,6 +27,8 @@ public class E22_Highlight : Card
 
     public override void Buy()
     {
+        base.Buy();
+
         _highlightController.Enable();
     }
 
@@ -37,6 +39,8 @@ public class E22_Highlight : Card
 
     public override void Sell()
     {
+        base.Sell();
+
         if (_handMediator.ContainsCard(this)) return;
 
         _highlightController.Disable();

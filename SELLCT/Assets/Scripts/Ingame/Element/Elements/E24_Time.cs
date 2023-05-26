@@ -23,6 +23,8 @@ public class E24_Time : Card
 
     public override void Buy()
     {
+        base.Buy();
+
         _timeLimitController.AddTimeLimit(_addValueInSeconds, _handMediator.FindAll(this));
     }
 
@@ -33,6 +35,8 @@ public class E24_Time : Card
 
     public override void Sell()
     {
+        base.Sell();
+
         _timeLimitController.ReduceTimeLimit(_reduceValueInSeconds, _handMediator.FindAll(this));
     }
 

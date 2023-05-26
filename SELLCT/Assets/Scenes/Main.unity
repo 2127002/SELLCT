@@ -404,6 +404,8 @@ MonoBehaviour:
   _katakana: {fileID: 0}
   _alphabet: {fileID: 0}
   _handMediator: {fileID: 1975269151}
+  _playableDirectorOnBuy: {fileID: 0}
+  _playableDirectorOnSell: {fileID: 0}
 --- !u!114 &26477153
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1318,7 +1320,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 180}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -624, y: -1090}
+  m_AnchoredPosition: {x: -624, y: 0}
   m_SizeDelta: {x: 674, y: 114}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!95 &196305915
@@ -1788,7 +1790,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 180}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -624, y: -1090}
+  m_AnchoredPosition: {x: -624, y: 0}
   m_SizeDelta: {x: 674, y: 114}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!95 &255862497
@@ -2153,7 +2155,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 180}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -624, y: -106}
+  m_AnchoredPosition: {x: -624, y: 0}
   m_SizeDelta: {x: 674, y: 114}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!95 &302272192
@@ -2419,6 +2421,8 @@ MonoBehaviour:
   _katakana: {fileID: 0}
   _alphabet: {fileID: 0}
   _handMediator: {fileID: 1975269151}
+  _playableDirectorOnBuy: {fileID: 0}
+  _playableDirectorOnSell: {fileID: 0}
   _handCardUIInstance: {fileID: 907251447}
 --- !u!114 &322592333
 MonoBehaviour:
@@ -3082,6 +3086,8 @@ MonoBehaviour:
   _katakana: {fileID: 0}
   _alphabet: {fileID: 0}
   _handMediator: {fileID: 0}
+  _playableDirectorOnBuy: {fileID: 0}
+  _playableDirectorOnSell: {fileID: 0}
 --- !u!114 &398127973
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3431,6 +3437,8 @@ MonoBehaviour:
   _katakana: {fileID: 0}
   _alphabet: {fileID: 0}
   _handMediator: {fileID: 1975269151}
+  _playableDirectorOnBuy: {fileID: 0}
+  _playableDirectorOnSell: {fileID: 0}
   _phaseController: {fileID: 495064998}
   _timeLimitController: {fileID: 296562001}
   _addValueInSeconds: 10
@@ -5056,7 +5064,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &600612446
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5383,7 +5391,7 @@ PlayableDirector:
   serializedVersion: 3
   m_PlayableAsset: {fileID: 11400000, guid: 0de719aac30ab454d827e9c6e5864695, type: 2}
   m_InitialState: 0
-  m_WrapMode: 0
+  m_WrapMode: 2
   m_DirectorUpdateMode: 1
   m_InitialTime: 0
   m_SceneBindings:
@@ -5717,6 +5725,8 @@ MonoBehaviour:
   _katakana: {fileID: 0}
   _alphabet: {fileID: 21300000, guid: eb34bd22bcfa3f942a4b1d26517884ec, type: 3}
   _handMediator: {fileID: 1975269151}
+  _playableDirectorOnBuy: {fileID: 0}
+  _playableDirectorOnSell: {fileID: 0}
   _phaseController: {fileID: 495064998}
   _E34CommandImage: {fileID: 1527675564}
 --- !u!114 &682657747
@@ -5801,6 +5811,8 @@ MonoBehaviour:
   _katakana: {fileID: 21300000, guid: 9e54a27e69bf3cf4fa68a7de94961d93, type: 3}
   _alphabet: {fileID: 0}
   _handMediator: {fileID: 1975269151}
+  _playableDirectorOnBuy: {fileID: 0}
+  _playableDirectorOnSell: {fileID: 0}
   _katakanaHandView: {fileID: 704934655}
   _phaseController: {fileID: 495064998}
 --- !u!114 &704934657
@@ -6758,6 +6770,8 @@ MonoBehaviour:
   _katakana: {fileID: 21300000, guid: cea7964b8ed79844fab38cb47ac986f2, type: 3}
   _alphabet: {fileID: 0}
   _handMediator: {fileID: 1975269151}
+  _playableDirectorOnBuy: {fileID: 0}
+  _playableDirectorOnSell: {fileID: 0}
   _highlightController: {fileID: 883828211}
   _phaseController: {fileID: 495064998}
 --- !u!114 &883828213
@@ -7111,6 +7125,8 @@ MonoBehaviour:
   _katakana: {fileID: 0}
   _alphabet: {fileID: 0}
   _handMediator: {fileID: 1975269151}
+  _playableDirectorOnBuy: {fileID: 0}
+  _playableDirectorOnSell: {fileID: 0}
   end_5: {fileID: 1636162604}
 --- !u!114 &917396757
 MonoBehaviour:
@@ -7143,7 +7159,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &926281328
 RectTransform:
   m_ObjectHideFlags: 0
@@ -7255,7 +7271,7 @@ Canvas:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 940619683}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
   m_RenderMode: 2
   m_Camera: {fileID: 0}
@@ -8013,6 +8029,8 @@ MonoBehaviour:
   _katakana: {fileID: 21300000, guid: 04825b7df76acbe4cb11f3827c73624f, type: 3}
   _alphabet: {fileID: 21300000, guid: 08ffd9b054238c74984cd24b9e3d13d2, type: 3}
   _handMediator: {fileID: 1975269151}
+  _playableDirectorOnBuy: {fileID: 0}
+  _playableDirectorOnSell: {fileID: 0}
   _alphabetHandView: {fileID: 1049933560}
   _phaseController: {fileID: 495064998}
   _moneyPossessedController: {fileID: 157262628}
@@ -8085,6 +8103,8 @@ MonoBehaviour:
   _katakana: {fileID: 0}
   _alphabet: {fileID: 0}
   _handMediator: {fileID: 1975269151}
+  _playableDirectorOnBuy: {fileID: 0}
+  _playableDirectorOnSell: {fileID: 0}
 --- !u!114 &1050709445
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9398,7 +9418,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 180}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -160.57463, y: -597}
+  m_AnchoredPosition: {x: -160.57463, y: 3730}
   m_SizeDelta: {x: 800, y: 1080}
   m_Pivot: {x: 0, y: 0.5}
 --- !u!95 &1230141539
@@ -9603,6 +9623,8 @@ MonoBehaviour:
   _katakana: {fileID: 0}
   _alphabet: {fileID: 0}
   _handMediator: {fileID: 1975269151}
+  _playableDirectorOnBuy: {fileID: 0}
+  _playableDirectorOnSell: {fileID: 0}
 --- !u!114 &1240537340
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9980,6 +10002,8 @@ MonoBehaviour:
   _katakana: {fileID: 0}
   _alphabet: {fileID: 0}
   _handMediator: {fileID: 1975269151}
+  _playableDirectorOnBuy: {fileID: 0}
+  _playableDirectorOnSell: {fileID: 0}
   _vivid: {fileID: 2100000, guid: f911bf6d76c5c254faef486eeec726b9, type: 2}
   _vividIncreasePercent: 10
   _vividDecreasePercent: 50
@@ -11644,7 +11668,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 180}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -624, y: -106}
+  m_AnchoredPosition: {x: -624, y: 0}
   m_SizeDelta: {x: 674, y: 114}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!95 &1532891712
@@ -12134,6 +12158,8 @@ MonoBehaviour:
   _katakana: {fileID: 0}
   _alphabet: {fileID: 0}
   _handMediator: {fileID: 1975269151}
+  _playableDirectorOnBuy: {fileID: 0}
+  _playableDirectorOnSell: {fileID: 0}
   _hiraganaHandView: {fileID: 1589025319}
   _phaseController: {fileID: 495064998}
 --- !u!114 &1589025321
@@ -13046,7 +13072,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -1092, y: -594}
+  m_AnchoredPosition: {x: -1092, y: 3730}
   m_SizeDelta: {x: 800, y: 1080}
   m_Pivot: {x: 0, y: 0.5}
 --- !u!95 &1703017700
@@ -13820,8 +13846,8 @@ MonoBehaviour:
   _katakana: {fileID: 0}
   _alphabet: {fileID: 0}
   _handMediator: {fileID: 1975269151}
-  directorOnSell: {fileID: 1435320221}
-  directorOnBuy: {fileID: 819707303}
+  _playableDirectorOnBuy: {fileID: 0}
+  _playableDirectorOnSell: {fileID: 0}
   end_3: {fileID: 1100334490}
 --- !u!114 &1801727038
 MonoBehaviour:
@@ -13979,6 +14005,8 @@ MonoBehaviour:
   _katakana: {fileID: 0}
   _alphabet: {fileID: 0}
   _handMediator: {fileID: 1975269151}
+  _playableDirectorOnBuy: {fileID: 0}
+  _playableDirectorOnSell: {fileID: 0}
   _kanjiHandView: {fileID: 1803076678}
   _phaseController: {fileID: 495064998}
   _deckUIController: {fileID: 1775420809}
@@ -14332,6 +14360,8 @@ MonoBehaviour:
   _katakana: {fileID: 21300000, guid: 080f75274c66b5f40b2e3e8b5e23e28c, type: 3}
   _alphabet: {fileID: 0}
   _handMediator: {fileID: 1975269151}
+  _playableDirectorOnBuy: {fileID: 0}
+  _playableDirectorOnSell: {fileID: 0}
   _brightness: {fileID: 2100000, guid: 6fd7c41649721a94fa3addf49255c0e4, type: 2}
   _brightnessValue:
   - 0
@@ -14424,6 +14454,8 @@ MonoBehaviour:
   _katakana: {fileID: 0}
   _alphabet: {fileID: 0}
   _handMediator: {fileID: 1975269151}
+  _playableDirectorOnBuy: {fileID: 0}
+  _playableDirectorOnSell: {fileID: 0}
   _numberHandView: {fileID: 1891691741}
   _phaseController: {fileID: 495064998}
   _deckUIController: {fileID: 1775420809}
@@ -15230,6 +15262,8 @@ MonoBehaviour:
   _katakana: {fileID: 0}
   _alphabet: {fileID: 0}
   _handMediator: {fileID: 1975269151}
+  _playableDirectorOnBuy: {fileID: 0}
+  _playableDirectorOnSell: {fileID: 0}
 --- !u!114 &1928785347
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -16065,6 +16099,8 @@ MonoBehaviour:
   _katakana: {fileID: 0}
   _alphabet: {fileID: 0}
   _handMediator: {fileID: 1975269151}
+  _playableDirectorOnBuy: {fileID: 0}
+  _playableDirectorOnSell: {fileID: 0}
   _goodsCardUIInstance: {fileID: 1960932980}
 --- !u!114 &2010756547
 MonoBehaviour:
@@ -16287,6 +16323,8 @@ MonoBehaviour:
   _katakana: {fileID: 21300000, guid: ab2046993b2a6094c950c073131f6902, type: 3}
   _alphabet: {fileID: 21300000, guid: ab2046993b2a6094c950c073131f6902, type: 3}
   _handMediator: {fileID: 1975269151}
+  _playableDirectorOnBuy: {fileID: 0}
+  _playableDirectorOnSell: {fileID: 0}
   _traderController: {fileID: 1210986883}
 --- !u!114 &2037373641
 MonoBehaviour:
@@ -16434,6 +16472,8 @@ MonoBehaviour:
   _katakana: {fileID: 0}
   _alphabet: {fileID: 0}
   _handMediator: {fileID: 1975269151}
+  _playableDirectorOnBuy: {fileID: 0}
+  _playableDirectorOnSell: {fileID: 0}
   _textBoxController: {fileID: 1775029163}
   _phaseController: {fileID: 495064998}
 --- !u!114 &2044394407

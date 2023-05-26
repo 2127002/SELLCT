@@ -8,6 +8,8 @@ public class E9_SE : Card
 
     public override void Buy()
     {
+        base.Buy();
+
         //TODO:SE‚ÌÄ¶
     }
 
@@ -23,6 +25,8 @@ public class E9_SE : Card
 
     private void StopSE()
     {
+        base.Sell();
+
         if (_handMediator.ContainsCard(this)) return;
 
         //TODO:SE‚Ì’â~

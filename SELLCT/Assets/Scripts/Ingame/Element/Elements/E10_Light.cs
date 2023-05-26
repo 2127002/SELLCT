@@ -31,6 +31,8 @@ public class E10_Light : Card
 
     public override void Buy()
     {
+        base.Buy();
+
         SetBrightnessValue();
     }
 
@@ -41,6 +43,8 @@ public class E10_Light : Card
 
     public override void Sell()
     {
+        base.Sell();
+
         SetBrightnessValue();
         GameOverChecker();
     }

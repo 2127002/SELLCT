@@ -28,6 +28,8 @@ public class E34_Knife : Card
 
     public override void Buy()
     {
+        base.Buy();
+
         _E34CommandImage.gameObject.SetActive(true);
     }
 
@@ -39,6 +41,8 @@ public class E34_Knife : Card
 
     public override void Sell()
     {
+        base.Sell();
+
         if (_handMediator.ContainsCard(this)) return;
         _E34CommandImage.gameObject.SetActive(false);
     }

@@ -28,6 +28,8 @@ public class E32_Rest : Card
 
     public override void Buy()
     {
+        base.Buy();
+
         _explorationBackgroundController.SetActiveE32Command(true);
     }
 
@@ -38,6 +40,8 @@ public class E32_Rest : Card
 
     public override void Sell()
     {
+        base.Sell();
+
         if (_handMediator.ContainsCard(this)) return;
         _explorationBackgroundController.SetActiveE32Command(false);
     }

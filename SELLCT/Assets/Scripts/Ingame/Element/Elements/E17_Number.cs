@@ -35,6 +35,8 @@ public class E17_Number : Card
 
     public override void Buy()
     {
+        base.Buy();
+
         StringManager.hasElements[elementIndex] = true;
         _moneyPossessedController.EnableNumber();
         _numberHandView.Set();
@@ -48,6 +50,8 @@ public class E17_Number : Card
 
     public override void Sell()
     {
+        base.Sell();
+
         if (_handMediator.ContainsCard(this)) return;
         _moneyPossessedController.DisableNumber();
         StringManager.hasElements[elementIndex] = false;

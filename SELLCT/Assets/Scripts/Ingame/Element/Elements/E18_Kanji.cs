@@ -41,6 +41,8 @@ public class E18_Kanji : Card
 
     public override void Buy()
     {
+        base.Buy();
+
         StringManager.hasElements[elementIndex] = true;
         _kanjiHandView.Set();
         _deckUIController.EnableKanji();
@@ -53,6 +55,8 @@ public class E18_Kanji : Card
 
     public override void Sell()
     {
+        base.Sell();
+
         if (_handMediator.ContainsCard(this)) return;
         StringManager.hasElements[elementIndex] = false;
         _kanjiHandView.Set();

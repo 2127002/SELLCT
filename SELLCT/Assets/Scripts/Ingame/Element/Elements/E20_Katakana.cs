@@ -30,6 +30,8 @@ public class E20_Katakana : Card
 
     public override void Buy()
     {
+        base.Buy();
+
         StringManager.hasElements[elementIndex] = true;
         _katakanaHandView.Set();
     }
@@ -41,6 +43,8 @@ public class E20_Katakana : Card
 
     public override void Sell()
     {
+        base.Sell();
+
         if (_handMediator.ContainsCard(this)) return;
         StringManager.hasElements[elementIndex] = false;
         _katakanaHandView.Set();
