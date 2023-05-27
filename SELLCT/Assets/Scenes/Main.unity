@@ -5032,6 +5032,8 @@ MonoBehaviour:
     m_Signals:
     - {fileID: 11400000, guid: 17d2150e32ba2a7489c9f883b27b91dc, type: 2}
     - {fileID: 11400000, guid: 2a4cfe7360d6e5449b846f199cf3ce2b, type: 2}
+    - {fileID: 11400000, guid: 08357e7ffba47e249920115a471202a1, type: 2}
+    - {fileID: 11400000, guid: 88db12f8a783e4342a7bc79d768fd304, type: 2}
     m_Events:
     - m_PersistentCalls:
         m_Calls:
@@ -5052,6 +5054,34 @@ MonoBehaviour:
         - m_Target: {fileID: 391254982}
           m_TargetAssemblyTypeName: InputSystemManager, Assembly-CSharp
           m_MethodName: ActionDisable
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+    - m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 296562001}
+          m_TargetAssemblyTypeName: TimeLimitController, Assembly-CSharp
+          m_MethodName: Paused
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+    - m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 296562001}
+          m_TargetAssemblyTypeName: TimeLimitController, Assembly-CSharp
+          m_MethodName: Resume
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
@@ -5590,9 +5620,9 @@ MonoBehaviour:
           m_CallState: 2
     - m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 391254982}
-          m_TargetAssemblyTypeName: InputSystemManager, Assembly-CSharp
-          m_MethodName: ActionEnable
+        - m_Target: {fileID: 296562001}
+          m_TargetAssemblyTypeName: TimeLimitController, Assembly-CSharp
+          m_MethodName: Resume
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
@@ -5604,9 +5634,9 @@ MonoBehaviour:
           m_CallState: 2
     - m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 391254982}
-          m_TargetAssemblyTypeName: InputSystemManager, Assembly-CSharp
-          m_MethodName: ActionDisable
+        - m_Target: {fileID: 296562001}
+          m_TargetAssemblyTypeName: TimeLimitController, Assembly-CSharp
+          m_MethodName: Paused
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
@@ -6315,6 +6345,18 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
+        - m_Target: {fileID: 296562001}
+          m_TargetAssemblyTypeName: TimeLimitController, Assembly-CSharp
+          m_MethodName: Resume
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
     - m_PersistentCalls:
         m_Calls:
         - m_Target: {fileID: 391254982}
@@ -6334,6 +6376,18 @@ MonoBehaviour:
         - m_Target: {fileID: 391254982}
           m_TargetAssemblyTypeName: InputSystemManager, Assembly-CSharp
           m_MethodName: ActionDisable
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+        - m_Target: {fileID: 296562001}
+          m_TargetAssemblyTypeName: TimeLimitController, Assembly-CSharp
+          m_MethodName: Paused
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
@@ -11417,11 +11471,35 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
+        - m_Target: {fileID: 296562001}
+          m_TargetAssemblyTypeName: TimeLimitController, Assembly-CSharp
+          m_MethodName: Paused
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
     - m_PersistentCalls:
         m_Calls:
         - m_Target: {fileID: 391254982}
           m_TargetAssemblyTypeName: InputSystemManager, Assembly-CSharp
           m_MethodName: ActionEnable
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+        - m_Target: {fileID: 296562001}
+          m_TargetAssemblyTypeName: TimeLimitController, Assembly-CSharp
+          m_MethodName: Resume
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
@@ -15497,6 +15575,8 @@ MonoBehaviour:
     - {fileID: 11400000, guid: 313de7b5e76b1084f83d6b3a799c7e06, type: 2}
     - {fileID: 11400000, guid: 2a4cfe7360d6e5449b846f199cf3ce2b, type: 2}
     - {fileID: 11400000, guid: 17d2150e32ba2a7489c9f883b27b91dc, type: 2}
+    - {fileID: 11400000, guid: 08357e7ffba47e249920115a471202a1, type: 2}
+    - {fileID: 11400000, guid: 88db12f8a783e4342a7bc79d768fd304, type: 2}
     m_Events:
     - m_PersistentCalls:
         m_Calls:
@@ -15613,6 +15693,34 @@ MonoBehaviour:
         - m_Target: {fileID: 391254982}
           m_TargetAssemblyTypeName: InputSystemManager, Assembly-CSharp
           m_MethodName: ActionEnable
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+    - m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 296562001}
+          m_TargetAssemblyTypeName: TimeLimitController, Assembly-CSharp
+          m_MethodName: Paused
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+    - m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 296562001}
+          m_TargetAssemblyTypeName: TimeLimitController, Assembly-CSharp
+          m_MethodName: Resume
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}

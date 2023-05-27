@@ -140,7 +140,7 @@ public class TimeLimitController : MonoBehaviour
     /// <summary>
     /// §ŒÀŠÔ‚ğˆê’â~‚·‚éBÄŠJ‚·‚éÛ‚ÍResume()‚ğŒÄ‚ñ‚Å‚­‚¾‚³‚¢B
     /// </summary>
-    public void Phase()
+    public void Paused()
     {
         _state = State.Paused;
     }
