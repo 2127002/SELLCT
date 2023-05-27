@@ -4968,6 +4968,7 @@ GameObject:
   m_Component:
   - component: {fileID: 579255177}
   - component: {fileID: 579255178}
+  - component: {fileID: 579255179}
   m_Layer: 0
   m_Name: End4Timeline
   m_TagString: Untagged
@@ -5011,8 +5012,55 @@ PlayableDirector:
     value: {fileID: 0}
   - key: {fileID: -2854422831883125721, guid: 92703defae6606947b871e05823f201e, type: 2}
     value: {fileID: 0}
+  - key: {fileID: -7446602444166743125, guid: 92703defae6606947b871e05823f201e, type: 2}
+    value: {fileID: 0}
   m_ExposedReferences:
     m_References: []
+--- !u!114 &579255179
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 579255176}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e52de21a22b6dd44c9cc19f810c65059, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Events:
+    m_Signals:
+    - {fileID: 11400000, guid: 17d2150e32ba2a7489c9f883b27b91dc, type: 2}
+    - {fileID: 11400000, guid: 2a4cfe7360d6e5449b846f199cf3ce2b, type: 2}
+    m_Events:
+    - m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 391254982}
+          m_TargetAssemblyTypeName: InputSystemManager, Assembly-CSharp
+          m_MethodName: ActionDisable
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+    - m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 391254982}
+          m_TargetAssemblyTypeName: InputSystemManager, Assembly-CSharp
+          m_MethodName: ActionDisable
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!1 &583175627
 GameObject:
   m_ObjectHideFlags: 0
@@ -5523,12 +5571,42 @@ MonoBehaviour:
   m_Events:
     m_Signals:
     - {fileID: 11400000, guid: c33be53f3ef02bd44a1dd34884b0875a, type: 2}
+    - {fileID: 11400000, guid: 17d2150e32ba2a7489c9f883b27b91dc, type: 2}
+    - {fileID: 11400000, guid: 2a4cfe7360d6e5449b846f199cf3ce2b, type: 2}
     m_Events:
     - m_PersistentCalls:
         m_Calls:
         - m_Target: {fileID: 0}
           m_TargetAssemblyTypeName: PostProcessController, Assembly-CSharp
           m_MethodName: OnVignette
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+    - m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 391254982}
+          m_TargetAssemblyTypeName: InputSystemManager, Assembly-CSharp
+          m_MethodName: ActionEnable
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+    - m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 391254982}
+          m_TargetAssemblyTypeName: InputSystemManager, Assembly-CSharp
+          m_MethodName: ActionDisable
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
@@ -6114,6 +6192,8 @@ MonoBehaviour:
     - {fileID: 11400000, guid: 83be70efca418c340bcccb91d739dc4e, type: 2}
     - {fileID: 11400000, guid: bd545196654c8d5438b920c0953dd277, type: 2}
     - {fileID: 11400000, guid: b4d01b5e451a46e41b29a0174d9ab839, type: 2}
+    - {fileID: 11400000, guid: 17d2150e32ba2a7489c9f883b27b91dc, type: 2}
+    - {fileID: 11400000, guid: 2a4cfe7360d6e5449b846f199cf3ce2b, type: 2}
     m_Events:
     - m_PersistentCalls:
         m_Calls:
@@ -6226,6 +6306,34 @@ MonoBehaviour:
         - m_Target: {fileID: 1801727039}
           m_TargetAssemblyTypeName: EyeController, Assembly-CSharp
           m_MethodName: DeactiveImage
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+    - m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 391254982}
+          m_TargetAssemblyTypeName: InputSystemManager, Assembly-CSharp
+          m_MethodName: ActionEnable
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+    - m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 391254982}
+          m_TargetAssemblyTypeName: InputSystemManager, Assembly-CSharp
+          m_MethodName: ActionDisable
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
@@ -11184,6 +11292,8 @@ MonoBehaviour:
     - {fileID: 11400000, guid: 83be70efca418c340bcccb91d739dc4e, type: 2}
     - {fileID: 11400000, guid: bd545196654c8d5438b920c0953dd277, type: 2}
     - {fileID: 11400000, guid: b4d01b5e451a46e41b29a0174d9ab839, type: 2}
+    - {fileID: 11400000, guid: 2a4cfe7360d6e5449b846f199cf3ce2b, type: 2}
+    - {fileID: 11400000, guid: 17d2150e32ba2a7489c9f883b27b91dc, type: 2}
     m_Events:
     - m_PersistentCalls:
         m_Calls:
@@ -11284,6 +11394,34 @@ MonoBehaviour:
         - m_Target: {fileID: 1801727039}
           m_TargetAssemblyTypeName: EyeController, Assembly-CSharp
           m_MethodName: DeactiveImage
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+    - m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 391254982}
+          m_TargetAssemblyTypeName: InputSystemManager, Assembly-CSharp
+          m_MethodName: ActionDisable
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+    - m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 391254982}
+          m_TargetAssemblyTypeName: InputSystemManager, Assembly-CSharp
+          m_MethodName: ActionEnable
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
@@ -15357,6 +15495,8 @@ MonoBehaviour:
     - {fileID: 11400000, guid: 83be70efca418c340bcccb91d739dc4e, type: 2}
     - {fileID: 11400000, guid: b4d01b5e451a46e41b29a0174d9ab839, type: 2}
     - {fileID: 11400000, guid: 313de7b5e76b1084f83d6b3a799c7e06, type: 2}
+    - {fileID: 11400000, guid: 2a4cfe7360d6e5449b846f199cf3ce2b, type: 2}
+    - {fileID: 11400000, guid: 17d2150e32ba2a7489c9f883b27b91dc, type: 2}
     m_Events:
     - m_PersistentCalls:
         m_Calls:
@@ -15451,6 +15591,34 @@ MonoBehaviour:
             m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
             m_IntArgument: 0
             m_FloatArgument: 90
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+    - m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 391254982}
+          m_TargetAssemblyTypeName: InputSystemManager, Assembly-CSharp
+          m_MethodName: ActionDisable
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+    - m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 391254982}
+          m_TargetAssemblyTypeName: InputSystemManager, Assembly-CSharp
+          m_MethodName: ActionEnable
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
