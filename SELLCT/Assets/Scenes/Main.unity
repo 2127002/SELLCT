@@ -5919,7 +5919,7 @@ GameObject:
   - component: {fileID: 819707303}
   - component: {fileID: 819707302}
   m_Layer: 0
-  m_Name: BuyTimeLine
+  m_Name: EyeBuyTimeLine
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -8505,6 +8505,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _endingController: {fileID: 600612446}
+  directorOnEnd5: {fileID: 1928463113}
 --- !u!4 &1100334491
 Transform:
   m_ObjectHideFlags: 0
@@ -10934,7 +10935,7 @@ GameObject:
   - component: {fileID: 1435320221}
   - component: {fileID: 1435320220}
   m_Layer: 0
-  m_Name: SellTimeLine
+  m_Name: EyeSellTimeLine
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -11094,7 +11095,7 @@ PlayableDirector:
   m_Enabled: 1
   serializedVersion: 3
   m_PlayableAsset: {fileID: 11400000, guid: 944ed24498df9c641963d594756869d8, type: 2}
-  m_InitialState: 1
+  m_InitialState: 0
   m_WrapMode: 2
   m_DirectorUpdateMode: 1
   m_InitialTime: 0
@@ -13846,8 +13847,8 @@ MonoBehaviour:
   _katakana: {fileID: 0}
   _alphabet: {fileID: 0}
   _handMediator: {fileID: 1975269151}
-  _playableDirectorOnBuy: {fileID: 0}
-  _playableDirectorOnSell: {fileID: 0}
+  _playableDirectorOnBuy: {fileID: 819707303}
+  _playableDirectorOnSell: {fileID: 1435320221}
   end_3: {fileID: 1100334490}
 --- !u!114 &1801727038
 MonoBehaviour:
@@ -14155,6 +14156,7 @@ MonoBehaviour:
   MaxNoizeScale: 10
   NoizeScaleRate: 2
   pi: 200
+  screanRotate: 90
 --- !u!1 &1818960290
 GameObject:
   m_ObjectHideFlags: 0
@@ -15056,7 +15058,7 @@ GameObject:
   - component: {fileID: 1928463113}
   - component: {fileID: 1928463112}
   m_Layer: 0
-  m_Name: End4Timeline
+  m_Name: End3Timeline
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -15097,6 +15099,7 @@ MonoBehaviour:
     - {fileID: 11400000, guid: 490dee590f7b96949a7bbb30c99ab2ec, type: 2}
     - {fileID: 11400000, guid: 83be70efca418c340bcccb91d739dc4e, type: 2}
     - {fileID: 11400000, guid: b4d01b5e451a46e41b29a0174d9ab839, type: 2}
+    - {fileID: 11400000, guid: 313de7b5e76b1084f83d6b3a799c7e06, type: 2}
     m_Events:
     - m_PersistentCalls:
         m_Calls:
@@ -15129,12 +15132,12 @@ MonoBehaviour:
         - m_Target: {fileID: 1815804849}
           m_TargetAssemblyTypeName: StagingHund, Assembly-CSharp
           m_MethodName: ChangeScreenRotate
-          m_Mode: 1
+          m_Mode: 4
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
             m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
             m_IntArgument: 0
-            m_FloatArgument: 0
+            m_FloatArgument: 90
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
@@ -15172,6 +15175,20 @@ MonoBehaviour:
           m_TargetAssemblyTypeName: EyeController, Assembly-CSharp
           m_MethodName: DeactiveImage
           m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+    - m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1815804849}
+          m_TargetAssemblyTypeName: StagingHund, Assembly-CSharp
+          m_MethodName: ChangeScreenRotate
+          m_Mode: 4
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
             m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine

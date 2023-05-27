@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Playables;
 
 public class StagingHund : MonoBehaviour
 {
@@ -18,11 +19,13 @@ public class StagingHund : MonoBehaviour
     [SerializeField] float NoizeScaleRate;
     [Header("画面の解像度")]
     [SerializeField] float pi = 200;
+    [Header("画面の解像度")]
+    [SerializeField] float screanRotate = 90;
+
     float br = 0;
     float rotate = 0f;
     float noizeScale = 1f;
     float ratio = 1f;
-    float scrennRotate = 90f;
 
     private void Start()
     {
@@ -54,11 +57,11 @@ public class StagingHund : MonoBehaviour
     {
         StartCoroutine("IChangeRatiosub");
         Debug.Log("Ratioの値を変更しました");
-    }
+}
 
-    public void ChangeScreenRotate()
+    public void ChangeScreenRotate(float screanRotate)
     {
-        mat_scRot.SetFloat("_ScreenRotate", scrennRotate);
+        mat_scRot.SetFloat("_ScreenRotate", screanRotate);
         Debug.Log("ScreenRotateの値を変更しました");
     }
 
