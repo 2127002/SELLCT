@@ -11,6 +11,7 @@ public class InputSystemManager : MonoBehaviour
 
     private void Awake()
     {
+        ActionEnable();
         Instance = this;
     }
 

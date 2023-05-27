@@ -5,14 +5,13 @@ using UnityEditor;
 #endif
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.SceneManagement;
 
 public class TitleController : MonoBehaviour
 {
     [SerializeField] GameObject _firstSelectObject = default!;
     [SerializeField] FadeInView _fadeInView = default!;
     [SerializeField] FadeOutView _fadeOutView = default!;
-
-    [SerializeField] GameObject _ingame = default!;
 
     private async void Start()
     {
@@ -62,12 +61,14 @@ public class TitleController : MonoBehaviour
 
         //フェードに合わせてBGMをフェードアウト
 
+        AsyncOperation asyncOperation = SceneManager.LoadSceneAsync("Main");
+        asyncOperation.allowSceneActivation = false;
+
         //黒背景フェードイン
         await _fadeInView.StartFade();
 
         //インゲームに遷移
         InputSystemManager.Instance.ActionEnable();
-        gameObject.SetActive(false);
-        _ingame.SetActive(true);
+        asyncOperation.allowSceneActivation = true;
     }
 }

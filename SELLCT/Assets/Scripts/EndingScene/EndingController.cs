@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Playables;
+using UnityEngine.SceneManagement;
 using UnityEngine.Timeline;
 
 public class EndingController : MonoBehaviour
@@ -25,11 +26,19 @@ public class EndingController : MonoBehaviour
 
     public async void StartEndingScene(EndingScene endingScene)
     {
+        //セーブデータに保存
+        DataManager.saveData.hasCollectedEndings[(int)endingScene] = true;
+        DataManager.SaveSaveData();
+
         _endingView.SetText(EndingText(endingScene));
+
+        AsyncOperation asyncOperation = SceneManager.LoadSceneAsync("Title");
+        asyncOperation.allowSceneActivation = false;
+
         await _endingView.StartEndingScene();
 
         //タイトルに遷移
-        Debug.LogWarning("タイトルに遷移する処理が未実装です。");
+        asyncOperation.allowSceneActivation = true;
     }
 
     private string EndingText(EndingScene endingScene)
