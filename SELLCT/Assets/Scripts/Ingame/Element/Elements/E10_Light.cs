@@ -32,8 +32,6 @@ public class E10_Light : Card
     public override void Buy()
     {
         base.Buy();
-
-        SetBrightnessValue();
     }
 
     public override void OnPressedU6Button()
@@ -45,7 +43,6 @@ public class E10_Light : Card
     {
         base.Sell();
 
-        SetBrightnessValue();
         GameOverChecker();
     }
     private void GameOverChecker()
@@ -55,7 +52,7 @@ public class E10_Light : Card
 
         end_4.End_4Transition();
     }
-    private void SetBrightnessValue()
+    public void SetBrightnessValue()
     {
         _currentBrightnessValue = _brightnessValue[FindAll] / 100f;
 
