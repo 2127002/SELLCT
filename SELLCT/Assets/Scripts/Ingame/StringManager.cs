@@ -19,7 +19,8 @@ public static class StringManager
     /// <summary>
     /// 表示用エレメント（E17～E21）を所持しているか。index番号はE17 = 0, E18 = 1, ... , E21 = 4
     /// </summary>
-    public static bool[] hasElements = new bool[(int)Element.COUNT];
+    /// 初回起動時のタイトル用に初期設定はすべてtrueにします。
+    public static bool[] hasElements = new bool[(int)Element.COUNT] { true, true, true, true, true };
 
     private static readonly List<char> conformString = new();
 

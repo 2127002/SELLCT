@@ -142,6 +142,13 @@ public class TimeLimitController : MonoBehaviour
     /// </summary>
     public void Paused()
     {
+        //プレイ中以外はPauseできない
+        if (_state != State.Playing)
+        {
+            Debug.LogWarning("制限時間再生中以外は一時停止できません");
+            return;
+        }
+
         _state = State.Paused;
     }
 
