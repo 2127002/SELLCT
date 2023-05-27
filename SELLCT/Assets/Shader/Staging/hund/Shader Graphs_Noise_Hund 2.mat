@@ -42,7 +42,7 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _NoiseScale: 2.0607452
+    - _NoiseScale: 4.905884
     - _NoiseSpd: 5
     - _QueueControl: 0
     - _QueueOffset: 0

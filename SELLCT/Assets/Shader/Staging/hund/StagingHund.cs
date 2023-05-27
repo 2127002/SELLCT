@@ -19,8 +19,6 @@ public class StagingHund : MonoBehaviour
     [SerializeField] float NoizeScaleRate;
     [Header("‰æ–Ê‚Ì‰ð‘œ“x")]
     [SerializeField] float pi = 200;
-    [Header("‰æ–Ê‚Ì‰ð‘œ“x")]
-    [SerializeField] float screanRotate = 90;
 
     float br = 0;
     float rotate = 0f;
