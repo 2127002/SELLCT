@@ -261,7 +261,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   template:
     volume: {fileID: 0}
-    profile: {fileID: 11400000, guid: 5baba440f7a5bcc43b9e4a08ed2fe4a9, type: 2}
+    profile: {fileID: 11400000, guid: 967e2ef3e6cfe8443b8ed9fdc965f2c1, type: 2}
     layer: 0
     weightCurve:
       serializedVersion: 2
@@ -270,16 +270,16 @@ MonoBehaviour:
         time: 0
         value: 0
         inSlope: 0
-        outSlope: 1
+        outSlope: 0
         tangentMode: 0
         weightedMode: 0
         inWeight: 0
         outWeight: 0
       - serializedVersion: 3
-        time: 1
-        value: 1
+        time: 0.9958211
+        value: 0.70546794
         inSlope: 1
-        outSlope: 0
+        outSlope: 1
         tangentMode: 0
         weightedMode: 0
         inWeight: 0
