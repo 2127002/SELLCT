@@ -42,11 +42,11 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _NoiseScale: 1.3281631
+    - _NoiseScale: 5.7335205
     - _NoiseSpd: 5
     - _QueueControl: 0
     - _QueueOffset: 0
-    - _Ratio: 1
+    - _Ratio: 0.1080714
     - _Rotate: 2
     m_Colors: []
   m_BuildTextureStacks: []

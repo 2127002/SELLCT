@@ -1,3 +1,4 @@
+using Cysharp.Threading.Tasks;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -12,12 +13,16 @@ public class End_1 : MonoBehaviour
     [SerializeField] TimeLimitController _timeLimitController = default!;
     [SerializeField] InputSystemManager _inputSystemManager = default!;
 
-    public void End_1Transition()
+    public async void End_1Transition()
     {
         _timeLimitController.Stop();
         _inputSystemManager.ActionDisable();
 
-        //TODO:ââèoí«â¡
+        directorOnEnd1.Play();
+        var token = this.GetCancellationTokenOnDestroy();
+
+        int duration = (int)((directorOnEnd1.duration - 1.0d) * 1000d);
+        await UniTask.Delay(duration, false, PlayerLoopTiming.Update, token);
 
         _endingController.StartEndingScene(EndingController.EndingScene.End1);
     }
