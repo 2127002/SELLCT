@@ -83,14 +83,14 @@ public class TradingPhaseController : MonoBehaviour
 
     public async void OnSetTrader()
     {
+        var token = this.GetCancellationTokenOnDestroy();
+
         InputSystemManager.Instance.ActionDisable();
 
         SetFirstSelectedGameObject();
 
         //スタート時の会話を行う
         await _conversationController.OnStart();
-
-        var token = this.GetCancellationTokenOnDestroy();
 
         EventSystem.current.SetSelectedGameObject(null);
         _lastSelectedObject = null;
