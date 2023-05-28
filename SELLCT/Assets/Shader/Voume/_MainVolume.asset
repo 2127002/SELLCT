@@ -72,9 +72,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c5e1dc532bcb41949b58bc4f2abfbb7e, type: 3}
   m_Name: LensDistortion
   m_EditorClassIdentifier: 
-  active: 0
+  active: 1
   intensity:
-    m_OverrideState: 1
+    m_OverrideState: 0
     m_Value: -0.69
   xMultiplier:
     m_OverrideState: 0
@@ -628,7 +628,7 @@ MonoBehaviour:
     m_Value: 0.9
   intensity:
     m_OverrideState: 1
-    m_Value: 2.69
+    m_Value: 7.87
   scatter:
     m_OverrideState: 1
     m_Value: 0.7

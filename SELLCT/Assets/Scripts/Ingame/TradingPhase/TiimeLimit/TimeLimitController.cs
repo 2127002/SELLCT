@@ -140,8 +140,15 @@ public class TimeLimitController : MonoBehaviour
     /// <summary>
     /// 制限時間を一時停止する。再開する際はResume()を呼んでください。
     /// </summary>
-    public void Phase()
+    public void Paused()
     {
+        //プレイ中以外はPauseできない
+        if (_state != State.Playing)
+        {
+            Debug.LogWarning("制限時間再生中以外は一時停止できません");
+            return;
+        }
+
         _state = State.Paused;
     }
 
