@@ -41,16 +41,17 @@ public class E10_Light : Card
 
     public override void Sell()
     {
+        if (GameOverChecker()) return;
+   
         base.Sell();
-
-        GameOverChecker();
     }
-    private void GameOverChecker()
+    private bool GameOverChecker()
     {
-        //売った際にEyeが1枚もないならゲームオーバー
-        if (_handMediator.ContainsCard(this)) return;
+        //売った際に1枚もないならゲームオーバー
+        if (_handMediator.ContainsCard(this)) return false;
 
         end_4.End_4Transition();
+        return true;
     }
     public void SetBrightnessValue()
     {

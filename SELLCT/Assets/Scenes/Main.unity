@@ -3185,6 +3185,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _endingController: {fileID: 600612446}
   directorOnEnd4: {fileID: 579255178}
+  _timeLimitController: {fileID: 296562001}
 --- !u!1 &406218261
 GameObject:
   m_ObjectHideFlags: 0
