@@ -30,6 +30,18 @@ class ConversationDataGenerator : AssetPostprocessor
             {
                 for (int i = 0; i < d.Text.Length; i++)
                 {
+                    if (d.Name.Length == 0)
+                    {
+                        if (d.Text[i].Contains('「'))
+                        {
+                            Debug.LogError("「←このかぎかっこがある" + d.Text[i] + " ID" + d.ID);
+                        }
+                        if (d.Text[i].Contains('」'))
+                        {
+                            Debug.LogError("」←このかぎかっこがある" + d.Text[i] + " ID" + d.ID);
+                        }
+                        continue;
+                    }
                     if (!string.IsNullOrEmpty(d.Name[i]))
                     {
                         if (!d.Text[i].Contains('「'))
@@ -39,17 +51,6 @@ class ConversationDataGenerator : AssetPostprocessor
                         if (!d.Text[i].Contains('」'))
                         {
                             Debug.LogError("」←このかぎかっこがない" + d.Text[i] + " ID" + d.ID);
-                        }
-                    }
-                    else
-                    {
-                        if (d.Text[i].Contains('「'))
-                        {
-                            Debug.LogError("「←このかぎかっこがある" + d.Text[i] + " ID" + d.ID);
-                        }
-                        if (d.Text[i].Contains('」'))
-                        {
-                            Debug.LogError("」←このかぎかっこがある" + d.Text[i] + " ID" + d.ID);
                         }
                     }
                 }
