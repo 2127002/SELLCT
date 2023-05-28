@@ -2,7 +2,6 @@ using Cysharp.Threading.Tasks;
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Diagnostics;
 using UnityEngine;
 
 public class ConversationController : MonoBehaviour
@@ -18,7 +17,6 @@ public class ConversationController : MonoBehaviour
 
     public async UniTask OnStart()
     {
-        string speaker = _traderController.CurrentTrader.Name;
         var startMessage = _traderController.CurrentTrader.StartMessage();
 
         //出会いのテキストを表示する
@@ -26,7 +24,10 @@ public class ConversationController : MonoBehaviour
         {
             //1-indexedを0-indexedに変換する
             Sprite sprite = _traderController.CurrentTrader.TraderSprites[startMessage.face[i] - 1];
+
+            string speaker = startMessage.name[i];
             string message = startMessage.message[i].ToInBracketsText();
+
             _traderController.SetTraderSprite(sprite);
             try
             {
@@ -42,14 +43,14 @@ public class ConversationController : MonoBehaviour
 
     public async UniTask OnEnd()
     {
-        string speaker = _traderController.CurrentTrader.Name;
         var endMessage = _traderController.CurrentTrader.EndMessage();
 
         //出会いのテキストを表示する
         for (int i = 0; i < endMessage.message.Length; i++)
-        {            
+        {
             //1-indexedを0-indexedに変換する
             Sprite sprite = _traderController.CurrentTrader.TraderSprites[endMessage.face[i] - 1];
+            string speaker = endMessage.name[i];
             string message = endMessage.message[i].ToInBracketsText();
 
             _traderController.SetTraderSprite(sprite);
@@ -68,7 +69,6 @@ public class ConversationController : MonoBehaviour
     {
         if (card.Id < 0) return;
 
-        string speaker = _traderController.CurrentTrader.Name;
         var cardMessage = _traderController.CurrentTrader.CardMessage(card);
 
         //出会いのテキストを表示する
@@ -76,6 +76,7 @@ public class ConversationController : MonoBehaviour
         {
             //1-indexedを0-indexedに変換する
             Sprite sprite = _traderController.CurrentTrader.TraderSprites[cardMessage.face[i] - 1];
+            string speaker = cardMessage.name[i];
             string message = cardMessage.message[i].ToInBracketsText();
 
             _traderController.SetTraderSprite(sprite);
@@ -94,7 +95,6 @@ public class ConversationController : MonoBehaviour
     {
         if (card.Id < 0) return;
 
-        string speaker = _traderController.CurrentTrader.Name;
         var buyMessage = _traderController.CurrentTrader.BuyMessage(card);
 
         //出会いのテキストを表示する
@@ -102,6 +102,7 @@ public class ConversationController : MonoBehaviour
         {
             //1-indexedを0-indexedに変換する
             Sprite sprite = _traderController.CurrentTrader.TraderSprites[buyMessage.face[i] - 1];
+            string speaker = buyMessage.name[i];
             string message = buyMessage.message[i].ToInBracketsText();
 
             _traderController.SetTraderSprite(sprite);
@@ -120,7 +121,6 @@ public class ConversationController : MonoBehaviour
     {
         if (card.Id < 0) return;
 
-        string speaker = _traderController.CurrentTrader.Name;
         var sellMessage = _traderController.CurrentTrader.SellMessage(card);
 
         //出会いのテキストを表示する
@@ -128,6 +128,7 @@ public class ConversationController : MonoBehaviour
         {
             //1-indexedを0-indexedに変換する
             Sprite sprite = _traderController.CurrentTrader.TraderSprites[sellMessage.face[i] - 1];
+            string speaker = sellMessage.name[i];
             string message = sellMessage.message[i].ToInBracketsText();
 
             _traderController.SetTraderSprite(sprite);
