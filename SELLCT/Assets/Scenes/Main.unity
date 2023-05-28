@@ -438,7 +438,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &33251108
 Transform:
   m_ObjectHideFlags: 0
@@ -1140,7 +1140,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 7f718aa37648c464188c8ca8a81be03a, type: 3}
+  m_Sprite: {fileID: 21300000, guid: e60295a22dd8d2d4b80d6ad952c47951, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1215,7 +1215,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 180}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -624, y: -1022.14325}
+  m_AnchoredPosition: {x: -624, y: 0}
   m_SizeDelta: {x: 674, y: 114}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!95 &196305915
@@ -1901,7 +1901,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 180}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -624, y: -1022.14325}
+  m_AnchoredPosition: {x: -624, y: 0}
   m_SizeDelta: {x: 674, y: 114}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!95 &255862497
@@ -2266,7 +2266,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 180}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -624, y: -75.991135}
+  m_AnchoredPosition: {x: -624, y: 0}
   m_SizeDelta: {x: 674, y: 114}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!95 &302272192
@@ -2870,8 +2870,8 @@ MonoBehaviour:
       _favoriteCards: []
       _bonus: 0
     _priorityCards: []
-    _initialDisplayItemCount: 0
-    _initialDeckCount: 0
+    _initialDisplayItemCount: 34
+    _initialDeckCount: 4
     _initialFavorability: 0
     _addFavorabilityValue: 0
     _defaultName: "\u3046\u3055\u304E"
@@ -2883,11 +2883,11 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 30e4462e188fa524cae9d56a8618a568, type: 3}
   - {fileID: 21300000, guid: 7ea7c01c6cfebf245a2e85a0f4f6e05e, type: 3}
   - {fileID: 21300000, guid: 95c7104071c64234eaa871d9d99482d0, type: 3}
-  _start: {fileID: 0}
-  _end: {fileID: 0}
-  _select: {fileID: 0}
-  _buy: {fileID: 0}
-  _sell: {fileID: 0}
+  _start: {fileID: 11400000, guid: 091beeede57970a48a9151d5ec6db9c4, type: 2}
+  _end: {fileID: 11400000, guid: 3749584222299924bb7497ac2f90abbe, type: 2}
+  _select: {fileID: 11400000, guid: 2d7f6f8553af1ad4db9bf43b9a003b56, type: 2}
+  _buy: {fileID: 11400000, guid: 57a0af1de97568047b34d039726030a1, type: 2}
+  _sell: {fileID: 11400000, guid: 06ff39715748ef24685e9c3ab5de87fb, type: 2}
   _offset:
     scaleRatio: {x: 1.33, y: 1.33}
     offsetPos: {x: 12.2, y: -35.41, z: 0}
@@ -4121,20 +4121,26 @@ MonoBehaviour:
       _favoriteCards: []
       _bonus: 0
     _priorityCards: []
-    _initialDisplayItemCount: 0
-    _initialDeckCount: 0
+    _initialDisplayItemCount: 34
+    _initialDeckCount: 4
     _initialFavorability: 0
     _addFavorabilityValue: 0
     _defaultName: "\u30A4\u30AB\u308C\u305F\u5B66\u8005"
     _favourableView: {fileID: 1982680978}
-  sprites: []
-  _start: {fileID: 0}
-  _end: {fileID: 0}
-  _select: {fileID: 0}
-  _buy: {fileID: 0}
-  _sell: {fileID: 0}
+  sprites:
+  - {fileID: 21300000, guid: d8a13e78551c35f469c36183f583d8ad, type: 3}
+  - {fileID: 21300000, guid: 33ec6f0d8c2673d4ca9f75f2ad7cd414, type: 3}
+  - {fileID: 21300000, guid: bc660d33c656c004b9af06c5964467ce, type: 3}
+  - {fileID: 21300000, guid: 6b3e1f8cbe8e1fe4e8e533e33bffaf7c, type: 3}
+  - {fileID: 21300000, guid: 25bbb7a8f25dd9c4fa27a9b23fb85575, type: 3}
+  - {fileID: 21300000, guid: 9e2397ec6ae32654eb0738d3da1f1385, type: 3}
+  _start: {fileID: 11400000, guid: 7e71d83d87b31db4d8edfe30e3aa266d, type: 2}
+  _end: {fileID: 11400000, guid: 32c531f7d4ce79543b2dae2315a05eca, type: 2}
+  _select: {fileID: 11400000, guid: 5a983a2787f51dc44a0e8c72d88842d2, type: 2}
+  _buy: {fileID: 11400000, guid: c311d117c91c2a34f91651981488fd92, type: 2}
+  _sell: {fileID: 11400000, guid: 211875b756aa74848b402d7af32d9f0e, type: 2}
   _offset:
-    scaleRatio: {x: 0, y: 0}
+    scaleRatio: {x: 1, y: 1}
     offsetPos: {x: 0, y: 0, z: 0}
 --- !u!1 &500785465
 GameObject:
@@ -6811,6 +6817,9 @@ MonoBehaviour:
   _traders:
   - {fileID: 1182455717}
   - {fileID: 1064430992}
+  - {fileID: 1063490271}
+  - {fileID: 495666248}
+  - {fileID: 382012528}
 --- !u!4 &836645464
 Transform:
   m_ObjectHideFlags: 0
@@ -7634,7 +7643,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &926281328
 RectTransform:
   m_ObjectHideFlags: 0
@@ -8764,8 +8773,8 @@ MonoBehaviour:
       _favoriteCards: []
       _bonus: 0
     _priorityCards: []
-    _initialDisplayItemCount: 0
-    _initialDeckCount: 0
+    _initialDisplayItemCount: 34
+    _initialDeckCount: 4
     _initialFavorability: 100
     _addFavorabilityValue: 0
     _defaultName: "\u30CA\u30A4\u30C8"
@@ -8777,11 +8786,11 @@ MonoBehaviour:
   - {fileID: 21300000, guid: e0fe53ede3a71c54d876381af183c7a3, type: 3}
   - {fileID: 21300000, guid: 912219c8ad313184abada3c7bb253a92, type: 3}
   - {fileID: 21300000, guid: bebfde77a4224bb4cbc1342448b0cbb7, type: 3}
-  _start: {fileID: 0}
-  _end: {fileID: 0}
-  _select: {fileID: 0}
-  _buy: {fileID: 0}
-  _sell: {fileID: 0}
+  _start: {fileID: 11400000, guid: d4592e1a297da65479313bd98c4a7444, type: 2}
+  _end: {fileID: 11400000, guid: ffdef677fab319c49aba5e75432b0c12, type: 2}
+  _select: {fileID: 11400000, guid: e0c4e11471bae5c43ad70727b2d72d8f, type: 2}
+  _buy: {fileID: 11400000, guid: 116171324573d6e4abb350098eb5dae7, type: 2}
+  _sell: {fileID: 11400000, guid: d25646aa6b62d32498392bb19200aab1, type: 2}
   _offset:
     scaleRatio: {x: 1.455, y: 1.455}
     offsetPos: {x: -14.84, y: -118, z: 0}
@@ -8828,14 +8837,14 @@ MonoBehaviour:
     _defaultName: "\u6CA1\u843D\u8CB4\u65CF"
     _favourableView: {fileID: 1982680978}
   sprites:
-  - {fileID: 21300000, guid: 7f718aa37648c464188c8ca8a81be03a, type: 3}
-  - {fileID: 21300000, guid: 6ed17d1ee8e56d74e90cfe4cfa64b1da, type: 3}
-  - {fileID: 21300000, guid: 3ef16e7b56d3e7249a2423e6a2b0ba7e, type: 3}
-  - {fileID: 21300000, guid: e0fe53ede3a71c54d876381af183c7a3, type: 3}
-  - {fileID: 21300000, guid: 912219c8ad313184abada3c7bb253a92, type: 3}
-  - {fileID: 21300000, guid: bebfde77a4224bb4cbc1342448b0cbb7, type: 3}
-  _start: {fileID: 11400000, guid: aeb85583738038440bcc4ecd338fc8a5, type: 2}
-  _end: {fileID: 11400000, guid: c301a1f880a70014bab621d7cb554dc0, type: 2}
+  - {fileID: 21300000, guid: fe72c5592e5d252448aeb9af075ca54f, type: 3}
+  - {fileID: 21300000, guid: 839eaa27c67578d4aa443dcb699f9088, type: 3}
+  - {fileID: 21300000, guid: 1f560058f7225fd40acbf4010af1eb55, type: 3}
+  - {fileID: 21300000, guid: b7de2f59d1b6f1744b182f6da85d3382, type: 3}
+  - {fileID: 21300000, guid: 770ee4b565a4e5343a77b35295f7451a, type: 3}
+  - {fileID: 21300000, guid: 867c46e7ea89fce448a0c2aec7c4dd62, type: 3}
+  _start: {fileID: 11400000, guid: 3805117f4f56dea499270d7242fb4cca, type: 2}
+  _end: {fileID: 11400000, guid: 098c1ec9b44eb214482599611b42d09f, type: 2}
   _select: {fileID: 11400000, guid: 834db42ae6b43994296d39f3df374a30, type: 2}
   _buy: {fileID: 11400000, guid: b7c245d8a2f9b904897077a14d3c2c77, type: 2}
   _sell: {fileID: 11400000, guid: d4c56e9a360b2c74db9aa17793625b04, type: 2}
@@ -9687,8 +9696,8 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 27e645422b458ce4694462cebb7a3667, type: 3}
   - {fileID: 21300000, guid: 0f5dbff7a6217ee4b9f68643dc25172a, type: 3}
   - {fileID: 21300000, guid: 37ce6b2ce57677f41b477849d6133805, type: 3}
-  _start: {fileID: 11400000, guid: e474af38e1cf032459999eee279db1a9, type: 2}
-  _end: {fileID: 11400000, guid: c5ce08fe54835794f82b09c31ac88998, type: 2}
+  _start: {fileID: 11400000, guid: 847b8f77e7cd48745afb04007c25c776, type: 2}
+  _end: {fileID: 11400000, guid: 08ad3c294d4a91d449e1b44d11e55567, type: 2}
   _select: {fileID: 11400000, guid: 4ef3e47c9277c554180ea22ef400f051, type: 2}
   _buy: {fileID: 11400000, guid: d19b80a53d9291741937f2123749af5e, type: 2}
   _sell: {fileID: 11400000, guid: 34fde8c6200fc7044a58146fe7da677d, type: 2}
@@ -10113,7 +10122,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 180}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -160.57463, y: 2712.4038}
+  m_AnchoredPosition: {x: -160.57463, y: 3730}
   m_SizeDelta: {x: 800, y: 1080}
   m_Pivot: {x: 0, y: 0.5}
 --- !u!95 &1230141539
@@ -12684,7 +12693,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 180}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -624, y: -75.991135}
+  m_AnchoredPosition: {x: -624, y: 0}
   m_SizeDelta: {x: 674, y: 114}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!95 &1532891712
@@ -14272,7 +14281,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -1092, y: 2712.4038}
+  m_AnchoredPosition: {x: -1092, y: 3730}
   m_SizeDelta: {x: 800, y: 1080}
   m_Pivot: {x: 0, y: 0.5}
 --- !u!95 &1703017700
@@ -14948,7 +14957,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1777718882
 Transform:
   m_ObjectHideFlags: 0
@@ -15720,7 +15729,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1890776590}
   - component: {fileID: 1890776591}
-  - component: {fileID: 1890776593}
   - component: {fileID: 1890776592}
   m_Layer: 0
   m_Name: E10_Light
@@ -15792,32 +15800,6 @@ MonoBehaviour:
   _name: 
   _rarity: 1
   _isDisposedOfAfterSell: 0
---- !u!114 &1890776593
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1890776589}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dc7a403c8e3bac745a374566b4aa25fe, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _parameter: {fileID: 1890776592}
-  _baseSprite: {fileID: 0}
-  _number: {fileID: 0}
-  _chineseCharacters: {fileID: 0}
-  _hiragana: {fileID: 0}
-  _katakana: {fileID: 0}
-  _alphabet: {fileID: 0}
-  _handMediator: {fileID: 0}
-  _playableDirectorOnBuy: {fileID: 0}
-  _playableDirectorOnSell: {fileID: 0}
-  _brightness: {fileID: 0}
-  _brightnessValue: []
-  _phaseController: {fileID: 0}
-  _currentBrightnessValue: 1
 --- !u!1 &1891691739
 GameObject:
   m_ObjectHideFlags: 0

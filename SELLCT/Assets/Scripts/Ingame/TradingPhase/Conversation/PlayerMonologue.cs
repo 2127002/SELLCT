@@ -17,10 +17,11 @@ public class PlayerMonologue : MonoBehaviour, IConversationMessage
     {
         int index = Random.Range(0, _start.datas.Length);
 
-        string[] texts = _select.datas[index].Text;
-        int[] face = _select.datas[index].Face;
+        string[] texts = _start.datas[index].Text;
+        int[] face = _start.datas[index].Face;
+        string[] name = _start.datas[index].Name;
 
-        return new(texts, face);
+        return new(texts, face, name);
     }
 
     public ConversationMessage EndMessage()
@@ -29,8 +30,9 @@ public class PlayerMonologue : MonoBehaviour, IConversationMessage
 
         string[] texts = _end.datas[index].Text;
         int[] face = _end.datas[index].Face;
+        string[] name = _end.datas[index].Name;
 
-        return new(texts, face);
+        return new(texts, face, name);
     }
 
     public ConversationMessage CardMessage(Card card)
@@ -39,8 +41,9 @@ public class PlayerMonologue : MonoBehaviour, IConversationMessage
 
         string[] texts = _select.datas[index].Text;
         int[] face = _select.datas[index].Face;
+        string[] name = _select.datas[index].Name;
 
-        return new(texts, face);
+        return new(texts, face, name);
     }
 
     public ConversationMessage BuyMessage(Card card)
@@ -49,8 +52,9 @@ public class PlayerMonologue : MonoBehaviour, IConversationMessage
 
         string[] texts = _buy.datas[index].Text;
         int[] face = _buy.datas[index].Face;
+        string[] name = _buy.datas[index].Name;
 
-        return new(texts, face);
+        return new(texts, face, name);
     }
 
     public ConversationMessage SellMessage(Card card)
@@ -59,7 +63,8 @@ public class PlayerMonologue : MonoBehaviour, IConversationMessage
 
         string[] texts = _sell.datas[index].Text;
         int[] face = _sell.datas[index].Face;
+        string[] name = _sell.datas[index].Name;
 
-        return new(texts, face);
+        return new(texts, face, name);
     }
 }

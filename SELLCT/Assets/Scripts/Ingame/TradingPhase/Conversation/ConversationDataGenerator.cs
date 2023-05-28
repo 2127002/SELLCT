@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Linq;
 #if UNITY_EDITOR
 using UnityEditor;
 class ConversationDataGenerator : AssetPostprocessor
@@ -22,6 +23,36 @@ class ConversationDataGenerator : AssetPostprocessor
             {
                 cdb = ScriptableObject.CreateInstance<ConversationDataBase>();
                 AssetDatabase.CreateAsset(cdb, assetfile);
+            }
+
+            //データの不正値チェック（かぎかっこ）
+            foreach (var d in cdb.datas)
+            {
+                for (int i = 0; i < d.Text.Length; i++)
+                {
+                    if (!string.IsNullOrEmpty(d.Name[i]))
+                    {
+                        if (!d.Text[i].Contains('「'))
+                        {
+                            Debug.LogError("「←このかぎかっこがない" + d.Text[i] + " ID" + d.ID);
+                        }
+                        if (!d.Text[i].Contains('」'))
+                        {
+                            Debug.LogError("」←このかぎかっこがない" + d.Text[i] + " ID" + d.ID);
+                        }
+                    }
+                    else
+                    {
+                        if (d.Text[i].Contains('「'))
+                        {
+                            Debug.LogError("「←このかぎかっこがある" + d.Text[i] + " ID" + d.ID);
+                        }
+                        if (d.Text[i].Contains('」'))
+                        {
+                            Debug.LogError("」←このかぎかっこがある" + d.Text[i] + " ID" + d.ID);
+                        }
+                    }
+                }
             }
 
             cdb.datas = CSVSerializer.Deserialize<ConversationData>(textasset.text);

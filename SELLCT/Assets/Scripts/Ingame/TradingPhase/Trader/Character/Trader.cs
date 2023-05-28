@@ -7,13 +7,18 @@ public readonly struct ConversationMessage
 {
     public readonly string[] message;
     public readonly int[] face;
+    public readonly string[] name;
 
-    public ConversationMessage(string[] message, int[] face)
+    public ConversationMessage(string[] message, int[] face, string[] name)
     {
         if (message.Length != face.Length) throw new NotImplementedException("メッセージと立ち絵の指定個数が異なります。設定を見直してください" + message[0]);
 
         this.message = message;
         this.face = face;
+
+        //名前の登録がなければ空白文字で埋める
+        if (name.Length == 0 && name.Length != message.Length) name = new string[message.Length];
+        this.name = name;
     }
 }
 

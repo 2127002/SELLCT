@@ -45,22 +45,28 @@ public class TR4_Knight : Trader
 
     public override ConversationMessage BuyMessage(Card card)
     {
+        List<ConversationData> data = _buy.datas.Where(x => x.Likability.Contains((int)favorability.FavorabilityClassification())).ToList();
+
         int cardId = card.Id;
 
-        string[] texts = _buy.datas[cardId].Text;
-        int[] face = _buy.datas[cardId].Face;
+        string[] texts = data[cardId].Text;
+        int[] face = data[cardId].Face;
+        string[] name = data[cardId].Name;
 
-        return new(texts, face);
+        return new(texts, face, name);
     }
 
     public override ConversationMessage CardMessage(Card card)
     {
+        List<ConversationData> data = _select.datas.Where(x => x.Likability.Contains((int)favorability.FavorabilityClassification())).ToList();
+
         int cardId = card.Id;
 
-        string[] texts = _select.datas[cardId].Text;
-        int[] face = _select.datas[cardId].Face;
+        string[] texts = data[cardId].Text;
+        int[] face = data[cardId].Face;
+        string[] name = data[cardId].Name;
 
-        return new(texts, face);
+        return new(texts, face, name);
     }
 
     public override ConversationMessage EndMessage()
@@ -71,18 +77,22 @@ public class TR4_Knight : Trader
 
         string[] texts = end[index].Text;
         int[] face = end[index].Face;
+        string[] name = end[index].Name;
 
-        return new(texts, face);
+        return new(texts, face, name);
     }
 
     public override ConversationMessage SellMessage(Card card)
     {
+        List<ConversationData> data = _sell.datas.Where(x => x.Likability.Contains((int)favorability.FavorabilityClassification())).ToList();
+
         int cardId = card.Id;
 
-        string[] texts = _sell.datas[cardId].Text;
-        int[] face = _sell.datas[cardId].Face;
+        string[] texts = data[cardId].Text;
+        int[] face = data[cardId].Face;
+        string[] name = data[cardId].Name;
 
-        return new(texts, face);
+        return new(texts, face, name);
     }
 
     public override ConversationMessage StartMessage()
@@ -93,8 +103,9 @@ public class TR4_Knight : Trader
 
         string[] texts = start[index].Text;
         int[] face = start[index].Face;
+        string[] name = start[index].Name;
 
-        return new(texts, face);
+        return new(texts, face, name);
     }
 
     public override void OnPlayerSell(Card selledCard)
