@@ -3815,7 +3815,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &482108530
 Transform:
   m_ObjectHideFlags: 0
@@ -4994,61 +4994,13 @@ MonoBehaviour:
     - {fileID: 11400000, guid: 88db12f8a783e4342a7bc79d768fd304, type: 2}
     m_Events:
     - m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 391254982}
-          m_TargetAssemblyTypeName: InputSystemManager, Assembly-CSharp
-          m_MethodName: ActionDisable
-          m_Mode: 1
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
+        m_Calls: []
     - m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 391254982}
-          m_TargetAssemblyTypeName: InputSystemManager, Assembly-CSharp
-          m_MethodName: ActionDisable
-          m_Mode: 1
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
+        m_Calls: []
     - m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 296562001}
-          m_TargetAssemblyTypeName: TimeLimitController, Assembly-CSharp
-          m_MethodName: Paused
-          m_Mode: 1
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
+        m_Calls: []
     - m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 296562001}
-          m_TargetAssemblyTypeName: TimeLimitController, Assembly-CSharp
-          m_MethodName: Resume
-          m_Mode: 1
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
+        m_Calls: []
 --- !u!1 &583175627
 GameObject:
   m_ObjectHideFlags: 0
@@ -5563,47 +5515,11 @@ MonoBehaviour:
     - {fileID: 11400000, guid: 2a4cfe7360d6e5449b846f199cf3ce2b, type: 2}
     m_Events:
     - m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 0}
-          m_TargetAssemblyTypeName: PostProcessController, Assembly-CSharp
-          m_MethodName: OnVignette
-          m_Mode: 1
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
+        m_Calls: []
     - m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 296562001}
-          m_TargetAssemblyTypeName: TimeLimitController, Assembly-CSharp
-          m_MethodName: Resume
-          m_Mode: 1
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
+        m_Calls: []
     - m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 296562001}
-          m_TargetAssemblyTypeName: TimeLimitController, Assembly-CSharp
-          m_MethodName: Paused
-          m_Mode: 1
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
+        m_Calls: []
 --- !u!1 &616274025
 GameObject:
   m_ObjectHideFlags: 0
@@ -9245,7 +9161,6 @@ MonoBehaviour:
   _endingController: {fileID: 600612446}
   directorOnEnd5: {fileID: 1928463113}
   _timeLimitController: {fileID: 296562001}
-  _inputSystemManager: {fileID: 391254982}
 --- !u!4 &1100334491
 Transform:
   m_ObjectHideFlags: 0
@@ -9469,18 +9384,6 @@ MonoBehaviour:
     m_Events:
     - m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 391254982}
-          m_TargetAssemblyTypeName: InputSystemManager, Assembly-CSharp
-          m_MethodName: ActionDisable
-          m_Mode: 1
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
         - m_Target: {fileID: 1815804850}
           m_TargetAssemblyTypeName: ShakeCamera, Assembly-CSharp
           m_MethodName: StartShake
@@ -9494,19 +9397,7 @@ MonoBehaviour:
             m_BoolArgument: 0
           m_CallState: 2
     - m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 391254982}
-          m_TargetAssemblyTypeName: InputSystemManager, Assembly-CSharp
-          m_MethodName: ActionEnable
-          m_Mode: 1
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
+        m_Calls: []
     - m_PersistentCalls:
         m_Calls:
         - m_Target: {fileID: 1815804850}
@@ -11553,7 +11444,6 @@ MonoBehaviour:
   _endingController: {fileID: 600612446}
   directorOnEnd1: {fileID: 1110852437}
   _timeLimitController: {fileID: 296562001}
-  _inputSystemManager: {fileID: 391254982}
 --- !u!1 &1404569471
 GameObject:
   m_ObjectHideFlags: 0
@@ -13838,7 +13728,6 @@ MonoBehaviour:
   _endingController: {fileID: 600612446}
   directorOnEnd5: {fileID: 611117055}
   _timeLimitController: {fileID: 296562001}
-  _inputSystemManager: {fileID: 391254982}
 --- !u!1 &1643516496
 GameObject:
   m_ObjectHideFlags: 0
@@ -16667,61 +16556,13 @@ MonoBehaviour:
             m_BoolArgument: 0
           m_CallState: 2
     - m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 391254982}
-          m_TargetAssemblyTypeName: InputSystemManager, Assembly-CSharp
-          m_MethodName: ActionDisable
-          m_Mode: 1
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
+        m_Calls: []
     - m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 391254982}
-          m_TargetAssemblyTypeName: InputSystemManager, Assembly-CSharp
-          m_MethodName: ActionEnable
-          m_Mode: 1
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
+        m_Calls: []
     - m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 296562001}
-          m_TargetAssemblyTypeName: TimeLimitController, Assembly-CSharp
-          m_MethodName: Paused
-          m_Mode: 1
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
+        m_Calls: []
     - m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 296562001}
-          m_TargetAssemblyTypeName: TimeLimitController, Assembly-CSharp
-          m_MethodName: Resume
-          m_Mode: 1
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
+        m_Calls: []
 --- !u!320 &1928463113
 PlayableDirector:
   m_ObjectHideFlags: 0

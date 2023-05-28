@@ -37,21 +37,23 @@ public class E24_Time : Card
 
     public override void Sell()
     {
-        base.Sell();
-
         _timeLimitController.ReduceTimeLimit(_reduceValueInSeconds, _handMediator.FindAll(this));
 
-        GameOverChecker();
+        if (GameOverChecker()) return;
+
+        base.Sell();
     }
 
     private void OnTradingPhaseStart()
     {
         _timeLimitController.SetE24Count(_handMediator.FindAll(this));
     }
-    private void GameOverChecker()
+
+    private bool GameOverChecker()
     {
-        //売った際に命が1枚もないならゲームオーバー
-        if (_handMediator.ContainsCard(this)) return;
+        //売った際に制限時間エレメントが1枚もないならゲームオーバー
+        if (_handMediator.ContainsCard(this)) return false;
         end_1.End_1Transition();
+        return true;
     }
 }

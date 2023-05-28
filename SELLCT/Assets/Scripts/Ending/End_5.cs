@@ -10,12 +10,11 @@ public class End_5 : MonoBehaviour
     [SerializeField] EndingController _endingController = default!;
     [SerializeField] PlayableDirector directorOnEnd5 = default!;
     [SerializeField] TimeLimitController _timeLimitController = default!;
-    [SerializeField] InputSystemManager _inputSystemManager = default!;
 
     public async void End_5Transition()
     {
         _timeLimitController.Stop();
-        _inputSystemManager.ActionDisable();
+        InputSystemManager.Instance.ActionDisable();
 
         directorOnEnd5.Play();
 

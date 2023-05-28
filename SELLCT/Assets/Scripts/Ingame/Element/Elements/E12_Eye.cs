@@ -22,15 +22,16 @@ public class E12_Eye : Card
 
     public override void Sell()
     {
-        base.Sell();
+        if (GameOverChecker()) return;
 
-        GameOverChecker();
+        base.Sell();
     }
-    private void GameOverChecker()
+    private bool GameOverChecker()
     {
         //売った際にEyeが1枚もないならゲームオーバー
-        if (_handMediator.ContainsCard(this)) return;
+        if (_handMediator.ContainsCard(this)) return false;
 
         end_3.End_3Transition();
+        return true;
     }
 }
