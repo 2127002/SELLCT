@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Mathematics;
 using UnityEngine;
 
 public class TimeLimitView : MonoBehaviour
@@ -8,7 +9,6 @@ public class TimeLimitView : MonoBehaviour
 
     float _scaleRate = 0.7f; // スケール変更率
     Vector3 _originalScale = Vector3.one; // 元のスケール
-    float _timeElapsed = 0f; // 経過時間
 
     private void Awake()
     {
@@ -19,32 +19,37 @@ public class TimeLimitView : MonoBehaviour
     {
         _clockHandTransform.localScale = _originalScale;
         _clockHandTransform.localRotation = Quaternion.identity;
-        _timeElapsed = 0f;
     }
 
-    public void Rotate(float maxTimeLimit)
+    /// <summary>
+    /// 時計の針を指定時間分回す
+    /// </summary>
+    /// <param name="maxTimeLimit">指標となる最大制限時間</param>
+    /// <param name="elapsedTime">経過時間</param>
+    public void Rotate(float maxTimeLimit, float currentTimeLimit)
     {
         float rotationSpeed = 360f / maxTimeLimit;
+        if (Mathf.Approximately(maxTimeLimit, 0f)) { return; }
 
-        _clockHandTransform.Rotate(Vector3.forward, -rotationSpeed * Time.deltaTime);
+        _clockHandTransform.localEulerAngles = new(0f, 0f, currentTimeLimit * rotationSpeed);
     }
 
-    public void Scale(float maxTimeLimit)
+    /// <summary>
+    /// 時計の針をスケールを調整する
+    /// </summary>
+    /// <param name="maxTimeLimit">指標となる最大制限時間</param>
+    /// <param name="elapsedTime">経過時間</param>
+    public void Scale(float maxTimeLimit, float currentTimeLimit)
     {
-        // 経過時間を加算
-        _timeElapsed += Time.deltaTime;
-
         // 半周で一旦経過時間をリセットする
-        if (_timeElapsed > maxTimeLimit / 2f)
-        {
-            _timeElapsed = 0f;
+        float TimeOfHalfLap = maxTimeLimit / 2f;
+        float timeElapsed = currentTimeLimit % TimeOfHalfLap;
 
-            //行きと帰りでスケールが異なる
-            _scaleRate = 0.8f;
-        }
+        //行きと帰りでスケールが異なる
+        _scaleRate = currentTimeLimit > TimeOfHalfLap ? 0.7f : 0.8f;
 
         // スケールを変更する
-        float rate = _timeElapsed / maxTimeLimit;
+        float rate = timeElapsed / maxTimeLimit;
         float sinRate = 1f - Mathf.Sin(rate * Mathf.PI * 2f);
         float scale = Mathf.Lerp(_originalScale.magnitude * _scaleRate, _originalScale.magnitude, sinRate);
         _clockHandTransform.localScale = _originalScale.normalized * scale;

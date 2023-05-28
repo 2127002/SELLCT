@@ -3,6 +3,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static UnityEngine.Rendering.DebugUI;
 
 public class TimeLimitController : MonoBehaviour
 {
@@ -52,7 +53,7 @@ public class TimeLimitController : MonoBehaviour
 
     private void Update()
     {
-        ReduseTimeLimit();
+        Reduce();
     }
 
     private void FixedUpdate()
@@ -60,7 +61,7 @@ public class TimeLimitController : MonoBehaviour
         if (_timeLimit != null) TimeLimitChecker();
     }
 
-    private void ReduseTimeLimit()
+    private void Reduce()
     {
         //先にステート確認をする
         if (_state != State.Playing) return;
@@ -71,8 +72,8 @@ public class TimeLimitController : MonoBehaviour
         float maxTimeLimit = _currentE24Count * _timeLimitRate;
 
         //時計を進める
-        _timeLimitView.Rotate(maxTimeLimit);
-        _timeLimitView.Scale(maxTimeLimit);
+        _timeLimitView.Rotate(maxTimeLimit, _timeLimit.CurrentTimeLimitValue);
+        _timeLimitView.Scale(maxTimeLimit, _timeLimit.CurrentTimeLimitValue);
     }
 
     private void TimeLimitChecker()
@@ -96,15 +97,28 @@ public class TimeLimitController : MonoBehaviour
         _currentE24Count = currentE24Count;
 
         _timeLimit = _timeLimit.AddTimeLimit(new(value, _timeLimitRate), currentE24Count);
+
+        //針を調整
+        AdjustView(value);
     }
 
     public void ReduceTimeLimit(float value, int currentE24Count)
-    {
+    {        
         _currentE24Count = currentE24Count;
 
         _timeLimit = _timeLimit.ReduceTimeLimit(new(value, _timeLimitRate), currentE24Count);
+
+        //針を調整
+        AdjustView(value);
     }
 
+    //時計の針を調整する
+    private void AdjustView(float value)
+    {
+        float maxTimeLimit = _currentE24Count * _timeLimitRate;
+        _timeLimitView.Rotate(maxTimeLimit, _timeLimit.CurrentTimeLimitValue);
+        _timeLimitView.Scale(maxTimeLimit, _timeLimit.CurrentTimeLimitValue);
+    }
 
     /// <summary>
     /// はじめから制限時間を開始する。

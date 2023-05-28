@@ -72,4 +72,6 @@ public class TimeLimit
     {
         return _valueInSeconds <= MIN;
     }
+
+    public float CurrentTimeLimitValue => _valueInSeconds;
 }
