@@ -28,15 +28,18 @@ public class E0_Life : Card
 
     public override void Sell()
     {
-        base.Sell();
+        //ゲームオーバーなら通常演出にはいかない
+        if (GameOverChecker()) return;
 
-        GameOverChecker();
+        base.Sell();
     }
 
-    private void GameOverChecker()
+    private bool GameOverChecker()
     {
         //売った際に命が1枚もないならゲームオーバー
-        if (_handMediator.ContainsCard(this)) return;
+        if (_handMediator.ContainsCard(this)) return false;
+
         end_5.End_5Transition();
+        return true;
     }
 }

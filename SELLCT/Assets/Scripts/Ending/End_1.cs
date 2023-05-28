@@ -11,12 +11,11 @@ public class End_1 : MonoBehaviour
     [Header("END1の演出タイムラインを入れてください。")]
     [SerializeField] PlayableDirector directorOnEnd1;
     [SerializeField] TimeLimitController _timeLimitController = default!;
-    [SerializeField] InputSystemManager _inputSystemManager = default!;
 
     public async void End_1Transition()
     {
         _timeLimitController.Stop();
-        _inputSystemManager.ActionDisable();
+        InputSystemManager.Instance.ActionDisable();
 
         directorOnEnd1.Play();
         var token = this.GetCancellationTokenOnDestroy();

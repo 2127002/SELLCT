@@ -13,6 +13,17 @@ public class TitleController : MonoBehaviour
     [SerializeField] FadeInView _fadeInView = default!;
     [SerializeField] FadeOutView _fadeOutView = default!;
 
+    [SerializeField] Canvas _backgroundCanvas = default!;
+
+    private void Awake()
+    {
+        //ÉJÅ[É\ÉãÇÃñ≥å¯âª
+        Cursor.visible = false;
+        Cursor.lockState = CursorLockMode.Locked;
+
+        _backgroundCanvas.enabled = true;
+    }
+
     private async void Start()
     {
         InputSystemManager.Instance.ActionDisable();
