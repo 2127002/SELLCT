@@ -15,6 +15,7 @@ public class End_5 : MonoBehaviour
     {
         _timeLimitController.Stop();
         InputSystemManager.Instance.ActionDisable();
+        _endingController.EndingSceneText(EndingController.EndingScene.End5).Forget();
 
         directorOnEnd5.Play();
 

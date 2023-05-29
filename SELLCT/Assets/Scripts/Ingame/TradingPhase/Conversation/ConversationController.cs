@@ -142,4 +142,29 @@ public class ConversationController : MonoBehaviour
             }
         }
     }
+
+    public async UniTask OnSceneEnding(EndingController.EndingScene endingScene)
+    {
+        var sceneEndMessage = _traderController.CurrentTrader.SceneEndingMessage(endingScene);
+
+        //出会いのテキストを表示する
+        for (int i = 0; i < sceneEndMessage.message.Length; i++)
+        {
+            //1-indexedを0-indexedに変換する
+            Sprite sprite = _traderController.CurrentTrader.TraderSprites[sceneEndMessage.face[i] - 1];
+            string speaker = sceneEndMessage.name[i];
+            string message = sceneEndMessage.message[i].ToInBracketsText();
+
+            _traderController.SetTraderSprite(sprite);
+            try
+            {
+                await _textBoxController.UpdateText(speaker, message);
+            }
+            catch (OperationCanceledException)
+            {
+                return;
+            }
+        }
+
+    }
 }
