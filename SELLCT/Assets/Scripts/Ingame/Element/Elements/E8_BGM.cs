@@ -4,13 +4,16 @@ using UnityEngine;
 
 public class E8_BGM : Card
 {
+    [Header("所持枚数によったプロパティの値\n例：所持枚数が4枚の場合 Listのエレメント番号「2」の値を1")]
+    [SerializeField, Range(0f, 1f)] List<float> _BGMValue = default!;
+
     public override int Id => 8;
 
     public override void Buy()
     {
         base.Buy();
 
-        //TODO:BGMの再生
+        SetBGMValue();
     }
 
     public override void OnPressedU6Button()
@@ -20,15 +23,15 @@ public class E8_BGM : Card
 
     public override void Sell()
     {
-        StopBGM();
-    }
-
-    private void StopBGM()
-    {
         base.Sell();
 
-        if (_handMediator.ContainsCard(this)) return;
+        SetBGMValue();
+    }
 
-        //TODO:BGMの停止
+    private void SetBGMValue()
+    {
+        float volume = _BGMValue[FindAll];
+
+        SoundManager.Instance.SetAudioMixerValue(MixerGroup.BGM, volume);
     }
 }
