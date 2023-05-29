@@ -8761,6 +8761,10 @@ MonoBehaviour:
   _handMediator: {fileID: 1975269151}
   _playableDirectorOnBuy: {fileID: 0}
   _playableDirectorOnSell: {fileID: 0}
+  _SEValue:
+  - 0
+  - 0.5
+  - 1
 --- !u!114 &1050709445
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10523,6 +10527,10 @@ MonoBehaviour:
   _handMediator: {fileID: 1975269151}
   _playableDirectorOnBuy: {fileID: 0}
   _playableDirectorOnSell: {fileID: 0}
+  _BGMValue:
+  - 0
+  - 0.5
+  - 1
 --- !u!114 &1240537340
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14975,9 +14983,9 @@ MonoBehaviour:
   - card: {fileID: 322592332}
     initcount: 1
   - card: {fileID: 1240537339}
-    initcount: 1
+    initcount: 2
   - card: {fileID: 1050709444}
-    initcount: 1
+    initcount: 2
   - card: {fileID: 1890776591}
     initcount: 4
   - card: {fileID: 1317302477}

@@ -76,6 +76,13 @@ public class SoundManagerOnGUI : Editor
 }
 #endif
 
+public enum MixerGroup
+{
+    Master,
+    BGM,
+    SE,
+}
+
 public class SoundManager : MonoBehaviour
 {
     [Tooltip("BGM、SEの追加場所を取得できます。")]
@@ -100,6 +107,15 @@ public class SoundManager : MonoBehaviour
 
     public float BGMLoopTime => _BGMLoop.time;
 
+
+    readonly Dictionary<MixerGroup, string> mixerStr = new(){
+        {MixerGroup.Master, "MasterVolume"},
+        {MixerGroup.BGM, "BGMVolume"},
+        {MixerGroup.SE, "SEVolume"},
+    };
+
+    Dictionary<MixerGroup, int> mixerData;
+
     private void Awake()
     {
         DontDestroyOnLoad(this);
@@ -112,6 +128,12 @@ public class SoundManager : MonoBehaviour
     private void Start()
     {
         InitAudioMixerGroup();
+
+        mixerData = new(){
+        {MixerGroup.Master, DataManager.configData.masterVolume},
+        {MixerGroup.BGM, DataManager.configData.backGroundMusicVolume},
+        {MixerGroup.SE, DataManager.configData.soundEffectVolume},
+         };
     }
 
     /// <summary>
@@ -133,6 +155,21 @@ public class SoundManager : MonoBehaviour
         _audioMixer.SetFloat("MasterVolume", ConvertVolume2dB(DataManager.configData.masterVolume / 10f));
         _audioMixer.SetFloat("BGMVolume", ConvertVolume2dB(DataManager.configData.backGroundMusicVolume / 10f));
         _audioMixer.SetFloat("SEVolume", ConvertVolume2dB(DataManager.configData.soundEffectVolume / 10f));
+    }
+
+    /// <summary>
+    /// 音量の調整をする。
+    /// </summary>
+    /// <param name="mixerGroup">調整したいミキサーグループ</param>
+    /// <param name="volume">ボリューム(0-1)</param>
+    public void SetAudioMixerValue(MixerGroup mixerGroup, float volume)
+    {
+        mixerStr.TryGetValue(mixerGroup, out string value);
+        mixerData.TryGetValue(mixerGroup, out int dataVolume);
+
+        float saveDateVolume = dataVolume / 10f;
+
+        _audioMixer.SetFloat(value, ConvertVolume2dB(saveDateVolume * volume));
     }
 
     private void CreateSEs()
