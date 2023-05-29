@@ -34,6 +34,8 @@ public class TextBoxView : MonoBehaviour
 
         for (int i = 0; i <= s.Length; i++)
         {
+            SoundManager.Instance.PlaySE(SoundSource.SE13_TEXT, 0.5f);
+
             // ”ÍˆÍ‰‰ŽZŽq‚ð—p‚¢‚Ä‚¢‚Ü‚·BSubstring‚Æ“¯‚¶Œø‰Ê‚Å‚·
             string newText = s[..i];
             _messageText.text = newText;
@@ -77,8 +79,8 @@ public class TextBoxView : MonoBehaviour
     {
         _messageImage.enabled = true;
         _imageEnabled = true;
-    }    
-    
+    }
+
     public void Disable()
     {
         _messageImage.enabled = false;

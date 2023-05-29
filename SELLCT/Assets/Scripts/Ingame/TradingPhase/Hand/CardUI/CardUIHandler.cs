@@ -92,6 +92,7 @@ public class CardUIHandler : MonoBehaviour, IPointerDownHandler, IPointerUpHandl
         Card card = _deckMediator.GetCardAtCardUIHandler(this);
         if (card.Id < 0) throw new ArgumentNullException("選択したカードがNullです。");
         Debug.Log(card);
+
         //EntityTypeに適した処理を呼ぶ。
         if (_entityType == EntityType.Player)
         {
@@ -116,6 +117,8 @@ public class CardUIHandler : MonoBehaviour, IPointerDownHandler, IPointerUpHandl
         {
             return;
         }
+
+        SoundManager.Instance.PlaySE(SoundSource.SE11_BUY);
 
         //そのカードを手札からなくす
         _deckMediator.RemoveHandCard(purchasedCard);
@@ -142,6 +145,8 @@ public class CardUIHandler : MonoBehaviour, IPointerDownHandler, IPointerUpHandl
 
     private void OnSell(Card soldCard)
     {
+        SoundManager.Instance.PlaySE(SoundSource.SE12_SELL);
+
         _moneyPossessedController.IncreaseMoney(soldCard.Price);
 
         //そのカードを手札からなくす
@@ -311,7 +316,7 @@ public class CardUIHandler : MonoBehaviour, IPointerDownHandler, IPointerUpHandl
         if (eventData == null) throw new NullReferenceException();
         if (!_selectable.interactable) return;
 
-        //TODO:SE1の再生
+        SoundManager.Instance.PlaySE(SoundSource.SE25_CARD_SELECT);
 
         _cardUIView.OnSelect();
 

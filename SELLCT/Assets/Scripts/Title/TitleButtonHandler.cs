@@ -13,11 +13,14 @@ public class TitleButtonHandler : MonoBehaviour, ISubmitHandler, ISelectHandler,
 
     void ISubmitHandler.OnSubmit(BaseEventData eventData)
     {
+        SoundManager.Instance.PlaySE(SoundSource.SE01_DECIDE);
+
         onSubmit?.Invoke();
     }
 
     void ISelectHandler.OnSelect(BaseEventData eventData)
     {
+        SoundManager.Instance.PlaySE(SoundSource.SE02_CURSOR);
         _textMeshProUGUI.fontSize = 43.5f;
     }
 
