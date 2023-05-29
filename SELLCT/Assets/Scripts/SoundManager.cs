@@ -11,11 +11,41 @@ using UnityEditor;
 public enum SoundSource
 {
     //BGM
-    BGM1_NONAME,
+    BGM01_NORMAL,
+    BGM02_TITLE,
+    BGM03_ENDING,
+    BGM04_,
+    BGM05_,
+    BGM06_,
+    BGM07_,
+    BGM08_,
+    BGM09_,
 
     //SE
-    SE1_,//‚±‚Ì€–Ú‚ÍSE‚Ìæ“ªŒÅ’è‚Å‚¨Šè‚¢‚µ‚Ü‚·B
-
+    SE01_DECIDE,//‚±‚Ì€–Ú‚ÍSE‚Ìæ“ªŒÅ’è‚Å‚¨Šè‚¢‚µ‚Ü‚·B
+    SE02_CURSOR,
+    SE03_CROSSHAIR,
+    SE04_RUG_START,
+    SE05_RUG_END,
+    SE06_ITEM_START,
+    SE07_ITEM_END,
+    SE08_HUNDSTART,
+    SE09_TIME,
+    SE10_TIMELIMIT,
+    SE11_BUY,
+    SE12_SELL,
+    SE13_TEXT,
+    SE14_SCENE_CHANGE,
+    SE15_UI_START,
+    SE16_HERAT,
+    SE17_CLOCK,
+    SE18_NOISE,
+    SE19_NECKBREAK,
+    SE20_DOOR_OPEN,
+    SE21_DOOR_CLOSE,
+    SE22_WALK,
+    SE23_KNIFE_STAB,
+    SE24_BLOOD_DRIP,
 }
 
 #if UNITY_EDITOR
@@ -35,7 +65,7 @@ public class SoundManagerOnGUI : Editor
         EditorGUILayout.Separator();
 
 #pragma warning disable CS0618 // Œ^‚Ü‚½‚Íƒƒ“ƒo[‚ª‹ŒŒ^®‚Å‚·
-        EditorGUILayout.LabelField(soundManager._debugSoundSource >= SoundSource.SE1_ ? "SE Clip : Element " + (soundManager._debugSoundSource - SoundSource.SE1_) : "BGM Clip : Element " + (int)soundManager._debugSoundSource);
+        EditorGUILayout.LabelField(soundManager._debugSoundSource >= SoundSource.SE01_DECIDE ? "SE Clip : Element " + (soundManager._debugSoundSource - SoundSource.SE01_DECIDE) : "BGM Clip : Element " + (int)soundManager._debugSoundSource);
 #pragma warning restore CS0618 // Œ^‚Ü‚½‚Íƒƒ“ƒo[‚ª‹ŒŒ^®‚Å‚·
         EditorGUILayout.Separator();
 
