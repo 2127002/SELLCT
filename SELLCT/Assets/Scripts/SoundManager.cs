@@ -46,6 +46,7 @@ public enum SoundSource
     SE22_WALK,
     SE23_KNIFE_STAB,
     SE24_BLOOD_DRIP,
+    SE25_CARD_SELECT,
 }
 
 #if UNITY_EDITOR
@@ -163,7 +164,7 @@ public class SoundManager : MonoBehaviour
     /// BGMをかけます。
     /// </summary>
     /// <param name="sound">かけたいBGM</param>
-    public void PlayBGM(SoundSource sound, float time = 0)
+    public void PlayBGM(SoundSource sound, float time = 0f)
     {
         ChangeBGM(_BGMLoop, sound);
         _BGMLoop.time = time;
@@ -178,7 +179,7 @@ public class SoundManager : MonoBehaviour
         _BGMLoop.PlayScheduled(AudioSettings.dspTime + (_BGMIntro.clip.samples / (float)_BGMIntro.clip.frequency));
     }
 
-    public void PlayBGM(SoundSource sound, float fadeTime, float time = 0, float volume = DEFAULT_BGM_VOLUME)
+    public void PlayBGM(SoundSource sound, float fadeTime, float time = 0f, float volume = DEFAULT_BGM_VOLUME)
     {
         ChangeBGM(_BGMLoop, sound);
         _BGMLoop.volume = 0;
@@ -252,7 +253,7 @@ public class SoundManager : MonoBehaviour
     /// </summary>
     /// <param name="sound">再生したいSE</param>
     /// <param name="stopPrebSE">以前に再生している同じSEを停止させるか否か</param>    
-    public void PlaySE(int sound, bool stopPrebSE = false, float fadeTime = 0, float endVolume = DEFAULT_SE_VOLUME)
+    public void PlaySE(int sound, float volume = 1f, bool stopPrebSE = false, float fadeTime = 0, float endVolume = DEFAULT_SE_VOLUME)
     {
         if (stopPrebSE) StopSE(sound);
 
@@ -262,11 +263,20 @@ public class SoundManager : MonoBehaviour
 
             ChangeSE(se, (SoundSource)sound);
             SEFadein(se, fadeTime, endVolume).Forget();
+            se.volume = volume;
+            if ((int)SoundSource.SE13_TEXT == sound)
+            {
+                se.pitch = UnityEngine.Random.Range(1f - 0.2f, 1f + 0.1f);
+            }
+            else
+            {
+                se.pitch = 1f;
+            }
             se.Play();
             return;
         }
         //すべてのチャンネルが使用中ならここにくる
-        Debug.LogWarning("全SEチャンネルが使用中で" + sound + "が再生できませんでした");
+        Debug.LogWarning("全SEチャンネルが使用中で" + (SoundSource)sound + "が再生できませんでした");
     }
 
     /// <summary>
@@ -274,9 +284,9 @@ public class SoundManager : MonoBehaviour
     /// </summary>
     /// <param name="sound">再生したいSE</param>
     /// <param name="stopPrebSE">以前に再生している同じSEを停止させるか否か</param>    
-    public void PlaySE(SoundSource sound, bool stopPrebSE = false, float fadeTime = 0, float endVolume = DEFAULT_SE_VOLUME)
+    public void PlaySE(SoundSource sound, float volume = 1f, bool stopPrebSE = false, float fadeTime = 0, float endVolume = DEFAULT_SE_VOLUME)
     {
-        PlaySE((int)sound, stopPrebSE, fadeTime, endVolume);
+        PlaySE((int)sound, volume, stopPrebSE, fadeTime, endVolume);
     }
 
     /// <summary>

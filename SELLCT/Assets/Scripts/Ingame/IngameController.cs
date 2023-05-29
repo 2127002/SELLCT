@@ -12,6 +12,11 @@ public class IngameController : MonoBehaviour
         _phaseController.OnGameStart.Add(_view.OnGameStart);
     }
 
+    private void Start()
+    {
+        SoundManager.Instance.PlayBGM(SoundSource.BGM01_NORMAL);
+    }
+
     private void OnDestroy()
     {
         _phaseController.OnGameStart.Remove(_view.OnGameStart);

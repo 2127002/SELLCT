@@ -26,6 +26,8 @@ public class TitleController : MonoBehaviour
 
     private async void Start()
     {
+        SoundManager.Instance.PlayBGM(SoundSource.BGM02_TITLE);
+
         InputSystemManager.Instance.ActionDisable();
         EventSystem.current.SetSelectedGameObject(_firstSelectObject);
 
@@ -40,24 +42,11 @@ public class TitleController : MonoBehaviour
 
     public void OnPressedNewGame()
     {
-        //SE001ÇÃçƒê∂
-     
-
-        TransitionToInGame();
-    }
-
-    public void OnPressedContinue()
-    {
-        //SE001ÇÃçƒê∂
-
-
         TransitionToInGame();
     }
 
     public void OnPressedGameEnd()
     {
-        //SE001ÇÃçƒê∂
-
         //ÉQÅ[ÉÄÇèIóπÇ∑ÇÈ
 #if UNITY_EDITOR
         EditorApplication.ExitPlaymode();
