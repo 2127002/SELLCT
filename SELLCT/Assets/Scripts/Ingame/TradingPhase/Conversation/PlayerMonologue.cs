@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class PlayerMonologue : MonoBehaviour, IConversationMessage
@@ -66,5 +67,19 @@ public class PlayerMonologue : MonoBehaviour, IConversationMessage
         string[] name = _sell.datas[index].Name;
 
         return new(texts, face, name);
+    }
+
+    public ConversationMessage SceneEndingMessage(EndingController.EndingScene endingScene)
+    {
+        //List<ConversationData> data = _sceneEnding.datas.Where(x => x.Likability.Contains((int)favorability.FavorabilityClassification())).ToList();
+
+        //int index = Random.Range(0, data.Count());
+
+        //string[] texts = data[index].Text;
+        //int[] face = data[index].Face;
+        //string[] name = data[index].Name;
+
+        //return new(texts, face, name);
+        throw new System.NotImplementedException();
     }
 }

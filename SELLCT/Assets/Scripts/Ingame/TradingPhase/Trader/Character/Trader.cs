@@ -45,6 +45,7 @@ public abstract class Trader : MonoBehaviour, IConversationMessage
     [SerializeField] protected ConversationDataBase _select;
     [SerializeField] protected ConversationDataBase _buy;
     [SerializeField] protected ConversationDataBase _sell;
+    [SerializeField] protected ConversationDataBase _sceneEnding;
     [SerializeField] private TraderOffset _offset;
 
     protected Favorability favorability;
@@ -79,4 +80,5 @@ public abstract class Trader : MonoBehaviour, IConversationMessage
     public abstract ConversationMessage CardMessage(Card card);
     public abstract ConversationMessage BuyMessage(Card card);
     public abstract ConversationMessage SellMessage(Card card);
+    public abstract ConversationMessage SceneEndingMessage(EndingController.EndingScene endingScene);
 }

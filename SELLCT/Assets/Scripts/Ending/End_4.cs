@@ -14,8 +14,8 @@ public class End_4 : MonoBehaviour
     {
         _timeLimitController.Stop();
         InputSystemManager.Instance.ActionDisable();
+        _endingController.EndingSceneText(EndingController.EndingScene.End4).Forget();
 
-        //TODO:ââèoí«â¡
         directorOnEnd4.Play();
 
         var token = this.GetCancellationTokenOnDestroy();

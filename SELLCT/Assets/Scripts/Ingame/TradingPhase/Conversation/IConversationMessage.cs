@@ -9,4 +9,5 @@ public interface IConversationMessage
     ConversationMessage CardMessage(Card card);
     ConversationMessage BuyMessage(Card card);
     ConversationMessage SellMessage(Card card);
+    ConversationMessage SceneEndingMessage(EndingController.EndingScene endingScene);
 }

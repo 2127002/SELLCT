@@ -1,12 +1,16 @@
+using Cysharp.Threading.Tasks;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Playables;
 using UnityEngine.SceneManagement;
 using UnityEngine.Timeline;
+using static EndingController;
 
 public class EndingController : MonoBehaviour
 {
+    [SerializeField] ConversationController _conversationController = default!;
+
     public enum EndingScene
     {
         End1,
@@ -39,8 +43,16 @@ public class EndingController : MonoBehaviour
 
         await _endingView.StartEndingScene();
 
+        SoundManager.Instance.StopBGM();
         //タイトルに遷移
         asyncOperation.allowSceneActivation = true;
+    }
+
+    public async UniTask EndingSceneText(EndingScene endingScene)
+    {
+        //1フレーム待機
+        await UniTask.Yield();
+        await _conversationController.OnSceneEnding(endingScene);
     }
 
     private string EndingText(EndingScene endingScene)
@@ -48,11 +60,9 @@ public class EndingController : MonoBehaviour
         return endingScene switch
         {
             EndingScene.End1 => "End 1 「壊れた時計」",
-            EndingScene.End2 => "End 2 「Who is me...?」",
-            EndingScene.End3 => "End 3 「もう何も見えない」",
-            EndingScene.End4 => "End 4 「夜道には気を付けて」",
-            EndingScene.End5 => "End 5 「無垢なる死」",
-            EndingScene.End6 => "End 6 「無価値な輝き」",
+            EndingScene.End3 => "End 2 「もう何も見えない」",
+            EndingScene.End4 => "End 3 「夜道には気を付けて」",
+            EndingScene.End5 => "End 4 「無垢なる死」",
             _ => throw new System.NotImplementedException(),
         };
     }

@@ -108,6 +108,19 @@ public class TR5_CrazyScholar : Trader
         return new(texts, face, name);
     }
 
+    public override ConversationMessage SceneEndingMessage(EndingController.EndingScene endingScene)
+    {
+        List<ConversationData> data = _sceneEnding.datas.Where(x => x.Likability.Contains((int)favorability.FavorabilityClassification())).ToList();
+
+        int index = (int)endingScene + 1;
+
+        string[] texts = data[index].Text;
+        int[] face = data[index].Face;
+        string[] name = data[index].Name;
+
+        return new(texts, face, name);
+    }
+
     public override void OnPlayerSell(Card selledCard)
     {
         //TODO：もし与えられたカードが仲間カードなら好感度減少処理を行う。
