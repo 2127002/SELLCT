@@ -1,10 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 #if UNITY_EDITOR
 using UnityEditor;
 #endif
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.Playables;
 using UnityEngine.SceneManagement;
 
 public class TitleController : MonoBehaviour
@@ -14,6 +16,9 @@ public class TitleController : MonoBehaviour
     [SerializeField] FadeOutView _fadeOutView = default!;
 
     [SerializeField] Canvas _backgroundCanvas = default!;
+
+    [Header("最終エンディングのフラグを満たしたときに再生されるタイムライン")]
+    [SerializeField] PlayableDirector _director = default!;
 
     private void Awake()
     {
@@ -36,6 +41,14 @@ public class TitleController : MonoBehaviour
         //黒背景をフェードアウト
         await _fadeOutView.StartFade();
 
+        //全エンディングを回収したら特殊タイムラインを再生して抜ける。
+        //その後の操作復帰処理などはタイムラインで行う。
+        if (!DataManager.saveData.hasCollectedEndings.Contains(false))
+        {
+            _director.Play();
+            return;
+        }
+
         //入力受付の開始
         InputSystemManager.Instance.ActionEnable();
     }
@@ -55,6 +68,21 @@ public class TitleController : MonoBehaviour
 #endif
     }
 
+    public async void OnPressLastEnding()
+    {
+        InputSystemManager.Instance.ActionDisable();
+
+        //ラストエンディングに遷移
+        AsyncOperation asyncOperation = SceneManager.LoadSceneAsync("LastEnding");
+        asyncOperation.allowSceneActivation = false;
+
+        //黒背景フェードイン
+        await _fadeInView.StartFade();
+
+        SoundManager.Instance.StopBGM();
+        asyncOperation.allowSceneActivation = true;
+    }
+
     private async void TransitionToInGame()
     {
         InputSystemManager.Instance.ActionDisable();
@@ -66,6 +94,8 @@ public class TitleController : MonoBehaviour
 
         //黒背景フェードイン
         await _fadeInView.StartFade();
+
+        SoundManager.Instance.StopBGM();
 
         //インゲームに遷移
         InputSystemManager.Instance.ActionEnable();
