@@ -14,7 +14,8 @@ public enum SoundSource
     BGM1_NONAME,
 
     //SE
-    SE1_NONAME,//‚±‚Ì€–Ú‚ÍSE‚Ìæ“ªŒÅ’è‚Å‚¨Šè‚¢‚µ‚Ü‚·B
+    SE1_,//‚±‚Ì€–Ú‚ÍSE‚Ìæ“ªŒÅ’è‚Å‚¨Šè‚¢‚µ‚Ü‚·B
+
 }
 
 #if UNITY_EDITOR
@@ -34,7 +35,7 @@ public class SoundManagerOnGUI : Editor
         EditorGUILayout.Separator();
 
 #pragma warning disable CS0618 // Œ^‚Ü‚½‚Íƒƒ“ƒo[‚ª‹ŒŒ^®‚Å‚·
-        EditorGUILayout.LabelField(soundManager._debugSoundSource >= SoundSource.SE1_NONAME ? "SE Clip : Element " + (soundManager._debugSoundSource - SoundSource.SE1_NONAME) : "BGM Clip : Element " + (int)soundManager._debugSoundSource);
+        EditorGUILayout.LabelField(soundManager._debugSoundSource >= SoundSource.SE1_ ? "SE Clip : Element " + (soundManager._debugSoundSource - SoundSource.SE1_) : "BGM Clip : Element " + (int)soundManager._debugSoundSource);
 #pragma warning restore CS0618 // Œ^‚Ü‚½‚Íƒƒ“ƒo[‚ª‹ŒŒ^®‚Å‚·
         EditorGUILayout.Separator();
 
