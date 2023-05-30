@@ -98,6 +98,13 @@ public class CardUIView : MonoBehaviour
         PlayHighlightImageAnimation();
     }
 
+    public void OnDeselect()
+    {
+        _selectedImage.enabled = false;
+        _selectedImageKanji.enabled = false;
+        _selectedImageHiragana.enabled = false;
+    }
+
     private async void PlayHighlightImageAnimation()
     {
         float time = 0f;
@@ -117,15 +124,6 @@ public class CardUIView : MonoBehaviour
         }
     }
 
-    public void ResetImagesSize()
-    {
-        if (!_enabledHighLight) return;
-        
-        _selectedImage.enabled = false;
-        _selectedImageKanji.enabled = false;
-        _selectedImageHiragana.enabled = false;
-    }
-
     public void EnableHighlight()
     {
         _enabledHighLight = true;
@@ -134,6 +132,7 @@ public class CardUIView : MonoBehaviour
     public void DisableHighlight()
     {
         _enabledHighLight = false;
+        OnDeselect();
     }
 
     public void OnSelectableEnabled(Color normalColor)
