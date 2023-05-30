@@ -103,7 +103,7 @@ public class TR7_Beast : Trader
 
         string[] texts = start[index].Text;
         int[] face = start[index].Face;
-        string[] name = _start.datas[index].Name;
+        string[] name = start[index].Name;
 
         return new(texts, face, name);
     }
