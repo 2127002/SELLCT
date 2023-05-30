@@ -40,7 +40,8 @@ MonoBehaviour:
     - "\u6CA1\u843D\u8CB4\u65CF"
     - "\u6CA1\u843D\u8CB4\u65CF"
     Text:
-    - "\u300A\u300C\u8F1D\u304D\u3092\u76EE\u306B\u3059\u308B\u77B3\u3092\u5931\u3063\u305F\u300D\u300B"
+    - "\u300A\u300C\u8F1D\u304D\u3092\u76EE\u306B\u3059\u308B\u77B3\u3092\u5931\u3063\u305F\u300D                                                                                         
+      \u300B"
     - "\u300A\u300C\u6545\u306B\u3001\u8CB4\u69D8\u306F\u7121\u4FA1\u5024\u3060\u300D\u300B"
     Face: 0400000003000000
   - ID: 4
