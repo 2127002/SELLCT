@@ -2006,7 +2006,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &296562000
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2042,7 +2042,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a04af4dbbc6a42b4d955ee29fe79d7b0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _timeLimitRate: 10
+  _initTimeLimit: 1
+  _timeLimitRate: 20
   _phaseController: {fileID: 495064998}
   _timeLimitView: {fileID: 296562002}
 --- !u!114 &296562002
@@ -2862,7 +2863,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &382012527
 Transform:
   m_ObjectHideFlags: 0
@@ -2895,9 +2896,9 @@ MonoBehaviour:
       _favoriteCards: []
       _bonus: 0
     _priorityCards: []
-    _initialDisplayItemCount: 34
-    _initialDeckCount: 4
-    _initialFavorability: 0
+    _initialDisplayItemCount: 8
+    _initialDeckCount: 10
+    _initialFavorability: 1
     _addFavorabilityValue: 0
     _defaultName: "\u3046\u3055\u304E"
     _favourableView: {fileID: 1982680978}
@@ -4116,7 +4117,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &495666247
 Transform:
   m_ObjectHideFlags: 0
@@ -4149,9 +4150,9 @@ MonoBehaviour:
       _favoriteCards: []
       _bonus: 0
     _priorityCards: []
-    _initialDisplayItemCount: 34
-    _initialDeckCount: 4
-    _initialFavorability: 0
+    _initialDisplayItemCount: 8
+    _initialDeckCount: 10
+    _initialFavorability: 1
     _addFavorabilityValue: 0
     _defaultName: "\u30A4\u30AB\u308C\u305F\u5B66\u8005"
     _favourableView: {fileID: 1982680978}
@@ -6983,7 +6984,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _traders:
-  - {fileID: 1182455717}
+  - {fileID: 1064430992}
+  - {fileID: 1063490271}
+  - {fileID: 495666248}
+  - {fileID: 382012528}
 --- !u!4 &836645464
 Transform:
   m_ObjectHideFlags: 0
@@ -7710,7 +7714,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _cardCapacity:
   - card: {fileID: 917396756}
-    initcount: 1
+    initcount: 3
   - card: {fileID: 2010756546}
     initcount: 0
   - card: {fileID: 322592332}
@@ -7720,23 +7724,23 @@ MonoBehaviour:
   - card: {fileID: 1050709444}
     initcount: 0
   - card: {fileID: 1890776591}
-    initcount: 0
+    initcount: 4
   - card: {fileID: 1317302477}
-    initcount: 1
+    initcount: 5
   - card: {fileID: 1801727037}
     initcount: 0
   - card: {fileID: 2044394406}
-    initcount: 1
+    initcount: 5
   - card: {fileID: 1891691742}
-    initcount: 1
+    initcount: 5
   - card: {fileID: 1803076679}
-    initcount: 1
+    initcount: 5
   - card: {fileID: 1589025320}
-    initcount: 1
+    initcount: 5
   - card: {fileID: 704934656}
-    initcount: 1
+    initcount: 5
   - card: {fileID: 1049933561}
-    initcount: 1
+    initcount: 5
   - card: {fileID: 883828212}
     initcount: 0
   - card: {fileID: 449189166}
@@ -7744,9 +7748,9 @@ MonoBehaviour:
   - card: {fileID: 2037373640}
     initcount: 0
   - card: {fileID: 26477152}
-    initcount: 1
+    initcount: 5
   - card: {fileID: 1928785346}
-    initcount: 0
+    initcount: 5
 --- !u!1 &907251443
 GameObject:
   m_ObjectHideFlags: 0
@@ -8408,7 +8412,9 @@ PlayableDirector:
   m_WrapMode: 2
   m_DirectorUpdateMode: 1
   m_InitialTime: 0
-  m_SceneBindings: []
+  m_SceneBindings:
+  - key: {fileID: 4729167684098699681, guid: a0083a63c5d408848a864e553e71d28f, type: 2}
+    value: {fileID: 0}
   m_ExposedReferences:
     m_References: []
 --- !u!114 &973258395
@@ -9037,7 +9043,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1063490270
 Transform:
   m_ObjectHideFlags: 0
@@ -9070,10 +9076,10 @@ MonoBehaviour:
       _favoriteCards: []
       _bonus: 0
     _priorityCards: []
-    _initialDisplayItemCount: 34
-    _initialDeckCount: 4
-    _initialFavorability: 100
-    _addFavorabilityValue: 0
+    _initialDisplayItemCount: 8
+    _initialDeckCount: 10
+    _initialFavorability: 1
+    _addFavorabilityValue: 24
     _defaultName: "\u30CA\u30A4\u30C8"
     _favourableView: {fileID: 1982680978}
   sprites:
@@ -9108,7 +9114,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1064430992
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9128,9 +9134,11 @@ MonoBehaviour:
     _priorityCards:
     - _card: {fileID: 449189166}
       _priority: 984
-    _initialDisplayItemCount: 34
-    _initialDeckCount: 4
-    _initialFavorability: 100
+    - _card: {fileID: 26477152}
+      _priority: 984
+    _initialDisplayItemCount: 8
+    _initialDeckCount: 10
+    _initialFavorability: 1
     _addFavorabilityValue: 24
     _defaultName: "\u6CA1\u843D\u8CB4\u65CF"
     _favourableView: {fileID: 1982680978}
@@ -10050,7 +10058,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1182455716
 Transform:
   m_ObjectHideFlags: 0
@@ -11002,7 +11010,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1258542180
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11256,7 +11264,7 @@ MonoBehaviour:
   _vivid: {fileID: 2100000, guid: f911bf6d76c5c254faef486eeec726b9, type: 2}
   _vividIncreasePercent: 50
   _vividDecreasePercent: 50
-  _firstVividPercent: 50
+  _firstVividPercent: 100
 --- !u!114 &1317302478
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11269,7 +11277,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a7ddc8a1ce1f58949ab7aff714a4f524, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _price: 50
+  _price: 10
   _name: 
   _rarity: 1
   _isDisposedOfAfterSell: 0
@@ -12716,7 +12724,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1482007591
 RectTransform:
   m_ObjectHideFlags: 0
@@ -14365,7 +14373,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1677781741
 RectTransform:
   m_ObjectHideFlags: 0
@@ -15306,23 +15314,23 @@ MonoBehaviour:
   - card: {fileID: 1050709444}
     initcount: 0
   - card: {fileID: 1890776591}
-    initcount: 0
+    initcount: 4
   - card: {fileID: 1317302477}
-    initcount: 0
+    initcount: 2
   - card: {fileID: 1801727037}
     initcount: 0
   - card: {fileID: 2044394406}
     initcount: 1
   - card: {fileID: 1891691742}
-    initcount: 1
+    initcount: 0
   - card: {fileID: 1803076679}
-    initcount: 1
+    initcount: 0
   - card: {fileID: 1589025320}
-    initcount: 1
+    initcount: 0
   - card: {fileID: 704934656}
-    initcount: 1
+    initcount: 0
   - card: {fileID: 1049933561}
-    initcount: 1
+    initcount: 0
   - card: {fileID: 883828212}
     initcount: 0
   - card: {fileID: 449189166}
@@ -15333,8 +15341,20 @@ MonoBehaviour:
     initcount: 0
   - card: {fileID: 1928785346}
     initcount: 0
-  _probabilityDeck: []
-  _drawCount: 0
+  _probabilityDeck:
+  - card: {fileID: 1589025320}
+    initcount: 1
+  - card: {fileID: 704934656}
+    initcount: 1
+  - card: {fileID: 1049933561}
+    initcount: 1
+  - card: {fileID: 1803076679}
+    initcount: 3
+  - card: {fileID: 1891691742}
+    initcount: 1
+  - card: {fileID: 1891691742}
+    initcount: 1
+  _drawCount: 4
   _handMediator: {fileID: 1975269151}
 --- !u!114 &1775420809
 MonoBehaviour:
@@ -16192,7 +16212,9 @@ PlayableDirector:
   m_WrapMode: 2
   m_DirectorUpdateMode: 1
   m_InitialTime: 0
-  m_SceneBindings: []
+  m_SceneBindings:
+  - key: {fileID: -4059324948308302619, guid: 63d0145d6976c2f4cad6228270870455, type: 2}
+    value: {fileID: 0}
   m_ExposedReferences:
     m_References: []
 --- !u!114 &1834703081
