@@ -14,6 +14,7 @@ public class TimeLimitController : MonoBehaviour
         Stopped,
     }
 
+    [SerializeField, Min(0)] int _initTimeLimit;
     [Header("最大値と初期値（E24の所持数*この値）の計算に使用します。")]
     [SerializeField, Min(0)] float _timeLimitRate;
 
@@ -69,7 +70,7 @@ public class TimeLimitController : MonoBehaviour
 
         _timeLimit.DecreaseTimeDeltaTime();
 
-        float maxTimeLimit = _currentE24Count * _timeLimitRate;
+        float maxTimeLimit = _currentE24Count * _timeLimitRate + _initTimeLimit;
 
         //時計を進める
         _timeLimitView.Rotate(maxTimeLimit, _timeLimit.CurrentTimeLimitValue);
@@ -89,7 +90,7 @@ public class TimeLimitController : MonoBehaviour
 
     public void SetE24Count(int currentE24Count)
     {
-        _currentE24Count = currentE24Count;
+        _currentE24Count = currentE24Count + _initTimeLimit;
     }
 
     public void AddTimeLimit(float value, int currentE24Count)
@@ -115,7 +116,7 @@ public class TimeLimitController : MonoBehaviour
     //時計の針を調整する
     private void AdjustView(float value)
     {
-        float maxTimeLimit = _currentE24Count * _timeLimitRate;
+        float maxTimeLimit = _currentE24Count * _timeLimitRate + _initTimeLimit;
         _timeLimitView.Rotate(maxTimeLimit, _timeLimit.CurrentTimeLimitValue);
         if (!Mathf.Approximately(_timeLimit.CurrentTimeLimitValue, 0f))
             _timeLimitView.Scale(maxTimeLimit, _timeLimit.CurrentTimeLimitValue);
