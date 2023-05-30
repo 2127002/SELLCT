@@ -77,10 +77,10 @@ public class CardUIView : MonoBehaviour
         foreach (var image in _cardImages)
         {
             image.enabled = false;
+            image.sprite = null;
         }
 
         _cardText.enabled = false;
-
         _countText.enabled = false;
         _selectedImage.enabled = false;
     }
