@@ -135,7 +135,7 @@ GameObject:
   - component: {fileID: 633505747}
   - component: {fileID: 633505749}
   m_Layer: 0
-  m_Name: "\u30B3\u30F3\u30DD 1"
+  m_Name: Movie
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -201,14 +201,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 633505746}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: adffa391f82d76047a6be7a58afac3cf, type: 3}
+  m_Script: {fileID: 11500000, guid: f783a614b089f7542bdd064913f6493e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _firstSelectObject: {fileID: 0}
-  _fadeInView: {fileID: 0}
-  _fadeOutView: {fileID: 0}
-  _backgroundCanvas: {fileID: 0}
-  _director: {fileID: 0}
 --- !u!1 &763753726
 GameObject:
   m_ObjectHideFlags: 0
@@ -534,8 +529,8 @@ MonoBehaviour:
     - m_PersistentCalls:
         m_Calls:
         - m_Target: {fileID: 633505749}
-          m_TargetAssemblyTypeName: TitleController, Assembly-CSharp
-          m_MethodName: OnPressedGameEnd
+          m_TargetAssemblyTypeName: LastEndingController, Assembly-CSharp
+          m_MethodName: End
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
