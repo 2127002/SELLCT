@@ -930,9 +930,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _collectionImages:
   - {fileID: 630870317}
+  - {fileID: 1861175283}
   - {fileID: 1931285203}
   - {fileID: 589536415}
   - {fileID: 1922512164}
+  - {fileID: 1569197305}
 --- !u!1 &452199070
 GameObject:
   m_ObjectHideFlags: 0
