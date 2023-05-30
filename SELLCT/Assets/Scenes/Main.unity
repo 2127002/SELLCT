@@ -1999,6 +1999,7 @@ GameObject:
   - component: {fileID: 296562000}
   - component: {fileID: 296562001}
   - component: {fileID: 296562002}
+  - component: {fileID: 296562003}
   m_Layer: 0
   m_Name: U9_TimeLimit
   m_TagString: Untagged
@@ -2026,7 +2027,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -80.28, y: -365.26}
+  m_AnchoredPosition: {x: -80.28, y: -637}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &296562001
@@ -2057,6 +2058,27 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _clockHandTransform: {fileID: 1677781741}
+--- !u!95 &296562003
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 296561999}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 0}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &300763814
 GameObject:
   m_ObjectHideFlags: 0
@@ -7477,9 +7499,9 @@ MonoBehaviour:
   - card: {fileID: 917396756}
     initcount: 4
   - card: {fileID: 2010756546}
-    initcount: 4
+    initcount: 0
   - card: {fileID: 322592332}
-    initcount: 4
+    initcount: 0
   - card: {fileID: 1240537339}
     initcount: 4
   - card: {fileID: 1050709444}
@@ -9527,6 +9549,8 @@ PlayableDirector:
     value: {fileID: 196305915}
   - key: {fileID: 8957315074194600266, guid: 946d6d764d93cfd4cb858098d4c7fe1f, type: 2}
     value: {fileID: 302272192}
+  - key: {fileID: -7843692268180773114, guid: 946d6d764d93cfd4cb858098d4c7fe1f, type: 2}
+    value: {fileID: 296562003}
   m_ExposedReferences:
     m_References: []
 --- !u!1 &1135015308
@@ -15061,9 +15085,9 @@ MonoBehaviour:
   - card: {fileID: 917396756}
     initcount: 1
   - card: {fileID: 2010756546}
-    initcount: 1
+    initcount: 0
   - card: {fileID: 322592332}
-    initcount: 1
+    initcount: 0
   - card: {fileID: 1240537339}
     initcount: 2
   - card: {fileID: 1050709444}
@@ -17086,6 +17110,8 @@ PlayableDirector:
     value: {fileID: 408832534}
   - key: {fileID: 8957315074194600266, guid: 0a28de3d25a96f340b148e1926716631, type: 2}
     value: {fileID: 961409259}
+  - key: {fileID: -5310909361706094558, guid: 0a28de3d25a96f340b148e1926716631, type: 2}
+    value: {fileID: 296562003}
   m_ExposedReferences:
     m_References: []
 --- !u!114 &1937195366
@@ -19148,7 +19174,6 @@ MonoBehaviour:
   _phaseController: {fileID: 495064998}
   _conversationController: {fileID: 1775029164}
   _moneyPossessedController: {fileID: 157262628}
-  _buyOrSell: {fileID: 322592332}
   _entityType: 0
   _cardScrollController: {fileID: 1910724205}
   _cardScrollControllerOnRag: {fileID: 81919266}
@@ -19434,7 +19459,6 @@ MonoBehaviour:
   _phaseController: {fileID: 495064998}
   _conversationController: {fileID: 1775029164}
   _moneyPossessedController: {fileID: 157262628}
-  _buyOrSell: {fileID: 2010756546}
   _entityType: 1
   _cardScrollController: {fileID: 238767838}
   _cardScrollControllerOnRag: {fileID: 1248757824}
