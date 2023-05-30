@@ -59,10 +59,10 @@ public class EndingController : MonoBehaviour
     {
         return endingScene switch
         {
-            EndingScene.End1 => "End 1 「壊れた時計」",
-            EndingScene.End3 => "End 2 「もう何も見えない」",
-            EndingScene.End4 => "End 3 「夜道には気を付けて」",
-            EndingScene.End5 => "End 4 「無垢なる死」",
+            EndingScene.End1 => "End 4 「壊れた時計」",
+            EndingScene.End3 => "End 3 「もう何も見えない」",
+            EndingScene.End4 => "End 2 「夜道には気を付けて」",
+            EndingScene.End5 => "End 1 「無垢なる死」",
             _ => throw new System.NotImplementedException(),
         };
     }
