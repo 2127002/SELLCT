@@ -2,6 +2,7 @@ using Cysharp.Threading.Tasks;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -300,7 +301,7 @@ public class CardUIHandler : MonoBehaviour, IPointerDownHandler, IPointerUpHandl
         OnSubmit();
     }
 
-    public async void OnSelect(BaseEventData eventData)
+    public void OnSelect(BaseEventData eventData)
     {
         if (eventData == null) throw new NullReferenceException();
         if (!_selectable.interactable) return;
@@ -313,8 +314,18 @@ public class CardUIHandler : MonoBehaviour, IPointerDownHandler, IPointerUpHandl
         Card card = _deckMediator.GetCardAtCardUIHandler(this);
         _conversationController.OnSelect(card).Forget();
 
+        RugScroll().Forget();
+    }
+
+    private async UniTask RugScroll()
+    {
         //画面外か判定する。オブジェクトのy座標で判定（好ましくない）
         CardScrollController.Direction dir;
+
+        if (!InputSystemManager.Instance.ActionEnabled) return;
+        //アニメーション中は動作を受け付けないようにする
+        //これを行わないと低FPSの際に無限ループしてしまう。
+        InputSystemManager.Instance.ActionDisable();
 
         //再帰的に実行することで確実に画面内に納める
         while (true)
@@ -336,6 +347,8 @@ public class CardUIHandler : MonoBehaviour, IPointerDownHandler, IPointerUpHandl
             //1フレーム待機してからもう一度試す
             await UniTask.Yield();
         }
+
+        InputSystemManager.Instance.ActionEnable();
     }
 
     public void OnDeselect(BaseEventData eventData)

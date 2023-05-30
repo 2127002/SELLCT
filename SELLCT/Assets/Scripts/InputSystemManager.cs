@@ -24,4 +24,6 @@ public class InputSystemManager : MonoBehaviour
     {
         action.Disable();
     }
+
+    public bool ActionEnabled => action.enabled;
 }
