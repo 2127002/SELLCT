@@ -11,7 +11,8 @@ using System.Collections.Generic;
 [Serializable]
 public class SaveData
 {
-    public bool[] hasCollectedEndings = new bool[64];
+    public bool[] hasCollectedEndings = new bool[6] { false, true, false, false, false, true };
+    //public bool[] hasCollectedEndings = new bool[6] { true, true, true, true, true, true };
 
     //‰º‹L‚Í‘‚«•û‚Ì—á‚Å‚·B
     //public int a = 0;

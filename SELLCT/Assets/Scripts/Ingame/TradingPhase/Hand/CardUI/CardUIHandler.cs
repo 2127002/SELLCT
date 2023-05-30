@@ -47,8 +47,6 @@ public class CardUIHandler : MonoBehaviour, IPointerDownHandler, IPointerUpHandl
 
     [SerializeField] MoneyPossessedController _moneyPossessedController = default!;
 
-    [SerializeField] Card _buyOrSell = default!;
-
     [SerializeField] EntityType _entityType;
 
     [SerializeField] CardScrollController _cardScrollController = default!;
@@ -56,7 +54,7 @@ public class CardUIHandler : MonoBehaviour, IPointerDownHandler, IPointerUpHandl
     [SerializeField] RagScrollController _ragScrollController = default!;
 
     //selectableの有効かを保存
-    readonly bool[] _interactables = new bool[(int)InteractableChange.Max];
+    readonly bool[] _interactables = new bool[(int)InteractableChange.Max] { true, false, false };
 
     public IReadOnlyList<Image> CardImages => _cardUIView.CardImages;
 
@@ -269,15 +267,6 @@ public class CardUIHandler : MonoBehaviour, IPointerDownHandler, IPointerUpHandl
     /// </summary>
     public void OnGenerate()
     {
-        if (_buyOrSell.ContainsPlayerDeck)
-        {
-            EnabledSelectebility(InteractableChange.Element);
-        }
-        else
-        {
-            DisableSelectability(InteractableChange.Element);
-        }
-
         //このオブジェクトが選択中なら実行しない
         if (gameObject == EventSystem.current.currentSelectedGameObject) return;
 
