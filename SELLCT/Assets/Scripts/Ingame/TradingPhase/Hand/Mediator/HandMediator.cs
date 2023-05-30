@@ -96,7 +96,6 @@ public class HandMediator : DeckMediator
 
     public override void UpdateCardSprites()
     {
-        int handCapacity = _hand.Capacity;
         int currentHandCount = _hand.Cards.Count;
 
         //手札を反映させる
@@ -107,7 +106,7 @@ public class HandMediator : DeckMediator
 
         //手札がキャパシティより少ないなら非表示にする
         //数を合わせた配置にしないで、カードが無いことを示します。
-        for (int i = currentHandCount; i < handCapacity; i++)
+        for (int i = currentHandCount; i < _cardUIInstance.Handlers.Count; i++)
         {
             _cardUIInstance.Handlers[i].SetCardSprites(EEX_null.Instance);
         }

@@ -1766,6 +1766,7 @@ MonoBehaviour:
   _rugController: {fileID: 1802691250}
   _canvas: {fileID: 233741556}
   _any: {fileID: -283051177713121263, guid: 1acd10e19b4601845803d349e0c26cdf, type: 3}
+  _cardUIHandler: {fileID: 8999427033305422426}
 --- !u!1 &253231078
 GameObject:
   m_ObjectHideFlags: 0
@@ -3065,6 +3066,7 @@ Transform:
   - {fileID: 1100334491}
   - {fileID: 403414848}
   - {fileID: 1636162603}
+  - {fileID: 869388471}
   m_Father: {fileID: 495064999}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -3184,8 +3186,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _endingController: {fileID: 600612446}
-  directorOnEnd4: {fileID: 579255178}
-  _timeLimitController: {fileID: 296562001}
+  directorOnEnd4: {fileID: 0}
+  _timeLimitController: {fileID: 0}
 --- !u!1 &406218261
 GameObject:
   m_ObjectHideFlags: 0
@@ -3480,7 +3482,7 @@ MonoBehaviour:
   _timeLimitController: {fileID: 296562001}
   _addValueInSeconds: 10
   _reduceValueInSeconds: 10
-  end_1: {fileID: 1394052930}
+  end_1: {fileID: 0}
 --- !u!114 &449189167
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7213,6 +7215,52 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 853591368}
   m_CullTransparentMesh: 1
+--- !u!1 &869388470
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 869388471}
+  - component: {fileID: 869388472}
+  m_Layer: 0
+  m_Name: End6
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &869388471
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 869388470}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 396427387}
+  m_RootOrder: -1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &869388472
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 869388470}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 095aa41921dab3a428dfdc38f230a539, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _endingController: {fileID: 600612446}
+  _seceneChangeCount: 5
 --- !u!1 &883483177
 GameObject:
   m_ObjectHideFlags: 0
@@ -7661,8 +7709,8 @@ MonoBehaviour:
   _katakana: {fileID: 0}
   _alphabet: {fileID: 0}
   _handMediator: {fileID: 1975269151}
-  _playableDirectorOnBuy: {fileID: 973258394}
-  _playableDirectorOnSell: {fileID: 1834703080}
+  _playableDirectorOnBuy: {fileID: 0}
+  _playableDirectorOnSell: {fileID: 0}
   end_5: {fileID: 1636162604}
 --- !u!114 &917396757
 MonoBehaviour:
@@ -9160,8 +9208,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _endingController: {fileID: 600612446}
-  directorOnEnd5: {fileID: 1928463113}
-  _timeLimitController: {fileID: 296562001}
+  directorOnEnd5: {fileID: 0}
+  _timeLimitController: {fileID: 0}
 --- !u!4 &1100334491
 Transform:
   m_ObjectHideFlags: 0
@@ -10997,8 +11045,8 @@ MonoBehaviour:
   _katakana: {fileID: 0}
   _alphabet: {fileID: 0}
   _handMediator: {fileID: 1975269151}
-  _playableDirectorOnBuy: {fileID: 643608335}
-  _playableDirectorOnSell: {fileID: 248423784}
+  _playableDirectorOnBuy: {fileID: 0}
+  _playableDirectorOnSell: {fileID: 0}
   _vivid: {fileID: 2100000, guid: f911bf6d76c5c254faef486eeec726b9, type: 2}
   _vividIncreasePercent: 10
   _vividDecreasePercent: 50
@@ -11444,7 +11492,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _endingController: {fileID: 600612446}
   directorOnEnd1: {fileID: 1110852437}
-  _timeLimitController: {fileID: 296562001}
+  _timeLimitController: {fileID: 0}
 --- !u!1 &1404569471
 GameObject:
   m_ObjectHideFlags: 0
@@ -13728,7 +13776,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _endingController: {fileID: 600612446}
   directorOnEnd5: {fileID: 611117055}
-  _timeLimitController: {fileID: 296562001}
+  _timeLimitController: {fileID: 0}
 --- !u!1 &1643516496
 GameObject:
   m_ObjectHideFlags: 0
@@ -15151,8 +15199,8 @@ MonoBehaviour:
   _katakana: {fileID: 0}
   _alphabet: {fileID: 0}
   _handMediator: {fileID: 1975269151}
-  _playableDirectorOnBuy: {fileID: 819707303}
-  _playableDirectorOnSell: {fileID: 1435320221}
+  _playableDirectorOnBuy: {fileID: 0}
+  _playableDirectorOnSell: {fileID: 0}
   end_3: {fileID: 1100334490}
 --- !u!114 &1801727038
 MonoBehaviour:
@@ -15933,8 +15981,8 @@ MonoBehaviour:
   _katakana: {fileID: 21300000, guid: 080f75274c66b5f40b2e3e8b5e23e28c, type: 3}
   _alphabet: {fileID: 0}
   _handMediator: {fileID: 1975269151}
-  _playableDirectorOnBuy: {fileID: 1834239688}
-  _playableDirectorOnSell: {fileID: 732873083}
+  _playableDirectorOnBuy: {fileID: 0}
+  _playableDirectorOnSell: {fileID: 0}
   _brightness: {fileID: 2100000, guid: 6fd7c41649721a94fa3addf49255c0e4, type: 2}
   _brightnessValue:
   - 0.5
@@ -19061,6 +19109,8 @@ MonoBehaviour:
   _cardScrollController: {fileID: 1910724205}
   _cardScrollControllerOnRag: {fileID: 81919266}
   _ragScrollController: {fileID: 962126754}
+  _end_6: {fileID: 869388472}
+  _goodsCardUIInstance: {fileID: 907251447}
 --- !u!114 &6495868728072664684
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -19347,6 +19397,8 @@ MonoBehaviour:
   _cardScrollController: {fileID: 238767838}
   _cardScrollControllerOnRag: {fileID: 1248757824}
   _ragScrollController: {fileID: 1412242932}
+  _end_6: {fileID: 869388472}
+  _goodsCardUIInstance: {fileID: 1960932980}
 --- !u!114 &8999427033305422427
 MonoBehaviour:
   m_ObjectHideFlags: 0

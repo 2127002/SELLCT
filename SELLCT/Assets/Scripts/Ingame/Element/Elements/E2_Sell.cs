@@ -35,7 +35,7 @@ public class E2_Sell : Card
     {
         foreach (var cardUIHandler in _handCardUIInstance.Handlers)
         {
-            cardUIHandler.EnabledSelectebility(InteractableChange.Element);
+            cardUIHandler.EnableBuying(EnableBuyingChange.Element);
         }
     }
 
@@ -43,7 +43,7 @@ public class E2_Sell : Card
     {
         foreach (var cardUIHandler in _handCardUIInstance.Handlers)
         {
-            cardUIHandler.DisableSelectability(InteractableChange.Element);
+            cardUIHandler.DisableBuying(EnableBuyingChange.Element);
         }
     }
 }

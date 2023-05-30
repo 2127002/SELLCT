@@ -36,14 +36,14 @@ public class MoneyPossessedController : MonoBehaviour
         {
             foreach (var handler in _traderCardUIInstance.Handlers)
             {
-                handler.DisableSelectability(InteractableChange.Money);
+                handler.DisableBuying(EnableBuyingChange.Money);
             }
         }
         else
         {
             foreach (var handler in _traderCardUIInstance.Handlers)
             {
-                handler.EnabledSelectebility(InteractableChange.Money);
+                handler.EnableBuying(EnableBuyingChange.Money);
             }
         }
     }
@@ -71,7 +71,7 @@ public class MoneyPossessedController : MonoBehaviour
         {
             foreach (var handler in _traderCardUIInstance.Handlers)
             {
-                handler.DisableSelectability(InteractableChange.Money);
+                handler.DisableBuying(EnableBuyingChange.Money);
             }
         }
 
@@ -103,7 +103,7 @@ public class MoneyPossessedController : MonoBehaviour
         
         foreach (var handler in _traderCardUIInstance.Handlers)
         {
-            handler.EnabledSelectebility(InteractableChange.Money);
+            handler.EnableBuying(EnableBuyingChange.Money);
         }
     }
 

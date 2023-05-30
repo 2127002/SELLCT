@@ -50,7 +50,7 @@ public class TradingPhaseController : MonoBehaviour
     private void OnPhaseStart()
     {
         _canvas.gameObject.SetActive(true);
-
+        
         _navigateAction.action.performed += OnNavigate;
     }
 

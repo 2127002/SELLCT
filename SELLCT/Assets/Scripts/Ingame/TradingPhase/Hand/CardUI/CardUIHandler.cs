@@ -12,9 +12,17 @@ using UnityEngine.UI;
 /// </summary>
 public enum InteractableChange
 {
-    Element,
-    Money,
     CurrentCard,
+
+    Max
+}
+/// <summary>
+/// 購入可能かを変更するタイミング
+/// </summary>
+public enum EnableBuyingChange
+{
+    Money,
+    Element,
 
     Max
 }
@@ -54,6 +62,9 @@ public class CardUIHandler : MonoBehaviour, IPointerDownHandler, IPointerUpHandl
     [SerializeField] CardScrollController _cardScrollControllerOnRag = default!;
     [SerializeField] RagScrollController _ragScrollController = default!;
 
+    [SerializeField] End_6 _end_6 = default!;
+
+    readonly bool[] _buyEnabled = new bool[(int)EnableBuyingChange.Max];
     //selectableの有効かを保存
     readonly bool[] _interactables = new bool[(int)InteractableChange.Max];
 
@@ -74,11 +85,10 @@ public class CardUIHandler : MonoBehaviour, IPointerDownHandler, IPointerUpHandl
         _cardUIView.DisableAllCardUIs();
 
         _phaseController.OnTradingPhaseStart.Add(OnGenerate);
-
         if (_entityType == EntityType.Player)
         {
             //プレイヤーはお金に関係なく売却可能
-            _interactables[(int)InteractableChange.Money] = true;
+            _buyEnabled[(int)EnableBuyingChange.Money] = true;
         }
     }
 
@@ -100,6 +110,11 @@ public class CardUIHandler : MonoBehaviour, IPointerDownHandler, IPointerUpHandl
         }
         else if (_entityType == EntityType.Trader)
         {
+            if (_buyEnabled.Contains(false))
+            {
+                _end_6.End_6Transition();
+                return;
+            }
             //買う処理のみ下記処理を行う。
             OnBuy(card);
         }
@@ -252,10 +267,27 @@ public class CardUIHandler : MonoBehaviour, IPointerDownHandler, IPointerUpHandl
     /// </summary>
     public void DisableSelectability(InteractableChange timing)
     {
-        _selectable.interactable = false;
         _interactables[(int)timing] = false;
 
         _cardUIView.OnSelectableDisabled(_selectable.colors.disabledColor);
+    }
+
+    public void DisableBuying(EnableBuyingChange enableBuyingChange)
+    {
+        _buyEnabled[(int)enableBuyingChange] = false;
+
+        _cardUIView.OnSelectableDisabled(_selectable.colors.disabledColor);
+    }
+
+    public void EnableBuying(EnableBuyingChange enableBuyingChange)
+    {
+        _buyEnabled[(int)enableBuyingChange] = false;
+
+        //選択可能状態を変更する
+        bool IsContains = !_buyEnabled.Contains(false);
+
+        if (!IsContains) return;
+        _cardUIView.OnSelectableEnabled(_selectable.colors.normalColor);
     }
 
     /// <summary>
@@ -265,11 +297,12 @@ public class CardUIHandler : MonoBehaviour, IPointerDownHandler, IPointerUpHandl
     {
         if (_buyOrSell.ContainsPlayerDeck)
         {
-            EnabledSelectebility(InteractableChange.Element);
+            EnableBuying(EnableBuyingChange.Element);
         }
         else
         {
-            DisableSelectability(InteractableChange.Element);
+            DisableBuying(EnableBuyingChange.Element);
+            _selectable.interactable = false;
         }
 
         //このオブジェクトが選択中なら実行しない
