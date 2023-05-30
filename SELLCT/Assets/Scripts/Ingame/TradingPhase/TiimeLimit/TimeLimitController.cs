@@ -103,7 +103,7 @@ public class TimeLimitController : MonoBehaviour
     }
 
     public void ReduceTimeLimit(float value, int currentE24Count)
-    {        
+    {
         _currentE24Count = currentE24Count;
 
         _timeLimit = _timeLimit.ReduceTimeLimit(new(value, _timeLimitRate), currentE24Count);
@@ -117,7 +117,8 @@ public class TimeLimitController : MonoBehaviour
     {
         float maxTimeLimit = _currentE24Count * _timeLimitRate;
         _timeLimitView.Rotate(maxTimeLimit, _timeLimit.CurrentTimeLimitValue);
-        _timeLimitView.Scale(maxTimeLimit, _timeLimit.CurrentTimeLimitValue);
+        if (!Mathf.Approximately(_timeLimit.CurrentTimeLimitValue, 0f))
+            _timeLimitView.Scale(maxTimeLimit, _timeLimit.CurrentTimeLimitValue);
     }
 
     /// <summary>

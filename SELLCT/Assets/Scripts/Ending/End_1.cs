@@ -14,15 +14,17 @@ public class End_1 : MonoBehaviour
 
     public async void End_1Transition()
     {
+        var token = this.GetCancellationTokenOnDestroy();
+
         _timeLimitController.Stop();
         InputSystemManager.Instance.ActionDisable();
 
         _endingController.EndingSceneText(EndingController.EndingScene.End1).Forget();
-
+        
         directorOnEnd1.Play();
-        var token = this.GetCancellationTokenOnDestroy();
 
         int duration = (int)((directorOnEnd1.duration - 1.0d) * 1000d);
+
         await UniTask.Delay(duration, false, PlayerLoopTiming.Update, token);
 
         _endingController.StartEndingScene(EndingController.EndingScene.End1);
