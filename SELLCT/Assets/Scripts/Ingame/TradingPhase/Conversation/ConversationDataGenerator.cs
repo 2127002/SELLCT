@@ -25,9 +25,16 @@ class ConversationDataGenerator : AssetPostprocessor
                 AssetDatabase.CreateAsset(cdb, assetfile);
             }
 
+            cdb.datas = CSVSerializer.Deserialize<ConversationData>(textasset.text);
+            EditorUtility.SetDirty(cdb);
+            AssetDatabase.SaveAssets();
+
             //データの不正値チェック（かぎかっこ）
             foreach (var d in cdb.datas)
             {
+                if (d == null) throw new System.NullReferenceException("Dataがnullです");
+                if (d.Text == null) { Debug.LogWarning("ID" + d.ID + " テキストがnullです"); continue; }
+                if (d.Name == null) { Debug.LogWarning("ID" + d.ID + " Nameがnullです"); continue; }
                 for (int i = 0; i < d.Text.Length; i++)
                 {
                     if (d.Name.Length == 0)
@@ -55,10 +62,6 @@ class ConversationDataGenerator : AssetPostprocessor
                     }
                 }
             }
-
-            cdb.datas = CSVSerializer.Deserialize<ConversationData>(textasset.text);
-            EditorUtility.SetDirty(cdb);
-            AssetDatabase.SaveAssets();
         }
     }
 }

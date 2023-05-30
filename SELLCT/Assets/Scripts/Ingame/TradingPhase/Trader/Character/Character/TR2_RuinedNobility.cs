@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using static EndingController;
 
 public class TR2_RuinedNobility : Trader
 {
@@ -104,6 +105,19 @@ public class TR2_RuinedNobility : Trader
         string[] texts = start[index].Text;
         int[] face = start[index].Face;
         string[] name = start[index].Name;
+
+        return new(texts, face, name);
+    }
+
+    public override ConversationMessage SceneEndingMessage(EndingScene endingScene)
+    {
+        List<ConversationData> data = _sceneEnding.datas.Where(x => x.Likability.Contains((int)favorability.FavorabilityClassification())).ToList();
+
+        int index = (int)endingScene + 1;
+
+        string[] texts = data[index].Text;
+        int[] face = data[index].Face;
+        string[] name = data[index].Name;
 
         return new(texts, face, name);
     }

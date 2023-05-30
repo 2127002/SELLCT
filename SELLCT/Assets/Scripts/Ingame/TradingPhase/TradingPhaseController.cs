@@ -57,6 +57,8 @@ public class TradingPhaseController : MonoBehaviour
     //売買フェーズ終了時処理（待機可）
     private async UniTask OnComplete()
     {
+        //ビルド時正常に下記処理が行われないため1フレームの一番最初まで待機
+        await UniTask.Yield(PlayerLoopTiming.Initialization);
         EventSystem.current.SetSelectedGameObject(null);
         _lastSelectedObject = null;
 
@@ -66,7 +68,6 @@ public class TradingPhaseController : MonoBehaviour
 
         _canvas.gameObject.SetActive(false);
         _navigateAction.action.performed -= OnNavigate;
-        //TODO：BGM1のフェードアウト
     }
 
     private void OnNavigate(InputAction.CallbackContext context)
