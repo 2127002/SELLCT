@@ -270,7 +270,7 @@ public class CardUIHandler : MonoBehaviour, IPointerDownHandler, IPointerUpHandl
         //このオブジェクトが選択中なら実行しない
         if (gameObject == EventSystem.current.currentSelectedGameObject) return;
 
-        _cardUIView.ResetImagesSize();
+        _cardUIView.OnDeselect();
     }
 
     public void OnPointerEnter(PointerEventData eventData)
@@ -355,7 +355,7 @@ public class CardUIHandler : MonoBehaviour, IPointerDownHandler, IPointerUpHandl
     {
         if (eventData == null) throw new NullReferenceException();
 
-        _cardUIView.ResetImagesSize();
+        _cardUIView.OnDeselect();
     }
 
     public void EnableHighlight()
