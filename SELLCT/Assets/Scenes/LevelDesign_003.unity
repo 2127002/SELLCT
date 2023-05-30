@@ -837,7 +837,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &157262628
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2899,7 +2899,7 @@ MonoBehaviour:
     _initialDisplayItemCount: 8
     _initialDeckCount: 10
     _initialFavorability: 1
-    _addFavorabilityValue: 0
+    _addFavorabilityValue: 10
     _defaultName: "\u3046\u3055\u304E"
     _favourableView: {fileID: 1982680978}
   sprites:
@@ -4153,7 +4153,7 @@ MonoBehaviour:
     _initialDisplayItemCount: 8
     _initialDeckCount: 10
     _initialFavorability: 1
-    _addFavorabilityValue: 0
+    _addFavorabilityValue: 1
     _defaultName: "\u30A4\u30AB\u308C\u305F\u5B66\u8005"
     _favourableView: {fileID: 1982680978}
   sprites:
@@ -6984,9 +6984,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _traders:
-  - {fileID: 1064430992}
-  - {fileID: 1063490271}
-  - {fileID: 495666248}
   - {fileID: 382012528}
 --- !u!4 &836645464
 Transform:
@@ -7720,15 +7717,15 @@ MonoBehaviour:
   - card: {fileID: 322592332}
     initcount: 0
   - card: {fileID: 1240537339}
-    initcount: 0
+    initcount: 8
   - card: {fileID: 1050709444}
-    initcount: 0
+    initcount: 8
   - card: {fileID: 1890776591}
-    initcount: 4
+    initcount: 0
   - card: {fileID: 1317302477}
     initcount: 5
   - card: {fileID: 1801727037}
-    initcount: 0
+    initcount: 8
   - card: {fileID: 2044394406}
     initcount: 5
   - card: {fileID: 1891691742}
@@ -9009,6 +9006,7 @@ MonoBehaviour:
   _playableDirectorOnSell: {fileID: 0}
   _SEValue:
   - 0
+  - 0.25
   - 0.5
   - 1
 --- !u!114 &1050709445
@@ -9742,7 +9740,7 @@ PlayableDirector:
   serializedVersion: 3
   m_PlayableAsset: {fileID: 11400000, guid: 946d6d764d93cfd4cb858098d4c7fe1f, type: 2}
   m_InitialState: 0
-  m_WrapMode: 2
+  m_WrapMode: 0
   m_DirectorUpdateMode: 1
   m_InitialTime: 0
   m_SceneBindings:
@@ -9772,6 +9770,8 @@ PlayableDirector:
     value: {fileID: 302272192}
   - key: {fileID: -7843692268180773114, guid: 946d6d764d93cfd4cb858098d4c7fe1f, type: 2}
     value: {fileID: 296562003}
+  - key: {fileID: -8333164887409372534, guid: 946d6d764d93cfd4cb858098d4c7fe1f, type: 2}
+    value: {fileID: 157262627}
   m_ExposedReferences:
     m_References: []
 --- !u!1 &1135015308
@@ -10782,6 +10782,7 @@ MonoBehaviour:
   _playableDirectorOnSell: {fileID: 0}
   _BGMValue:
   - 0
+  - 0.25
   - 0.5
   - 1
 --- !u!114 &1240537340
@@ -15310,15 +15311,15 @@ MonoBehaviour:
   - card: {fileID: 322592332}
     initcount: 0
   - card: {fileID: 1240537339}
-    initcount: 0
+    initcount: 3
   - card: {fileID: 1050709444}
-    initcount: 0
+    initcount: 3
   - card: {fileID: 1890776591}
-    initcount: 4
+    initcount: 0
   - card: {fileID: 1317302477}
     initcount: 2
   - card: {fileID: 1801727037}
-    initcount: 0
+    initcount: 4
   - card: {fileID: 2044394406}
     initcount: 1
   - card: {fileID: 1891691742}
@@ -15350,8 +15351,6 @@ MonoBehaviour:
     initcount: 1
   - card: {fileID: 1803076679}
     initcount: 3
-  - card: {fileID: 1891691742}
-    initcount: 1
   - card: {fileID: 1891691742}
     initcount: 1
   _drawCount: 4
@@ -16419,7 +16418,7 @@ MonoBehaviour:
   _playableDirectorOnSell: {fileID: 732873083}
   _brightness: {fileID: 2100000, guid: 6fd7c41649721a94fa3addf49255c0e4, type: 2}
   _brightnessValue:
-  - 0.5
+  - 100
   - 1
   - 3
   - 20
@@ -17458,7 +17457,7 @@ PlayableDirector:
   serializedVersion: 3
   m_PlayableAsset: {fileID: 11400000, guid: 0a28de3d25a96f340b148e1926716631, type: 2}
   m_InitialState: 0
-  m_WrapMode: 2
+  m_WrapMode: 0
   m_DirectorUpdateMode: 1
   m_InitialTime: 0
   m_SceneBindings:
@@ -17476,6 +17475,8 @@ PlayableDirector:
     value: {fileID: 961409259}
   - key: {fileID: -5310909361706094558, guid: 0a28de3d25a96f340b148e1926716631, type: 2}
     value: {fileID: 296562003}
+  - key: {fileID: -7467224330613366308, guid: 0a28de3d25a96f340b148e1926716631, type: 2}
+    value: {fileID: 157262627}
   m_ExposedReferences:
     m_References: []
 --- !u!114 &1937195366
