@@ -8914,11 +8914,7 @@ MonoBehaviour:
     _favoriteCard:
       _favoriteCards: []
       _bonus: 0
-    _priorityCards:
-    - _card: {fileID: 449189166}
-      _priority: 984
-    - _card: {fileID: 26477152}
-      _priority: 984
+    _priorityCards: []
     _initialDisplayItemCount: 8
     _initialDeckCount: 10
     _initialFavorability: 1
