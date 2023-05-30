@@ -70,7 +70,7 @@ public class TimeLimitController : MonoBehaviour
 
         _timeLimit.DecreaseTimeDeltaTime();
 
-        float maxTimeLimit = _currentE24Count * _timeLimitRate + _initTimeLimit;
+        float maxTimeLimit = _currentE24Count * _timeLimitRate;
 
         //Œv‚ği‚ß‚é
         _timeLimitView.Rotate(maxTimeLimit, _timeLimit.CurrentTimeLimitValue);
