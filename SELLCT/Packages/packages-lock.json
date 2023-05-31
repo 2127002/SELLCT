@@ -1,7 +1,14 @@
 {
   "dependencies": {
+    "com.cysharp.unitask": {
+      "version": "https://github.com/Cysharp/UniTask.git?path=src/UniTask/Assets/Plugins/UniTask",
+      "depth": 0,
+      "source": "git",
+      "dependencies": {},
+      "hash": "73d86259ce31ce7f4dfe1d028ea1c3edf96c23e4"
+    },
     "com.unity.burst": {
-      "version": "1.8.2",
+      "version": "1.8.3",
       "depth": 1,
       "source": "registry",
       "dependencies": {
@@ -10,7 +17,7 @@
       "url": "https://packages.unity.com"
     },
     "com.unity.collab-proxy": {
-      "version": "2.0.0",
+      "version": "2.0.1",
       "depth": 0,
       "source": "registry",
       "dependencies": {},
@@ -46,6 +53,15 @@
       "depth": 0,
       "source": "registry",
       "dependencies": {},
+      "url": "https://packages.unity.com"
+    },
+    "com.unity.inputsystem": {
+      "version": "1.5.1",
+      "depth": 0,
+      "source": "registry",
+      "dependencies": {
+        "com.unity.modules.uielements": "1.0.0"
+      },
       "url": "https://packages.unity.com"
     },
     "com.unity.mathematics": {
@@ -114,7 +130,7 @@
       "url": "https://packages.unity.com"
     },
     "com.unity.timeline": {
-      "version": "1.7.2",
+      "version": "1.7.3",
       "depth": 0,
       "source": "registry",
       "dependencies": {
@@ -132,6 +148,15 @@
       "dependencies": {
         "com.unity.modules.ui": "1.0.0",
         "com.unity.modules.imgui": "1.0.0"
+      }
+    },
+    "com.unity.visualeffectgraph": {
+      "version": "14.0.6",
+      "depth": 0,
+      "source": "builtin",
+      "dependencies": {
+        "com.unity.shadergraph": "14.0.6",
+        "com.unity.render-pipelines.core": "14.0.6"
       }
     },
     "com.unity.visualscripting": {
