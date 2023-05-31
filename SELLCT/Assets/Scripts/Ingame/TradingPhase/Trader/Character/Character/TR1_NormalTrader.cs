@@ -102,21 +102,25 @@ public class TR1_NormalTrader : Trader
 
     public override void OnPlayerSell(Card selledCard)
     {
-        //TODO：もし与えられたカードが仲間カードなら好感度減少処理を行う。
-
         Favorability totalAddValue = traderParameter.AddFavorabilityValue;
 
         if (traderParameter.FavoriteCards.Contains(selledCard))
         {
-            totalAddValue.Add(traderParameter.FavoriteCardBonus);
+            totalAddValue = totalAddValue.Add(traderParameter.FavoriteCardBonus);
         }
 
         favorability = favorability.Add(totalAddValue);
     }
 
-    public override void OnPlayerBuy()
+    public override void OnPlayerBuy(Card card)
     {
-        //買い処理はお気に入りエレメントは関係ない
-        favorability = favorability.Add(traderParameter.AddFavorabilityValue);
+        Favorability totalAddValue = traderParameter.AddFavorabilityValue;
+
+        if (traderParameter.FavoriteCards.Contains(card))
+        {
+            totalAddValue = totalAddValue.Add(traderParameter.FavoriteCardBonus);
+        }
+
+        favorability = favorability.Add(totalAddValue);
     }
 }

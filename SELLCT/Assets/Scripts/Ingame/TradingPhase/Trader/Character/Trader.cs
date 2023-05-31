@@ -73,7 +73,7 @@ public abstract class Trader : MonoBehaviour, IConversationMessage
     public virtual Sprite[] TraderSprites => sprites;
     public abstract void CreateDeck(CardPool pool);
     public abstract void OnPlayerSell(Card card);
-    public abstract void OnPlayerBuy();
+    public abstract void OnPlayerBuy(Card card);
 
     public abstract ConversationMessage StartMessage();
     public abstract ConversationMessage EndMessage();
