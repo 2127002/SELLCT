@@ -10084,9 +10084,9 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 27e645422b458ce4694462cebb7a3667, type: 3}
   - {fileID: 21300000, guid: 0f5dbff7a6217ee4b9f68643dc25172a, type: 3}
   - {fileID: 21300000, guid: 37ce6b2ce57677f41b477849d6133805, type: 3}
-  _start: {fileID: 11400000, guid: f5dfd570cd5fe3e4abab7c70a64d5713, type: 2}
+  _start: {fileID: 11400000, guid: 847b8f77e7cd48745afb04007c25c776, type: 2}
   _end: {fileID: 11400000, guid: 08ad3c294d4a91d449e1b44d11e55567, type: 2}
-  _select: {fileID: 11400000, guid: cab237cd7da022d459f1568c62c3a9e3, type: 2}
+  _select: {fileID: 11400000, guid: 4ef3e47c9277c554180ea22ef400f051, type: 2}
   _buy: {fileID: 11400000, guid: d19b80a53d9291741937f2123749af5e, type: 2}
   _sell: {fileID: 11400000, guid: 34fde8c6200fc7044a58146fe7da677d, type: 2}
   _sceneEnding: {fileID: 11400000, guid: 76a9f0b9f231f6d4089dacd547d01ee3, type: 2}
