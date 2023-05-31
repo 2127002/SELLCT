@@ -7507,7 +7507,7 @@ MonoBehaviour:
   - card: {fileID: 1890776591}
     initcount: 0
   - card: {fileID: 1317302477}
-    initcount: 1
+    initcount: 0
   - card: {fileID: 1801727037}
     initcount: 0
   - card: {fileID: 2044394406}
@@ -7515,7 +7515,7 @@ MonoBehaviour:
   - card: {fileID: 1891691742}
     initcount: 1
   - card: {fileID: 1803076679}
-    initcount: 1
+    initcount: 2
   - card: {fileID: 1589025320}
     initcount: 1
   - card: {fileID: 704934656}
@@ -9867,13 +9867,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   traderParameter:
     _favoriteCard:
-      _favoriteCards: []
-      _bonus: 0
+      _favoriteCards:
+      - {fileID: 1803076679}
+      _bonus: 35
     _priorityCards: []
-    _initialDisplayItemCount: 34
+    _initialDisplayItemCount: 2
     _initialDeckCount: -1
-    _initialFavorability: 1
-    _addFavorabilityValue: 24
+    _initialFavorability: 0
+    _addFavorabilityValue: 0
     _defaultName: "\u30C8\u30EC\u30FC\u30C0\u30FC"
     _favourableView: {fileID: 1982680978}
   sprites:
@@ -9886,9 +9887,9 @@ MonoBehaviour:
   _start: {fileID: 11400000, guid: f5dfd570cd5fe3e4abab7c70a64d5713, type: 2}
   _end: {fileID: 11400000, guid: 08ad3c294d4a91d449e1b44d11e55567, type: 2}
   _select: {fileID: 11400000, guid: cab237cd7da022d459f1568c62c3a9e3, type: 2}
-  _buy: {fileID: 11400000, guid: d19b80a53d9291741937f2123749af5e, type: 2}
-  _sell: {fileID: 11400000, guid: 34fde8c6200fc7044a58146fe7da677d, type: 2}
-  _sceneEnding: {fileID: 11400000, guid: 76a9f0b9f231f6d4089dacd547d01ee3, type: 2}
+  _buy: {fileID: 11400000, guid: 30eb9731861c3dd44864ac66b958ad12, type: 2}
+  _sell: {fileID: 11400000, guid: 7e8ba5ae97726414f92401818d5196a4, type: 2}
+  _sceneEnding: {fileID: 11400000, guid: 3d9e7ff8beabdd74480a0a6648836b2a, type: 2}
   _offset:
     scaleRatio: {x: 1.54, y: 1.54}
     offsetPos: {x: -33.25, y: -216.4, z: 0}

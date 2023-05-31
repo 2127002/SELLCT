@@ -14,7 +14,7 @@ public class Favorability
         Invalid
     }
 
-    FavourableView _favourableView;
+    readonly FavourableView _favourableView;
 
     const float MAX_AMOUNT = 100f;
     const float MIN_AMOUNT = 0f;
