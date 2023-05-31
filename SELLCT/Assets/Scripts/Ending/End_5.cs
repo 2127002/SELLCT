@@ -24,6 +24,8 @@ public class End_5 : MonoBehaviour
         //END5のタイムラインの総秒数から「1.1秒」早くEndingSceneに以降する。演出的にわざと行っている部分
         int duration = (int)((directorOnEnd5.duration - 1.1d) * 1000d);
         await UniTask.Delay(duration, false, PlayerLoopTiming.Update, token);
+        DataManager.saveData.sceneNum = Mathf.Max(DataManager.saveData.sceneNum, 1);
+        DataManager.SaveSaveData();
 
         _endingController.StartEndingScene(EndingController.EndingScene.End5);
     }

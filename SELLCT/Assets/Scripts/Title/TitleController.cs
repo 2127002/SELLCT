@@ -82,14 +82,20 @@ public class TitleController : MonoBehaviour
         SoundManager.Instance.StopBGM();
         asyncOperation.allowSceneActivation = true;
     }
-
+    readonly Dictionary<int, string> _sceneDic = new(){
+        {0, "LevelDesign_001"},
+        {1, "LevelDesign_002"},
+        {2, "LevelDesign_003"},
+        {3, "LevelDesign_004"},
+        {4, "Main" }
+    };
     private async void TransitionToInGame()
     {
         InputSystemManager.Instance.ActionDisable();
 
         //フェードに合わせてBGMをフェードアウト
-
-        AsyncOperation asyncOperation = SceneManager.LoadSceneAsync("Main");
+        _sceneDic.TryGetValue(DataManager.saveData.sceneNum, out var scene);
+        AsyncOperation asyncOperation = SceneManager.LoadSceneAsync(scene);
         asyncOperation.allowSceneActivation = false;
 
         //黒背景フェードイン

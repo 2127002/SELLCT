@@ -22,6 +22,8 @@ public class End_3 : MonoBehaviour
 
         int duration = (int)((directorOnEnd5.duration - 1.1d) * 1000d);
         await UniTask.Delay(duration, false, PlayerLoopTiming.Update, token);
+        DataManager.saveData.sceneNum = Mathf.Max(DataManager.saveData.sceneNum, 3);
+        DataManager.SaveSaveData();
 
         _endingController.StartEndingScene(EndingController.EndingScene.End3);
     }
