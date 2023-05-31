@@ -6955,6 +6955,8 @@ PlayableDirector:
     value: {fileID: 1347036826}
   - key: {fileID: 1251292550536880226, guid: 949137b2f45e99c4694867289ee86e64, type: 2}
     value: {fileID: 1939020362}
+  - key: {fileID: -7254814809988915208, guid: 949137b2f45e99c4694867289ee86e64, type: 2}
+    value: {fileID: 0}
   m_ExposedReferences:
     m_References: []
 --- !u!1 &825460871
@@ -7709,7 +7711,7 @@ MonoBehaviour:
   - card: {fileID: 1050709444}
     initcount: 8
   - card: {fileID: 1890776591}
-    initcount: 8
+    initcount: 0
   - card: {fileID: 1317302477}
     initcount: 5
   - card: {fileID: 1801727037}
@@ -12597,6 +12599,8 @@ PlayableDirector:
     value: {fileID: 1347036826}
   - key: {fileID: 4271537345135787878, guid: 944ed24498df9c641963d594756869d8, type: 2}
     value: {fileID: 1939020362}
+  - key: {fileID: -1789279050794960480, guid: 944ed24498df9c641963d594756869d8, type: 2}
+    value: {fileID: 0}
   m_ExposedReferences:
     m_References: []
 --- !u!1 &1468077270

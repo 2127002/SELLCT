@@ -2435,7 +2435,7 @@ MonoBehaviour:
   BGMClip:
   - {fileID: 8300000, guid: 4335dedf21711974b9d230afff7f36b5, type: 3}
   - {fileID: 8300000, guid: 418d35eaf43a57e46ad38d901d033caa, type: 3}
-  - {fileID: 8300000, guid: 94ddebda429339f4184cde2fbedd2bed, type: 3}
+  - {fileID: 0}
   - {fileID: 8300000, guid: bed0641a6a2411446a82dbb352187582, type: 3}
   - {fileID: 8300000, guid: cd428cbce3fd2e249bbe885c1bda8393, type: 3}
   - {fileID: 8300000, guid: f205ab1726b9f414885c0ff5dbaea646, type: 3}

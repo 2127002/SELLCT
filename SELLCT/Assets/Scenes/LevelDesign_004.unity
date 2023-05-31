@@ -7509,7 +7509,7 @@ MonoBehaviour:
   - card: {fileID: 1050709444}
     initcount: 10
   - card: {fileID: 1890776591}
-    initcount: 5
+    initcount: 0
   - card: {fileID: 1317302477}
     initcount: 5
   - card: {fileID: 1801727037}
@@ -15281,7 +15281,7 @@ MonoBehaviour:
   - card: {fileID: 1050709444}
     initcount: 0
   - card: {fileID: 1890776591}
-    initcount: 1
+    initcount: 0
   - card: {fileID: 1317302477}
     initcount: 1
   - card: {fileID: 1801727037}
@@ -16253,7 +16253,7 @@ MonoBehaviour:
   _playableDirectorOnSell: {fileID: 732873083}
   _brightness: {fileID: 2100000, guid: 6fd7c41649721a94fa3addf49255c0e4, type: 2}
   _brightnessValue:
-  - 10
+  - 100
   - 50
   - 75
   - 100
