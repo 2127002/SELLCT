@@ -30,7 +30,7 @@ public class EndingController : MonoBehaviour
 
     public async void StartEndingScene(EndingScene endingScene)
     {
-        SoundManager.Instance.PlayBGM(SoundSource.BGM03_ENDING);
+        SoundManager.Instance.StopBGM(0.5f);
 
         //セーブデータに保存
         DataManager.saveData.hasCollectedEndings[(int)endingScene] = true;
