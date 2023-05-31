@@ -136,7 +136,7 @@ public class TR6_GhostBoy : Trader
     }
 
 
-    public override void OnPlayerBuy()
+    public override void OnPlayerBuy(Card card)
     {
         //”ƒ‚¢ˆ—‚Í‚¨‹C‚É“ü‚èƒGƒŒƒƒ“ƒg‚ÍŠÖŒW‚È‚¢
         favorability = favorability.Add(traderParameter.AddFavorabilityValue);

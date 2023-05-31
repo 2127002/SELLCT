@@ -124,7 +124,7 @@ public class CardUIHandler : MonoBehaviour, IPointerDownHandler, IPointerUpHandl
 
         //※手札補充は行わない
         //商人の手札購入処理
-        _traderController.CurrentTrader.OnPlayerBuy();
+        _traderController.CurrentTrader.OnPlayerBuy(purchasedCard);
 
         //プレイヤー購入山札に追加する
         _subDeckMediator.AddBuyingDeck(purchasedCard);

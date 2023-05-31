@@ -135,7 +135,7 @@ public class TR4_Knight : Trader
         favorability = favorability.Add(totalAddValue);
     }
 
-    public override void OnPlayerBuy()
+    public override void OnPlayerBuy(Card card)
     {
         //”ƒ‚¢ˆ—‚Í‚¨‹C‚É“ü‚èƒGƒŒƒƒ“ƒg‚ÍŠÖŒW‚È‚¢
         favorability = favorability.Add(traderParameter.AddFavorabilityValue);
