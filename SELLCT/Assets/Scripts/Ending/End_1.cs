@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Playables;
 using UnityEngine.Timeline;
+using static EndingController;
 
 public class End_1 : MonoBehaviour
 {
@@ -26,6 +27,9 @@ public class End_1 : MonoBehaviour
         int duration = (int)((directorOnEnd1.duration - 1.0d) * 1000d);
 
         await UniTask.Delay(duration, false, PlayerLoopTiming.Update, token);
+
+        DataManager.saveData.sceneNum = Mathf.Max(DataManager.saveData.sceneNum, 4);
+        DataManager.SaveSaveData();
 
         _endingController.StartEndingScene(EndingController.EndingScene.End1);
     }

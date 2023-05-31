@@ -20,6 +20,15 @@ public class TitleController : MonoBehaviour
     [Header("最終エンディングのフラグを満たしたときに再生されるタイムライン")]
     [SerializeField] PlayableDirector _director = default!;
 
+    //シーンとセーブデータのデータ構造
+    readonly Dictionary<int, string> _sceneDic = new(){
+        {0, "LevelDesign_001"},
+        {1, "LevelDesign_002"},
+        {2, "LevelDesign_003"},
+        {3, "LevelDesign_004"},
+        {4, "Main" }
+    };
+
     private void Awake()
     {
         //カーソルの無効化
@@ -88,8 +97,8 @@ public class TitleController : MonoBehaviour
         InputSystemManager.Instance.ActionDisable();
 
         //フェードに合わせてBGMをフェードアウト
-
-        AsyncOperation asyncOperation = SceneManager.LoadSceneAsync("Main");
+        _sceneDic.TryGetValue(DataManager.saveData.sceneNum, out var scene);
+        AsyncOperation asyncOperation = SceneManager.LoadSceneAsync(scene);
         asyncOperation.allowSceneActivation = false;
 
         //黒背景フェードイン
