@@ -20,6 +20,15 @@ public class TitleController : MonoBehaviour
     [Header("最終エンディングのフラグを満たしたときに再生されるタイムライン")]
     [SerializeField] PlayableDirector _director = default!;
 
+    //シーンとセーブデータのデータ構造
+    readonly Dictionary<int, string> _sceneDic = new(){
+        {0, "LevelDesign_001"},
+        {1, "LevelDesign_002"},
+        {2, "LevelDesign_003"},
+        {3, "LevelDesign_004"},
+        {4, "Main" }
+    };
+
     private void Awake()
     {
         //カーソルの無効化
@@ -82,13 +91,7 @@ public class TitleController : MonoBehaviour
         SoundManager.Instance.StopBGM();
         asyncOperation.allowSceneActivation = true;
     }
-    readonly Dictionary<int, string> _sceneDic = new(){
-        {0, "LevelDesign_001"},
-        {1, "LevelDesign_002"},
-        {2, "LevelDesign_003"},
-        {3, "LevelDesign_004"},
-        {4, "Main" }
-    };
+
     private async void TransitionToInGame()
     {
         InputSystemManager.Instance.ActionDisable();
