@@ -3,12 +3,13 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Playables;
 
 public class ConversationController : MonoBehaviour
 {
     [SerializeField] TraderController _traderController = default!;
     [SerializeField] TextBoxController _textBoxController = default!;
-
+    
     private void Reset()
     {
         _traderController = FindFirstObjectByType<TraderController>();
@@ -29,6 +30,7 @@ public class ConversationController : MonoBehaviour
             string message = startMessage.message[i].ToInBracketsText();
 
             _traderController.SetTraderSprite(sprite);
+
             try
             {
                 await _textBoxController.UpdateText(speaker, message);
