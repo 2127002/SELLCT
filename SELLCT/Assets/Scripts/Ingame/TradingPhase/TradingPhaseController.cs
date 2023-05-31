@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
+using UnityEngine.Playables;
 using UnityEngine.UI;
 
 /// <summary>
@@ -19,6 +20,7 @@ public class TradingPhaseController : MonoBehaviour
     [SerializeField] RugController _rugController = default!;
     [SerializeField] Canvas _canvas = default!;
     [SerializeField] InputActionReference _any = default!;
+    [SerializeField] PlayableDirector _playableDirector = default!;
 
     GameObject _lastSelectedObject = default!;
 
@@ -98,11 +100,19 @@ public class TradingPhaseController : MonoBehaviour
 
         InputSystemManager.Instance.ActionEnable();
 
+        //入力誘導UIの開始
+        _playableDirector.gameObject.SetActive(true);
+        _playableDirector.Play();
+
         //キー入力待機
         while (!_any.action.WasPressedThisFrame())
         {
             await UniTask.Yield(token);
         }
+
+        //入力誘導UIの終了
+        _playableDirector.Stop();
+        _playableDirector.gameObject.SetActive(false);
 
         //会話終了後ラグを引く
         await _rugController.PlayStartAnimation();
