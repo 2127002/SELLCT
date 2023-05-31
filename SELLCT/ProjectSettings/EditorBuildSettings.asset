@@ -14,4 +14,16 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/LastEnding.unity
     guid: c9562b7bdfe69f6409d367f96e244064
+  - enabled: 1
+    path: Assets/Scenes/LevelDesign_001.unity
+    guid: fe88d4b46e0341140bf9b4422e3417f3
+  - enabled: 1
+    path: Assets/Scenes/LevelDesign_002.unity
+    guid: d2f9c546fabf8d748ac0400aee95f700
+  - enabled: 1
+    path: Assets/Scenes/LevelDesign_003.unity
+    guid: b1b998c4843a3a14289ca6140a84e073
+  - enabled: 1
+    path: Assets/Scenes/LevelDesign_004.unity
+    guid: 7d3fb1ef026e94944b9d80dfe80867d0
   m_configObjects: {}
